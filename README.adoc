@@ -1,0 +1,77 @@
+= IHO S-102 Bathymetric Surface Product Specification
+
+image:https://github.com/iho-ohi/S-102-Product-Specification/workflows/generate/badge.svg["Build Status", link="https://github.com/iho-ohi/S-102-Product-Specification/actions?query=workflow%3Agenerate"]
+image:https://github.com/iho-ohi/S-102-Product-Specification/workflows/docker/badge.svg["Docker Build Status", link="https://github.com/iho-ohi/S-102-Product-Specification/actions?query=workflow%3Adocker"]
+
+These documents are available in its rendered forms here:
+
+* https://iho-ohi.github.io/S-102-Product-Specification/[IHO S-102 (HTML)]
+
+== Purpose
+
+This is the IHO repository for developing the next edition of
+"S-102 Bathymetric Surface Product Specification".
+
+WARNING: The contents of this repository are in draft form and not yet in force.
+Please refer to the final versions published on the official
+https://iho.int[IHO] website.
+
+
+== General
+
+This repository contains the source files of S-102 standards, including:
+
+* S-102 2.0.0
+* S-102 2.1.0
+* S-102 (new version in development)
+
+These documents are encoded in the
+https://www.metanorma.org/author/topics/document-format/[Metanorma AsciiDoc format].
+
+
+== Structure
+
+`sources/`::
+source of the S-102 documents and models
+
+`site/`::
+(automatically generated, in the `gh-pages` branch) published document.
+
+
+== Usage
+
+This repository uses `metanorma` to run these processes.
+
+Please refer to
+https://www.metanorma.org/author/iho/authoring/[Metanorma-IHO documentation]
+for authoring guidance.
+
+
+== Installing build tools
+
+See the https://www.metanorma.org/install/[Metanorma install] page.
+
+
+== Building the document
+
+If you have installed the build tools locally, and wish to run the
+locally-installed compilation tools, there is nothing further to set.
+
+If you use a locally installed Metanorma, run:
+
+[source,sh]
+----
+metanorma site generate
+----
+
+If you don't want to deal with local dependencies, use the docker
+version by:
+
+[source,sh]
+----
+docker run -v "$(pwd)":/metanorma -w /metanorma -it metanorma/mn metanorma site generate
+----
+
+== License
+
+See link:LICENSE.adoc[LICENSE].

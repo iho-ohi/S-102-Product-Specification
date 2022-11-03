@@ -1,0 +1,24 @@
+
+[[annex-s102-gridding-methods]]
+[appendix]
+== S-102 Gridding Methods
+
+* The *Basic Weighted Mean* algorithm computes an average depth for each grid node. Contributing depth estimates within a given area of influence are weighted and averaged to compute the final nodal value.
+
+* The *Shoalest Depth* algorithm examines depth estimates within a specific area of influence and assigns the shoalest value to the nodal position. The resulting surface represents the shallowest depths across a given area.
+
+* The *Total Propagated Uncertainty (TPU) Weighted Mean* algorithm makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute a weighted average depth for each nodal position.
+
+* NOTE: TPU is a measure of the expected accuracy of the depth estimate when all relevant error/uncertainty sources have been considered.
+
+* The *Combined Uncertainty and Bathymetric Estimator, or CUBE* makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute one or many hypotheses for an area of interest. The resulting hypotheses are used to estimate statistical representative depths at each nodal position.
+
+* The *Nearest Neighbour* algorithm identifies the nearest depth value within an area of interest and assigns that value to the nodal position. This method does not consider values from neighbouring points.
+
+* *Natural Neighbour* interpolation identifies and weights a subset of input samples within the area of interest to interpolate the final nodal value.
+
+* The *Polynomial Tendency* gridding method attempts to fit a polynomial trend, or best fit surface to a set of input data points. This method can project trends into areas with little to no data, but does not work well when there is no discernible trend within the data set.
+
+* The *Spline* algorithm estimates nodal depths using a mathematical function to minimize overall surface curvature. The final "`smoothed`" surface passes exactly through the contributing input depth estimates.
+
+* *Kriging* is a geostatistical interpolation method that generates an estimated surface from a scattered set of points with a known depth.

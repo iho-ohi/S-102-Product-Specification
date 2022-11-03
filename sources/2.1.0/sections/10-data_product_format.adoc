@@ -1,0 +1,516 @@
+
+[[sec-data-product-format-encoding]]
+== Data Product Format (Encoding)
+
+=== Introduction
+The S-102 data set must be encoded using the Hierarchical Data Format standard, Version 5 (HDF5).
+
+*Format Name*:: HDF5
+
+*Version*:: 1.8
+
+*Character Set*:: UTF-8
+
+*Specification*:: https://www.hdfgroup.org/
+
+The key idea behind the S-102 product structure is that each coverage is a feature. Each of these features is co-located with the others. Therefore, they share the same spatial metadata and each is required to correctly interpret the others.
+
+For the use of HDF5, the following key concepts (<<iho-s100,part=10c,clause=10c-5.1>>) are important:
+
+_File_:: a contiguous string of bytes in a computer store (memory, disk, etc.), and the bytes represent zero or more objects of the model;
+
+_Group_:: a collection of objects (including groups);
+
+_Dataset_:: a multidimensional array of data elements with attributes and other metadata;
+
+_Dataspace_:: a description of the dimensions of a multidimensional array;
+
+_Datatype_:: a description of a specific class of data element including its storage layout as a pattern of bits;
+
+_Attribute_:: a named data value associated with a group, dataset, or named datatype;
+
+_Property List_:: a collection of parameters (some permanent and some transient).
+
+In addition, datasets may be a compound (a single record consisting of an array of simple value types) and have multiple dimensions.
+
+[[subsec-product-structure]]
+=== Product structure
+The structure of the data product follows the form given in <<iho-s100,part=10C>> -- HDF5 Data Model and File Format. The general structure, which was designed for several S-100 products is given in <<fig-outline-of-the-generic-data-file-structure>>.
+
+[[fig-outline-of-the-generic-data-file-structure]]
+.Outline of the generic data file structure
+image::figure-outline-of-the-generic-data-file-structure.png[]
+
+<<fig-outline-of-the-generic-data-file-structure>> shows the four levels defined within the HDF encoding as defined in <<iho-s100,part=10c>>. Below is a further definition of these levels.
+
+*Level 1*:: At the top level lies the Root Group, and it contains the Root Metadata and two subsidiary groups. The Root Metadata applies to all S-100 type products.
+
+*Level 2*:: The next Level contains the Feature Information Group and the Feature Container Group. The Feature Information Group contains the feature *BathymetryCoverage* and the feature attribute codes. The Feature Container Group contains the Feature Metadata and one or more Feature Instance Groups.
+
+*Level 3*:: This contains a Feature Instance group. A feature instance is a bathymetric gridded data for a single region.
+
+*Level 4*:: This contains the actual data for each feature. In S-102 the BathymetryCoverage uses the ValuesGroup to define the content the other groups at this level are not used.
+
+In <<tab-overview-of-s102-data-product>> below, levels refer to HDF5 structuring (see <<iho-s100,part=10c,figure=10c-9>>). Naming in each box below the header line is as follows: Generic name; S-100 or S-102 name, or [] if none; and (_HDF5 type_) group, attribute or attribute list, or dataset.
+
+
+[[tab-overview-of-s102-data-product]]
+.Overview of S-102 Data Product
+[cols="a,a,a,a",options="header"]
+|===
+|LEVEL 1 CONTENT |LEVEL 2 CONTENT |LEVEL 3 CONTENT |LEVEL 4 CONTENT
+
+|General Metadata +
+(metadata) +
+_(h5_attribute)_
+|
+|
+|
+
+|Feature Codes +
+Group_F +
+_(h5_group)_
+|Feature Name +
+BathymetryCoverage +
+_(h5_dataset)_
+|
+|
+
+|
+|Feature Codes +
+featureCode +
+_(h5_dataset)_
+|
+|
+
+|Feature Type +
+BathymetryCoverage +
+_(h5_group)_
+|Type Metadata +
+(metadata) +
+_(h5_attribute)_
+|
+|
+
+|
+|Feature Instance +
+BathymetryCoverage.01 +
+_(h5_group)_
+|Instance Metadata +
+(metadata) +
+_(h5_attribute)_
+|
+
+|
+|
+|First data group +
+Group_001 +
+_(h5_group)_
+|Group Metadata +
+(metadata) +
+_(h5_attribute)_
+
+|
+|X and Y Axis Names +
+axisNames +
+_(h5_dataset)_
+|
+|Bathymetric Data Array values _(h5_dataset)_
+
+|===
+
+[[fig-hierarchy-of-s102-data-product]]
+.Hierarchy of S-102 Data Product
+image::figure-hierarchy-of-s102-data-product.png[]
+
+[[tab-root-group-attributes]]
+.Root group attributes
+[cols="<a,<a,<a,^a,<a,<a"]
+|===
+h| No h| Name h| Camel Case h| Mult h| Data Type h| Remarks
+
+| 1
+| Product specification number and version
+| productSpecification
+^| 1
+<| String
+| <<iho-s100,table=10c-6>> +
+Example: INT.IHO.S-102.2.1
+
+| 2
+| Time of data product issue
+| issueTime
+^| 0..1
+<| String (Time Format)
+|
+
+| 3
+| Issue date
+| issueDate
+^| 1
+<| String (Time Format)
+|
+
+| 4
+| Horizontal datum
+| horizontalDatumReference
+^| 1
+<| String
+| Value: EPSG
+
+| 5
+| Horizontal datum number
+| horizontalDatumValue
+^| 1
+<| Integer
+| The identifier (EPSG code) of the horizontal CRS as defined in <<horizontal-crs>> (see <<note1>>)
+
+| 6
+| Epoch of realization
+| epoch
+^| 0..1
+<| String
+|
+
+| 7a
+.4+| Bounding box
+| westBoundLongitude
+^| 1
+<| Float
+.4+| The values are in decimal degrees. If a projected CRS is used for the dataset, these values refer to those of the baseCRS underlying the projected CRS (see <<note2>>)
+
+| 7b
+| eastBoundLongitude
+^| 1
+<| Float
+
+| 7c
+| southBoundLatitude
+^| 1
+<| Float
+
+| 7d
+| northBoundLatitude
+^| 1
+<| Float
+
+| 9
+| Metadata
+| metadata
+^| 1
+<| String
+| Name of metadata file +
+MD_<HDF5 data file base name>.XML (or .xml) ISO metadata (per <<iho-s100,part=10c-12>>)
+
+| 10
+| Vertical datum reference
+| verticalDatum
+^| 1
+<| Enumeration
+|
+|===
+
+[[note1]]
+[NOTE]
+====
+The value horizontalDatumValue specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding. Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum.
+====
+
+[[note2]]
+[NOTE]
+====
+The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,table=6-6>>).
+====
+
+The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
+
+==== Feature Codes (Group_F)
+No attributes.
+
+This group specifies the S-100 features to which the data applies, and consists of two components:
+
+*featureCode* -- a dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only *BathymetryCoverage*. 
+
+*BathymetryCoverage* -- Described in the featureCode table. This feature contains the standard definition of the feature class. 
+
+==== BathymetryCoverage Table (in Group_F)
+
+BathymetryCoverage is an array of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array>>.
+
+[[tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array]]
+.Sample contents of the two-dimensional BathymetryCoverage array
+[cols="a,a,a,a",option="header"]
+|===
+|Name |Explanation |S-100 Attribute 1 |S-100 Attribute 2
+
+|code
+|Camel Case code of attribute as in Feature Catalogue
+|depth
+|uncertainty
+
+|name
+|Long name as in Feature Catalogue
+|depth
+|uncertainty
+
+|uom.name
+|Units (uom.name from S-100 Feature Catalogue)
+|metres
+|metres
+
+|fillValue
+|Fill value (integer or float, string representation, for missing values)
+|1000000
+|1000000
+
+|datatype
+|HDF5 datatype, as returned by H5Tget_class() function
+|H5T_FLOAT
+|H5T_FLOAT
+
+|lower
+|Lower bound on value of attribute
+|-12000
+|0
+
+|upper
+|Upper bound on value of attribute
+|12000
+|12000
+
+|closure
+|Open or Closed data interval. See S100_IntervalType in Part 1.
+|closedInterval
+|gtLeInterval
+|===
+
+As per section <<iho-s100,part=10c,clause=10c-9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
+
+While the sample contents are shown in the two attributes columns, these are actually rows in the BathymetryCoverage table. They are also each a single HDF5 compound type and represent a single HDF5 element in the table.
+
+All cells shall be HDF5 variable length strings. The minimum and maximum values are stored in lower and upper columns. Variable length strings allow future proofing the format in the event editing is allowed or correcting these values is required.
+
+
+==== Root BathymetryCoverage
+
+[[tab-attributes-of-bathymetrycoverage-feature-container-group]]
+[cols="<,<,<,^,<,<"]
+.Attributes of *BathymetryCoverage* feature container group
+|===
+| No
+| Name
+| Camel Case
+| Mult
+| Data Type
+| Remarks
+
+| 1
+| Data organization index
+| dataCodingFormat
+| 1
+| Enumeration
+| Value: 2
+
+| 2
+| Dimension
+| dimension
+| 1
+| Integer
+| Value: 2
+
+| 3
+| Common point rule
+| commonPointRule
+| 1
+| Enumeration
+| Value: 1 (average) or other values from <<iho-s100,table=10c-19>>.
+
+| 4
+| Horizontal position uncertainty
+| horizontalPositionUncertainty
+| 1
+| Float
+| Value: -1.0 (if unknown or not available)
+
+| 5
+| Vertical position uncertainty
+| verticalUncertainty
+| 1
+| Float
+| Value: -1.0 (if unknown or not available)
+
+| 6
+| Number of feature instances
+| numInstances
+| 1
+| Integer
+| Value: 1
+
+| 7a
+.2+| Sequencing rule
+| sequencingRule.type
+^| 1
+| Enumeration
+| Value: 1 (linear)
+
+| 7b
+| sequencingRule.scanDirection
+^| 1
+| String
+| Value: <axisNames entry> (comma-separated). For example, "latitude,longitude". Reverse scan direction along an axis is indicated by prefixing a '-' sign to the axis name. See <<scanDirection>>
+
+| 8
+| Interpolation type
+| interpolationType
+| 1
+| Enumeration
+| Code value from <<iho-s100,table=10c-21>>
+
+|===
+
+==== Feature Instance group - BathymetryCoverage.01
+As per <<iho-s100,part=10c,clause=10c-9.7>> and <<iho-s100,table=10c-12>> Attributes of feature instance groups
+
+[[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
+.Attributes of BathymetryCoverage feature instance group
+[cols="<,<,<,^,<,<"]
+|===
+h| No h| Name h| Camel Case h| Mult h| Data Type h| Remarks
+
+| 1a
+.4+| Bounding box
+| westBoundLongitude
+^| 1
+<| Float
+.4+| Coordinates should refer to the previously defined Coordinate Reference System.
+
+| 1b
+| eastBoundLongitude
+^| 1
+<| Float
+
+| 1c
+| southBoundLatitude
+^| 1
+<| Float
+
+| 1d
+| northBoundLatitude
+^| 1
+<| Float
+
+| 2
+| Number of groups
+| numGRP
+^| 1
+<| Integer
+| The number of data values groups contained in this instance group. +
+Value: 1
+
+| 3
+| Longitude of grid origin
+| gridOriginLongitude
+^| 1
+<| Float
+| Longitude or easting of grid origin. Unit: (to correspond with previously defined Coordinate Reference System)
+
+| 4
+| Latitude of grid origin
+| gridOriginLatitude
+^| 1
+<| Float
+| Latitude or northing of grid origin. Unit: (to correspond with previously defined Coordinate Reference System)
+
+| 5
+| Grid spacing, longitude
+| gridSpacingLongitudinal
+^| 1
+<| Float
+| Cell size in x dimension.
+
+| 6
+| Grid spacing, latitude
+| gridSpacingLatitudinal
+^| 1
+<| Float
+| Cell size in y dimension.
+
+| 7
+| Number of points, longitude
+| numPointsLongitudinal
+^| 1
+<| Integer
+| Number of points in x dimension.
+
+| 8
+| Number of points, latitude
+| numPointsLatitudinal
+^| 1
+<| Integer
+| Number of points in y dimension.
+
+| 9
+| Start sequence
+| startSequence
+^| 1
+<| String
+| Grid coordinates of the grid point to which the first in the sequence of values is to be assigned. The choice of a valid point for the start sequence is determined by the sequencing rule. Format: n, n +
+Example: "0,0" (without quotes)
+|===
+
+The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this deviates from S100 where it indicates that this should be in Arc Degrees. This has the effect that gridOriginLongitude and gridOriginLatitude are identical to westBoundLongitude and southBoundLatitude.
+
+The gridOriginLongitude and gridOriginLatitude are the cell center of the cell.
+
+numPointsLongitude and numPointsLatitude must contain the number of cells in the x and y dimensions of the values table.
+
+==== The values group - Group_001
+This group contains the following attributes. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
+
+[[tab-attributes-of-values-group]]
+.Attributes of values group
+[cols="<,<,<,^,<,<"]
+|===
+h| No h| Name h| Camel Case h| Mult h| Data Type h| Remarks
+
+| 1
+| minimum Depth
+| minimumDepth
+| 1
+| Float
+| The minimum depth value in the values dataset(s) of this group
+
+| 2
+| maximum Depth
+| maximumDepth
+| 1
+| Float
+| The maximum depth value in the values dataset(s) of this group
+
+| 3
+| minimum Uncertainty
+| minimumUncertainty
+| 1
+| Float
+| The minimum uncertainty value in the values dataset(s) of this group. If no uncertainty values are in the dataset(s) the value must be the fillValue
+
+| 4
+| maximum Uncertainty
+| maximumUncertainty
+| 1
+| Float
+| The maximum uncertainty value in the values dataset(s) of this group. If no uncertainty values are in the dataset(s) the value must be the fillValue
+|===
+
+The group contains an HDF5 dataset named values containing the bathymetric gridded data.
+
+==== The Dataset - values
+
+This dataset contains the compound data arrays containing bathymetric gridded data. These components are explained below.
+
+For bathymetric gridded data, the dataset includes a two-dimensional array containing both the depth and uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every point in the grid can be simply computed. If uncertainty data is not used, it must be filled with the fillValue specified in the Group_F feature information dataset.
+
+The depth and uncertainty values (depth and uncertainty) are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with two members.
+
+==== Mandatory Naming Conventions
+The following group and attribute names are mandatory in S-100: Group_F, featureCode, and (for S-102) *BathymetryCoverage*, axisNames, *BathymetryCoverage01*, and Group_nnn.

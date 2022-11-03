@@ -1,0 +1,70 @@
+
+[.preface]
+== Document History
+
+[%unnumbered]
+[cols="a,a,a,a",options="headers"]
+|===
+|Version Number |Date |Author |Purpose
+
+|1.0.0
+|April 2012
+|TSMAD
+|Approved edition of S-102
+
+|2.0.0
+|March 2017
+|S-102PT
+|Updated <<sec-data-content-and-structure>> and <<sec-metadata>>. +
+Populated <<sec-portrayal>> and <<annex-hdf5-encoding>>.
+
+|2.0.0
+|May 2017
+|S-102PT
+|Modified <<sec-portrayal>> based on feedback at S-100WG2 meeting.
+
+|2.0.0
+|February 2018
+|S-102PT
+|Modified <<sec-portrayal>>. Deleted contents of <<annex-hdf5-encoding>> in preparation for updated S-100 Part 10C guidance. Added <<annex-s102-dataset-size-and-production>>: S-102 Dataset Size and Production, <<annex-s102-gridding-methods>>: Gridding Example, <<annex-multi-resolution-gridding>>: Statement added for Multi-Resolution Gridding, <<annex-gridding-full-resolution-source-bathymetry>>: Statement for future S-102 Tiling.
+
+|2.0.0
+|June 2018
+|S-102PT
+|Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.
+
+Modified content throughout the following sections:
+
+* <<sec-overview>>, <<sec-data-product-identification>>, <<sec-data-content-and-structure>>, <<sec-coordinate-reference-systems-crs>>, <<sec-data-quality>>, <<sec-portrayal>>, <<sec-data-product-format-encoding>>, <<sec-data-product-delivery>>, and <<sec-metadata>>.
+* <<annex-data-classification-and-encoding-guide>>, <<annex-hdf5-encoding>>, <<annex-feature-catalogue>>, <<annex-s102-dataset-size-and-production>>, <<annex-s102-gridding-methods>>, and <<annex-gridding-full-resolution-source-bathymetry>>.
+
+|2.0.0
+|October/November 2018
+|S-102PT
+|Entered Redline comments from HSSC Letter 02/2018
+
+Modified content includes:
+
+* <<sec-overview>>, <<sec-data-product-identification>>, <<sec-data-content-and-structure>>, <<sec-coordinate-reference-systems-crs>>, <<sec-data-quality>>, <<sec-portrayal>>, <<sec-data-product-format-encoding>>, <<sec-data-product-delivery>>, and <<sec-metadata>>.
+* <<annex-data-classification-and-encoding-guide>>, <<annex-hdf5-encoding>>, <<annex-feature-catalogue>>, <<annex-s102-dataset-size-and-production>>, <<annex-s102-gridding-methods>>, and <<annex-gridding-full-resolution-source-bathymetry>>.
+
+|2.0.0
+|January/February 2019
+|S-102PT
+|Adjudicated HSSC and S102PT Comments at 5th S-102 Project Team Meeting.
+
+Modified content includes:
+
+* <<sec-overview>>, <<sec-data-product-identification>>, <<sec-data-content-and-structure>>, <<sec-coordinate-reference-systems-crs>>, <<sec-data-quality>>, <<sec-portrayal>>, <<sec-data-product-format-encoding>>, <<sec-data-product-delivery>>, and <<sec-metadata>>.
+* <<annex-data-classification-and-encoding-guide>>, <<annex-hdf5-encoding>>, <<annex-feature-catalogue>>, <<annex-s102-dataset-size-and-production>>, <<annex-s102-gridding-methods>>, and <<annex-gridding-full-resolution-source-bathymetry>>.
+
+|2.0.0
+|September/October 2019
+|S-102PT
+|Adjudicated HSSC and S102PT comments since last release
+
+Modified content includes:
+
+* <<annex-data-classification-and-encoding-guide>>, <<annex-hdf5-encoding>>
+* <<sec-data-content-and-structure>>, <<sec-data-product-format-encoding>>, <<sec-metadata>>
+|===
