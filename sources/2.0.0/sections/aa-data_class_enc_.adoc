@@ -1,0 +1,151 @@
+
+[%portrait]
+<<<
+
+[[annex-data-classification-and-encoding-guide]]
+[appendix]
+== Data Classification and Encoding Guide
+
+=== Features
+
+==== BathymetryCoverage
+
+[%unnumbered]
+[cols="a,a,a,a"]
+|===
+4+|A set of value items required to define a dataset representing a depth calculation and its associated uncertainty
+4+h|Primitive: S-100_Grid_Coverage
+h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
+
+|depth
+|Must be in decimal metres with precision not to exceed 0.01 metres
+|real
+|1
+
+|uncertainty
+|Must be in decimal metres with precision not to exceed 0.01 metres
+|real
+|1..*
+|===
+
+
+==== TrackingListCoverage
+
+[%unnumbered]
+[cols="a,a,a,a"]
+|===
+4+|A set of value items required to define a dataset representing a series of overrides to the associated
+S102 Grid
+4+h|Primitive: S-100_PointSet
+h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
+
+|X
+|Must be an integer expressing a column of the associated 2D BathymetryCoverage dataset
+|integer
+|1
+
+|Y
+|Must be an integer expressing a row of the associated 2D BathymetryCoverage dataset
+|integer
+|1
+
+|original value
+|Must be in decimal metres with precision not to exceed 0.01 metres
+|real
+|1
+
+|track code
+|Must be an integer expressing a valid enumeration value defining the reason a modification was made at this grid location
+|integer
+|1
+
+|list series
+|Must be an integer expressing a value defining the index location in the metadata defining the modification
+|integer
+|1
+|===
+
+
+
+=== Feature Attributes
+
+==== BathymetryCoverage
+
+[%unnumbered]
+[cols="a"]
+|===
+
+|*depth*: IHO Definition: DEPTH; The vertical distance from a given water level to the bottom [<<iho-s32>>]
+
+|Unit: metres
+
+|Resolution: 0.01
+
+|Remarks:
+
+* For S-102 the sign convention is for z to be positive for values above the vertical datum
+
+|*uncertainty*: IHO Definition: UNCERTAINTY; The interval (about a given value) that will contain the true value of the measurement at a specific confidence level [<<iho-s44>>]
+
+|Unit: metres
+
+|Resolution: 0.01
+
+|Remarks:
+
+* Represents a +/- value defining the possible range of associated depth
+* Expressed a positive number
+
+|===
+
+
+==== TrackingListCoverage
+
+
+[%unnumbered]
+[cols="a"]
+|===
+
+|*X*: IHO Definition: GRID POINT; point located at the intersection of two or more curves in a grid [<<iso-19123>>]
+
+|Unit: column
+
+|Resolution: N/A
+
+|Remarks:
+
+* Bound by _numPointsLongitudinal_ (S100 Part 10c)
+
+|*Y*: IHO Definition: GRID POINT; point located at the intersection of two or more curves in a grid [<<iso-19123>>]
+
+|Unit: row
+
+|Resolution: N/A
+
+|Remarks:
+
+* Bound by _numPointsLatitudinal_ (S100 Part 10c)
+
+|*original value*: IHO Definition: DEPTH; The vertical distance from a given water level to the bottom [<<iho-s32>>]
+
+|Unit: metres
+
+|Resolution: 0.01
+
+|Remarks:
+
+* For S-102 the sign convention is for z to be positive for values above the vertical datum
+
+|*track code*: IHO Definition: value indicating why a modification was made to the depth value
+
+|Unit: ENUM
+
+|Resolution: N/A
+
+|*list series*: IHO Definition: value indicating the index location within the metadata defining the modification
+
+|Unit: N/A
+
+|Resolution: N/A
+
+|===

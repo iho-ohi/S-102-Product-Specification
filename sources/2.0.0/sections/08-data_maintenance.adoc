@@ -1,0 +1,11 @@
+
+== Data Maintenance
+
+=== Maintenance and Update Frequency
+Datasets are maintained by replacement on a tile or dataset basis. That is, the entire data product or tile within a data set including its coverages (depth, uncertainty, and tracking list point set coverage) and the associated metadata are replaced as a unit. This is unlike vector data that may be updated incrementally. However, coverage data must be considered as a unit at least at the tile level. This is because processing is done on the entire tile to produce the data product. Any replacement tile will include its own tracking list (when a tracking list is used) to deliberately bias the information for safety of navigation. Also, each replacement tile or data set must have its own digital signature.
+
+=== Data Source
+Data producers must use applicable sources to maintain and update data and provide a brief description of the sources that were used to produce the dataset.
+
+=== Production Process
+Data Producers should follow their established production processes for maintaining and updating datasets.

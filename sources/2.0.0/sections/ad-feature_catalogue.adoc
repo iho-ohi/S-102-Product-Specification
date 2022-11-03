@@ -1,0 +1,6 @@
+
+[[annex-feature-catalogue]]
+[appendix,obligation="informative"]
+== Feature Catalogue
+
+S-102 Feature Catalogue information is contained within a separate document: S-102FC_Ed2.0.0.docx.

@@ -1,0 +1,32 @@
+name: generate
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    container:
+      image: metanorma/metanorma:latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v2
+        with:
+          path: /config/fonts
+          key: fontist-docker
+          restore-keys: fontist-docker
+
+      - uses: metanorma/metanorma-build-scripts/docker-gem-install@main
+
+      - uses: actions-mn/cli/site-gen@main
+        with:
+          agree-to-terms: true
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: draft
+          path: site
