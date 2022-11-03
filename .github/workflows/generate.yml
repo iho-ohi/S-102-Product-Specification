@@ -2,31 +2,59 @@ name: generate
 
 on:
   push:
-    branches: [master, main]
+    branches: [ main ]
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
     container:
       image: metanorma/metanorma:latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - uses: actions/cache@v3
+      - name: Cache Metanorma fonts
+        uses: actions/cache@v3
         with:
           path: /config/fonts
           key: fontist-docker
           restore-keys: fontist-docker
 
-      - uses: metanorma/metanorma-build-scripts/docker-gem-install@main
+      - name: Metanorma setup
+        uses: metanorma/ci/docker-gem-install@main
 
-      - uses: actions-mn/cli/site-gen@main
+      - name: Metanorma generate site
+        uses: actions-mn/cli/site-gen@main
         with:
           agree-to-terms: true
+          output-dir: ./_site
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: draft
-          path: site
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
