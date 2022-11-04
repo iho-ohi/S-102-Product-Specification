@@ -46,11 +46,13 @@ In 20 metres of water the system described above would collect 400 individual de
 ====
 
 ==== Sonar footprint
-Sonar footprint is a function of water depth (20 metres) and beam angle (0.5° X 0.5°). Computed footprint at nadir:
+Sonar footprint is a function of water depth (20 metres) and beam angle (stem:[0.5° xx 0.5°]). Computed footprint at nadir:
 
-Footprint @ Nadir = stem:[2 x (("Depth") x (Tan Ø/2))], where Ø = Beam Width stem:["Footprint" = 2 x ((20 m) x (Tan .25)) = 0.17 "metres"]
+latexmath:[\textrm{Footprint @ Nadir} = 2 \times \left((\textrm{Depth}) \times (tan \frac{\varnothing}{2})\right)], where latexmath:[\varnothing = \textrm{Beam Width}]
 
-Since this is a stem:[0.5° x 0.5°] system, the total footprint at Nadir is: stem:[0.17m x 0.17m]
+latexmath:[\textrm{Footprint} = 2 \times \left((20 \textrm{ m}) \times (tan .25)\right) = 0.17 \textrm{ metres}]
+
+Since this is a stem:[0.5° xx 0.5°] system, the total footprint at Nadir is: stem:[0.17 "unitsml(m)" xx 0.17 "unitsml(m)"]
 
 
 [[fig-sonar-footprint-at-nadir]]
@@ -69,9 +71,9 @@ image::figure-swath-coverage-of-survey-vessel.png[]
 
 Total coverage:
 
-_17.8 km^2^ of coverage each day._
+stem:[17.8 "unitsml(km^2)"] _of coverage each day._
 
-_533.4 km^2^ of total coverage after 30 days._
+stem:[533.4 "unitsml(km^2)"] _of total coverage after 30 days._
 
 
 === Post Survey Process
