@@ -26,14 +26,11 @@ jobs:
 
       - name: Cache Metanorma assets
         uses: actions-mn/cache@v1
-      - name: Metanorma setup
-        uses: metanorma/ci/docker-gem-install@main
 
       - name: Metanorma generate site
-        uses: actions-mn/build-and-publish@main
+        uses: actions-mn/build-and-publish@v1
         with:
           agree-to-terms: true
-          output-dir: ./_site
 
   deploy:
     if: ${{ github.ref == 'refs/heads/main' }}
