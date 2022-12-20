@@ -1,0 +1,102 @@
+
+[.preface]
+== Document History
+
+Changes to this Specification are coordinated by the IHO S-100 Working Group. New editions will be made available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution 2/2007 (as amended).
+
+[%unnumbered]
+[cols="a,a,a,a",options="headers"]
+|===
+|Version Number |Date |Approved By |Purpose
+
+|1.0.0
+|April 2012
+|TSMAD
+|Approved edition of S-102
+
+|2.0.0
+|March 2017
+|S-102PT
+|Updated clause 4.0 and 12.0. +
+Populated clause 9.0 and Annex B.
+
+|2.0.0
+|May 2017
+|S-102PT
+|Modified clause 9.0 based on feedback at S-100WG2 meeting.
+
+|2.0.0
+|February 2018
+|S-102PT
+|Modified Clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.
+
+|2.0.0
+|June 2018
+|S-102PT
+|Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4^th^ April S-102 Project Team Meeting.
+
+Modified content throughout the following sections:
+
+* Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.
+* Annexes A, B, D, F, G, and I.
+
+|2.0.0
+|October/November 2018
+|S-102PT
+|Entered Redline comments from HSSC Letter 02/2018
+
+Modified content includes:
+
+* Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.
+* Annexes A, B, D, F, G, and I.
+
+|2.0.0
+|January/February 2019
+|S-102PT
+|Adjudicated HSSC and S102PT Comments at 5^th^ S-102 Project Team Meeting.
+
+Modified content includes:
+
+* Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.
+* Annexes A, B, D, F, G, and I.
+
+|2.0.0
+|September/October 2019
+|S-102PT
+|Adjudicated HSSC and S102PT comments since last release
+
+Modified content includes:
+
+* Annex A, B.
+* Clause 4, 10, 12.
+
+|2.1.0
+|November 2020
+|S-102PT
+|Redline first draft of 2.1 including: +
+S-102PT6-07.1_CHS-Paper to limit the mandate of the S-102 standard for navigation only -- remove track changes and tiling options. +
+S-102PT6_2020_05.c_Data Product Format_Prepared by CARIS-v3.pdf -- adjusted with comments from 7Cs and BSH. +
+Removed Annex B sample HDF encoding dump as it was inconsistent.
+
+|2.1.0
+|March 2021
+|S-102PT
+|Redline final draft of 2.1 including: +
+S-102PT7 agreed in principle to limit the scope of S-102 v 2.1 to Navigation Only. Several sections adjusted in view of this decision. +
+[[lhh1-start1]]
+S-102PT7 revised storage locations for minimum/maximum depth and associated uncertainty. +
+S-102PT7 agreed for metadata to be stored in a separate ISO-formatted file. +
+[[lhh1-end1]]
+Revised several internal references.
+
+|2.1.0
+|May 2022
+|S-102PT
+|Edited filename for exchange catalogue to be CATALOG.XML in 11.3 and in Table 12-7.
+
+|===
+
+[reviewer=Lawrence Haynes Haselmaier, from=lhh1-start1, to=lhh1-end1]
+****
+From J. Le Deunf – It would be helpful to specify and/or indicate the amended §
+****

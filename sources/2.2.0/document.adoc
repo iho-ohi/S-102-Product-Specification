@@ -1,0 +1,62 @@
+= Bathymetric Surface Product Specification
+:series: S
+:docnumber: 102
+:doctype: standard
+:edition: 2.2.0
+:language: en
+:published-date: 2022-12
+:copyright-year: 2022
+:status: in-force
+:committee: hssc
+:workgroup: tsmad
+:toclevels: 3
+:mn-document-class: iho
+:mn-output-extensions: xml,html,doc,pdf,rxl
+:local-cache-only:
+:data-uri-image:
+:imagesdir: images
+:draft:
+
+include::sections/00-document-history.adoc[]
+
+include::sections/01-overview.adoc[]
+
+include::sections/02-spec_scope.adoc[]
+
+include::sections/03-data_product_id.adoc[]
+
+include::sections/04-data_content_struct.adoc[]
+
+include::sections/05-coord_ref_system.adoc[]
+
+include::sections/06-data_quality.adoc[]
+
+include::sections/07-data_cap_class.adoc[]
+
+include::sections/08-data_maintenance.adoc[]
+
+include::sections/09-portrayal.adoc[]
+
+include::sections/10-data_product_format.adoc[]
+
+include::sections/11-data_product_delivery.adoc[]
+
+include::sections/12-metadata.adoc[]
+
+include::sections/aa-data_class_enc_.adoc[]
+
+include::sections/ac-norm_impl_guidance.adoc[]
+
+include::sections/ad-feature_catalogue.adoc[]
+
+include::sections/ae-portrayal-catalogue.adoc[]
+
+include::sections/af-dataset_size_production.adoc[]
+
+include::sections/ag-gridding_methods.adoc[]
+
+include::sections/ah-multi-res_gridding.adoc[]
+
+include::sections/ai-gridding_full.adoc[]
+
+

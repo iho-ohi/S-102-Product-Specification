@@ -1,0 +1,1815 @@
+
+[[sec-metadata]]
+== Metadata
+
+=== Introduction
+The Metadata elements used in the Bathymetric Surface product are derived from S-100 and from <<iso19115>> and <<iso-19115-2>>. Optionally additional metadata may be derived from <<iso-ts-19130>> and <<iso-ts-19130-2>> especially metadata relating to the sonar equipment which may have been used to acquire the bathymetric data.
+
+There are only a few elements in the <<iso19115>> metadata standard that are mandatory and these relate only to the use of the metadata for identification and pedigree of the data set. A minimum level of data identification is required for all applications including database applications, web services and data set production. However, S-102 requires certain metadata attributes which are used to geolocate the dataset as well as establish a pedigree for the data.
+
+The elements are related in a metadata Schema and include definitions and extension procedures. There exist both mandatory and conditional metadata elements. Only a few metadata elements are mandatory but the inclusion of some of the optional metadata elements establish a situation where other metadata elements are conditionally made mandatory.
+
+<<tab-s102-handling-of-core-metadata-elements>> outlines the core metadata elements (mandatory and recommended optional) required for describing a geographic information data set. The codes indicate: "M" mandatory, "O" optional' "C" conditional as defined in <<iso19115>>. <<tab-s102-handling-of-core-metadata-elements>> indicates how the mandatory, optional and conditional core metadata are handled in S-102.
+
+[[tab-s102-handling-of-core-metadata-elements]]
+.S-102 Handling of Core Metadata Elements
+[cols="a,a"]
+|===
+
+|*Dataset title (M)*
+
+S102_DS_DiscoveryMetadata > citation > CI_Citation.title
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.citation > CI_Citation.title)
+
+|*Spatial representation type (O)*
+
+S102_DS_DiscoveryMetadata > spatialRepresentationType: MD_ DataIdentification. spatialRepresentationType
+
+002 -- Grid; (for regular grid coverage)
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.spatialRepresentationType)
+
+|*Dataset reference date (M)*
+
+S102_DS_DiscoveryMetadata > citation > CI_Citation.date
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.citation > CI_Citation.date)
+
+|*Reference system (O)*
+
+S102_StructureMetadataBlock > hRefSystem +
+and +
+S102_StructureMetadataBlock > vRefSystem
+
+from: (MD_Metadata.referenceSystemInfo > MD_ReferenceSystem.referenceSystemIdentifier > RS_Identifier)
+
+|*Resource point of contact (O)*
+
+S102_DS_DiscoveryMetadata > pointOfContact > CI_Responsiblity
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.pointOfContact > CI_Responsiblity)
+
+|*Lineage (O)*
+
+S102_QualityMetadataBlock > S102_LI_Source +
+and +
+S102_QualityMetadataBlock > S102_LI_ProcessStep
+
+from: (MD_Metadata.resourceLineage > > LI_Lineage)
+
+|*Geographic location of the dataset (by four coordinates or by geographic identifier) \(C)*
+
+S102_DS_DiscoveryMetadata > extent > EX_Extent
+
+from: (MD_Metadata.identificationInfo > MD_identification.extent > EX_Extent > EX_GeographicBoundingBox +
+or +
+EX_GeographicDescription)
+
+|*On-line link to resource (O)*
+
+(MD_Metadata.distributionInfo > MD_Distribution > MD_DigitalTransferOption.onLine > CI_OnlineResource)
+
+Optional - not required
+
+|*Dataset language (M)*
+
+S102_DS_DiscoveryMetadata > language
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.language)
+
+|*Metadata file parent identifier \(C)*
+
+(MD_Metadata.parentMetadata > CI_Citation.identifier)
+
+Implicit in S-102 product specification reference to
+<<iso-19115-1>> as a normative reference
+
+|*Dataset character set \(C)*
+
+set to default = "utf8". [not required when set to default from <<iso19115>>]
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.defaultLocale > PT_Locale.characterEncoding)
+
+|*Metadata standard name (O)*
+
+(MD_Metadata.metadataStandard > CI_Citation.title)
+
+Implicit in S-102 product specification reference to <<iso-19115-1>> as a normative reference
+
+|*Dataset topic category (M)*
+
+S102_DS_DiscoveryMetadata > topicCategory:
+
+MD_TopicCategoryCode +
+006 -- elevation; +
+014 -- oceans; +
+012 -- inlandWaters
+
+Frome: (MD_Metadata.identificationInfo > MD_Identification.topicCategory)
+
+|*Metadata standard version (O)*
+
+(MD_Metadata.metadataStandardVersion) +
+Implicit in S-102 product specification reference to <<iso-19115-1>> as a normative reference
+
+|*Spatial resolution of the dataset (O)*
+
+(MD_Metadata.identificationInfo > MD_DataIdentification.spatialResolution > MD_Resolution.equivalentScale +
+or +
+MD_Resolution.distance) +
+Since this data set is a grid coverage resolution is defined by the coverage grid parameters
+
+|*Metadata language \(C)*
+
+(MD_Metadata. defaultLocale > PT_Locale.language)
+
+The language is set to English. In addition, additional languages may be used in accordance with the structure for handling multi-languages per <<iso-19115-1>>
+
+|*Abstract describing the dataset (M)*
+
+S102_DS_DiscoveryMetadata > abstract
+
+from: (MD_Metadata.identificationInfo > MD_DataIdentification.abstract)
+
+|*Metadata character set \(C)*
+
+set to default = "utf8". [not required when set to default from <<iso-19115-1>>]
+
+from: (MD_Metadata. defaultLocale > PT_Locale.characterEncoding)
+
+|*Distribution format (O)*
+
+(MD_Metadata.distributionInfo > MD_Distribution > MD_Format)
+
+Optional - not applicable
+
+To maintain the separation of carrier and content the content model does not contain any format information. This would be included in a transmittal or by file types.
+
+|*Party responsible for the metadata information (M)*
+
+S102_DS_DiscoveryMetadata > contact
+
+from: (MD_Metadata.contact > CI_Responsibility.CI_Individual +
+or +
+MD_Metadata.contact > CI_Responsibility.CI_Organisation)
+
+|*Temporal extent information for the dataset (O)*
+
+(MD_Metadata.identificationInfo > MD_Identification.extent > EX_Extent.temporalElement
+
+|*Date(s) associated with the metadata (M)*
+
+S102_DS_DiscoveryMetadata > dateInfo
+
+from: (MD_Metadata.dateInfo > CI_Date)
+
+|*Vertical extent information for the dataset (O)*
+
+MD_Metadata.identificationInfo > MD_DataIdentification.extent > EX_Extent.verticalElement > EX_VerticalExtent
+
+|*Name of the scope/type of resource for which the metadata is provided (M)*
+
+S102_DS_DiscoveryMetadata > resourceScope
+
+from: (MD_Metadata.metadataScope > MD_MetadataScope.resourceScope > MD_ScopeCode (codelist -- <<iso-19115-1>>))
+
+|===
+
+The dataset metadata is stored in a separate file encoded according to the ISO 19115X Schemas. The name of the metadata file is MD_<HDF5 data file base name>.XML (or .xml) ISO metadata (per <<iho-s100,part=10c,clause=10c-12>>), The root element in the file is *S102_DSMetadataBlock* which contains *S102_DS_DiscoveryMetadata*, *S102_StructureMetadataBlock* and *S102_QualityMetadataBlock*. 
+
+[[subsec-discovery-metadata]]
+=== Discovery metadata
+Metadata is used for a number of purposes. One high level purpose is for the identification and discovery of data. Every data set needs to be identified so that it can be distinguished from other data sets and so it can be found in a data catalogue, such as a Web Catalogue Service. The discovery metadata applies at the *S102_DataSet* level. Metadata in *S102_DiscoveryMetadataBlock* is encoded in a separate metadata file within the *S102_DSMetadataBlock*.
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+After Andy/Anthony/Lawrence meeting:
+
+S102_DSMetadataBlock is not shown in diagram below
+
+Chair has larger action to ensure correspondence between all figures and all text.
+****
+
+[[fig-s102-discovery-metadata]]
+.S-102 Discovery Metadata
+image::figure-s102-discovery-metadata.png[]
+
+
+<<fig-s102-discovery-metadata>> above shows the *S102_DiscoveryMetadataBlock*. It has one subtype S102_DS_DiscoveryMetadata. This implements the metadata classes from <<iso19115>>. First implementation classes have been developed corresponding to each of the <<iso19115>> classes that have been referenced in which only the applicable attributes have been included. The class *S102_DS_DiscoveryMetadata* inherits attributes from S-102 specific implementation classes. In addition, an additional component *S102_DataIdentification* has been added.
+
+This model provides the minimum amount of metadata for a Bathymetry Surface data product. Any of the additional optional metadata elements from the source <<iso19115>> metadata standard can also be included.
+
+<<tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array>> provides a description of each attribute of the S102_DiscoveryMetadataBlock class attributes.
+
+[[discoverymetadablock-class-attributes]]
+.S102_DiscoveryMetadataBlock class attributes
+[cols="a,a,a,^a,a,a",options="header",cols="1,3,2,1,3,3"]
+|===
+|Role Name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S102_DiscoveryMetadata Block
+|Container class for discovery metadata
+|-
+|-
+|
+
+|Class
+|S102_DS_DiscoveryMeta data
+|Container class for discovery metadata related to an entire data set
+|-
+|-
+|
+
+|attribute
+|resourceScope
+|
+|1
+|MD_ScopeCode
+|"dataset" for S102_DS_DiscoveryMetadata
+
+|attribute
+|abstract
+|Brief narrative summary of the content of the resource(s)
+|1
+|CharacterString
+|
+
+|attribute
+|citation
+|Citation data for the resource(s)
+|1
+|CI_Citation
+|CI_Citation \<<DataType>>
+
+Required items are Citation.title, & Citation.date,
+
+|attribute
+|pointOfContact
+|Identification of, and means of communication with, person(s) and organization(s) associated with the resource(s)
+|1
+|CI_Responsibility
+|See <<iho-s100,part=4a,table=4a-2>> and <<<<iho-s100,part=4a,table=4a-3>> for required items
+
+|attribute
+|spatialRepresentationType
+|Method used to spatially represent geographic information
+|1
+|MD_SpatialRepresentationType Code a|MD_SpatialRepresentationType Code \<<CodeList>>
+
+002 -- Grid; (for regular grid coverage)
+001 -- Vector; (not used)
+
+|attribute
+|topicCategory
+|Main theme(s) of the dataset
+|1..*
+|MD_TopicCategoryCode
+|MD_TopicCategoryCode +
+\<<Enumeration>> +
+006 -- elevation +
+014 -- oceans +
+012 -- inlandWaters
+
+|attribute
+|extent
+|Extent information including the bounding box, bounding polygon, vertical, and temporal extent of the dataset
+|0..1
+|EX_Extent
+|EX_Extent \<<DataType>>
+
+If this attribute is present, the four bounding box sub-attributes westBoundLongitude, etc., must be populated
+
+|attribute
+|contact
+|Organisation responsible for the metadata information
+|1
+|CI_Responsibility>CI_Organisation
+|See <<iho-s100,part=4a,table=4a-2>> and <<<<iho-s100,part=4a,table=4a-3>> for required items
+
+|attribute
+|dateInfo
+|Date that the metadata was created
+|1
+|CI_Date +
+(dateInfo.dateType = 'creation')
+|
+
+|attribute
+|defaultLocale
+|Default language and character set used in the exchange catalogue
+|1
+|PT_Locale +
+(defaultLocale.language = ISO 639-2/T code) a|Populate 'language' from ISO 639-2/T list of languages, default "`eng`".
+
+For example: defaultLocale.language="eng" for English
+defaultLocale.language="fra" for French
+
+|attribute
+|otherLocale
+|Other languages and character sets used in the exchange catalogue |0..*
+|PT_Locale +
+(otherLocale.language = ISO 639-2/T code)
+|Populate 'language' from ISO 639-2/T list of languages.
+
+otherLocale need be populated only if the dataset uses more than one language
+
+|Class
+|S102_DataIdentification
+|Component for S102_DiscoveryMeta data Block. Extension beyond <<iso19115>> metadata
+|-
+|-
+|
+
+|attribute
+|depthCorrectionType
+|Code defining the type of sound velocity correction made to the depths
+|1
+|CharacterString
+|see <<tab-code-defining-the-type-of-sound-velocity-correction>>
+
+|attribute
+|verticalUncertaintyType
+|Code defining how uncertainty was determined
+|1
+|CharacterString
+|see <<tab-code-defining-how-uncertainty-was-determined>>
+
+|===
+
+
+The class *S102_DataIdentification* provides an extension to the metadata available from <<iso19115>>. The verticalUncertaintyType attribute was added to accurately describe the source and meaning of the encoded Uncertainty coverage. The depthCorrectionType was also added to define if and how the depths are corrected (that is, true depth, depth ref 1500 m/sec, etc.). <<tab-code-defining-the-type-of-sound-velocity-correction>> and <<tab-code-defining-how-uncertainty-was-determined>> provide a description.
+
+
+[[tab-code-defining-the-type-of-sound-velocity-correction]]
+.Code defining the type of sound velocity correction
+[cols="a,a",options="header"]
+|===
+|Value |Definition
+
+|SVP_Applied |Sound velocity field measured and applied (True Depth)
+|1500_MS |Assumed sound velocity of 1500 m/s used
+|1463_MS |Assumed sound velocity of 1463 m/s used (Equivalent to 4800 ft./s)
+|NA |Depth not measured acoustically
+|Carters |Depths corrected using Carter's Tables
+|Unknown |
+
+|===
+
+NOTE: As stated in <<cls-1.3>>, uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.
+
+
+[[tab-code-defining-how-uncertainty-was-determined]]
+.Code defining how uncertainty was determined
+[cols="a,a",option="header"]
+|===
+|Value |Definition
+
+|Unknown |"Unknown" - The uncertainty layer is an unknown type
+|Raw_Std_Dev |"Raw Standard Deviation" - Raw standard deviation of soundings that contributed to the node
+|CUBE_Std_Dev |Dev "CUBE Standard Deviation " - Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE's standard output of uncertainty)
+|Product_Uncert |"Product Uncertainty" - The greater of 1) standard deviation of the soundings contributing to the depth solution, or 2) the _a priori_ computed uncertainty estimate (that is, modelled Total Vertical Uncertainty)
+|Historical_Std_Dev |"Historical Standard Deviation " -- Estimated standard deviation based on historical/archive data
+
+|===
+
+
+
+=== Structure metadata
+Structure metadata is used to describe the structure of an instance of a collection. Since constraints can be different on separate files (for example they could be derived from different legal sources), or security constraints may be different, the constraint information becomes part of the structure metadata. The other structure metadata is the grid representation and the reference system.
+
+<<fig-s102-structure-metadata>> shows the *S102_StructureMetadataBlock*. The metadata block is generated by the inheritance of attributes from a number of <<iso19115>> metadata classes and from two implementation classes for the horizontal and vertical reference system. This makes the metadata block a simple table.
+
+Metadata in *S102_StructureMetadataBlock* is encoded within a separate metadata xml file under the *S102_MetadataBlock* root element. 
+
+
+[[fig-s102-structure-metadata]]
+.S-102 Structure Metadata
+image::figure-s102-structure-metadata.png[]
+
+
+[[tab-structuremetadatablock-class-attributes]]
+.S102_StructureMetadataBlock class attributes
+[cols="1,3,2,1,2,2"]
+|===
+h|Role Name h|Name h|Description h|Mult h|Type h|Remarks
+
+|Class |S102_StructureMetadata Block |Container class for structure metadata ^|- |- |
+
+|attribute |maximumDisplayScale |Maximum display scale for the bathymetry coverage ^|1 |Integer |
+
+|attribute |minimumDisplayScale |Minimum display scale for the bathymetry coverage ^|1 |Integer |
+
+|attribute |numberOfDimensions |Number of independent spatial/temporal axes ^|1 |Integer a|Default = 2
+
+No other value is allowed
+
+|attribute |axisDimensionProperties |Information about spatial- temporal axis properties ^|1 |MD_Dimension |MD_Dimension \<<DataType>> dimensionName and dimensionSize
+
+|attribute |cellGeometry |Identification of grid data as point or cell ^|1 |MD_CellGeomet ryCode |
+
+|attribute |transformationParameterA vailability |Indication of whether or not parameters for transformation between image coordinates and geographic or map coordinates exist (are available) ^|1 |Boolean a|1 = yes +
+0 = no +
+Mandatory and must be 1.
+
+|attribute |vRefSystem |Name of vertical reference system ^|1 |MD_Identifier > code, codespace, version |Must be the identifier of a vertical reference system
+
+|attribute |hRefSystem |Name of horizontal reference system ^|1 |MD_Identifier > code, codespace, version |Must be the identifier of a vertical reference system from <<tab-s102-coordinate-reference-systems-epsg-codes>> -- EPSG Codes
+
+|attribute |accessConstraints |Access constraints applied to assure the protection of privacy or intellectual property,and any special restrictions or limitations on obtaining the dataset ^|0..* |MD_Restriction Code |
+
+|attribute |useConstraints |Constraints applied to assure the protection of privacy or intellectual property, and any special restrictions or limitations or warnings on using the dataset ^|0..* |MD_Restriction Code |
+
+|attribute |otherConstraints |Other restrictions and legal prerequisites for accessing and using the dataset ^|0..* |CharacterString |
+
+|attribute |classification |Name of the handling restrictions on the dataset ^|1 |MD_Classificatio nCode |
+
+|attribute |userNote |Additional information about the classification ^|0-1 |CharacterString |
+
+|attribute |classificationSystem |Name of the classification system ^|0..1 |CharacterString |
+
+|attribute |handlingDescription |Additional information about the restrictions on handling the dataset ^|0..1 |CharacterString |
+
+|Class |MD_Dimension |Axis properties ^|- |- |
+
+|attribute |dimensionName |Name of axis ^|1 |MD_DimensionTypeCode |Defaults are "row" and "column". No other value is allowed
+
+|attribute |dimensionSize |Number of elements along the axis ^|1 |Integer |
+
+|attribute |resolution |Degree of detail in the grid dataset ^|0..1 |Measure |value = number
+|===
+
+
+==== Quality metadata
+Quality metadata is used to describe the quality of the data in an instance of a collection. <<fig-s102-quality-metadata>> shows the *S102_QualityMetadataBlock*. The *S102_QualityMetadataBlock* derives directly from the <<iso19115>> class *DQ_DataQuality*. However, its components *S102_LI_Source* and *S102_LI_ProcessStep* are generated by the inheritance of attributes from the <<iso19115>> classes *LI_Scope* and *LI_ProcessStep*. Only some of the attributes of the referenced <<iso19115>> classes are implemented.
+
+Metadata in *S102_QualityMetadataBlock* is encoded within a separate metadata xml file under the *S102_MetadataBlock* root element.
+
+
+[[fig-s102-quality-metadata]]
+.S-102 Quality Metadata
+image::figure-s102-quality-metadata.png[]
+
+
+<<tab-quality-metadata-block-description>> provides a description of each attribute of the S102_QualityMetadataBlock class attributes and those of its components.
+
+
+[[tab-quality-metadata-block-description]]
+.Quality Metadata Block description
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role Name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S102_QualityMetadataBlock
+|Container class for quality metadata
+|-
+|-
+|
+
+|attribute
+|scope
+|Extent of characteristic(s) of the data for which quality information is reported
+|1
+|DQ_Scope
+|
+
+|Class
+|S102_LI_Source
+|Information about the source data used in creating the data specified by the scope
+|-
+|-
+|
+
+|attribute
+|description
+|Detailed description of the level of the source data
+|1
+|CharacterString
+|
+
+|attribute
+|sourceCitation
+|Recommended reference to be used for the source data
+|1
+|CI_Citation
+|Required items are citation.title and citation.date
+
+|Class
+|S102_LI_ProcessStep
+|Information about an event or transformation in the life of a dataset including the process used to maintain the dataset
+|-
+|-
+|
+
+|attribute
+|dateTime
+|Date and time or range of date and time on or over which the process step occurred
+|1
+|CharacterString
+|
+
+|attribute
+|description
+|Description of the event, including related parameters or tolerances |1
+|CharacterString
+|
+
+|attribute
+|processor
+|Identification of, and means of communication with, person(s) and organization(s) associated with the process step
+|1
+|CI_Responsibility
+|See <<iho-s100,part=4a,table=4a-2>> and <<iho-s100,part=4a,table=4a-3>> for required items
+
+|Class
+|DQ_Scope
+|Container class for quality metadata
+|-
+|-
+|
+
+|attribute
+|level
+|Hierarchical level of the data specified by the scope
+|0..*
+|MD_ScopeCode \<<CodeList>>
+a|"dataset"
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+Chair has action to ensure that PT at-large is happy with the removal of "or 'tile'" here
+****
+
+|attribute
+|extent
+|Information about the horizontal, vertical and temporal extent of the data specified by the scope
+|0..*
+|EX_Extent \<<DataType>>
+|Used only if the extent of the data is different from the EX_Extent given for the collection / tile
+
+|attribute
+|levelDescription
+|Detailed description about the level of the data specified by the scope
+|1
+|MD_ScopeDescription \<<Union>>
+|
+|===
+
+
+==== Acquisition metadata
+Acquisition metadata to a Bathymetric Surface Product Specification profile is being developed nationally. The classes derive from <<iso19115>>, <<iso-19115-2>>, <<iso-ts-19130>> and <<iso-ts-19130-2>>. The later document <<iso-ts-19130-2>> contains description of sonar parameters.
+
+=== Exchange Set metadata
+For information exchange, there are several categories of metadata required: metadata about the overall Exchange Catalogue, metadata about each of the datasets contained in the Catalogue.
+
+<<fig-realization-of-the-exchange-set-classes>>, <<fig-s102-exchange-set-catalogue>>, <<fig-s102-exchange-set>> and <<fig-s102-exchange-set-class-details>> outline the overall concept of an S-102 Exchange Set for the interchange of geospatial data and its relevant metadata. <<fig-realization-of-the-exchange-set-classes>> depicts the realization of the <<iso19139>> classes which form the foundation of the Exchange Set. The overall structure of S-102 metadata for Exchange Sets is modelled in <<fig-s102-exchange-set-catalogue>> and <<fig-s102-exchange-set>>. More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> and a textual description in <<tab-s102-exchangeCatalogue-params;to!tab-pt-locale-params>>.
+
+The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
+
+
+[[fig-realization-of-the-exchange-set-classes]]
+.Realization of the Exchange Set classes
+image::figure-realization-of-the-exchange-set-classes.png[]
+
+[[fig-s102-exchange-set-catalogue]]
+.S-102 Exchange Set Catalogue
+image::figure-s102-exchange-set-catalogue.png[]
+
+[[fig-s102-exchange-set]]
+.S-102 Exchange Set
+image::figure-s102-exchange-set.png[]
+
+[[fig-s102-exchange-set-class-details]]
+.S-102 Exchange Set Class Details
+image::figure-s102-exchange-set-class-details.png[]
+
+
+The following clauses define the mandatory and optional metadata needed for S-102. In some cases, the metadata may be repeated in a national language. If this is the case it is noted in the Remarks column.
+
+The XML schemas for S-102 exchange catalogues will be available from the IHO Geospatial Information (GI) Registry and/or the S-100 GitHub site (https://github.com/IHO-S100WG).
+
+
+=== Language
+
+The exchange language must be English.
+
+Character strings must be encoded using the character set defined in <<iso-10646-1>>, in Unicode Transformation Format-8 (UTF-8). A BOM (byte order mark) must not be used.
+
+[%landscape]
+<<<
+
+[[subsec-s102_exchangecatalogue]]
+=== S102_ExchangeCatalogue
+
+Each Exchange Set has a single S100_ExchangeCatalogue which contains meta information for the data in the Exchange Set.
+
+The class S102_ExchangeCatalogue is realized from S100_ExchangeCatalogue without modification. S-102 restricts certain attributes and roles as described in <<tab-s102-exchangeCatalogue-params>>. S102_ExchangeCatalogue is a container substituting for the corresponding S100_ExchangeCatalogue class in the UML diagram. It is needed because S-102 extends S-100 discovery metadata.
+
+[[tab-s102-exchangeCatalogue-params]]
+.S102_ExchangeCatalogue parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S100_ExchangeCatalogue
+|An exchange catalogue contains the discovery metadata about the exchange datasets
+|-
+|-
+|The optional S-100 attributes replacedData and dataReplacement are not used in S-102
+
+Support file discovery metadata is not permitted because S-102 does not use support files
+
+|Attribute
+|identifier
+|Uniquely identifies this exchange catalogue
+|1
+|S100_CatalogueIdentifier
+|
+
+|Attribute
+|contact
+|Details about the issuer of this exchange catalogue
+|1
+|S100_CataloguePointOfContact
+|
+
+|Attribute
+|productSpecification
+|Details about the product specifications used for the datasets contained in the exchange catalogue
+|0..1
+|S100_ProductSpecification
+|Conditional on all the datasets using the same product specification
+
+|Attribute
+|metadataLanguage
+|Details about the Language
+|1
+|CharacterString
+|
+
+|Attribute
+|exchangeCatalogueName
+|Catalogue filename
+|1
+|CharacterString
+|In S-102 is CATLOG.XML
+
+|Attribute
+|exchangeCatalogueDescription
+|Description of what the exchange catalogue contains
+|1
+|CharacterString
+|
+
+|Attribute
+|exchangeCatalogueComment
+|Any additional Information
+|0..1
+|CharacterString
+|
+
+|Attribute
+|compressionFlag
+|Is the data compressed
+|0..1
+|Boolean
+|True or False
+
+|Attribute
+|sourceMedia
+|Distribution media
+|0..1
+|CharacterString
+|
+
+|Attribute
+|replacedData
+|If a data file is cancelled is it replaced by another data file
+|0..1
+a|Boolean
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+After Andy/Anthony/Lawrence meeting:
+
+Add "Not used in S-102" as logically sits here.
+To note, for service management, RENCs and service providers will need to use this attribute to manage coverage changes.
+
+Chair has action to raise issue with PT at-large
+****
+
+|
+
+|Attribute
+|dataReplacement
+|Cell Name
+|0..1
+a|CharacterString
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+After Andy/Anthony/Lawrence meeting:
+
+Add "Not used in S-102" as logically sits here.
+To note, for service management, RENCs and service providers will need to use this attribute to manage coverage changes.
+
+Chair has action to raise issue with PT at-large
+****
+
+|
+
+|Role
+|datasetDiscoveryMetadata
+|Exchange catalogues may include or reference discovery metadata for the datasets in the exchange set
+|0..*
+|Aggregation +
+S100_DatasetDiscoveryMetadata
+|
+
+|Role
+|-
+|Metadata for catalogue
+|0..*
+|Aggregation +
+S100_CatalogueMetadata
+|Metadata for the feature, portrayal, and interoperability catalogues, if any
+|===
+
+
+==== S100_CatalogueIdentifier
+S-102 uses S100_CatalogueIdentifier without modification.
+
+
+[[tab-s100-catalogueIdentifier-params]]
+.S100_CatalogueIdentifier parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S100_CatalogueIdentifier
+|An exchange catalogue contains the discovery metadata about the exchange datasets
+|-
+|-
+|-
+
+|Attribute
+|identifier
+|Uniquely identifies this exchange catalogue
+|1
+|CharacterString
+|
+
+|Attribute
+|editionNumber
+|The edition number of this exchange catalogue
+|1
+|CharacterString
+|
+
+|Attribute
+|date
+|Creation date of the exchange catalogue
+|1
+|Date
+|
+|===
+
+
+==== S100_CataloguePointOfContact
+S-102 uses S100_CataloguePointOfContact without modification.
+
+
+[[tab-s100-cataloguePointContact-params]]
+.S100_CataloguePointOfContact parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S100_CataloguePointOfContact
+|Contact details of the issuer of this exchange catalogue
+|-
+|-
+|-
+
+|Attribute
+|organization
+|The organization distributing this exchange catalogue
+|1
+|CharacterString
+|This could be an individual producer, value added reseller, etc
+
+|Attribute
+|phone
+|The phone number of the organization
+|0..1
+|CI_Telephone
+|
+
+|Attribute
+|address
+|The address of the organization
+|0..1
+|CI_Address
+|
+|===
+
+
+=== S102_DatasetDiscoveryMetadata
+Dataset discovery metadata in S-102 is an extension of the generic S-100 metadata class S100_DatasetDiscoveryMetadata. S-102 adds the attribute _griddingMethod_ which describes the algorithm used to calculate grid values. S-102 also restricts certain attributes and roles as described in <<tab-s102-datasetDiscoveryMetadata-params>>.
+
+
+[[tab-s102-datasetDiscoveryMetadata-params]]
+.S102_DatasetDiscoveryMetadata parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S102_DatasetDiscoveryMetadata
+|Metadata about the individual datasets in an S-102 exchange set
+|-
+|-
+|Extension of S100_DatasetDiscoveryMetadata
+
+|Attribute
+|griddingMethod
+|Algorithm used to calculate grid values
+|0..1
+|S102_GriddingMethod
+|
+. basicWeightedMean
+. shoalestDepth
+. tpuWeightedMean
+. cube
+. nearestNeighbour
+. naturalNeighbour
+. polynomialTendency
+. spline
+. kriging
+
+|Class
+|S100_DatasetDiscoveryMetadata
+|Metadata about the individual datasets in the exchange catalogue
+|-
+|-
+|The optional S-100 attributes updateApplicationNumber and updateApplicationDate are not used in S-102 +
+References to support file discovery metadata are not permitted because S-102 does not use support files +
+Optional S-100 attributes which are mandatory in S-102 are indicated in the Remarks column
+
+|Attribute
+|fileName
+|Dataset file name
+|1
+|CharacterString
+|Dataset file name according to format defined in <<subsec-dataset-file-naming>>
+
+|Attribute
+|filePath
+|Full path from the exchange set root directory
+|1
+|CharacterString
+|Path relative to the root directory of the exchange set. The location of the file after the exchange set is unpacked into directory <EXCH_ROOT> will be <EXCH_ROOT>/<filePath>/<filename>
+
+|Attribute
+|description
+|Short description giving the area or location covered by the dataset
+|1
+|CharacterString
+|For example a harbour or port name, between two named locations etc
+
+|Attribute
+|dataProtection
+|Is the data encrypted
+|1
+|Boolean
+|True or False.
+
+|Attribute
+|protectionScheme
+|Specification or method used for data protection
+|0..1
+|S100_ProtectionScheme
+|In S-100 Edition 4.0.0 the only allowed value is "`S100p154.0.0`"
+
+|Attribute
+|digitalSignature
+|Digital Signature of the file
+|1
+|S100_DigitalSignature
+|Specifies the algorithm used to compute digitalSignatureValue. In S-100 Edition 4.0.0 the only allowed value is "`dsa`"
+
+|Attribute
+|digitalSignatureValue
+|Value derived from the digital signature
+|1
+|S100_DigitalSignatureValue
+|The value resulting from application of digitalSignatureReference +
+Implemented as the digital signature format specified in <<iho-s100,part=15>>
+
+|Attribute
+|copyright
+|Indicates if the dataset is copyrighted
+|0..1
+|MD_LegalConstraints -> MD_RestrictionCode <copyright> (<<iso-19115-1>>)
+|
+
+|Attribute
+|classification
+|Indicates the security classification of the dataset
+|0..1
+|Class +
+MD_SecurityConstraints>MD_Cla ssificationCode (codelist)
+|
+. unclassified
+. restricted
+. confidential
+. secret
+. top secret
+. sensitive but unclassified
+. for official use only
+. protected
+. limited distribution
+
+|Attribute
+|purpose
+|The purpose for which the dataset has been issued
+|1
+|Class MD_Identification>purpose
+|For example, new, new edition, cancelled, etc.
+
+|Attribute
+|specificUsage
+|The use for which the dataset is intended
+|1
+|MD_USAGE>specificUsage (character string) +
+MD_USAGE>userContactInfo (CI_Responsibility)
+|For example, in the case of ENCs this would be a navigation purpose classification
+
+|Attribute
+|editionNumber
+|The edition number of the dataset
+|1
+|CharacterString
+|When a data set is initially created, the edition number 1 is assigned to it. The edition number is increased by 1 at each new edition.
+
+|Attribute
+|issueDate
+|Date on which the data was made available by the data producer
+|1
+|Date
+|
+
+|Attribute
+|issueTime
+|Time of day at which the data was made available by the data producer
+|0..1
+|Time
+|The S-100 datatype Time
+
+|Attribute
+|productSpecification
+|The product specification used to create this dataset
+|1
+|S100_ProductSpecification
+|
+
+|Attribute
+|producingAgency
+|Agency responsible for producing the data
+|1
+|CI_Responsibility>CI_Organisation or CI_Responsibility>CI_Individual
+|See <<iho-s100,part=4a,table=4a-2>> and <<iho-s100,part=4a,table=4a-3>>
+
+|Attribute
+|optimumDisplayScale
+|The scale with which the data is optimally displayed
+|0..1
+|Integer
+|Example: A scale of 1:22000 is encoded as 22000
+
+|Attribute
+|maximumDisplayScale
+|The maximum scale with which the data is displayed
+|0..1
+|Integer
+|
+
+|Attribute
+|minimumDisplayScale
+|The minimum scale with which the data is displayed
+|0..1
+|Integer
+|
+
+|Attribute
+|horizontalDatumReference
+|Reference to the register from which the horizontal datum value is taken
+|1
+|CharacterString
+|EPSG
+
+|Attribute
+|horizontalDatumValue
+|Horizontal Datum of the entire dataset
+|1
+|Integer
+|
+
+|Attribute
+|epoch
+|Code denoting the epoch of the geodetic datum used by the CRS
+|0..1
+|CharacterString
+|For example, G1762 (for the 2013-10-16 realization of the geodetic datum for WGS84) or 20131016 in simple date format
+
+|Attribute
+|verticalDatum
+|Vertical Datum of the entire dataset
+|1
+|S100_VerticalAndSoundingDatum
+|This optional S-100 attribute is mandatory in S-102
+
+|Attribute
+|soundingDatum
+|Sounding Datum of the entire dataset
+|1
+|S100_VerticalAndSoundingDatum
+|This optional S-100 attribute is mandatory in S-102
+
+|Attribute
+|dataType
+|The encoding format of the dataset
+|1
+|S100_DataFormat
+|The only allowed value is HDF5
+
+|Attribute
+|otherDataTypeDescription
+|Encoding format other than those listed.
+|0..1
+|CharacterString
+| Not allowed in S-102
+
+|Attribute
+|dataTypeVersion
+|The version number of the dataType.
+|1
+|CharacterString
+|
+
+|Attribute
+|dataCoverage
+|Provides information about data coverages within the dataset
+|1..*
+|S100_DataCoverage
+|This optional S-100 attribute is mandatory in S-102
+
+|Attribute
+|comment
+|Any additional information
+|0..1
+|CharacterString
+|
+
+|Attribute
+|layerID
+|Identifies other layers with which this dataset is intended to be used or portrayed
+|0..*
+|CharacterString
+|For example, a marine protected area dataset needs an ENC dataset to portray as intended in an ECDIS +
+Example: "`S-101`" for bathymetry datasets intended as overlays for S-101 ENC data
+
+|Attribute
+|defaultLocale
+|Default language and character set used in the exchange catalogue
+|1
+|PT_Locale
+|Default language is English, encoded as defaultLocale.language = "`eng`"
+
+|Attribute
+|otherLocale
+|Other languages and character sets used in the exchange catalogue
+|0..*
+|PT_Locale
+|
+
+|Attribute
+|metadataFileIdentifier
+|Identifier for metadata file
+|1
+|CharacterString
+|For example, for <<iso-19115-3>> metadata file
+
+|Attribute
+|metadataPointOfContact
+|Point of contact for metadata
+|1
+|CI_Responsibility>CI_Individual or CI_Responsibility>CI_Organisation
+|See <<iho-s100,part=4a,table=4a-2>> and <<iho-s100,part=4a,table=4a-3>>
+
+|Attribute
+|metadataDateStamp
+|Date stamp for metadata
+|1
+|Date
+|May or may not be the issue date
+
+|Attribute
+|metadataLanguage
+|Language(s) in which the metadata is provided
+|1..*
+|CharacterString
+|
+|===
+
+
+==== S100_DataCoverage
+S-102 uses S100_DataCoverage without modification.
+
+[[tab-s100-dataCoverage-params]]
+.S100_DataCoverage parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S100_DataCoverage
+|
+|-
+|-
+|-
+
+|Attribute
+|ID
+|Uniquely identifies the coverage
+|1
+|Integer
+|-
+
+|Attribute
+|boundingBox
+|The extent of the dataset limits
+|1
+|EX_GeographicBoundingBox
+|-
+
+|Attribute
+|boundingPolygon
+|A polygon which defines the actual data limit
+|1..*
+|EX_BoundingPolygon
+|-
+
+|Attribute
+|optimumDisplayScale
+|The scale with which the data is optimally displayed
+|0..1
+|Integer
+|Example: A scale of 1:25000 is encoded as 25000
+
+|Attribute
+|maximumDisplayScale
+|The maximum scale with which the data is displayed
+|0..1
+|Integer
+|
+
+|Attribute
+|minimumDisplayScale
+|The minimum scale with which the data is displayed
+|0..1
+|Integer
+|
+|===
+
+
+==== S100_DigitalSignature
+S-102 uses S100_DigitalSignature without modification.
+
+
+[[tab-s100-digitalSignature-params]]
+.S100_DigitalSignature parameters
+[cols="a,a,a,^a,a",options="header"]
+|===
+|Role name |Name |Description |Code |Remarks
+
+|Enumeration
+|S100_DigitalSignature
+|Algorithm used to compute the digital signature
+|-
+|-
+
+|Value
+|dsa
+|Digital Signature Algorithm
+|-
+|FIPS 186-4 (2013). See <<iho-s100,part=15>>
+|===
+
+
+==== S100_DigitalSignatureValue
+S-102 uses S100_DigitalSignatureValue without modification.
+
+[[tab-s100-digitalSignatureValue-params]]
+.S100_DigitalSignatureValue parameter
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S100_DigitalSignatureValue
+|Signed Public Key plus the digital signature
+|-
+|-
+|Data type for digital signature values. See <<iho-s100,part=15>>
+|===
+
+
+==== S100_VerticalAndSoundingDatum
+S-102 uses S100_VerticalAndSoundngDatum but limits the values to a subset of those defined in <<iho-s100>>.
+
+
+[[tab-s100-verticalAndSoundingDatum-params]]
+.S100_VerticalAndSoundingDatum parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Enumeration
+|S100_VerticalAndSoundingDatum
+|Allowable vertical and sounding datums
+|-
+|
+|-
+
+|Value
+|meanLowWaterSprings
+|
+|1
+|
+|(MLWS)
+
+
+|Value
+|meanLowerLowWaterSprings
+|
+|2
+|
+|
+
+|Value
+|meanSeaLevel
+|
+|3
+|
+|(MSL)
+
+|Value
+|lowestLowWater
+|
+|4
+|
+|
+
+|Value
+|meanLowWater
+|
+|5
+|
+|(MLW)
+
+|Value
+|lowestLowWaterSprings
+|
+|6
+|
+|
+
+|Value
+|approximateMeanLowWaterSprings
+|
+|7
+|
+|
+
+|Value
+|indianSpringLowWater
+|
+|8
+|
+|
+
+|Value
+|lowWaterSprings
+|
+|9
+|
+|
+
+|Value
+|approximateLowestAstronomicalTide
+|
+|10
+|
+|
+
+|Value
+|nearlyLowestLowWater
+|
+|11
+|
+|
+
+|Value
+|meanLowerLowWater
+|
+|12
+|
+|(MLLW)
+
+|Value
+|lowWater
+|
+|13
+|
+|(LW)
+
+|Value
+|approximateMeanLowWater
+|
+|14
+|
+|
+
+|Value
+|approximateMeanLowerLowWater
+|
+|15
+|
+|
+
+|Value
+|meanHighWater
+|
+|16
+|
+|(MHW)
+
+|Value
+|meanHighWaterSprings
+|
+|17
+|
+|(MHWS)
+
+|Value
+|highWater
+|
+|18
+|
+|(HW)
+
+|Value
+|approximateMeanSeaLevel
+|
+|19
+|
+|
+
+|Value
+|highWaterSprings
+|
+|20
+|
+|
+
+|Value
+|meanHigherHighWater
+|
+|21
+|
+|(MHHW)
+
+|Value
+|equinoctialSpringLowWater
+|
+|22
+|
+|
+
+|Value
+|lowestAstronomicalTide
+|
+|23
+|
+|(LAT)
+
+|Value
+|localDatum
+|
+|24
+|
+|
+
+|Value
+|internationalGreatLakesDatum1985
+|
+|25
+|
+|
+
+|Value
+|meanWaterLevel
+|
+|26
+|
+|
+
+|Value
+|lowerLowWaterLargeTide
+|
+|27
+|
+|
+
+|Value
+|higherHighWaterLargeTide
+|
+|28
+|
+|
+
+|Value
+|nearlyHighestHighWater
+|
+|29
+|
+|
+
+|Value
+|highestAstronomicalTide
+|
+|30
+|
+|(HAT)
+|===
+
+
+NOTE: The numeric codes are the codes specified in the IHO GI Registry for the equivalent listed values of the IHO Hydro domain attribute _Vertical datum_, since the Registry does not at present (7 November 2022) contain entries for Exchange Set metadata and dataset metadata attributes.
+
+
+==== S100_DataFormat
+S-102 uses S100_DataFormat with a restriction on the allowed values to permit only the S-100 HDF5 format for S-102 datasets.
+
+
+[[tab-s100-dataFormat-params]]
+.S100_DataFormat parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Code |Type |Remarks
+
+|Enumeration
+|S100_DataFormat
+|The encoding format
+|-
+|-
+|The only value allowed in S-102 is "`HDF5`"
+
+|Value
+|HDF5
+|The HDF5 data format as defined in <<iho-s100,part=10c>>
+|
+|
+|
+|===
+
+
+
+==== S100_ProductSpecification
+S-102 uses S100_ProductSpecification without modification. The Product Specification attributes encoded must be for this edition of S-102.
+
+
+[[tab-s100-productSpecification-params]]
+.S100_ProductSpecification parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S100_ProductSpecification
+|The Product Specification contains the information needed to build the specified product
+|-
+|-
+|-
+
+|Attribute
+|name
+|The name of the Product Specification used to create the datasets
+|1
+|CharacterString
+|
+
+|Attribute
+|version
+|The version number of the Product Specification
+|1
+|CharacterString
+|
+
+|Attribute
+|date
+|The version date of the Product Specification
+|1
+|Date
+|
+
+|Attribute
+|number
+|The number (Registry index) used to lookup the product in the Product Specification Register of the IHO GI registry
+|1
+|Integer
+|From the Product Specification Register, in the IHO Geospatial Information (GI) Registry
+|===
+
+
+==== S100_ProtectionScheme
+
+[[tab-s100-protectionScheme-params]]
+.S100_ProtectionScheme parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Code |Type |Remarks
+
+|Enumeration
+|S100_ProtectionScheme
+|Data protection schemes
+|-
+|-
+|-
+
+|Value
+|S100p154.0.0
+|S-100 4.0.0 Part 15
+|-
+|-
+|See <<iho-s100,part=15>>.
+
+NOTE: The specified value corrects a discrepancy between S-100 4.0.0 Figure 4a-D-4 and the Table S100_ProtectionScheme in S-100 Part 4a-D.
+|===
+
+
+==== S102_GriddingMethod
+
+[[tab-s102-griddingMethod-params]]
+.S102_GriddingMethod parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Enumeration
+|S102_GriddingMethod
+|Gridding methods
+|-
+|-
+|-
+
+|Value
+|basicWeightedMean
+|The *Basic Weighted Mean* algorithm computes an average depth for each grid node. Contributing depth estimates within a given area of influence are weighted and averaged to compute the final nodal value
+|1
+|-
+|
+
+|Value
+|shoalestDepth
+|The *Shoalest Depth* algorithm examines depth estimates within a specific area of influence and assigns the shoalest value to the nodal position. The resulting surface represents the shallowest depths across a given area
+|2
+|-
+|
+
+|Value
+|tpuWeightedMean
+|The *Total Propagated Uncertainty (TPU) Weighted Mean* algorithm makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute a weighted average depth for each nodal position
+|3
+|-
+|TPU is a measure of the expected accuracy of the depth estimate when all relevant error/uncertainty sources have been considered
+
+|Value
+|cube
+|The *Combined Uncertainty and Bathymetric Estimator, or CUBE* makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute one or many hypotheses for an area of interest. The resulting hypotheses are used to estimate statistical representative depths at each nodal position
+|4
+|-
+|
+
+|Value
+|nearestNeighbour
+|The *Nearest Neighbour* algorithm identifies the nearest depth value within an area of interest and assigns that value to the nodal position. This method does not consider values from neighbouring points
+|5
+|-
+|
+
+|Value
+|naturalNeighbour
+|*Natural Neighbour* interpolation identifies and weights a subset of input samples within the area of interest to interpolate the final nodal value
+|6
+|-
+|
+
+|Value
+|polynomialTendency
+|The *Polynomial Tendency* gridding method attempts to fit a polynomial trend, or best fit surface to a set of input data points. This method can project trends into areas with little to no data, but does not work well when there is no discernible trend within the data set
+|7
+|-
+|
+
+|Value
+|spline
+|The Spline algorithm estimates nodal depths using a mathematical function to minimize overall surface curvature. The final "`smoothed`" surface passes exactly through the contributing input depth estimates
+|8
+|-
+|
+
+|Value
+|kriging
+|*Kriging* is a geostatistical interpolation method that generates an estimated surface from a scattered set of points with a known depth
+|9
+|-
+|
+|===
+
+
+=== S102_CatalogueMetadata
+The class S102_CatalogueMetadata is realized from S100_CatalogueMetadata without modification. The S-102 class is defined in order to act as a proxy for the corresponding S-100 generic class in S-102 UML diagrams of Exchange Set structure.
+
+[[tab-s102-catalogueMetadata-params]]
+.S102_CatalogueMetadata parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|S102_CatalogueMetadata
+|Class for S-102 catalogue metadata
+|-
+|-
+|-
+
+|Attribute
+|filename
+|The name for the catalogue
+|1..*
+|CharacterString
+|
+
+|Attribute
+|fileLocation
+|Full location from the Exchange Set root director
+|1..*
+|CharacterString
+|Path relative to the root directory of the exchange set. The location of the file after the exchange set is unpacked into directory +
+<EXCH_ROOT> will be +
+<EXCH_ROOT>/<filePath>/<filename>
+
+|Attribute
+|scope
+|Subject domain of the catalogue
+|1..*
+|S100_CatalogueScope
+|
+
+|Attribute
+|versionNumber
+|The version number of the Product Specification
+|1..*
+|CharacterString
+|
+
+|Attribute
+|issueDate
+|The version date of the Product Specification
+|1..*
+|Date
+|
+
+|Attribute
+|productSpecification
+|The Product Specification used to create this file
+|1..*
+|S100_ProductSpecification
+|
+
+|Attribute
+|digitalSignatureReference
+|Digital signature of the file
+|1
+|S100_DigitalSignature
+|Reference to the appropriate digital signature algorithm
+
+|Attribute
+|digitalSignatureValue
+|Value derived from the digital signature
+|1
+|S100_DigitalSignatureValue
+|The value resulting from application of digitalSignatureReference
+
+Implemented as the digital signature format specified in <<iho-s100,part=15>>
+
+|Attribute
+|defaultLocale
+|Default language and character set used in the Exchange Catalogue
+|1
+|PT_Locale
+|
+
+|Attribute
+|otherLocale
+|Other languages and character sets used in the Exchange Catalogue
+|0..*
+|PT_Locale
+|
+|===
+
+==== S100_CatalogueScope
+S-102 uses S100_CatalogueScope without modification.
+
+[[tab-s100-catalogueScope-params]]
+.S100_CatalogueScope parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Code |Type |Remarks
+
+|Enumeration
+|S100_CatalogueScope
+|The scope of the catalogue
+|-
+|-
+|-
+
+|Value
+|featureCatalogue
+|S-100 feature catalogue
+|
+|
+|
+
+|Value
+|portrayalCatalogue
+|S-100 portrayal catalogue
+|
+|
+|
+
+|Value
+|interoperabilityCatalogue
+|S-100 interoperability information
+|
+|
+|
+|===
+
+
+==== PT_Locale
+
+[[tab-pt-locale-params]]
+.PT_Locale parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
+
+|Class
+|PT_Locale
+|Description of a locale
+|-
+|-
+|From <<iso-19115-1>>
+
+|Attribute
+|language
+|Designation of the locale language
+|1
+|LanguageCode
+|<<iso-639-2>> 3-letter language codes.
+
+|Attribute
+|country
+|Designation of the specific country of the locale language
+|0..1
+|CountryCode
+|<<iso3166>> 2-letter country codes
+
+|Attribute
+|characterEncoding
+|Designation of the character set to be used to encode the textual value of the locale
+|1
+|MD_CharacterSetCode
+|Use (the "`Name`" from the) IANA Character Set register: +
+http://www.iana.org/assignments/character-sets. (<<iso-19115-1>> B.3.14)
+For example, UTF-8
+|===
+
+The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which should either be defined in resource files and encoded as (string) codes, or represented by the corresponding literals from the namespaces identified in the Remarks column.

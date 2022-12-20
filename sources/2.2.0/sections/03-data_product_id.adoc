@@ -1,0 +1,52 @@
+
+[[sec-data-product-identification]]
+== Data Product Identification
+
+*Title*:: Bathymetric Surface
+
+*Abstract*:: The Bathymetric Surface Product consists of a set of values organized to form a regular set of grid coverages, with associated metadata, for an area of the sea, river, lake, or other body of water. The final grid coverages include a depth value and optional associated uncertainty estimate for each location in the matrix. 
+
+*Topic Category*::
++
+--
+Main topics for the product, as according to <<iso-19115-1>> MD_TopicCategoryCode:
+
+006 -- elevation
+
+014 -- oceans
+
+012 -- inlandWaters
+--
+
+*Geographic Description*:: Areas specific to marine navigation.
+
+*Spatial Resolution*:: The spatial resolution, or the spatial dimension on the earth covered by the size of a grid matrix cell (nominal ground sample distance), varies according to the model adopted by the producing hydrographic office.
+
+*Purpose*:: The primary purpose of the bathymetric surface product is to provide high-resolution bathymetry in gridded form in support of safety of navigation. The secondary purpose is to provide high-resolution bathymetry for other maritime applications.
+
+*Language*:: English (Mandatory), other (Optional)
+
+*Classification*::
++
+--
+Data can be classified as one of the following:
+
+. Unclassified;
+. Restricted;
+. Confidential;
+. Secret;
+. Top Secret;
+. Sensitive but unclassified;
+. For official use only;
+. Protected; or
+. Limited distribution.
+--
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+Chair has action to draft a request to S-100 to add an "Other" designation. Selection of "Other" would be accompanied by a free text description of the not-otherwise-specified designation.
+****
+
+*Spatial Representation Type*:: Type of spatial representation for the product, as defined by the <<iso19115>> MD_SpatialRepresentationTypeCode: 002 - grid.
+
+*Point of Contact*:: Producing Agency

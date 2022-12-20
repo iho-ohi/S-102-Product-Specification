@@ -1,0 +1,335 @@
+
+[[sec-overview]]
+== Overview
+With the advent of electronic navigation and the technological progress of surveying systems and production capabilities, the ability to enhance maritime navigation with the portrayal of high-resolution bathymetry has become a requirement. The provision and utilization of such data in a standardized format is essential to support the safe and precise navigation of marine vessels, and furthermore an important basis for many other maritime applications.
+
+=== Introduction
+This document describes an S-100 compliant product specification for a bathymetric surface product. Incorporating aspects of the navigation surface concept <<NavigationSurface,[Smith et al, 2002]>>, an S-102 bathymetric surface product is a digital elevation model which represents the seafloor in a regular grid structure. It can be used alone or as an important element/source for future S-100 conformant ECDIS navigation. The product specification is based on the IHO S-100 framework specification and the ISO 19100 series of standards. It comprises the content model (spatial structure and metadata), encoding structure, portrayal and exchange file format for a bathymetric surface product.
+
+[bibliography]
+=== References
+* [[[iho-s100,IHO S-100]]]
+
+* [[[iho-s44,IHO S-44]]]
+
+* [[[iho-s4,IHO S-4]]]
+
+* [[[iho-s32,IHO S-32]]]
+
+* [[[iso-8601,ISO 8601:2004]]]
+
+* [[[iso-639-2,ISO 639-2:1998]]]
+
+* [[[iso-ts-19103,ISO/TS 19103:2015]]]
+
+* [[[iso-19111,ISO 19111:2007]]]
+
+* [[[iso19115,ISO 19115:2003]]]
+
+* [[[iso-19115-1,ISO 19115-1:2014/Amd 1:2018]]]
+
+* [[[iso-19115-2,ISO 19115-2:2009]]]
+
+* [[[iso-19115-3,ISO/TS 19115-3:2016]]]
+
+* [[[iso-19123,ISO 19123:2005]]]
+
+* [[[iso-19129,ISO 19129:2009]]]
+
+* [[[iso-19131,ISO 19131:2007/Amd 1:2011]]]
+
+* [[[iso-iec-19501,ISO/IEC 19501:2005]]]
+
+* [[[iso3166,ISO 3166-2:2013]]]
+
+* [[[iso-ts-19130,ISO/TS 19130:2010]]]
+
+* [[[iso-ts-19130-2,ISO/TS 19130-2:2014]]]
+
+* [[[iso19139,ISO/TS 19139:2007]]]
+
+* [[[iso-10646-1,ISO/IEC 10646-1:2000]]]
+
+* [[[NavigationSurface,The Navigation Surface]]],
+span:surname[Smith], span:givenname[Shep M. LT];
+span:surname[Alexander], span:givenname[Lee]; and
+span:surname[Armstrong], span:givenname[Andy],
+"span:title[_The Navigation Surface: A New Database Approach to Creating Multiple Products from High-Density Surveys_]" (span:date[2002]).
+span:publisher[International Hydrographic Review].
+span:uri[http://scholars.unh.edu/ccom/976]
+
+* [[[OpenNavigation,The Open Navigation Surface Project]]],
+span:surname[Calder], span:givenname[Brian]; 
+span:surname[Byrne], span:givenname[Shannon];
+span:surname[Brennan], span:givenname[Richard T.];
+span:surname[Case], span:givenname[James D.];
+span:surname[Fabre], span:givenname[David];
+span:surname[Gallagher], span:givenname[Barry];
+span:surname[Ladner], span:givenname[Wade R.];
+span:surname[Moggert], span:givenname[Friedhelm]; and
+span:surname[Patron], span:givenname[Mark],
+"span:title[_The Open Navigation Surface Project_]" (span:date[2005]).
+span:publisher[International Hydrographic Review].
+span:uri[https://scholars.unh.edu/ccom/1011]
+
+[[cls-1.3]]
+=== Terms, definitions and abbreviations
+
+==== Use of language
+
+Within this document:
+
+* "`Must`" indicates a mandatory requirement.
+* "`Should`" indicates an optional requirement, that is the recommended process to be followed, but is not mandatory.
+* "`May`" means "`allowed to`" or "`could possibly`" and is not mandatory.
+
+
+==== Terms and definitions
+
+===== Accuracy
+
+Closeness of agreement between a test result and the accepted reference values.
+
+NOTE: A test result can be from an observation or measurement.
+
+===== Coordinate
+
+One of a sequence of _n_ numbers designating the position of a point in N-dimensional space.
+
+NOTE: The numbers must be qualified by units and CRS.
+
+===== Coordinate Reference System
+
+*Coordinate* system which is related to the real world by a datum.
+
+===== Coverage
+
+*Feature* that acts as a function to return values from its range for any direct position within its spatial, temporal, or *spatiotemporal domain*.
+
+NOTE: In other words, a coverage is a feature that has multiple values for each attribute type, where each direct position within the geometric representation of the feature has a single value for each attribute type.
+
+[example]
+Examples include a digital image, polygon overlay, or digital elevation matrix
+
+===== Coverage Geometry
+
+Configuration of the *domain* of a *coverage* described in terms of *coordinates*.
+
+===== Direct Position
+
+Position described by a single set of *coordinates* within a *coordinate reference system*.
+
+===== Domain
+
+Well-defined set.
+
+NOTE: Domains are used to define the domain set and range set of attributes, operators, and functions.
+
+===== Depth
+
+The vertical distance from a given water level to the bottom. In this standard, depth refers to the S-32 definition of "Depth Charted".
+
+NOTE: The numbers must be qualified by units and datum. 
+
+===== Feature
+
+Abstraction of real-world phenomena.
+
+NOTE: A feature may occur as a type or an instance. Feature type or feature instance should be used when only one is meant.
+
+===== Feature Attribute
+
+Characteristic of a *feature*.
+
+NOTE: A feature attribute type has a name, a data type, and a domain associated to it. A feature attribute instance has an attribute value taken from the value domain of the feature attribute type.
+
+===== Function
+
+Rule that associates each element from a *domain* (source, or domain of the function) to a unique element in another domain (target, co-domain, or *range*).
+
+NOTE: The range is defined by another domain.
+
+===== Geometric Object
+
+Spatial object representing a set of *direct positions*.
+
+NOTE: A geometric object consists of a geometric primitive, a collection of geometric primitives, or a geometric complex treated as a single entity. A geometric object may be the spatial characteristics of an object such as a feature or a significant part of a feature.
+
+===== Grid
+
+Network composed of two or more sets of curves in which the members of each set intersect the members of the other sets in a systematic way.
+
+NOTE: The curves partition a space into grid cells.
+
+===== Grid Point
+
+Point located at the intersection of two or more curves in a *grid*.
+
+===== Lidar
+
+An optical remote sensing technique that uses a laser pulse to determine distance.
+
+NOTE: Lidar may be used to determine depth in shallow water areas.
+
+===== Navigation Surface
+
+A *coverage* representing the bathymetry and associated uncertainty with the methods by which those objects can be manipulated, combined, and used for a number of tasks, certified for safety of navigation.
+
+===== Range <coverage>
+
+Set of values associated by a *function* with the elements of the *spatiotemporal domain* of a *coverage*.
+
+===== Record
+
+Finite, named collection of related items (objects or values).
+
+NOTE: Logically, a record is a set of pairs <name, item >.
+
+===== Rectified Grid
+
+*Grid* for which there is a linear relationship between the *grid coordinates* and the *coordinates* of an external *coordinate reference system*.
+
+NOTE: If the coordinate reference system is related to the earth by a datum, the grid is a georectified grid.
+
+===== Referenceable Grid
+
+*Grid* associated with a transformation that can be used to convert *grid coordinate* values to values of coordinates referenced to an *external coordinate reference system*.
+
+===== Sonar
+
+A technique that uses sound propagation through water to determine distance, primarily *depth* measurement.
+
+===== Spatiotemporal Domain <coverage>
+
+*Domain* composed of *geometric objects* described in terms of spatial and/or temporal *coordinates*.
+
+NOTE: The spatiotemporal domain of a continuous coverage consists of a set of direct positions defined in relation to a collection of geometric objects.
+
+===== Surface
+
+Connected 2-dimensional geometric primitive, representing the continuous image of a region of a plane.
+
+NOTE: The boundary of a surface is the set of oriented, closed curves that delineate the limits of the surface.
+
+===== Uncertainty
+
+The interval (about a given value) that will contain the true value of the measurement at a specific confidence level.
+
+NOTE: Errors exist and are the differences between the measured value and the true value. Since the true value is never known it follows that the error itself cannot be known. Uncertainty is a statistical assessment of the likely magnitude of this error. The numbers must be qualified by units.
+
+In this document and S-102 uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+After Andy/Anthony/Lawrence meeting: UKHO -- added this in as discussed. Looking in S-44 section 2.7 as a guide to how confidence level and SD interact it is more complicated when we get to the horizontal uncertainty as technically this is a 2D quantity and should be 2.45 sigma. So I stated here that we consider uncertainty to be 1 dimensional. We may need to revisit this when the Raster Attribute Table is implemented and we add horizontal uncertainty.
+****
+
+===== Vector
+
+Quantity having direction as well as magnitude.
+
+NOTE: A directed line segment represents a vector if the length and direction of the line segment are equal to the magnitude and direction of the vector. The term vector data refers to data that represents the spatial configuration of features as a set of directed line segments.
+
+
+==== Abbreviations
+This Product Specification adopts the following convention for presentation purposes:
+
+API:: Application Programming Interface
+BAG:: Bathymetric Attributed Grid
+DS:: Digital Signature
+DSS:: Digital Signature Scheme
+ECDIS:: Electronic Chart Display Information System
+ECS:: Electronic Chart System
+ENC:: Electronic Navigational Chart
+GML:: Geography Markup Language
+IEC:: International Electrotechnical Commission
+IHO:: International Hydrographic Organization
+ISO:: International Organization for Standardization
+NS:: Navigation Surface
+ONS:: Open Navigation Surface
+PK:: Public Key
+SA:: Signature Authority
+SK:: Secret Key
+UML:: Universal Modelling Language
+
+
+=== General S-102 data product description
+
+*Title*:: Bathymetric Surface Product Specification
+
+*Abstract*:: This document is a Product Specification for a bathymetric surface which may be used alone or as an important element/source for future S-100 conformant ECDIS navigation. The product is defined as a data set with different coverages. This Product Specification includes a content model and separate encodings.
+
+*Acronym*:: S-102
+
+*Content*:: The Product Specification defines all requirements to which S-102 bathymetric data products must conform. Specifically, it defines the data product content in terms of features and attributes within the feature catalogue. The display of features is defined by the symbols and rule sets contained in the portrayal catalogue. The Data Classification and Encoding Guide (DCEG) provides guidance on how data product content must be captured. <<annex-data-classification-and-encoding-guide>>, in addition to <<annex-feature-catalogue>>, will provide implementation guidance for developers.
+
+[reviewer=Lawrence Haynes Haselmaier]
+****
+Chair to investigate whether to add FC info to fully populate Annex C or to change the reference.
+****
+
+*Spatial Extent*::
+*Description*: Areas specific to marine navigation. +
+*East Bounding Longitude*: 180° +
+*West Bounding Longitude*: -180° +
+*North Bounding Latitude*: 90° +
+*South Bounding Latitude*: -90°
+
+*Purpose*:: The primary purpose of the Bathymetric Surface Product is to provide high-resolution bathymetry in gridded form in support of safety of navigation. A Bathymetric Surface Product may exist anywhere in the maritime domain. There are no limitations to its extent. Portrayal of S-102 bathymetry with other S-100 compliant products are intended to support safe passage, precise berthing and mooring, as well as route planning of marine vessels. A secondary purpose of a bathymetric surface product is to provide high-resolution bathymetric data for other maritime applications.
+
+
+=== Product Specification metadata
+This information uniquely identifies this Product Specification and provides information about its creation and maintenance. For further information on dataset metadata, see <<sec-metadata>>.
+
+*Title*:: Bathymetric Surface Product Specification
+*S-100 Version*:: 4.0.0
+*S-102 Version*:: 2.2.0
+*Date*:: December 2022
+
+*Language*:: English
+*Classification*:: Unclassified
+*Contact*::
++
+--
+International Hydrographic Bureau +
+4 Quai Antoine 1er +
+B.P. 445 +
+MC 98011 MONACO CEDEX +
+Telephone: +377 93 10 81 00 +
+Fax: +377 93 10 81 40 +
+Email: mailto:info@iho.int[] +
+--
+*URL*:: link:http://www.iho.int/[www.iho.int]
+*Identifier*:: IHO:S100:S102:2:2:0
+*Maintenance*:: Changes to the Product Specification S-102 are coordinated by the IHO S-100 Working Group (S-100WG), and must be made available via the IHO web site. Maintenance of the Product Specification must conform to IHO Resolution 2/2007, as amended.
+
+
+=== IHO Product Specification Maintenance
+
+==== Introduction
+Changes to S-102 will be released by the IHO as a New Edition, revision, or clarification.
+
+==== New Edition
+_New Editions_ of S-102 introduce significant changes. _New Editions_ enable new concepts, such as the ability to support new functions or applications, or the introduction of new constructs or data types. _New Editions_ are likely to have a significant impact on either existing users or future users of S-102.
+
+==== Revisions
+_Revisions_ are defined as substantive semantic changes to S-102. Typically, _revisions_ will change S-102 to correct factual errors; introduce necessary changes that have become evident as a result of practical experience or changing circumstances. A _revision_ must not be classified as a clarification. Revisions could have an impact on either existing users or future users of S-102. All cumulative _clarifications_ must be included with the release of approved _revisions_.
+
+Changes in a revision are minor and ensure backward compatibility with the previous versions within the same Edition. Newer revisions, for example, introduce new features and attributes. Within the same Edition, a dataset of one version could always be processed with a later version of the Feature and Portrayal Catalogues.
+
+In most cases a new feature or portrayal catalogue will result in a _revision_ of S-102.
+
+==== Clarification
+_Clarifications_ are non-substantive changes to S-102. Typically, _clarifications_: remove ambiguity; correct grammatical and spelling errors; amend or update cross references; insert improved graphics in spelling, punctuation and grammar. A _clarification_ must not cause any substantive semantic change to S-102.
+
+Changes in a _clarification_ are minor and ensure backward compatibility with the previous versions within the same Edition. Within the same Edition, a dataset of one clarification version could always be processed with a later version of the Feature and Portrayal Catalogues, and a Portrayal Catalogue can always rely on earlier versions of the Feature Catalogue.
+
+
+==== Version Numbers
+The associated version control numbering to identify changes (n) to S-102 must be as follows:
+
+New Editions denoted as **n**.0.0
+
+Revisions denoted as n.**n**.0
+
+Clarifications denoted as n.n.**n**
