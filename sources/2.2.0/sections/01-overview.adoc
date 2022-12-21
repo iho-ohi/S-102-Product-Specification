@@ -217,9 +217,9 @@ The interval (about a given value) that will contain the true value of the measu
 
 NOTE: Errors exist and are the differences between the measured value and the true value. Since the true value is never known it follows that the error itself cannot be known. Uncertainty is a statistical assessment of the likely magnitude of this error. The numbers must be qualified by units.
 
-In this document and S-102 uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.
+[[itd]]In this document and S-102 uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.[[conlev]]
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=itd,to=conlev]
 ****
 After Andy/Anthony/Lawrence meeting: UKHO -- added this in as discussed. Looking in S-44 section 2.7 as a guide to how confidence level and SD interact it is more complicated when we get to the horizontal uncertainty as technically this is a 2D quantity and should be 2.45 sigma. So I stated here that we consider uncertainty to be 1 dimensional. We may need to revisit this when the Raster Attribute Table is implemented and we add horizontal uncertainty.
 ****
@@ -261,9 +261,9 @@ UML:: Universal Modelling Language
 
 *Acronym*:: S-102
 
-*Content*:: The Product Specification defines all requirements to which S-102 bathymetric data products must conform. Specifically, it defines the data product content in terms of features and attributes within the feature catalogue. The display of features is defined by the symbols and rule sets contained in the portrayal catalogue. The Data Classification and Encoding Guide (DCEG) provides guidance on how data product content must be captured. <<annex-data-classification-and-encoding-guide>>, in addition to <<annex-feature-catalogue>>, will provide implementation guidance for developers.
+*Content*:: The Product Specification defines all requirements to which S-102 bathymetric data products must conform. Specifically, it defines the data product content in terms of features and attributes within the feature catalogue. The display of features is defined by the symbols and rule sets contained in the portrayal catalogue. The Data Classification and Encoding Guide (DCEG) provides guidance on how data product content must be captured. <<annex-data-classification-and-encoding-guide>>, in addition to [[acstart]]<<annex-feature-catalogue>>[[acend]], will provide implementation guidance for developers.
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=acstart,to=acend]
 ****
 Chair to investigate whether to add FC info to fully populate Annex C or to change the reference.
 ****

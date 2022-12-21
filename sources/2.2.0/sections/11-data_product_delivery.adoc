@@ -44,9 +44,9 @@ Three types of dataset files may be produced and contained within an exchange se
 
 * New dataset: Initial.
 * New edition of a dataset: Includes new information. New editions must cover at least the same area as its predecessor.
-* Cancellation: The dataset is cancelled and no longer available to be displayed or used.
+* [[canc]]Cancellation: The dataset is cancelled and no longer available to be displayed or used.
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=canc]
 ****
 After Andy/Anthony/Lawrence meeting:
 

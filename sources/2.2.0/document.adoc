@@ -6,14 +6,12 @@
 :language: en
 :published-date: 2022-12
 :copyright-year: 2022
-:status: in-force
 :committee: hssc
 :workgroup: tsmad
 :toclevels: 3
 :mn-document-class: iho
 :mn-output-extensions: xml,html,doc,pdf,rxl
 :local-cache-only:
-:data-uri-image:
 :imagesdir: images
 :draft:
 

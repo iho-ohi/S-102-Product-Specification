@@ -180,9 +180,9 @@ The dataset metadata is stored in a separate file encoded according to the ISO 1
 
 [[subsec-discovery-metadata]]
 === Discovery metadata
-Metadata is used for a number of purposes. One high level purpose is for the identification and discovery of data. Every data set needs to be identified so that it can be distinguished from other data sets and so it can be found in a data catalogue, such as a Web Catalogue Service. The discovery metadata applies at the *S102_DataSet* level. Metadata in *S102_DiscoveryMetadataBlock* is encoded in a separate metadata file within the *S102_DSMetadataBlock*.
+Metadata is used for a number of purposes. One high level purpose is for the identification and discovery of data. Every data set needs to be identified so that it can be distinguished from other data sets and so it can be found in a data catalogue, such as a Web Catalogue Service. The discovery metadata applies at the *S102_DataSet* level. Metadata in *S102_DiscoveryMetadataBlock* is encoded in a separate metadata file within the [[metab]]*S102_DSMetadataBlock*.
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=metab]
 ****
 After Andy/Anthony/Lawrence meeting:
 
@@ -535,12 +535,7 @@ image::figure-s102-quality-metadata.png[]
 |Hierarchical level of the data specified by the scope
 |0..*
 |MD_ScopeCode \<<CodeList>>
-a|"dataset"
-
-[reviewer=Lawrence Haynes Haselmaier]
-****
-Chair has action to ensure that PT at-large is happy with the removal of "or 'tile'" here
-****
+|[[dataset]]"dataset"
 
 |attribute
 |extent
@@ -556,6 +551,11 @@ Chair has action to ensure that PT at-large is happy with the removal of "or 'ti
 |MD_ScopeDescription \<<Union>>
 |
 |===
+
+[reviewer=Lawrence Haynes Haselmaier,from=dataset]
+****
+Chair has action to ensure that PT at-large is happy with the removal of "or 'tile'" here
+****
 
 
 ==== Acquisition metadata
@@ -689,36 +689,14 @@ Support file discovery metadata is not permitted because S-102 does not use supp
 |replacedData
 |If a data file is cancelled is it replaced by another data file
 |0..1
-a|Boolean
-
-[reviewer=Lawrence Haynes Haselmaier]
-****
-After Andy/Anthony/Lawrence meeting:
-
-Add "Not used in S-102" as logically sits here.
-To note, for service management, RENCs and service providers will need to use this attribute to manage coverage changes.
-
-Chair has action to raise issue with PT at-large
-****
-
+|[[bool]]Boolean
 |
 
 |Attribute
 |dataReplacement
 |Cell Name
 |0..1
-a|CharacterString
-
-[reviewer=Lawrence Haynes Haselmaier]
-****
-After Andy/Anthony/Lawrence meeting:
-
-Add "Not used in S-102" as logically sits here.
-To note, for service management, RENCs and service providers will need to use this attribute to manage coverage changes.
-
-Chair has action to raise issue with PT at-large
-****
-
+|[[charstr]]CharacterString
 |
 
 |Role
@@ -738,6 +716,25 @@ S100_CatalogueMetadata
 |Metadata for the feature, portrayal, and interoperability catalogues, if any
 |===
 
+[reviewer=Lawrence Haynes Haselmaier,from=bool]
+****
+After Andy/Anthony/Lawrence meeting:
+
+Add "Not used in S-102" as logically sits here.
+To note, for service management, RENCs and service providers will need to use this attribute to manage coverage changes.
+
+Chair has action to raise issue with PT at-large
+****
+
+[reviewer=Lawrence Haynes Haselmaier,from=charstr]
+****
+After Andy/Anthony/Lawrence meeting:
+
+Add "Not used in S-102" as logically sits here.
+To note, for service management, RENCs and service providers will need to use this attribute to manage coverage changes.
+
+Chair has action to raise issue with PT at-large
+****
 
 ==== S100_CatalogueIdentifier
 S-102 uses S100_CatalogueIdentifier without modification.

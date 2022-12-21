@@ -3,9 +3,9 @@
 [appendix,obligation="informative"]
 == Feature Catalogue
 
-S-102 Feature Catalogue information is contained within a separate document: S-102FC_Ed2.1.0.docx.
+[[sfci]]S-102 Feature Catalogue information is contained within a separate document: S-102FC_Ed2.1.0.docx.[[docx]]
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=sfci,to=docx]
 ****
 Chair has overall action to simplify/correct how the FC will be referenced in the document. Suggest here (1) uploading current (draft) version of FC and (2) providing link within this document.
 ****

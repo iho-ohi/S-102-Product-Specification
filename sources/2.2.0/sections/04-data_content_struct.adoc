@@ -207,9 +207,9 @@ The attribute _scanDirection_ has the value class _Sequence<CharacterString>_ a 
 ==== Introduction
 The S-102 Feature Catalogue describes the feature types, attributes and attribute values which may be used in the product.
 
-The S-102 Feature Catalogue is available in an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be downloaded from the IHO website.
+[[tsf]]The S-102 Feature Catalogue is available in an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be downloaded from the IHO website.[[ihoweb]]
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=tsf,to=ihoweb]
 ****
 Chair has overall action to simplify/correct how the FC will be referenced in the document. Suggest here (1) uploading current (draft) version of FC and (2) providing link within this document.
 ****

@@ -83,10 +83,8 @@ Removed Annex B sample HDF encoding dump as it was inconsistent.
 |S-102PT
 |Redline final draft of 2.1 including: +
 S-102PT7 agreed in principle to limit the scope of S-102 v 2.1 to Navigation Only. Several sections adjusted in view of this decision. +
-[[lhh1-start1]]
-S-102PT7 revised storage locations for minimum/maximum depth and associated uncertainty. +
-S-102PT7 agreed for metadata to be stored in a separate ISO-formatted file. +
-[[lhh1-end1]]
+[[lhh1-start1]]S-102PT7 revised storage locations for minimum/maximum depth and associated uncertainty. +
+S-102PT7 agreed for metadata to be stored in a separate ISO-formatted file.[[lhh1-end1]] +
 Revised several internal references.
 
 |2.1.0

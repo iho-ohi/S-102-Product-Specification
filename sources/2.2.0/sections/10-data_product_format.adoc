@@ -286,7 +286,7 @@ except 47 (seaFloor), +
 [[note1]]
 [NOTE]
 ====
-The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding. Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,table=10c-6>>.
+The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding. Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. [[sdnu]]S-102 does not use "user defined" CRS as mentioned in <<iho-s100,table=10c-6>>[[mitab]].
 ====
 
 [[note2]]
@@ -295,7 +295,7 @@ The value horizontalCRS specifies the horizontal Coordinate Reference System. At
 The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,table=6-6>>).
 ====
 
-[reviewer=Raphael Malyankar,from=note1]
+[reviewer=Raphael Malyankar,from=sdnu,to=mitab]
 ****
 Tentative, TBD. If so-called "user defined crs" is also allowed in order to encode projection parameters in the HDF5 dataset, #s 5-19 from S-100 Table 10c-6 will have to be added to the table.
 ****
@@ -318,7 +318,7 @@ This group specifies the S-100 features to which the data applies, and consists 
 BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array>>.
 
 [[tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array]]
-.Sample contents of the two-dimensional BathymetryCoverage and QualityOfSurveyCoverage arrays
+.Sample contents of the [[two]]two[[tdim]]-dimensional BathymetryCoverage and QualityOfSurveyCoverage arrays
 [cols="a,a,a,a,a",option="header"]
 |===
 .2+|Name .2+|Explanation 2+|BathymetryCoverage |QualityOfSurveyCoverage
@@ -334,23 +334,13 @@ BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type eleme
 |Long name as in Feature Catalogue
 |depth
 |uncertainty
-a|id
-
-[reviewer=Raphael Malyankar]
-****
-Real name needed
-****
+|[[idtab]]id
 
 |uom.name
 |Units (uom.name from S-100 Feature Catalogue)
 |metres
 |metres
-a|N/A (or (empty))?
-
-[reviewer=Raphael Malyankar]
-****
-TBC by project team review
-****
+|[[nae]]N/A (or (empty))?
 
 |fillValue
 |Fill value (integer or float, string representation, for missing values)
@@ -383,9 +373,19 @@ TBC by project team review
 |geSemiInterval
 |===
 
-[reviewer=Raphael Malyankar,from=tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array]
+[reviewer=Raphael Malyankar,from=two,to=tdim]
 ****
 It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1
+****
+
+[reviewer=Raphael Malyankar,from=idtab]
+****
+Real name needed
+****
+
+[reviewer=Raphael Malyankar,from=nae]
+****
+TBC by project team review
 ****
 
 As per section <<iho-s100,part=10c,clause=10c-9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
@@ -427,41 +427,19 @@ All cells shall be HDF5 variable length strings. The minimum and maximum values 
 | Common point rule
 | commonPointRule
 | 1
-a| Enumeration
-
-[reviewer=Lawrence Haynes Haselmaier]
-****
-If we do not adopt BSH position, "unsigned 16-bit" must be added after "Enumeration"
-****
-
+| [[enum]]Enumeration
 | Value: 1 (average) or other values from <<iho-s100,table=10c-20>>.
 
 | 4
 | Horizontal position uncertainty
-a| horizontalPositionUncertainty
-
-[reviewer=Lawrence Haynes Haselmaier]
-****
-After Andy/Anthony/Lawrence meeting: This is likely to vary throughout an S-102 surface. What is the value expected here? Is it the maximum? How does this relate to the nodal uncertainty values?
-
-Chair has action to discuss with PT at-large
-****
-
+| [[hpu]]horizontalPositionUncertainty
 | 1
 | Float 32-bit
 | Value: -1.0 (if unknown or not available)
 
 | 5
 | Vertical position uncertainty
-a| verticalUncertainty
-
-[reviewer=Lawrence Haynes Haselmaier]
-****
-After Andy/Anthony/Lawrence meeting: This is likely to vary throughout an S-102 surface. What is the value expected here? Is it the maximum? How does this relate to the nodal uncertainty values?
-
-Chair has action to discuss with PT at-large
-****
-
+| [[vu]]verticalUncertainty
 | 1
 | Float 32-bit
 | Value: -1.0 (if unknown or not available)
@@ -495,6 +473,25 @@ Chair has action to discuss with PT at-large
 | Code value from <<iho-s100,table=10c-22>>
 
 |===
+
+[reviewer=Lawrence Haynes Haselmaier,from=enum]
+****
+If we do not adopt BSH position, "unsigned 16-bit" must be added after "Enumeration"
+****
+
+[reviewer=Lawrence Haynes Haselmaier,from=hpu]
+****
+After Andy/Anthony/Lawrence meeting: This is likely to vary throughout an S-102 surface. What is the value expected here? Is it the maximum? How does this relate to the nodal uncertainty values?
+
+Chair has action to discuss with PT at-large
+****
+
+[reviewer=Lawrence Haynes Haselmaier,from=vu]
+****
+After Andy/Anthony/Lawrence meeting: This is likely to vary throughout an S-102 surface. What is the value expected here? Is it the maximum? How does this relate to the nodal uncertainty values?
+
+Chair has action to discuss with PT at-large
+****
 
 ==== Feature Instance group - BathymetryCoverage.01
 As per <<iho-s100,part=10c,clause=10c-9.7>> and <<iho-s100,table=10c-12>> Attributes of feature instance groups
@@ -646,9 +643,9 @@ The depth and uncertainty values (depth and uncertainty) are stored in two-dimen
 
 The QualityOfSurveyCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. 
 
-The QualityOfSurveyCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,table=10c-9>>; <<iho-s100,clause=10c-9.6.2>>). This dataset is mandatory within the QualityOfSurveyCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<table-10.7>> below. 
+The QualityOfSurveyCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,table=10c-9>>; <<iho-s100,clause=10c-9.6.2>>). This dataset is mandatory within the QualityOfSurveyCoverage group. Each element of this array is a metadata record of HDF5 compound type. The [[fieldstart]]fields[[fieldsend]] are described in <<table-10.7>> below. 
 
-[reviewer=Raphael Malyankar]
+[reviewer=Raphael Malyankar,from=fieldstart,to=fieldsend]
 ****
 (1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing?
 ****
@@ -804,7 +801,7 @@ The role of the attribute, featureSizeVar is described in clause 7.1. The expect
 [[note-10.7-4]]
 [NOTE]
 ====
-When both featureSize and featureSizeVar are present, the greater of the two should be considered valid.
+When both featureSize and featureSizeVar are present, the [[gottstart]]greater of the two[[gottend]] should be considered valid.
 ====
 
 [[note-10.7-5]]
@@ -819,7 +816,7 @@ Full seafloor coverage achieved applies to both the spatial completeness of feat
 The attribute bathyCoverage is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery (interpolated gaps between bathymetry coverage in this situation would show fullCoverage = True and bathyCoverage = False). If full coverage = False, bathyCoverage must also equal False, such as gaps between single beam echosounder data without correlating side scan sonar coverage.
 ====
 
-[reviewer=Raphael Malyankar,from=note-10.7-4]
+[reviewer=Raphael Malyankar,from=gottstart,to=gottend]
 ****
 As I understand it, one is a volume and the other a percentage of a length (depth). How are they to be compared?
 ****

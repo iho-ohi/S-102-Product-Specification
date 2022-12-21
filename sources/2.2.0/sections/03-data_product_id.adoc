@@ -29,7 +29,7 @@ Main topics for the product, as according to <<iso-19115-1>> MD_TopicCategoryCod
 *Classification*::
 +
 --
-Data can be classified as one of the following:
+[[classtart]]Data can be classified as one of the following:[[classend]]
 
 . Unclassified;
 . Restricted;
@@ -42,7 +42,7 @@ Data can be classified as one of the following:
 . Limited distribution.
 --
 
-[reviewer=Lawrence Haynes Haselmaier]
+[reviewer=Lawrence Haynes Haselmaier,from=classtart,to=classend]
 ****
 Chair has action to draft a request to S-100 to add an "Other" designation. Selection of "Other" would be accompanied by a free text description of the not-otherwise-specified designation.
 ****
