@@ -1,0 +1,54 @@
+
+[[annex-s102-dataset-size-and-production]]
+[appendix]
+== S-102 Dataset Size and Production
+
+=== Header Record
+An S-102 file will contain two header sections. The first section contains, at minimum, the mandatory metadata elements as defined in S-100 Part 4. The second section contains, at minimum, the mandatory metadata elements as defined in <<sec-metadata>> of the S-102 Product Specification. The producers may add optionally defined metadata to these sections, as their processes/standards require.
+
+Given that the contents of these metadata attributes will vary between producers, it is impossible to define a definitive size for the file header. The estimated maximum size for the full header of an S-102 file is 3 MB. This is an estimate based on the expected encoding of mandatory metadata in both S-100/S-102, usage of the optional metadata elements and expected verbosity of those elements.
+
+
+=== Data Records/Nodes
+The data contained within an S-102 file consists of a single data type. This data is the *BathymetryCoverage* and is defined as a two-dimensional array of nodes containing bathymetric data. Each of the nodes within this array contains two data values (depth and uncertainty). Both values are stored as a 4-byte floating point. The total size of each node will therefore be 8 bytes.
+
+=== File Estimates
+<<tab-calculated-file-size-for-10mb-and-256mb-uncompressed-dataset>> estimates the possible number of records for a given S-102 file. This estimation is based on file size constraints and the estimates described above. Rounded to the nearest hundred, this estimate allows us to state that a file not exceeding 600x600 will remain below the 10 MB. <<fig-informative-grid-extents-for-a-10mb-uncompressed-dataset>> depicts the maximum grid size for 10MB.
+
+[[tab-calculated-file-size-for-10mb-and-256mb-uncompressed-dataset]]
+.Calculated File Size for 10 MB (Uncompressed Dataset)
+[cols="6"]
+|===
+
+3+h|BathymetryCoverage 3+h|
+
+h|Records h| h| h| h| h|
+h|Name h|Type h|Size (bytes) h| h| h|
+
+|depth |Float |4 | | |
+|uncertainty |Float |4 | | |
+| |*Total Size* |*8* | | |
+
+6+|{nbsp}
+
+6+h|Sizes (bytes)
+2+h|KB 2+h|MB 2+h|GB
+2+|1,024 2+|1,048,576 2+|1,073,741,824
+
+6+|{nbsp}
+
+6+h|File Options
+2+h|Max Size Options (MB) 4+|10
+2+h|Header Size (MB) 4+|3
+
+6+h|_BathymetryCoverage Size_
+2+h|BathymetryCoverage Size(MB) 4+|7
+2+h|Total Number of BathymetryCoverage Records 4+|366,902
+2+h|Square Dimensions (BathymetryCoverage) 4+|606
+
+|===
+
+
+[[fig-informative-grid-extents-for-a-10mb-uncompressed-dataset]]
+.Informative grid extents for a 10 MB Uncompressed Dataset
+image::figure-informative-grid-extents-for-a-10mb-uncompressed-dataset.png[]

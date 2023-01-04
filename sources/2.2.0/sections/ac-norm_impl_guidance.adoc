@@ -1,0 +1,6 @@
+
+[[annex-normative-implementation-guidance]]
+[appendix,obligation="normative"]
+== Normative Implementation Guidance
+
+NOTE: Normative Implementation Guidance to be addressed in a future version of S-102.

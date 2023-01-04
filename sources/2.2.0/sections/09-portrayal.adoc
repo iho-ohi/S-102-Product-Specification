@@ -1,0 +1,172 @@
+
+[[sec-portrayal]]
+== Portrayal
+
+=== Introduction
+This clause describes the display of bathymetric surface data to support the safe navigation of marine vessels. The following portrayal options are intended to enhance mariner decision making while taking into consideration the need to minimize cluttering of the navigation display. S-102 portrayal options:
+
+* Display of gridded bathymetry
+* Colouring options to support safe navigation.
+
+
+=== Generation and display of gridded bathymetry
+Most modern hydrographic surveys are conducted using high-resolution multibeam sonar systems. While these systems provide a highly detailed depiction of the seafloor, the storage and processing requirements (that is, data management) can be challenging. A typical hydrographic survey can collect upwards of 10 billion depth estimates over a 30-day collection period.
+
+Utilization of a gridded data structure eases the data management concerns of the hydrographer, providing the ability to safely reduce the total sum of collected depth estimates into a manageable quantity of representative nodal depths for processing and production. All gridded datasets should be exposed to rigid Quality Assurance/Control procedures to ensure the final gridded dataset accurately represents the real-world environment. Once a dataset passes an established Quality Assurance/Control process, modern chart production software is used to extract candidate nodal depths from the grid for consideration as final charted soundings.
+
+_<<annex-s102-gridding-methods>> provides a listing of S-102 accepted gridding methods._
+
+_<<annex-gridding-full-resolution-source-bathymetry>> provides an example gridding process, discussing the difference between full-resolution source bathymetry, product scale grid, and charted sounding._
+
+==== Charted soundings/contours vs. gridded bathymetry
+Depth information on a nautical chart is generally displayed as depth soundings, depth contours, and depth areas. Depth contours are used to connect soundings of equal elevation referenced to a specific sounding datum.
+
+The introduction of an additional depth source, S-102 gridded data, enhances navigation decision making by providing the mariner with the ability to visualize and colour a pseudo three-dimensional, sun-illuminated, contiguous image of the seafloor. While this is a benefit, producers should understand that the selection of an improper grid resolution (that is too coarse, or too fine) may complicate the overall navigation solution when displayed with traditional depth information. <<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides informative grid resolutions for each charting scale to aid in the selection of a final grid resolution. It should be noted that <<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> does not contain mandatory resolutions. Final identification of the "`appropriate`" resolution is left to the data producer.
+
+==== Use of sun-illumination
+S-102 data can be visualized as a sun-illuminated or static (flat) dataset. The depiction of sun-illumination requires the entry of a sun azimuth and corresponding elevation. <<fig-sun-illuminated-and-static-flat-shading>> shows the difference between a sun-illuminated and static (flat) surface.
+
+Informative values for sun azimuth angle and elevation have been provided in <<tab-sun-azimuth-and-elevation-values>>. 
+
+[[tab-sun-azimuth-and-elevation-values]]
+.Sun Azimuth and Elevation Values
+[cols="3"]
+|===
+.2+^.^h|Attribute 2+^h|Value in Degrees
+h|Sun-Illuminated h|Flat Surface
+
+|Sun Azimuth Angle |315 Degrees |0.0 Degrees
+|Sun Elevation |45 Degrees |0.0 Degrees
+|===
+
+
+[[fig-sun-illuminated-and-static-flat-shading]]
+.Sun-illuminated and Static (Flat) Shading
+image::figure-sun-illuminated-and-static-flat-shading.png[]
+
+==== Transparency
+S-102 dataset transparency display settings are identified in <<tab-transparency-values-for-s102-dataset>>. The level of opaqueness is represented by the value alpha. A value of 1 represents zero transparency. A value of 0 represents 100% transparency.
+
+[[tab-transparency-values-for-s102-dataset]]
+.Transparency values for S-102 Dataset
+[cols="2"]
+|===
+h|ENC Display Setting h|Alpha
+
+|ENC Day |1.0
+|ENC Dusk |0.4
+|ENC Night |0.2
+|===
+
+
+
+=== Generation and display of navigation zones
+The addition of an S-102 dataset enhances the mariner's ability to render and display, using colours, and higher resolution depth zoning directly from the grid.
+
+At time of ingest a display system will delineate and display navigational depth zones by comparing the depth layer of the S-102 dataset to the mariner-defined vessel draft or default safety contour. Depth zone naming and colouring (<<tab-depth-zone-and-colour-token-information-for-day>> - <<tab-depth-zone-and-colour-token-information-for-night>>, and <<fig-s52-depth-zone-colouring-for-day>>) may follow IHO S-52, Edition 6.1(.1).
+
+NOTE: colour parameters listed in <<tab-depth-zone-and-colour-token-information-for-day>>, <<tab-depth-zone-and-colour-token-information-for-dusk>> and <<tab-depth-zone-and-colour-token-information-for-night>> are specified in CIE x, y, L co-ordinates.
+
+[[tab-depth-zone-and-colour-token-information-for-day]]
+.Depth Zone and Colour Token Information for Day
+[cols="a,a,a,a,a,a",options="header"]
+|===
+|Depth Zone Name |Description |Colour |X |Y |L
+
+|Deep Water (DEPDW):
+|Deeper than the deep contour
+|White
+|{blank}.28
+|{blank}.31
+|80
+
+|Medium-deep water (DEPMD):
+|Depths between the deep contour and the safety contour
+|Blue
+|{blank}.26
+|{blank}.29
+|65
+
+|Medium-shallow (DEPMS):
+|Depths between the safety contour and the shallow contour
+|Blue
+|{blank}.23
+|{blank}.25
+|55
+
+|Very Shallow Water (DEPVS):
+|Depths between the shallow contour and the zero metre contour
+|Blue
+|{blank}.21
+|{blank}.22
+|45
+
+|Drying Foreshore (DEPIT):
+|Intertidal area
+|YellowGreen
+|{blank}.26
+|{blank}.36
+|35
+|===
+
+[[tab-depth-zone-and-colour-token-information-for-dusk]]
+.Depth Zone and Colour Token Information for Dusk
+[cols="a,a,a,a,a,a",options="header"]
+|===
+|Depth Zone Name |Description |Colour |X |Y |L
+
+|Deep Water (DEPDW):
+|Deeper than the safety contour
+|White
+|{blank}.28
+|{blank}.31
+|00
+
+|Shallow Water (DEPVS):
+|Shallower than the safety contour
+|Blue
+|{blank}.21
+|{blank}.22
+|5.0
+
+|Intertidal (DEPIT):
+|Area exposed at low water
+|YellowGreen
+|{blank}.26
+|{blank}.36
+|6.0
+|===
+
+
+[[tab-depth-zone-and-colour-token-information-for-night]]
+.Depth Zone and Colour Token Information for Night
+[cols="a,a,a,a,a,a",options="header"]
+|===
+|Depth Zone Name |Description |Colour |X |Y |L
+
+|Deep Water (DEPDW):
+|Deeper than the safety contour
+|White
+|{blank}.28
+|{blank}.31
+|00
+
+|Shallow Water (DEPVS):
+|Shallower than the safety contour
+|Blue
+|{blank}.21
+|{blank}.22
+|0.8
+
+|Intertidal (DEPIT):
+|Area exposed at low water
+|YellowGreen
+|{blank}.26
+|{blank}.36
+|1.2
+|===
+
+
+[[fig-s52-depth-zone-colouring-for-day]]
+.S-52, Edition 6.1(.1) Depth Zone Colouring for Day
+image::figure-s52-depth-zone-colouring-for-day.png[]

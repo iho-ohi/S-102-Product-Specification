@@ -1,0 +1,44 @@
+
+[[sec-coordinate-reference-systems-crs]]
+== Coordinate Reference Systems (CRS)
+
+=== Introduction
+The geo-referencing for an S-102 Bathymetric Surface product shall be node-based, referenced from the southwestern-most node in a grid. Each sample in a grid represents the value in the grid at a point location at the coordinate specified, rather than an estimate over any area with respect to the coordinate. The reference position included in the metadata shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
+
+The Coordinate Reference System information contained in <<tab-s102-coordinate-reference-systems-epsg-codes>> is defined in the manner specified in <<iho-s100,part=6>>. Note the vertical datum is defined through a second association role to a vertical reference system.
+
+
+[[horizontal-crs]]
+=== Horizontal Coordinate Reference System
+
+[[tab-s102-coordinate-reference-systems-epsg-codes]]
+.S-102 Coordinate Reference Systems (EPSG Codes)
+[cols="2"]
+|===
+h|EPSG Code h|Coordinate Reference System
+|4326 |WGS84
+|32601 - 32660 |WGS 84 / UTM Zone 1N to Zone 60N
+|32701 - 32760 |WGS 84 / UTM Zone 1S to Zone 60S
+|5041 |WGS 84 / UPS North (E,N)
+|5042 |WGS 84 / UPS South (E,N)
+2+|The full reference to EPSG can be found at link:http://www.epsg-registry.org/[www.epsg-registry.org].
+|===
+
+
+*Horizontal Coordinate Reference System*:: EPSG (see <<tab-s102-coordinate-reference-systems-epsg-codes>>)
+*Projection*:: NONE/UTM/UPS
+*Temporal reference system*:: Gregorian Calendar
+*Coordinate Reference System registry*:: link:http://www.epsg-registry.org/[EPSG Geodetic Parameter Registry]
+*Date type (according to <<iso19115>>)*:: 002 - publication
+*Responsible party*:: International Organisation of Oil and Gas Producers (OGP)
+*URL*:: http://www.ogp.org.uk/
+
+
+=== Vertical Coordinate Reference System
+Although in this product there are no direct vertical coordinates the values of the depth attributes are indirectly such coordinates. Therefore, it is important to specify the vertical CRS to which these values conform. The vertical CRS is an earth gravity-based, one-axis coordinate system. The axis is oriented positive down.
+
+The vertical datum must be taken from the code-list defined by S100_VerticalAndSoundingDatum. It will be defined in the root element as an HDF5 attribute.
+
+
+=== Temporal reference system
+The temporal reference system is the Gregorian calendar for date and UTC for time. Time is measured by reference to Calendar dates and Clock time in accordance with <<iso-8601,clause=5.4.4>>. A date-time variable will have the following 16-character format: _yyyymmddThhmmssZ_.

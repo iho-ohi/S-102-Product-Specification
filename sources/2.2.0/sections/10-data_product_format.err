@@ -1,0 +1,80 @@
+.\sections/10-data_product_format.err errors
+
+
+== AsciiDoc Input
+
+(): Missing workgroup attribute for document
+
+
+== Anchors
+
+(XML Line 000034): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c,clause=10c-5.1</xref>
+(XML Line 000064): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c</xref>
+(XML Line 000072): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c</xref>
+(XML Line 000088): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c,figure=10c-9</xref>
+(XML Line 000195): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-6</xref>
+(XML Line 000240): Crossreference target horizontal-crs is undefined
+	<xref target="horizontal-crs" style="short"/>
+(XML Line 000299): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">clause=10c-12</xref>
+(XML Line 000334): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">clause=10c-10.6</xref>
+(XML Line 000348): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">clause=10c-10.7</xref>
+(XML Line 000369): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-6</xref>
+(XML Line 000373): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=6-6</xref>
+(XML Line 000388): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">clause=10c-9.6.2</xref>
+(XML Line 000493): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c,clause=10c-9.5</xref>
+(XML Line 000530): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-20</xref>
+(XML Line 000559): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-21</xref>
+(XML Line 000564): Crossreference target scanDirection is undefined
+	<xref target="scanDirection" style="short"/>
+(XML Line 000570): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-22</xref>
+(XML Line 000577): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c,clause=10c-9.7</xref>
+(XML Line 000577): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-12</xref>
+(XML Line 000668): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">part=10c</xref>
+(XML Line 000722): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">clause=10c-9.6.2</xref>
+(XML Line 000722): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=10c-9</xref>
+(XML Line 000881): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=1-2</xref>
+(XML Line 000893): Crossreference target iho-s100 is undefined
+	<xref target="iho-s100" style="short">table=1-2</xref>
+
+
+== Metanorma XML Style Warning
+
+(XML Line 000062): Hanging paragraph in clause
+	<clause id="subsec-product-structure" obligation="normative">
+	<title>Product structure</title>
+	<p id="_b7490c8f-f795-89d7-3726-52ad8e5079ca">The structure of the data product follows the form given in <xref target="iho-s100" style="short">part=10c</xref> — HDF5 Data Model and File Format. The general structure, which was designed for several S-100 products is given in <xref target="fig-outline-of-the-generic-data-file-structure" style="short"/>.</p>
+	
+	<admonition id="_6a25f2b0-55fe-8a4c-cbfb-6ec52df68b30" type="editorial"><p id="_c1a55eec-c6d2-8cb9-2600-950477b24d11">While searching for any impacts from Holger’s proposed (and accepted) renumbering, I noticed that this mention of Part 10c had the final letter capitalized, while no other mentions had it capitalized. Moving it to lowercase to make it consistent.</p>
+
+
+== Images
+
+(XML Line 000068): Image not found: figure-outline-of-the-generic-data-file-structure.png
+	<figure id="fig-outline-of-the-generic-data-file-structure">
+	<name>Outline of the generic data file structure</name>
+	<image src="figure-outline-of-the-generic-data-file-structure.png" id="_2766e797-7337-4955-d608-50d3e8b5ef3f" mimetype="image/png" height="auto" width="auto"/></figure>
+(XML Line 000172): Image not found: figure-hierarchy-of-s102-data-product.png
+	<figure id="fig-hierarchy-of-s102-data-product">
+	<name>Hierarchy of S-102 Data Product</name>
+	<image src="figure-hierarchy-of-s102-data-product.png" id="_81ed2424-5d53-6d33-c037-b7d10ce8cbab" mimetype="image/png" height="auto" width="auto"/></figure>
