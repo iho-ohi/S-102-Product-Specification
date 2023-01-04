@@ -1,0 +1,58 @@
+
+[[sec-data-quality]]
+== Data Quality
+Data quality allows users and user systems to assess fitness for use of the provided data. Data quality measures and the associated evaluation are reported as metadata of a data product. This metadata improves interoperability with other data products and provides usage by user groups that the data product was not originally intended for. The secondary users can make assessments of the data product usefulness in their application based on the reported data quality measures.
+
+=== Completeness
+
+==== Commission
+The S-102 bathymetric grid has a high-level of completeness regarding commission, due to the fact that the issuing hydrographic office has deemed the grid to contain all the necessary data and/or considered all contributing factors required to make a navigationally valid product. These factors are recorded in the metadata for the file.
+
+==== Omission
+The S-102 bathymetric grid has a high level of completeness in regards to omission, due to the fact that the issuing hydrographic office will have noted any major discrepancies or negative quality factors in the applicable fields of the metadata for the file.
+
+=== Logical consistency
+
+==== Conceptual consistency
+The conceptual consistency of S-102 grids is maintained through this and related specifications which are conceptually consistent with the accepted standards.
+
+==== Domain consistency
+The domain consistency of S-102 grids is maintained through the definition of their primary purpose, which is safety of navigation. The data contained can also be used derivatively for other scientific/fields domains (secondary purposes). All processes used in primary purpose generation is geared solely towards the satisfaction of safety of navigation concerns.
+
+==== Format consistency
+The formatting consistency of S-102 grids is maintained due to the overriding encoding (HDF5) defined in the S-100 specification and the other IHO standards on which the data is based.
+
+
+
+=== Positional accuracy
+
+==== Accuracy of a time measurement
+Temporal aspects of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+
+==== Gridded data positional accuracy
+Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each node using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference points and positional resolution are important and are another factor in gridded positional accuracy.
+
+==== Relative internal positional accuracy
+The internal positional accuracy is defined as the precision of the location of each node within the S-102 grid. The position of each node within the grid is referenced by a row and column combination. The metadata for S-102 defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a node within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
+
+=== Temporal accuracy
+
+==== Temporal consistency
+Temporal aspects of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification. 
+
+==== Temporal validity
+Temporal aspects of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification. 
+
+=== Thematic accuracy
+
+==== Thematic classification correctness
+For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for accessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given node must be considered. This uncertainty value is a +/- value and when assessing the classification correctness must be applied. The new value(s) generated when applied may cause a change in the classification.
+
+==== Non-quantitative attribute accuracy
+Thematic accuracy of S-102 bathymetric data is wholly quantitative.
+
+
+==== Quantitative attribute accuracy
+As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located coverage, uncertainty. Uncertainty is defined as the vertical uncertainty at each node location. The uncertainty coverage supports multiple definitions of vertical uncertainty.
+
+See <<tab-code-defining-how-uncertainty-was-determined>>.
