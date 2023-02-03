@@ -92,4 +92,9 @@ Revised several internal references.
 |S-102PT
 |Edited filename for exchange catalogue to be CATALOG.XML in 11.3 and in Table 12-7.
 
+|2.1.1
+|xxxx 2023
+|S-102PT
+|minor clarification to Edition 2.1.0 of S-102PS. 
+
 |===
