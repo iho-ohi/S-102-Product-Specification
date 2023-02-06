@@ -42,7 +42,7 @@ source of the S-102 documents and models
 This repository uses `metanorma` to run these processes.
 
 Please refer to
-https://www.metanorma.org/author/iho/authoring/[Metanorma-IHO documentation]
+https://www.metanorma.org/author/iho/authoring-guide/[Metanorma-IHO documentation]
 for authoring guidance.
 
 
