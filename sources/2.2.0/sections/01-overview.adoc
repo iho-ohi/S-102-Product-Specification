@@ -24,8 +24,6 @@ This document describes an S-100 compliant product specification for a bathymetr
 
 * [[[iso-19111,ISO 19111:2007]]]
 
-* [[[iso19115,ISO 19115:2003]]]
-
 * [[[iso-19115-1,ISO 19115-1:2014/Amd 1:2018]]]
 
 * [[[iso-19115-2,ISO 19115-2:2009]]]
@@ -46,7 +44,7 @@ This document describes an S-100 compliant product specification for a bathymetr
 
 * [[[iso-ts-19130-2,ISO/TS 19130-2:2014]]]
 
-* [[[iso19139,ISO/TS 19139:2007]]]
+* [[[iso19139-1,ISO/TS 19139-1:2019]]]
 
 * [[[iso-10646-1,ISO/IEC 10646-1:2000]]]
 
