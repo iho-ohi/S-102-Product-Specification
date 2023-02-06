@@ -58,8 +58,6 @@ image::figure-implementation-of-classes.png[]
 
 The class *BathymetryCoverage* has the attributes _minimumDepth_, _maximumDepth_, _minimumUncertainty_, and _maximumUncertainty_ which bound the depth attribute and the uncertainty attribute from the *S102_BathymetryValues* record. *BathymetryCoverage* additionally contains the inherited attributes _origin_, _offsetVectors_, _dimension_, _axisName_, _extent_, _sequenceRule_, and _startSequence_ from *S100_Grid* and *CV_Grid*.
 
-EDITOR: Removed the scale properties as handled with dataset/exchangeset metadata
-
 The origin is a position in a specified coordinate reference system, and a set of offset vectors specify the direction and distance between the grid lines. It also contains the additional geometric characteristics of a rectified grid.
 
 [level=7]
@@ -207,12 +205,7 @@ The attribute _scanDirection_ has the value class _Sequence<CharacterString>_ a 
 ==== Introduction
 The S-102 Feature Catalogue describes the feature types, attributes and attribute values which may be used in the product.
 
-[[tsf]]The S-102 Feature Catalogue is available in an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be downloaded from the IHO website.[[ihoweb]]
-
-[reviewer=Lawrence Haynes Haselmaier,from=tsf,to=ihoweb]
-****
-Chair has overall action to simplify/correct how the FC will be referenced in the document. Suggest here (1) uploading current (draft) version of FC and (2) providing link within this document.
-****
+[[tsf]]The S-102 Feature Catalogue is available in an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be downloaded from the IHO Geospatial Information Registry.[[ihoweb]]
 
 ==== Feature types
 S-102 is a coverage feature product. *BathymetryCoverage* implements *S102_DepthCoverage* and includes *S102_BathymetryValues*.
