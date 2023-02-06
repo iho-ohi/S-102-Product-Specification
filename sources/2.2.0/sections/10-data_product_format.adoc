@@ -989,31 +989,37 @@ see <<iho-s100,part=1>> Table 2.
 [NOTE]
 ====
 A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation <<iho-s44>>. Least depth of detected features measured does not describe the least depth of features that were actually detected during a hydrographic survey, but the ability of the survey to detect the least depth of features with a maximum uncertainty as defined in <<iho-s44>>.
+====
 
 [[note5]]
 [NOTE]
 ====
 A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation <<iho-s44>>. Significant features detected does not describe if significant features were actually detected during a hydrographic survey, but whether the survey had the capacity to detect significant features.
+====
 
 [[note6]]
 [NOTE]
 ====
 The role of the attribute, featureSizeVar is described in <<qualityAndSourceMetadata>>. The expectation is that featureSizeVar will be set to zero if the feature size does not scale with depth. As with featureSize, featureSizeVar should be ignored if significantFeatures is False.
+====
 
 [[note7]]
 [NOTE]
 ====
 When both featureSize and featureSizeVar are present, the greater of the two should be considered valid.
+====
 
 [[note8]]
 [NOTE]
 ====
 Full seafloor coverage achieved applies to both the spatial completeness of feature detection and to the spatial completeness of the measurement of the regular seafloor. The former is further specified by the complex attribute features detected; the latter by the attributes depth range maximum value and depth range minimum value.
+====
 
 [[note9]]
 [NOTE]
 ====
 The attribute bathyCoverage is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery (interpolated gapes between bathymetry coverage in this situation would show fullCoverage = True and bathyCoverage = False). If fullCoverage = False, bathyCoverage must also equal False, such as gaps between single beam echosounder data without correlating side-scan sonar coverage.
+====
 
 ==== Instance group QualityOfSurveyCoverage.01
 The QualityOfSurveyCoverage.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
