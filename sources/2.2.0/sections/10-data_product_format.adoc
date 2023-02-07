@@ -599,7 +599,7 @@ unsigned +
 | commonPointRule
 | 1
 | Enumeration
-| Value: 1 (average) or other values from <<iho-s100,part-10c>> Table 20.
+| Value: 1 (average) or other values from <<iho-s100,part-10c,table=20>>.
 
 | 4
 | Horizontal position uncertainty
