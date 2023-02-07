@@ -250,7 +250,7 @@ Required items are Citation.title, & Citation.date,
 |Identification of, and means of communication with, person(s) and organization(s) associated with the resource(s)
 |1
 |CI_Responsibility
-|See <<iho-s100,part=4a,table=4a-2>> and <<<<iho-s100,part=4a,table=4a-3>> for required items
+|See <<iho-s100,part=4a,table=4a-2>> and <<iho-s100,part=4a,table=4a-3>> for required items
 
 |attribute
 |spatialRepresentationType
@@ -286,7 +286,7 @@ If this attribute is present, the four bounding box sub-attributes westBoundLong
 |Organisation responsible for the metadata information
 |1
 |CI_Responsibility>CI_Organisation
-|See <<iho-s100,part=4a,table=4a-2>> and <<<<iho-s100,part=4a,table=4a-3>> for required items
+|See <<iho-s100,part=4a,table=4a-2>> and <<iho-s100,part=4a,table=4a-3>> for required items
 
 |attribute
 |dateInfo
