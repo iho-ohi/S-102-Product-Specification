@@ -559,7 +559,7 @@ BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type eleme
 |geSemiInterval
 |===
 
-According to <<iho-2100,part=10c,clause=9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
+According to <<iho-100,part=10c,clause=9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
 
 While the sample contents are shown in the two attributes columns, these are actually rows in the BathymetryCoverage table. They are also each a single HDF5 compound type and represent a single HDF5 element in the table.
 
