@@ -3,13 +3,13 @@
 == Metadata
 
 === Introduction
-The Metadata elements used in the Bathymetric Surface product are derived from S-100 and from <<iso19115>> and <<iso-19115-2>>. Optionally additional metadata may be derived from <<iso-ts-19130>> and <<iso-ts-19130-2>> especially metadata relating to the sonar equipment which may have been used to acquire the bathymetric data.
+The Metadata elements used in the Bathymetric Surface product are derived from S-100 and from <<iso-19115-1>> and <<iso-19115-2>>. Optionally additional metadata may be derived from <<iso-ts-19130>> and <<iso-ts-19130-2>> especially metadata relating to the sonar equipment which may have been used to acquire the bathymetric data.
 
-There are only a few elements in the <<iso19115>> metadata standard that are mandatory and these relate only to the use of the metadata for identification and pedigree of the data set. A minimum level of data identification is required for all applications including database applications, web services and data set production. However, S-102 requires certain metadata attributes which are used to geolocate the dataset as well as establish a pedigree for the data.
+There are only a few elements in the <<iso-19115-1>> metadata standard that are mandatory and these relate only to the use of the metadata for identification and pedigree of the data set. A minimum level of data identification is required for all applications including database applications, web services and data set production. However, S-102 requires certain metadata attributes which are used to geolocate the dataset as well as establish a pedigree for the data.
 
 The elements are related in a metadata Schema and include definitions and extension procedures. There exist both mandatory and conditional metadata elements. Only a few metadata elements are mandatory but the inclusion of some of the optional metadata elements establish a situation where other metadata elements are conditionally made mandatory.
 
-<<tab-s102-handling-of-core-metadata-elements>> outlines the core metadata elements (mandatory and recommended optional) required for describing a geographic information data set. The codes indicate: "M" mandatory, "O" optional' "C" conditional as defined in <<iso19115>>. <<tab-s102-handling-of-core-metadata-elements>> indicates how the mandatory, optional and conditional core metadata are handled in S-102.
+<<tab-s102-handling-of-core-metadata-elements>> outlines the core metadata elements (mandatory and recommended optional) required for describing a geographic information data set. The codes indicate: "M" mandatory, "O" optional' "C" conditional as defined in <<iso-19115-1>>. <<tab-s102-handling-of-core-metadata-elements>> indicates how the mandatory, optional and conditional core metadata are handled in S-102.
 
 [[tab-s102-handling-of-core-metadata-elements]]
 .S-102 Handling of Core Metadata Elements
@@ -87,7 +87,7 @@ Implicit in S-102 product specification reference to
 
 |*Dataset character set \(C)*
 
-set to default = "utf8". [not required when set to default from <<iso19115>>]
+set to default = "utf8". [not required when set to default from <<iso-19115-1>>]
 
 from: (MD_Metadata.identificationInfo > MD_DataIdentification.defaultLocale > PT_Locale.characterEncoding)
 
@@ -176,7 +176,7 @@ from: (MD_Metadata.metadataScope > MD_MetadataScope.resourceScope > MD_ScopeCode
 
 |===
 
-The dataset metadata is stored in a separate file encoded according to the ISO 19115X Schemas. The name of the metadata file is MD_<HDF5 data file base name>.XML (or .xml) ISO metadata (per <<iho-s100,part=10c,clause=10c-12>>), The root element in the file is *S102_DSMetadataBlock* which contains *S102_DS_DiscoveryMetadata*, *S102_StructureMetadataBlock* and *S102_QualityMetadataBlock*. 
+The dataset metadata is stored in a separate file encoded according to the ISO 19115X Schemas. The name of the metadata file is MD_<HDF5 data file base name>.XML (or .xml) ISO metadata (per <<iho-s100,part=10c,clause=10c-12>>), The root element in the file is *S102_DSMetadataBlock* which contains *S102_DS_DiscoveryMetadata*, *S102_StructureMetadataBlock* and *S102_QualityMetadataBlock*.
 
 [[subsec-discovery-metadata]]
 === Discovery metadata
@@ -196,13 +196,13 @@ Chair has larger action to ensure correspondence between all figures and all tex
 image::figure-s102-discovery-metadata.png[]
 
 
-<<fig-s102-discovery-metadata>> above shows the *S102_DiscoveryMetadataBlock*. It has one subtype S102_DS_DiscoveryMetadata. This implements the metadata classes from <<iso19115>>. First implementation classes have been developed corresponding to each of the <<iso19115>> classes that have been referenced in which only the applicable attributes have been included. The class *S102_DS_DiscoveryMetadata* inherits attributes from S-102 specific implementation classes. In addition, an additional component *S102_DataIdentification* has been added.
+<<fig-s102-discovery-metadata>> above shows the *S102_DiscoveryMetadataBlock*. It has one subtype S102_DS_DiscoveryMetadata. This implements the metadata classes from <<iso-19115-1>>. First implementation classes have been developed corresponding to each of the <<iso-19115-1>> classes that have been referenced in which only the applicable attributes have been included. The class *S102_DS_DiscoveryMetadata* inherits attributes from S-102 specific implementation classes. In addition, an additional component *S102_DataIdentification* has been added.
 
-This model provides the minimum amount of metadata for a Bathymetry Surface data product. Any of the additional optional metadata elements from the source <<iso19115>> metadata standard can also be included.
+This model provides the minimum amount of metadata for a Bathymetry Surface data product. Any of the additional optional metadata elements from the source <<iso-19115-1>> metadata standard can also be included.
 
-<<tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array>> provides a description of each attribute of the S102_DiscoveryMetadataBlock class attributes.
+<<tab-discoverymetadablock-class-attributes>> provides a description of each attribute of the S102_DiscoveryMetadataBlock class attributes.
 
-[[discoverymetadablock-class-attributes]]
+[[tab-discoverymetadablock-class-attributes]]
 .S102_DiscoveryMetadataBlock class attributes
 [cols="a,a,a,^a,a,a",options="header",cols="1,3,2,1,3,3"]
 |===
@@ -317,7 +317,7 @@ otherLocale need be populated only if the dataset uses more than one language
 
 |Class
 |S102_DataIdentification
-|Component for S102_DiscoveryMeta data Block. Extension beyond <<iso19115>> metadata
+|Component for S102_DiscoveryMeta data Block. Extension beyond <<iso-19115-1>> metadata
 |-
 |-
 |
@@ -339,7 +339,7 @@ otherLocale need be populated only if the dataset uses more than one language
 |===
 
 
-The class *S102_DataIdentification* provides an extension to the metadata available from <<iso19115>>. The verticalUncertaintyType attribute was added to accurately describe the source and meaning of the encoded Uncertainty coverage. The depthCorrectionType was also added to define if and how the depths are corrected (that is, true depth, depth ref 1500 m/sec, etc.). <<tab-code-defining-the-type-of-sound-velocity-correction>> and <<tab-code-defining-how-uncertainty-was-determined>> provide a description.
+The class *S102_DataIdentification* provides an extension to the metadata available from <<iso-19115-1>>. The verticalUncertaintyType attribute was added to accurately describe the source and meaning of the encoded Uncertainty coverage. The depthCorrectionType was also added to define if and how the depths are corrected (that is, true depth, depth ref 1500 m/sec, etc.). <<tab-code-defining-the-type-of-sound-velocity-correction>> and <<tab-code-defining-how-uncertainty-was-determined>> provide a description.
 
 
 [[tab-code-defining-the-type-of-sound-velocity-correction]]
@@ -379,9 +379,9 @@ NOTE: As stated in <<cls-1.3>>, uncertainty is always considered to be 1-dimensi
 === Structure metadata
 Structure metadata is used to describe the structure of an instance of a collection. Since constraints can be different on separate files (for example they could be derived from different legal sources), or security constraints may be different, the constraint information becomes part of the structure metadata. The other structure metadata is the grid representation and the reference system.
 
-<<fig-s102-structure-metadata>> shows the *S102_StructureMetadataBlock*. The metadata block is generated by the inheritance of attributes from a number of <<iso19115>> metadata classes and from two implementation classes for the horizontal and vertical reference system. This makes the metadata block a simple table.
+<<fig-s102-structure-metadata>> shows the *S102_StructureMetadataBlock*. The metadata block is generated by the inheritance of attributes from a number of <<iso-19115-1>> metadata classes and from two implementation classes for the horizontal and vertical reference system. This makes the metadata block a simple table.
 
-Metadata in *S102_StructureMetadataBlock* is encoded within a separate metadata xml file under the *S102_MetadataBlock* root element. 
+Metadata in *S102_StructureMetadataBlock* is encoded within a separate metadata xml file under the *S102_MetadataBlock* root element.
 
 
 [[fig-s102-structure-metadata]]
@@ -442,7 +442,7 @@ Mandatory and must be 1.
 
 
 ==== Quality metadata
-Quality metadata is used to describe the quality of the data in an instance of a collection. <<fig-s102-quality-metadata>> shows the *S102_QualityMetadataBlock*. The *S102_QualityMetadataBlock* derives directly from the <<iso19115>> class *DQ_DataQuality*. However, its components *S102_LI_Source* and *S102_LI_ProcessStep* are generated by the inheritance of attributes from the <<iso19115>> classes *LI_Scope* and *LI_ProcessStep*. Only some of the attributes of the referenced <<iso19115>> classes are implemented.
+Quality metadata is used to describe the quality of the data in an instance of a collection. <<fig-s102-quality-metadata>> shows the *S102_QualityMetadataBlock*. The *S102_QualityMetadataBlock* derives directly from the <<iso-19115-1>> class *DQ_DataQuality*. However, its components *S102_LI_Source* and *S102_LI_ProcessStep* are generated by the inheritance of attributes from the <<iso-19115-1>> classes *LI_Scope* and *LI_ProcessStep*. Only some of the attributes of the referenced <<iso-19115-1>> classes are implemented.
 
 Metadata in *S102_QualityMetadataBlock* is encoded within a separate metadata xml file under the *S102_MetadataBlock* root element.
 
@@ -559,12 +559,12 @@ Chair has action to ensure that PT at-large is happy with the removal of "or 'ti
 
 
 ==== Acquisition metadata
-Acquisition metadata to a Bathymetric Surface Product Specification profile is being developed nationally. The classes derive from <<iso19115>>, <<iso-19115-2>>, <<iso-ts-19130>> and <<iso-ts-19130-2>>. The later document <<iso-ts-19130-2>> contains description of sonar parameters.
+Acquisition metadata to a Bathymetric Surface Product Specification profile is being developed nationally. The classes derive from <<iso-19115-1>>, <<iso-19115-2>>, <<iso-ts-19130>> and <<iso-ts-19130-2>>. The later document <<iso-ts-19130-2>> contains description of sonar parameters.
 
 === Exchange Set metadata
 For information exchange, there are several categories of metadata required: metadata about the overall Exchange Catalogue, metadata about each of the datasets contained in the Catalogue.
 
-<<fig-realization-of-the-exchange-set-classes>>, <<fig-s102-exchange-set-catalogue>>, <<fig-s102-exchange-set>> and <<fig-s102-exchange-set-class-details>> outline the overall concept of an S-102 Exchange Set for the interchange of geospatial data and its relevant metadata. <<fig-realization-of-the-exchange-set-classes>> depicts the realization of the <<iso19139>> classes which form the foundation of the Exchange Set. The overall structure of S-102 metadata for Exchange Sets is modelled in <<fig-s102-exchange-set-catalogue>> and <<fig-s102-exchange-set>>. More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> and a textual description in <<tab-s102-exchangeCatalogue-params;to!tab-pt-locale-params>>.
+<<fig-realization-of-the-exchange-set-classes>>, <<fig-s102-exchange-set-catalogue>>, <<fig-s102-exchange-set>> and <<fig-s102-exchange-set-class-details>> outline the overall concept of an S-102 Exchange Set for the interchange of geospatial data and its relevant metadata. <<fig-realization-of-the-exchange-set-classes>> depicts the realization of the <<iso-19139-1>> classes which form the foundation of the Exchange Set. The overall structure of S-102 metadata for Exchange Sets is modelled in <<fig-s102-exchange-set-catalogue>> and <<fig-s102-exchange-set>>. More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> and a textual description in <<tab-s102-exchangeCatalogue-params;to!tab-pt-locale-params>>.
 
 The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 

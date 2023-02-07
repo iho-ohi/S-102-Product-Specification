@@ -828,6 +828,7 @@ For bathymetric gridded data, the dataset includes a two-dimensional array conta
 
 The depth and uncertainty values (depth and uncertainty) are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with two members.
 
+[[root-qualityOfSurveyCoverage]]
 ==== Root QualityOfSurveyCoverage
 
 The QualityOfSurveyCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group.
