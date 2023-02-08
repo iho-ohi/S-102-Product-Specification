@@ -39,7 +39,7 @@ The structure of the data product follows the form given in <<iho-s100,part=10c>
 
 [[fig-outline-of-the-generic-data-file-structure]]
 .Outline of the generic data file structure
-image::figure-outline-of-the-generic-data-file-structure.png[]
+image::../images/figure-outline-of-the-generic-data-file-structure.png[]
 
 <<fig-outline-of-the-generic-data-file-structure>> shows the four levels defined within the HDF encoding as defined in <<iho-s100,part=10c>>. Below is a further definition of these levels.
 
@@ -158,7 +158,7 @@ _(h5_dataset)_
 
 [[fig-hierarchy-of-s102-data-product]]
 .Hierarchy of S-102 Data Product
-image::figure-hierarchy-of-s102-data-product.png[]
+image::../images/figure-hierarchy-of-s102-data-product.png[]
 
 The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
 
