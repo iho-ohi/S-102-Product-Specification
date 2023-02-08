@@ -7,7 +7,7 @@ The Bathymetric Surface Product incorporates aspects of the Navigation Surface c
 
 [[fig-overview-structure-s102]]
 .Overview Structure of S-102
-image::figure-overview-structure-s102.png[]
+image::../images/figure-overview-structure-s102.png[]
 
 Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<iho-s100,part=8>>, and Information Types as defined in <<iho-s100,part=4>>, together with a point set tracking list. This is described in <<subsec-application-schema>>.
 
@@ -17,7 +17,7 @@ The Application Schema Data Set Structure is shown in <<fig-data-set-structure-s
 
 [[fig-data-set-structure-s102]]
 .Data Set Structure of S-102
-image::figure-data-set-structure-s102.png[]
+image::../images/figure-data-set-structure-s102.png[]
 
 
 The model in <<fig-data-set-structure-s102>> states that:
@@ -30,7 +30,7 @@ This matter is discussed further in <<subsec-tiling-scheme-partitioning>>.
 
 [[fig-coverage-structure-of-s102]]
 .Coverage Structure of S-102
-image::figure-coverage-structure-of-s102.png[]
+image::../images/figure-coverage-structure-of-s102.png[]
 
 The model in <<fig-coverage-structure-of-s102>> depicts the coverage type in this application schema: 
 
@@ -45,7 +45,7 @@ In order to simplify the implementation, a number of defaults are assumed for S-
 
 [[fig-implementation-of-classes]]
 .Implementation of Classes of S-102
-image::figure-implementation-of-classes.png[]
+image::../images/figure-implementation-of-classes.png[]
 
 
 ===== Implementation classes description
