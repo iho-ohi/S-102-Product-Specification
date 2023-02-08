@@ -552,11 +552,16 @@ image::figure-components-and-associated-metadata-for-the-s102-exchange-set.png[]
 .Relationship between exchange catalogue, discovery metadata, and dataset (from S-100 5.0.0 Figure 17-6)
 image::figure-relationship-between-exchange-catalogue-discovery-metadata-and-dataset.png[]
 
+[%landscape]
+<<<
 [[fig-s102-exchange-set-class-details]]
 .S-102 Exchange Set Class Details
 image::figure-s102-exchange-set-class-details.png[]
 
 //<<fig-s102-exchange-set-class-details>> should be on a landscape mode page (RM comment 25Jan2023)
+
+[%portrait]
+<<<
 
 The following clauses define the mandatory and optional metadata needed for S-102. In some cases, the metadata may be repeated in a national language. If this is the case it is noted in the Remarks column.
 
