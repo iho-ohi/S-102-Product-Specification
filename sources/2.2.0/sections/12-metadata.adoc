@@ -162,7 +162,7 @@ Metadata is used for a number of purposes. One high level purpose is for the ide
 
 [[fig-s102-discovery-metadata]]
 .S-102 Discovery Metadata
-image::figure-s102-discovery-metadata.png[]
+image::../images/figure-s102-discovery-metadata.png[]
 
 
 <<fig-s102-discovery-metadata>> above shows the *S102_DiscoveryMetadataBlock*. It has one subtype S102_DS_DiscoveryMetadata. This implements the metadata classes from <<iso-19115-1>>. First implementation classes have been developed corresponding to each of the <<iso-19115-1>> classes that have been referenced in which only the applicable attributes have been included. The class *S102_DS_DiscoveryMetadata* inherits attributes from S-102 specific implementation classes. In addition, an additional component *S102_DataIdentification* has been added.
@@ -354,7 +354,7 @@ Metadata in *S102_StructureMetadataBlock* is encoded within a separate metadata 
 
 [[fig-s102-structure-metadata]]
 .S-102 Structure Metadata
-image::figure-s102-structure-metadata.png[]
+image::../images/figure-s102-structure-metadata.png[]
 
 
 [[tab-structuremetadatablock-class-attributes]]
@@ -420,7 +420,7 @@ Metadata in *S102_QualityMetadataBlock* is encoded within a separate metadata xm
 
 [[fig-s102-quality-metadata]]
 .S-102 Quality Metadata
-image::figure-s102-quality-metadata.png[]
+image::../images/figure-s102-quality-metadata.png[]
 
 
 <<tab-quality-metadata-block-description>> provides a description of each attribute of the S102_QualityMetadataBlock class attributes and those of its components.
@@ -546,17 +546,17 @@ The discovery metadata classes have numerous attributes which enable important i
 
 [[fig-components-and-associated-metadata-for-the-s102-exchange-set]]
 .Components and associated metadata for the S-102 exchange set (S-100 5.0.0 Figure 17-2 with items not used by S-102 omitted)
-image::figure-components-and-associated-metadata-for-the-s102-exchange-set.png[]
+image::../images/figure-components-and-associated-metadata-for-the-s102-exchange-set.png[]
 
 [[fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset]]
 .Relationship between exchange catalogue, discovery metadata, and dataset (from S-100 5.0.0 Figure 17-6)
-image::figure-relationship-between-exchange-catalogue-discovery-metadata-and-dataset.png[]
+image::../images/figure-relationship-between-exchange-catalogue-discovery-metadata-and-dataset.png[]
 
 [%landscape]
 <<<
 [[fig-s102-exchange-set-class-details]]
 .S-102 Exchange Set Class Details
-image::figure-s102-exchange-set-class-details.png[]
+image::../images/figure-s102-exchange-set-class-details.png[]
 
 //<<fig-s102-exchange-set-class-details>> should be on a landscape mode page (RM comment 25Jan2023)
 
