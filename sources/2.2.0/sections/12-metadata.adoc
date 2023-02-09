@@ -158,7 +158,7 @@ The dataset metadata is stored in a separate file encoded according to the ISO 1
 
 [[subsec-discovery-metadata]]
 === Discovery metadata
-Metadata is used for a number of purposes. One high level purpose is for the identification and discovery of data. Every data set needs to be identified so that it can be distinguished from other data sets and so it can be found in a data catalogue, such as a Web Catalogue Service. The discovery metadata applies at the *S102_DataSet* level. Metadata in *S102_DiscoveryMetadataBlock* is encoded in a separate metadata file within the [[metab]]*S102_DSMetadataBlock*.
+Metadata is used for a number of purposes. One high level purpose is for the identification and discovery of data. Every data set needs to be identified so that it can be distinguished from other data sets and so it can be found in a data catalogue, such as a Web Catalogue Service. The discovery metadata applies at the *S102_DataSet* level. Metadata in *S102_DiscoveryMetadataBlock* is encoded within a separate metadata xml file under the [[metab]]*S102_DSMetadataBlock* root element.
 
 [[fig-s102-discovery-metadata]]
 .S-102 Discovery Metadata
