@@ -45,13 +45,9 @@ include::sections/aa-data_class_enc_.adoc[]
 
 include::sections/ac-norm_impl_guidance.adoc[]
 
-include::sections/ad-feature_catalogue.adoc[]
-
 include::sections/ae-portrayal-catalogue.adoc[]
 
 include::sections/af-dataset_size_production.adoc[]
-
-include::sections/ag-gridding_methods.adoc[]
 
 include::sections/ah-multi-res_gridding.adoc[]
 
