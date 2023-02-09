@@ -26,9 +26,6 @@ The formatting consistency of S-102 grids is maintained due to the overriding en
 
 === Positional accuracy
 
-==== Accuracy of a time measurement
-Temporal aspects of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
-
 ==== Gridded data positional accuracy
 Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each node using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference points and positional resolution are important and are another factor in gridded positional accuracy.
 
@@ -37,11 +34,7 @@ The internal positional accuracy is defined as the precision of the location of 
 
 === Temporal accuracy
 
-==== Temporal consistency
-Temporal aspects of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification. 
-
-==== Temporal validity
-Temporal aspects of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification. 
+Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
 === Thematic accuracy
 
