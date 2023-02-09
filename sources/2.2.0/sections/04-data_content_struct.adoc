@@ -242,7 +242,7 @@ The grid properties of origin and spacing are defined by attributes in the *Bath
 
 [[fig-s102-grid-node-location]]
 .S-102 Grid Node location
-image::figure-s102-grid-node.location.png[]
+image::../images/figure-s102-grid-node.location.png[]
 
 The two values, depth and uncertainty, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value.
 
