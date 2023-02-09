@@ -158,7 +158,7 @@ _(h5_dataset)_
 
 [[fig-hierarchy-of-s102-data-product]]
 .Hierarchy of S-102 Data Product
-image::../images/figure-hierarchy-of-s102-data-product.png[]
+image::../images/figure-hierarchy-of-s102-data-product-nozero.png[]
 
 The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
 
