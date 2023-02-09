@@ -9,7 +9,7 @@ The Bathymetric Surface Product incorporates aspects of the Navigation Surface c
 .Overview Structure of S-102
 image::../images/figure-overview-structure-s102.png[]
 
-Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<iho-s100,part=8>>, and Information Types as defined in <<iho-s100,part=4>>, together with a point set tracking list. This is described in <<subsec-application-schema>>.
+Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<iho-s100,part=8>>, and metadata packages as defined in <<iho-s100,part=4>>, together with a point set tracking list. This is described in <<subsec-application-schema>>.
 
 [[subsec-application-schema]]
 === Application Schema
@@ -127,7 +127,7 @@ The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a compos
 [level=7]
 ===== values
 
-The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and _uncertainty_ in the *S102_BathymetryValues* class. The definition for the _depth_ is defined by the _depthCorrectionType_ attribute in the *S102_DataIdentification* class. The definition of the type of data in the values record is defined by the _verticalUncertaintyType_ attribute in the *S102_DataIdentification* class.
+The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and _uncertainty_ in the *S102_BathymetryValues* class.
 
 
 [level=6]
@@ -146,7 +146,7 @@ The attribute _coordinate_ is a sequence of Numbers that hold the coordinate of 
 [level=7]
 ===== dimension
 
-The attribute _dimension_ is a derived attribute that describes the length of coordinate.
+The attribute _dimension_ is a derived attribute that describes the number of coordinate axes.
 
 [level=6]
 ===== CV_GridEnvelope
@@ -191,7 +191,7 @@ The class *CV_SequenceRule* contains information for mapping grid coordinates to
 [level=7]
 ===== type
 
-The attribute _type_ shall identify the type of sequencing method that shall be used. A code list of scan types is provided in S-100 Part 8. Only the value -- linear shall be used in S-102, which describes scanning row by row by column.
+The attribute _type_ shall identify the type of sequencing method that shall be used. A code list of scan types is provided in <<iho-s100,part=10c>>. Only the value -- linear shall be used in S-102, which describes scanning row by row by column.
 
 [level=7]
 [[scanDirection]]
