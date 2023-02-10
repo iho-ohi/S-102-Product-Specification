@@ -1118,13 +1118,14 @@ May be approximate for ungeorectified data (*not applicable to this edition of S
 For example, for 5-metre resolution, the value 5 must be encoded. +
 See <<s100-dataCoverage-params-note1>>.
 
+|===
 [[s100-dataCoverage-params-note1]]
 [NOTE]
 ====
 If the grid cell size varies over the extent of the grid, an approximated value based on model parameters or production metadata should be used.
 ====
 
-|===
+
 
 ==== S100_Purpose
 [[tab-s100-purpose]]
@@ -1249,8 +1250,9 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 [[tab-s100-compliancyCategory]]
 .S100_CompliancyCategory
 [cols="a,a,a,^a,a",options="header"]
-|Role Name |Name |Description |Code + (see <<s100-compliancy-category-note1>>) |Remarks
 |===
+|Role Name |Name |Description |Code + (see <<s100-compliancy-category-note1>>) |Remarks
+
 
 |Enumeration
 |S100_CompliancyCategory
@@ -1287,13 +1289,13 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |4
 |*Qualifies as _category3_; plus additional requirements, including a portrayal catalogue, cybersecurity (digital signatures and encryption), test material, use of a CRS from the EPSG Registry, and compliance with the IHO S-98 interoperability catalogue. [S-100 5.0.0 4a-5.5.4]*
 
-
+|===
 [[s100-compliancy-category-note1]]
 [NOTE]
 ====
 Numeric codes are not provided in S-100 Edition 5.0.0 but have since been determined by the S-100WG; they are needed only if the enumeration is also encoded as an HDF5 enumeration.
 ====
-|===
+
 
 ==== S100_ProtectionScheme
 
@@ -1314,8 +1316,6 @@ Numeric codes are not provided in S-100 Edition 5.0.0 but have since been determ
 |IHO S-100 Part 15
 |-
 |See <<iho-s100,part=15>>.
-
-NOTE: The specified value corrects a discrepancy between S-100 4.0.0 Figure 4a-D-4 and the Table S100_ProtectionScheme in S-100 Part 4a-D.
 |===
 
 === MD_MaintenanceInformation
@@ -1425,8 +1425,7 @@ S-102 uses S100_CatalogueMetadata without modification.
 * 2 new edition +
 * 5 cancellation +
 Default is new edition +
-See S100_Purpose
-//replace last line of remarks column above with a proper reference (LH comment 8Feb2023)
+See <<tab-s100-purpose>>.
 
 |Attribute
 |editionNumber
@@ -1819,9 +1818,6 @@ The classes S100_SE_CertificateContainer, S100_SE_DigitalSignatureReference, and
 
 In accordance with <<iho-s100,part=15>>, only the DSA algorithm is allowed from the S100_SE_DigitalSignatureReference enumeration.
 
-S-102 uses S100_DigitalSignatureValue without modification. As stated in <<iho-s100,part=15>>:
+S-102 uses S100_DigitalSignatureValue without modification. As stated in <<iho-s100,part=15,clause=15-8.11.4>>:
 
 "The class S100_SE_DigitalSignatureValue is realized as one of either S100_SE_SignatureOnData (a digital signature of a particular identified resource) or an additional digital signature defined using the class S100_SE_AdditionalSignature, each of which is either a S100_SE_SignatureOnData or S100_SE_SignatureOnSignature element as described in clause 15-8.8. S-100 Part 17 metadata thus allows for multiple digital signatures, a single mandatory S100_SE_SignatureOnData and any number of additional signatures, either of the data or other signatures."
--- IHO S-100 Part 15 Clause X.X
-
-//Probably not the best block quote method, but it will serve at least as a placeholder. (LH comment 8Feb2023)
