@@ -6,6 +6,7 @@ Changes to this Specification are coordinated by the IHO S-100 Working Group. Ne
 
 [%unnumbered]
 [[tab-document-history]]
+.Document History
 [cols="a,a,a,a",options="headers"]
 |===
 |Version Number |Date |Approved By |Purpose
