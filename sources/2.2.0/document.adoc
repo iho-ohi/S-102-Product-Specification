@@ -2,18 +2,18 @@
 :series: S
 :docnumber: 102
 :doctype: standard
-:edition: 2.0.0
+:edition: 2.2.0
 :language: en
-:published-date: 2019-10
-:copyright-year: 2019
-:status: retired
+:published-date: 2022-12
+:copyright-year: 2022
 :committee: hssc
 :workgroup: tsmad
+:toclevels: 3
 :mn-document-class: iho
 :mn-output-extensions: xml,html,doc,pdf,rxl
 :local-cache-only:
-:data-uri-image:
 :imagesdir: images
+:status: draft-development
 
 include::sections/00-document-history.adoc[]
 
@@ -43,17 +43,11 @@ include::sections/12-metadata.adoc[]
 
 include::sections/aa-data_class_enc_.adoc[]
 
-include::sections/ab-hdf5_encoding.adoc[]
-
 include::sections/ac-norm_impl_guidance.adoc[]
-
-include::sections/ad-feature_catalogue.adoc[]
 
 include::sections/ae-portrayal-catalogue.adoc[]
 
 include::sections/af-dataset_size_production.adoc[]
-
-include::sections/ag-gridding_methods.adoc[]
 
 include::sections/ah-multi-res_gridding.adoc[]
 

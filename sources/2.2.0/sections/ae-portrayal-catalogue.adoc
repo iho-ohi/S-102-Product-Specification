@@ -1,0 +1,6 @@
+[[annex-portrayal-catalogue]]
+:appendix-caption: Annex
+[appendix,obligation="informative"]
+== Portrayal Catalogue
+
+NOTE: Portrayal Catalogue currently under development.

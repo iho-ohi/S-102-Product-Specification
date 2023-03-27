@@ -24,28 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Cache Metanorma fonts
-        uses: actions/cache@v3
-        with:
-          path: /config/fonts
-          key: fontist-docker
-          restore-keys: fontist-docker
-
-      - name: Metanorma setup
-        uses: metanorma/ci/docker-gem-install@main
-
       - name: Metanorma generate site
-        uses: actions-mn/cli/site-gen@main
+        uses: actions-mn/build-and-publish@v1
         with:
           agree-to-terms: true
-          output-dir: ./_site
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v2
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
 
   deploy:
     if: ${{ github.ref == 'refs/heads/main' }}

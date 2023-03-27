@@ -33,7 +33,7 @@ Sonar Max Ping Rate: 20 Hz
 
 ==== Ping rate and number of depth estimates
 
-In 20 metres of water the system described above would collect 400 individual depth estimates each ping. If maximum ping rate of 20 Hz is realized the sonar has the ability to collect 8000 individual depth estimates every second.
+In 20 metres of water the system described above would collect 400 individual depth estimates each ping. If maximum ping rate of 20 Hz is realized the sonar has the ability to collect 8,000 individual depth estimates every second.
 
 [%unnumbered]
 [pseudocode]
@@ -61,7 +61,7 @@ image::figure-sonar-footprint-at-nadir.png[]
 
 
 ==== Sonar coverage
-A benefit of multibeam sonars is the ability to collect a swath of depth estimates with each ping. The example sonar lists swath coverage as 5 times water depth. In 20 metres of water this system will ensonify 100 metres of seafloor every ping. This results in a 100 metre swath (50 metres to port and starboard) along the entire length of the survey line. See <<fig-swath-coverage-of-survey-vessel>>.
+A benefit of multibeam sonars is the ability to collect a swath of depth estimates with each ping. The example sonar lists swath coverage as 5 times water depth. In 20 metres of water this system will ensonify 100 metres of seafloor every ping. This results in a 100-metre swath (50 metres to port and starboard) along the entire length of the survey line. See <<fig-swath-coverage-of-survey-vessel>>.
 
 
 [[fig-swath-coverage-of-survey-vessel]]
@@ -83,10 +83,10 @@ Throughout the survey or at its completion hydrographers will process collected 
 
 NOTE: The reason for gridding at such a high resolution is to eliminate the need to revisit the full source data point cloud (10.4 Billion Depth Estimates) every time a production effort is initiated. Production and archival of a high-density grid allows the HO to defocus the high-density surface to a coarser resolution more applicable to the intended charting product.
 
-Results: A 0.5 metre grid for the example survey area: 2.1 Billion depth nodes, or < 20% of the total collected depth estimates. _See <<fig-charted-sounding-vs-6-metre-s102-grid>> for a graphic representation of the survey area at 0.5 metre resolution_.
+Results: A 0.5-metre grid for the example survey area: 2.1 Billion depth nodes, or < 20% of the total collected depth estimates.
 
 ==== Generation of a production grid
-Referencing the beginning of this Annex, the intended product is a 1:22,000 ENC. Reduction of the "`high-density`" grid to a 6 metre grid reduces the number of grid nodes from 2.1 Billion to 14.6 million. The resulting 6 metre grid serves as an example of soundings extracted to support chart production. *In total, less than 1% of collected depth estimates make it on a charting product*.
+Referencing the beginning of this Annex, the intended product is a 1:22,000 ENC. Reduction of the "`high-density`" grid to a 6-metre grid reduces the number of grid nodes from 2.1 Billion to 14.6 million. The resulting 6-metre grid serves as an example of soundings extracted to support chart production. *In total, less than 1% of collected depth estimates make it on a charting product*.
 
 NOTE: If the 6-metre surface serves as the source for a complimentary S-102 dataset there will be ~169 nodal depths underneath a single charted sounding. See <<fig-charted-sounding-vs-6-metre-s102-grid>>.
 
