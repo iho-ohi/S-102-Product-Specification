@@ -234,7 +234,7 @@ NOTE: A directed line segment represents a vector if the length and direction of
 This Product Specification adopts the following convention for presentation purposes:
 
 API:: Application Programming Interface
-BAG:: Bathymetric Attributed Grid
+//BAG removed here as it is not mentioned anywhere else in the document. LHH from SMA comments 4Apr2023
 DS:: Digital Signature
 DSS:: Digital Signature Scheme
 ECDIS:: Electronic Chart Display Information System
