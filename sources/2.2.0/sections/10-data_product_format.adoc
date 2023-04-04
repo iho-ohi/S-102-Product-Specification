@@ -1053,6 +1053,15 @@ see <<iho-s100,part=1,table=2>>.
 | 0..1
 | String
 |
+
+| 15
+| bathymetricUncertaintyType
+| An estimate of the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.
+| 0..1
+| Enumeration
+| See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>. +
+See <<note10>>.
+
 |===
 
 [[note4]]
@@ -1090,6 +1099,65 @@ Full seafloor coverage achieved applies to both the spatial completeness of feat
 ====
 The attribute bathyCoverage is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery (interpolated gapes between bathymetry coverage in this situation would show fullCoverage = True and bathyCoverage = False). If fullCoverage = False, bathyCoverage must also equal False, such as gaps between single beam echosounder data without correlating side-scan sonar coverage.
 ====
+
+[[note10]]
+[NOTE]
+====
+Names and listed values which are not currently defined in the IHO GI Registry are subject to change upon acceptance in the Registry.
+====
+
+[[tab-codes-defining-how-bathy-depth-uncertainty-determined]]
+.Codes defining how uncertainty of bathymetric depth was determined
+[cols="<,<,<,<,<"]
+|===
+
+| Role Name
+| Name
+| Description
+| Code
+| Remarks
+
+| Enumeration
+| S102_BatymetricUncertaintyType
+| An estimate of the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.
+| -
+| 
+
+| Value
+| rawStandardDeviation
+| Raw standard deviations of soundings that contributed to the node.
+| 1
+| -
+
+
+| Value
+| cUBEStandardDeviation
+| Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE's standard output of uncertainty).
+| 2
+| -
+
+
+| Value
+| productUncertainty
+| The greater of (1) standard deviation of the soundings contributing to the depth solution or, (2) the _a priori_ computed uncertainty estimate (that is, modelled Total Vertical Uncertainty).
+| 3
+| -
+
+
+| Value
+| historicalStandardDeviation
+| Estimated standard deviation based on historical/archive data.
+| 4
+| -
+
+
+| Value
+| (fill value representing "unknown")
+| (fill value when the uncertainty is an unknown layer type)
+| 0
+| This is a "fill value" and will not be in the feature catalogue.
+
+|===
 
 ==== Instance group QualityOfSurveyCoverage.01
 The QualityOfSurveyCoverage.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
