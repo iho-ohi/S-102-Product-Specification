@@ -568,14 +568,16 @@ BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, who
 [cols="a,a,a,a,a",options="header"]
 |===
 
-.2+| Name 
-.2+| Explanation 
+| Name 
+| Explanation 
 2+| BathymetryCoverage
 | QualityOfSurvey
 
-|S-100 Attribute 1 
-|S-100 Attribute 2
-|Attribute 1
+| Name
+| Explanation
+| S-100 Attribute 1 
+| S-100 Attribute 2
+| Attribute 1
 
 |code
 |Camel Case code of attribute as in Feature Catalogue
