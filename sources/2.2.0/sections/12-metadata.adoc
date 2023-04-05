@@ -13,7 +13,7 @@ The elements are related in a metadata Schema and include definitions and extens
 
 [[tab-s102-handling-of-core-metadata-elements]]
 .S-102 Handling of Core Metadata Elements
-[cols="a,a"]
+[cols="a,a",options="header"]
 |===
 
 |*Dataset title (M)*
@@ -205,6 +205,7 @@ This model provides the minimum amount of metadata for a Bathymetry Surface data
 [[discoverymetadablock-class-attributes]]
 .S102_DiscoveryMetadataBlock class attributes
 [cols="a,a,a,^a,a,a",options="header",cols="1,3,2,1,3,3"]
+//I am unsure why cols is defined a second time after options is. (LH comment 5 Apr 2023)
 |===
 |Role Name |Name |Description |Mult |Type |Remarks
 
@@ -362,15 +363,26 @@ NOTE: As stated in <<cls-1.3>>, uncertainty is always considered to be 1-dimensi
 
 [[tab-code-defining-how-uncertainty-was-determined]]
 .Code defining how uncertainty was determined
-[cols="a,a",option="header"]
+[cols="a,a",options="header"]
 |===
-|Value |Definition
 
-|Unknown |"Unknown" - The uncertainty layer is an unknown type
-|Raw_Std_Dev |"Raw Standard Deviation" - Raw standard deviation of soundings that contributed to the node
-|CUBE_Std_Dev |Dev "CUBE Standard Deviation " - Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE's standard output of uncertainty)
-|Product_Uncert |"Product Uncertainty" - The greater of 1) standard deviation of the soundings contributing to the depth solution, or 2) the _a priori_ computed uncertainty estimate (that is, modelled Total Vertical Uncertainty)
-|Historical_Std_Dev |"Historical Standard Deviation " -- Estimated standard deviation based on historical/archive data
+|Value 
+|Definition
+
+|Unknown 
+|"Unknown" - The uncertainty layer is an unknown type
+
+|Raw_Std_Dev 
+|"Raw Standard Deviation" - Raw standard deviation of soundings that contributed to the node
+
+|CUBE_Std_Dev 
+|Dev "CUBE Standard Deviation " - Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE's standard output of uncertainty)
+
+|Product_Uncert 
+|"Product Uncertainty" - The greater of 1) standard deviation of the soundings contributing to the depth solution, or 2) the _a priori_ computed uncertainty estimate (that is, modelled Total Vertical Uncertainty)
+
+|Historical_Std_Dev 
+|"Historical Standard Deviation " -- Estimated standard deviation based on historical/archive data
 
 |===
 
@@ -391,7 +403,7 @@ image::figure-s102-structure-metadata.png[]
 
 [[tab-structuremetadatablock-class-attributes]]
 .S102_StructureMetadataBlock class attributes
-[cols="1,3,2,1,2,2"]
+[cols="1,3,2,1,2,2",options="header"]
 |===
 h|Role Name h|Name h|Description h|Mult h|Type h|Remarks
 
