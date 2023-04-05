@@ -477,7 +477,7 @@ The baseCRS is the geodetic CRS on which the projected CRS is based. In particul
 
 [[tab-s102-gridding-method-parameters]]
 .S102_GriddingMethod parameters
-[cols="a,a,a,^a,a",option="header"]
+[cols="a,a,a,^a,a",options="header"]
 |===
 |Role name |Name |Description |Code |Remarks
 
@@ -565,7 +565,7 @@ BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, who
 .Sample contents of the BathymetryCoverage and QualityOfSurvey arrays
 //It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1 (RM comment 4Jan2023)
 
-[cols="a,a,a,a,a",option="header"]
+[cols="a,a,a,a,a",options="header"]
 |===
 
 .2+| Name 
@@ -636,7 +636,7 @@ All cells shall be HDF5 variable length strings. The minimum and maximum values 
 ==== Root BathymetryCoverage
 
 [[tab-attributes-of-bathymetrycoverage-feature-container-group]]
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
 .Attributes of *BathymetryCoverage* feature container group
 |===
 | No
@@ -723,7 +723,7 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
 [[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
 .Attributes of *BathymetryCoverage* feature instance group
 |===
 | No
@@ -843,7 +843,7 @@ This group contains the following attributes. These attributes are not defined b
 
 [[tab-attributes-of-values-group]]
 .Attributes of values group
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
 |===
 | No
 | Name
@@ -908,7 +908,7 @@ The QualityOfSurvey container group contains an additional 1-dimensional array n
 
 [[tab-elements-of-featureAttributeTable-compound-datatype]]
 .Elements of featureAttributeTable compound datatype
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
 |===
 
 | No
@@ -1107,7 +1107,7 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 
 [[tab-codes-defining-how-bathy-depth-uncertainty-determined]]
 .Codes defining how uncertainty of bathymetric depth was determined
-[cols="<,<,<,<,<"]
+[cols="<,<,<,<,<",options="header"]
 |===
 
 | Role Name
