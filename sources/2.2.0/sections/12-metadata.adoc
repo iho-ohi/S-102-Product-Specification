@@ -24,7 +24,7 @@ S-102 metadata is encoded in two places:
 //
 //CATALOG.XML should conform to S-100 Part 17 with product-specific restrictions only (no extensions).
 //
-//NOTE: S-102 PT should review Table and <<subsec-discovery-metadata>> and <<subsec-structure-metadata>>  and determine which of their metadata *must* be //included in S-102. Then add attributes (or datasets) to the root group, feature container group, or feature instance groups to encode that metadata, depending on //whether it applies to all features, to a feature type, or feature instance. (Given that S-102 2.2 has only 2 feature types, it should probably be the root group, //meaning it applies to all feature types and instances.)
+//NOTE: S-102 PT should review Table and <<subsec-discovery-metadata>> and <<subsec-structure-metadata>>  and determine which of their metadata *must* be included in S-102. Then add attributes (or datasets) to the root group, feature container group, or feature instance groups to encode that metadata, depending on whether it applies to all features, to a feature type, or feature instance. (Given that S-102 2.2 has only 2 feature types, it should probably be the root group, meaning it applies to all feature types and instances.)
 
 //Above comments from RM circa 23Jan2023
 
@@ -858,7 +858,7 @@ S-100 (and therefore S-102) use a subset of the values allowed in ISO 19115-1.
 
 [[tab-md-maintenance-frequency-code]]
 .MD_MaintenanceFrequencyCode parameters
-[cols="a,a,a,^a,a",option="header"]
+[cols="a,a,a,^a,a",options="header"]
 |===
 |Role Name |Name |Description |Code |Remarks
 
@@ -1052,7 +1052,6 @@ S-102 uses S100_CatalogueScope without modification.
 |LanguageCode
 |<<iso-639-2>> 3-letter language codes. +
 *(S-100 Part 17 mandates the "T" codes.)*
-//S-100 remark is “ISO 639-2/T 3-letter language codes”; the parenthesis following is added because the citation here does not include the “/T” part. (RM comments 23 Mar 2023)
 
 |Attribute
 |country
@@ -1067,6 +1066,7 @@ S-102 uses S100_CatalogueScope without modification.
 |1
 |MD_CharacterSetCode
 |UTF-8 is used in S-100
+
 |===
 
 The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.0.0 schema distribution.
