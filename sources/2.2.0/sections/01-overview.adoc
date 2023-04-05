@@ -276,9 +276,9 @@ UML:: Universal Modelling Language
 This information uniquely identifies this Product Specification and provides information about its creation and maintenance. For further information on dataset metadata, see <<sec-metadata>>.
 
 *Title*:: Bathymetric Surface Product Specification
-*S-100 Version*:: 4.0.0
+*S-100 Version*:: 5.0.0
 *S-102 Version*:: 2.2.0
-*Date*:: December 2022
+*Date*:: April 2023
 
 *Language*:: English
 *Classification*:: Unclassified
