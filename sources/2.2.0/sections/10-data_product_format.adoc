@@ -573,8 +573,8 @@ BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, who
 2+| BathymetryCoverage
 | QualityOfSurvey
 
-| Name
-| Explanation
+| 
+| 
 | S-100 Attribute 1 
 | S-100 Attribute 2
 | Attribute 1
