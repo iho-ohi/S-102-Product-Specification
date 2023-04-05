@@ -443,7 +443,7 @@ unsigned +
 | 27
 | Gridding method
 | griddingMethod
-^|
+^| 0..1
 <| Enumeration
 | See S102_GriddingMethod
 |===
