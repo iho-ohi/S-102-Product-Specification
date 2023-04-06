@@ -154,15 +154,11 @@ The structure of an S-102 Exchange Set must be according to the structure descri
 
 . The S100_ROOT folder must contain a subfolder named S-102. This subfolder holds content specific to the S-102 Product Specification.
 
-. The S-102 subfolder must contain subfolders for the component dataset files (DATASET_FILES), support files (SUPPORT_FILES) and Catalogues (CATALOGUES) as required.
-
-. Individual data files or detailed ISO 19115- 1/2/3 metadata may be optionally placed in their own subfolders or grouped together.
-
-.	Support files, on the other hand, may be grouped together in one folder to prevent duplication across multiple dataset folders. Similarly, when needed, an Exchange Set may carry additional Catalogues and/or their different versions which should also be grouped together in one folder.
+. The S-102 subfolder must contain subfolders for the component dataset files (DATASET_FILES) and Catalogues (CATALOGUES) as required.
 
 . The required Exchange Set Catalogue XML document instance must be named CATALOG.XML and placed in the S100_ROOT folder, together with its digital signature (CATALOG.SIGN) file. All other digital signatures are included within their corresponding resource metadata records in the CATALOG.XML.
 
-. The only support files allowed in S-102 exchange sets are ISO metadata files.
+. Support files are not allowed in S-102 exchange sets for this edition of S-102.
 
 === Exchange Catalogue
 The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATATLOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
