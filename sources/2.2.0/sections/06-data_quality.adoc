@@ -49,5 +49,4 @@ Thematic accuracy of S-102 bathymetric data is wholly quantitative.
 As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located coverage, uncertainty. Uncertainty is defined as the vertical uncertainty at each node location. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
-=======
 
