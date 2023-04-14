@@ -1,5 +1,6 @@
 = IHO S-102 Bathymetric Surface Product Specification
 
+image:https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml/badge.svg[]
 image:https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml/badge.svg["Build Status", link="https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml"]
 
 These documents are available in its rendered forms here:
