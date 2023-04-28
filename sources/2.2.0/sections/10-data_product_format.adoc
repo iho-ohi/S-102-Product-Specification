@@ -192,14 +192,14 @@ Example: INT.IHO.S-102.2.2
 | Time of data product issue
 | issueTime
 ^| 0..1
-<| String (Date Format)
+<| String (Time Format)
 |
 
 | 3
 | Issue date
 | issueDate
 ^| 1
-<| String (Time Format)
+<| String (Date Format)
 |
 
 | 4
