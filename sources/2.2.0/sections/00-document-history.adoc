@@ -5,6 +5,8 @@
 Changes to this Specification are coordinated by the IHO S-100 Working Group. New editions will be made available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution 2/2007 (as amended).
 
 [%unnumbered]
+[[tab-document-history]]
+.Document History
 [cols="a,a,a,a",options="headers"]
 |===
 |Version Number |Date |Approved By |Purpose
@@ -92,6 +94,26 @@ Revised several internal references.
 |S-102PT
 |Edited filename for exchange catalogue to be CATALOG.XML in 11.3 and in Table 12-7.
 
+|2.2.0
+|April 2023
+|S-102PT
+|Major changes: +
+* Changed coverage spatial type from _regular grid_ (DCF 2) to _feature oriented regular grid_ (DCF 9) and +
+added _QualityOfSurvey_ feature for providing quality and source metadata for individual grid cells. +
+Elements affected: Clause 10 and (new) Clause 7.1. +
+* Updated exchange set structure, exchange catalogue, and discovery metadata to align with <<iho-s100,part=17>> +
+* Updated dataset structure specification and embedded metadata attributes to align with updated <<iho-s100,part=10c>> +
+Element affected: Clause 10 +
+* Removed product-specific metadata classes and attributes, and defined replacements in embedded or distributed metadata +
+(i.e., as HDF5 attributes or in the new _QualityOfSurvey_ array) +
+* Removed provisions for including ISO metadata in S-102 exchange sets +
+ +
+Other revisions and clarifications: +
+* Updated UML and other diagrams to align with aforementioned changes +
+* Revised text variously for accuracy and clarity +
+* Removed Annex for Feature Catalogue and changed all its references to the IHO Geospatial Information registry +
+* Moved gridding method information from Annex into Clause 10 +
+* Updated references to more recent versions
 |===
 
 [reviewer=Lawrence Haynes Haselmaier, from=lhh1-start1, to=lhh1-end1]

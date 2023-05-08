@@ -1,3 +1,5 @@
+image::./sources/2.2.0/images/figure-s102-signal-flags-swag.png[signalFlagsSpellingS102,248,120]
+
 = IHO S-102 Bathymetric Surface Product Specification
 
 image:https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml/badge.svg["Build Status", link="https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml"]
@@ -42,7 +44,7 @@ source of the S-102 documents and models
 This repository uses `metanorma` to run these processes.
 
 Please refer to
-https://www.metanorma.org/author/iho/authoring/[Metanorma-IHO documentation]
+https://www.metanorma.org/author/iho/authoring-guide/[Metanorma-IHO documentation]
 for authoring guidance.
 
 

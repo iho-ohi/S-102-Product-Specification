@@ -3,6 +3,7 @@
 <<<
 
 [[annex-data-classification-and-encoding-guide]]
+:appendix-caption: Annex
 [appendix]
 == Data Classification and Encoding Guide
 

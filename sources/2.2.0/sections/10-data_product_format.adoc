@@ -15,7 +15,7 @@ The S-102 data set must be encoded using the Hierarchical Data Format standard, 
 
 The key idea behind the S-102 product structure is that each coverage is a feature. Each of these features is co-located with the others. Therefore, they share the same spatial metadata and each is required to correctly interpret the others.
 
-For the use of HDF5, the following key concepts (<<iho-s100,part=10c,clause=10c-5.1>>) are important:
+For the use of HDF5, the following key concepts (<<iho-s100,part=10c,clause=5.1>>) are important:
 
 _File_:: a contiguous string of bytes in a computer store (memory, disk, etc.), and the bytes represent zero or more objects of the model;
 
@@ -37,11 +37,9 @@ In addition, datasets may be a compound (a single record consisting of an array 
 === Product structure
 The structure of the data product follows the form given in <<iho-s100,part=10c>> -- HDF5 Data Model and File Format. The general structure, which was designed for several S-100 products is given in <<fig-outline-of-the-generic-data-file-structure>>.
 
-EDITOR: While searching for any impacts from Holger's proposed (and accepted) renumbering, I noticed that this mention of Part 10c had the final letter capitalized, while no other mentions had it capitalized. Moving it to lowercase to make it consistent.
-
 [[fig-outline-of-the-generic-data-file-structure]]
 .Outline of the generic data file structure
-image::figure-outline-of-the-generic-data-file-structure.png[]
+image::../images/figure-outline-of-the-generic-data-file-structure.png[]
 
 <<fig-outline-of-the-generic-data-file-structure>> shows the four levels defined within the HDF encoding as defined in <<iho-s100,part=10c>>. Below is a further definition of these levels.
 
@@ -49,11 +47,11 @@ image::figure-outline-of-the-generic-data-file-structure.png[]
 
 *Level 2*:: The next Level contains the Feature Information Group and the Feature Container Group. The Feature Information Group contains the feature *BathymetryCoverage* and the feature attribute codes. The Feature Container Group contains the Feature Metadata and one or more Feature Instance Groups.
 
-*Level 3*:: This contains a Feature Instance group. A feature instance is a bathymetric gridded data for a single region.
+*Level 3*:: This level contains a Feature Instance group. A feature instance is a bathymetric gridded data set for a single region.
 
-*Level 4*:: This contains the actual data for each feature. In S-102 the BathymetryCoverage uses the ValuesGroup to define the content the other groups at this level are not used.
+*Level 4*:: This level contains the actual data for each feature. In S-102 the BathymetryCoverage uses the ValuesGroup to define the content. The other groups at this level are not used.
 
-In <<tab-overview-of-s102-data-product>> below, levels refer to HDF5 structuring (see <<iho-s100,part=10c,figure=10c-9>>). Naming in each box below the header line is as follows: Generic name; S-100 or S-102 name, or [] if none; and (_HDF5 type_) group, attribute or attribute list, or dataset.
+In <<tab-overview-of-s102-data-product>> below, levels refer to HDF5 structuring (see <<iho-s100,part=10c,figure=9>>). Naming in each box below the header line is as follows: Generic name; S-100 or S-102 name, or nothing if none; and (_HDF5 type_) group, attribute or attribute list, or dataset. <<fig-hierarchy-of-s102-data-product>> depicts the same structure using a graphical representation.
 
 
 [[tab-overview-of-s102-data-product]]
@@ -79,7 +77,7 @@ _(h5_dataset)_
 |
 
 |
-|QualityOfSurveyCoverage +
+|QualityOfSurvey +
 _(h5_dataset)_
 |
 |
@@ -123,9 +121,11 @@ _(h5_attribute)_
 axisNames +
 _(h5_dataset)_
 |
-|Bathymetric Data Array values _(h5_dataset)_
+|Bathymetric Data Array values +
+_(h5_dataset)_
 
-|QualityOfSurveyCoverage +
+| Feature Type +
+QualityOfSurvey +
 _(h5_group)_
 |Metadata +
 _(h5_attribute)_ +
@@ -134,7 +134,7 @@ _(h5_attribute)_ +
 |
 
 |
-|QualityOfSurveyCoverage.01 +
+|QualityOfSurvey.01 +
 _(h5_group)_
 |Group_001 +
 _(h5_group)_
@@ -146,7 +146,8 @@ _(h5_attribute)_
 |
 |
 |Quality of Survey Data Array +
-values _(h5_dataset)_
+values +
+_(h5_dataset)_
 
 |
 |Feature Attribute Table +
@@ -158,21 +159,34 @@ _(h5_dataset)_
 
 [[fig-hierarchy-of-s102-data-product]]
 .Hierarchy of S-102 Data Product
-image::figure-hierarchy-of-s102-data-product.png[]
+image::../images/figure-hierarchy-of-s102-data-product.png[]
+
+The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
+
+==== Root Group
+
+The root group is required by HDF5. The S-100 HDF5 format (<<iho-s100,part=10c>>) attaches metadata attributes applicable to the whole dataset to this group. S-102 uses all the S-100 attributes except _geographicIdentifier_ and _metaFeatures_. The attributes used in S-102 are listed in <<tab-root-group-attributes>>, with specific requirements, if any, added in the Remarks column.
 
 [[tab-root-group-attributes]]
 .Root group attributes
-[cols="<a,<a,<a,^a,<a,<a"]
+[cols="<a,<a,<a,^a,<a,<a", options="header"]
 |===
-h| No h| Name h| Camel Case h| Mult h| Data Type h| Remarks
+
+| No
+| Name
+| Camel Case
+| Mult
+| Data Type
+| Remarks
+
 
 | 1
 | Product specification number and version
 | productSpecification
 ^| 1
 <| String
-| <<iho-s100,table=10c-6>> +
-Example: INT.IHO.S-102.2.1
+| <<iho-s100,part=10c,table=6>> +
+Example: INT.IHO.S-102.2.2
 
 | 2
 | Time of data product issue
@@ -188,141 +202,383 @@ Example: INT.IHO.S-102.2.1
 <| String (Date Format)
 |
 
-| [strike]#4#
-| [strike]#Horizontal datum#
-| [strike]#horizontalDatumReference#
-^| [strike]#1#
-<| [strike]#String#
-| [strike]#Value: EPSG#
-
-| 5
+| 4
 | Horizontal CRS
 | horizontalCRS
 ^| 1
-<| Integer 32-bit
-| The identifier (EPSG code) of the horizontal CRS as defined in <<horizontal-crs>> (see <<note1>>)
+<| Integer +
+32-bit
+| The identifier (EPSG code) of the horizontal CRS as defined in <<horizontal-crs>> (see <<note1>>).
+
+| 5
+| Name of the horizontal CRS
+| nameOfHorizontalCRS
+^| 0..1
+<| String
+| Mandatory if horizontalCRS = -1
 
 | 6
+| Type of the horizontal CRS
+| typeOfHorizontalCRS
+^| 0..1
+<| Enumeration
+| Mandatory if horizontalCRS = -1 +
+See <<iho-s100,part=10c,clause=5>>.
+
+| 7
+| Horizontal coordinate system
+| horizontalCS
+^| 0..1
+<| Integer +
+32-bit
+| Mandatory if horizontalCRS = -1 +
+Allowed values if typeOfHorizontalCRS = 1 +
+(Geodetic CRS 2D): +
+*6422 (Lat, Lon -- degree) +
+Allowed values if typeOfHorizontalCRS = 2 +
+(Projected CRS): +
+*4400 (Easting, Northing -- metres) +
+*4500 (Northing, Easting -- metres)
+
+| 8
+| Horizontal datum
+| horizontalDatum
+^| 0..1
+<| Integer +
+32-bit
+| Mandatory if horizontalCRS = -1 +
+EPSG code or -1 if user defined
+
+| 9
+| Name of horizontal datum
+| nameOfHorizontalDatum
+^| 0..1
+<| String
+| Mandatory if horizontalDatum = -1
+
+| 10
+| Prime meridian
+| primeMeridian
+^| 0..1
+<| Integer +
+32-bit
+| Mandatory if horizontalDatum = -1; +
+EPSG Code
+
+| 11
+| Spheroid
+| spheroid
+^| 0..1
+<| Integer +
+32-bit
+| Mandatory if horizontalDatum = -1; +
+EPSG Code
+
+| 12
+| Projection method
+| projectionMethod
+^| 0..1
+<| Integer +
+32-bit
+| Mandatory if typeOfHorizontalCRS = 2; +
+EPSG Code +
+See <<iho-s100,part=10c,clause=8>>.
+
+| 13
+| Projection parameter 1
+| projectionParameter1
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+See <<iho-s100,part=10c,clause=8>>.
+
+| 14
+| Projection parameter 2
+| projectionParameter2
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+See <<iho-s100,part=10c,clause=8>>.
+
+| 15
+| Projection parameter 3
+| projectionParameter3
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+See <<iho-s100,part=10c,clause=8>>.
+
+| 16
+| Projection parameter 4
+| projectionParameter4
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+See <<iho-s100,part=10c,clause=8>>.
+
+| 17
+| Projection parameter 5
+| projectionParameter5
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+See <<iho-s100,part=10c,clause=8>>.
+
+| 18
+| False northing
+| falseNorthing
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+To be applied to the coordinates at axis Northing. [m]
+
+| 19
+| False easting
+| falseEasting
+^| 0..1
+<| Float +
+64-bit
+| Only if projectionMethod is used. +
+To be applied to the coordinates at axis Easting. [m]
+
+| 20
 | Epoch of realization
 | epoch
 ^| 0..1
 <| String
 |
 
-| 7a
-.4+| Bounding box
+| 21
+.4+| Bounding box 
 | westBoundLongitude
 ^| 1
-<| Float 32-bit
-.4+| The values are in decimal degrees. If a projected CRS is used for the dataset, these values refer to those of the baseCRS underlying the projected CRS (see <<note2>>)
+<| Float +
+32-bit
+.4+| The values are in decimal degrees. +
+If a projected CRS is used for the dataset, these values refer to those of the baseCRS underlying the projected CRS (see <<note3>>).
 
-| 7b
+| 21
+
 | eastBoundLongitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 
-| 7c
+| 21
+
 | southBoundLatitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 
-| 7d
+
+| 21
+
 | northBoundLatitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 
-| 9
+
+| 22
 | Metadata
 | metadata
 ^| 1
 <| String
 | Name of metadata file +
-MD_<HDF5 data file base name>.XML (or .xml) ISO metadata (per <<iho-s100,clause=10c-12>>)
+MD_<HDF5 data file base name>.XML (or .xml) ISO metadata +
+(per <<iho-s100,part=10c,clause=12>>).
 
-| 10
-| Vertical coordinate system 
+| 23
+| Vertical coordinate system
 | verticalCS
-^|1
-<|Integer 32-bit
-a| Mandatory in S-102. +
-EPSG Code; Allowed Values
+^| 1
+<| Integer +
+32-bit
+| Mandatory in S-102. +
+EPSG code; +
 
-* 6498 (Depth- +
-Metres-Orientation Down)
-* 6499 (Height- +
-Metres-Orientation Up)
+Allowed values: +
+*6498 (Depth--metres--orientation down) +
+*6499 (Height--metres--orientation up)
 
-| 11
+| 24
 | Vertical coordinate base
 | verticalCoordinateBase
 ^| 1
 <| Enumeration
-a| Mandatory in S-102. The only +
-allowed value is 2: verticalDatum +
-(see <<iho-s100,clause=10c-10.6>>). 
+| Mandatory in S-102. +
+The only allowed value is 2: verticalDatum +
+(see <<iho-s100,part=10c,clause=6>>).
 
-| 12
+| 25
 | Vertical datum reference
 | verticalDatumReference
 ^| 1
 <| Enumeration
-a| Mandatory in S-102. The only +
-allowed value is 1: +
-s100VerticalDatum (see <<iho-s100,clause=10c-10.7>>)
+| Mandatory in S-102. +
+The only allowed value is 1: s100VerticalDatum +
+(see <<iho-s100,part=10c,clause=7>>).
 
-| 13
+| 26
 | Vertical datum
 | verticalDatum
 ^| 1
-<| Integer unsigned 16-bit
-a| Numeric code from +
-S100_VerticalAndSoundingDatum +
-except 47 (seaFloor), +
-48 (seaSurface), +
-49 (hydrographicZero).
+<| Integer +
+unsigned +
+16-bit
+| Numeric code from IHO GI Registry +
+_Vertical Datum_ attribute except +
+*47 (seaFloor) +
+*48 (seaSurface) +
+*49 (hydrographicZero).
 
+6+| Additional attributes for S-102
+
+| 27
+| Gridding method
+| griddingMethod
+^| 0..1
+<| Enumeration
+| See S102_GriddingMethod
 |===
 
 [[note1]]
 [NOTE]
 ====
-The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding. Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. [[sdnu]]S-102 does not use "user defined" CRS as mentioned in <<iho-s100,table=10c-6>>[[mitab]].
+The remark in S-100 Edition 5.0.0 is outdated. The _productIdentifier_ ("S-102") and _version_ fields (N.N.N) of S100_ProductSpecification must be used instead of _name_ and _number_.
 ====
 
 [[note2]]
 [NOTE]
 ====
-The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,table=6-6>>).
+The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding (such as an enumeration of horizontal CRSs). Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,part=10c,table=6>>.
 ====
 
-[reviewer=Raphael Malyankar,from=sdnu,to=mitab]
-****
-Tentative, TBD. If so-called "user defined crs" is also allowed in order to encode projection parameters in the HDF5 dataset, #s 5-19 from S-100 Table 10c-6 will have to be added to the table.
-****
+//Tentative, TBD. If so-called “user defined crs” is also allowed in order to encode projection parameters in the HDF5 dataset, #s 5-19 from S-100 Table 10c-6 will have to be added to the table. (RM comment from 4Jan2023)
+//Parameters 5-19 from S-100 Table 10c-6 have been provisionally added. Delete the sentence about S-102 not using “user-defined” CRS if S-102 will use “user-defined” CRS. (RM comment from 20Jan2023
 
-The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
+
+[[note3]]
+[NOTE]
+====
+The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,table=6>>).
+====
+
+===== Gridding method
+
+//If griddingMethod is retained in the above table, move Table 32 S102_GriddingMethod here.
+// If verticalUncertaintyType and depthCorrectionType are desired in the "navigation S-102" product, add them as attributes in the root group. The type should be "Enumeration" given that they are currently enumerations. (See clause 12.2 "Discovery Metadata").
+
+[[tab-s102-gridding-method-parameters]]
+.S102_GriddingMethod parameters
+[cols="a,a,a,^a,a",options="header"]
+|===
+|Role name |Name |Description |Code |Remarks
+
+|Enumeration
+|S102_GriddingMethod
+|Gridding methods
+|-
+|-
+
+|Value
+|basicWeightedMean
+|The *Basic Weighted Mean* algorithm computes an average depth for each grid node. Contributing depth estimates within a given area of influence are weighted and averaged to compute the final nodal value.
+|1
+|
+
+|Value
+|shoalestDepth
+|The *Shoalest Depth* algorithm examines depth estimates within a specific area of influence and assigns the shoalest value to the nodal position. The resulting surface represents the shallowest depths across a given area.
+|2
+|
+
+
+|Value
+|tpuWeightedMean
+|The *Total Propagated Uncertainty (TPU) Weighted Mean* algorithm makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute a weighted average depth for each nodal position.
+|3
+|TPU is a measure of the expected accuracy of the depth estimate when all relevant error/uncertainty sources have been considered.
+
+|Value
+|cube
+|The *Combined Uncertainty and Bathymetric Estimator, or CUBE* makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute one or many hypotheses for an area of interest. The resulting hypotheses are used to estimate statistical representative depths at each nodal position.
+|4
+|
+
+|Value
+|nearestNeighbour
+|The *Nearest Neighbour* algorithm identifies the nearest depth value within an area of interest and assigns that value to the nodal position. This method does not consider values from neighbouring points.
+|5
+|
+
+|Value
+|naturalNeighbour
+|*Natural Neighbour* interpolation identifies and weights a subset of input samples within the area of interest to interpolate the final nodal value.
+|6
+|
+
+|Value
+|polynomialTendency
+|The *Polynomial Tendency* gridding method attempts to fit a polynomial trend, or best fit surface to a set of input data points. This method can project trends into areas with little to no data, but does not work well when there is no discernible trend within the data set.
+|7
+|
+
+|Value
+|spline
+|The *Spline* algorithm estimates nodal depths using a mathematical function to minimize overall surface curvature. The final “smoothed” surface passes exactly through the contributing input depth estimates.
+|8
+|
+
+|Value
+|kriging
+|*Kriging* is a geostatistical interpolation method that generates an estimated surface from a scattered set of points with a known depth.
+|9
+|
+
+|===
 
 ==== Feature Codes (Group_F)
 No attributes.
 
 This group specifies the S-100 features to which the data applies, and consists of three components:
 
-*featureCode* -- a dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only *BathymetryCoverage*.
+*featureCode* -- a 1-dimesional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfSurvey*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
 
-*BathymetryCoverage* -- Described in the featureCode table. This feature contains the standard definition of the feature class.
+*BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,table=8>>.
 
-*QualityOfSurveyCoverage* -- Also described in the featureCode table. This dataset contains the definition of the reference to metadata records. The reference is a single integer which identifies a metadata record in featureAttributeTable (described in <<iho-s100,clause=10c-9.6.2>> and <<cls-10.2.7>> in this document).    
+*QualityOfSurvey* -- A 1-dimensional dataset of the same datatype as the *BathymetryCoverage* dataset described above. This *QualityOfSurvey* dataset contains the definition of the reference to metadata records. The reference is a single integer which identifies a metadata record in _featureAttributeTable_ (described in <<iho-s100,part=10c,clause=9.6.2>> and <<root-qualityOfSurvey>>.
 
-==== BathymetryCoverage and QualityOfSurveyCoverage Tables (in Group_F)
+//QualityOfBathymetricData is defined in the GI Registry as “An area within which a uniform assessment of the quality of the bathymetric data exists.” That does not describe this dataset, which provides information at the level of individual cells. Recommend new type QualityOfSurveyCoverage or QualityOfBathymetryCoverage, defined as “A set of references to value records that provide localised information about depths, uncertainties, and survey metadata.” It can be proposed to the GI Registry after the S-102 team approves it. (RM comment 23Jan2023)
 
-BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array>>.
+==== BathymetryCoverage and QualityOfSurvey Tables (in Group_F)
 
-[[tab-sample-contents-of-the-two-dimensional-bathymetrycoverage-array]]
-.Sample contents of the [[two]]two[[tdim]]-dimensional BathymetryCoverage and QualityOfSurveyCoverage arrays
-[cols="a,a,a,a,a",option="header"]
+BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfSurvey-arrays>>.
+
+[[tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfSurvey-arrays]]
+.Sample contents of the BathymetryCoverage and QualityOfSurvey arrays
+//It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1 (RM comment 4Jan2023)
+
+[cols="a,a,a,a,a",options="header"]
 |===
-.2+|Name .2+|Explanation 2+|BathymetryCoverage |QualityOfSurveyCoverage
-|S-100 Attribute 1 |S-100 Attribute 2 |Attribute 1
+
+| Name 
+| Explanation 
+2+| BathymetryCoverage
+| QualityOfSurvey
+
+| 
+| 
+| S-100 Attribute 1 
+| S-100 Attribute 2
+| Attribute 1
 
 |code
 |Camel Case code of attribute as in Feature Catalogue
@@ -334,13 +590,14 @@ BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type eleme
 |Long name as in Feature Catalogue
 |depth
 |uncertainty
-|[[idtab]]id
+|
 
 |uom.name
 |Units (uom.name from S-100 Feature Catalogue)
 |metres
 |metres
-|[[nae]]N/A (or (empty))?
+|(empty)
+//TBC by project team review (RM comment 4Jan2023)
 
 |fillValue
 |Fill value (integer or float, string representation, for missing values)
@@ -352,7 +609,7 @@ BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type eleme
 |HDF5 datatype, as returned by H5Tget_class() function
 |H5T_FLOAT
 |H5T_FLOAT
-|H5T_NATIVE_INT
+|H5T_INTEGER
 
 |lower
 |Lower bound on value of attribute
@@ -367,38 +624,22 @@ BathymetryCoverage and QualityOfSurveyCoverage are arrays of compound type eleme
 |(empty)
 
 |closure
-|Open or Closed data interval. See S100_IntervalType in Part 1.
+|Open or Closed data interval. See S100_IntervalType in <<iho-s100,part=1>>.
 |closedInterval
 |gtLeInterval
 |geSemiInterval
 |===
 
-[reviewer=Raphael Malyankar,from=two,to=tdim]
-****
-It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1
-****
-
-[reviewer=Raphael Malyankar,from=idtab]
-****
-Real name needed
-****
-
-[reviewer=Raphael Malyankar,from=nae]
-****
-TBC by project team review
-****
-
-As per section <<iho-s100,part=10c,clause=10c-9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
+According to <<iho-s100,part=10c,clause=9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
 
 While the sample contents are shown in the two attributes columns, these are actually rows in the BathymetryCoverage table. They are also each a single HDF5 compound type and represent a single HDF5 element in the table.
 
 All cells shall be HDF5 variable length strings. The minimum and maximum values are stored in lower and upper columns. Variable length strings allow future proofing the format in the event editing is allowed or correcting these values is required.
 
-
 ==== Root BathymetryCoverage
 
 [[tab-attributes-of-bathymetrycoverage-feature-container-group]]
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
 .Attributes of *BathymetryCoverage* feature container group
 |===
 | No
@@ -419,7 +660,8 @@ All cells shall be HDF5 variable length strings. The minimum and maximum values 
 | Dimension
 | dimension
 | 1
-| Integer unsigned +
+| Integer +
+unsigned +
 8-bit
 | Value: 2
 
@@ -427,28 +669,31 @@ All cells shall be HDF5 variable length strings. The minimum and maximum values 
 | Common point rule
 | commonPointRule
 | 1
-| [[enum]]Enumeration
-| Value: 1 (average) or other values from <<iho-s100,table=10c-20>>.
+| Enumeration
+| Value: 1 (average) or other values from <<iho-s100,part-10c,table=20>>.
 
 | 4
 | Horizontal position uncertainty
-| [[hpu]]horizontalPositionUncertainty
+| horizontalPositionUncertainty
 | 1
-| Float 32-bit
+| Float +
+32-bit
 | Value: -1.0 (if unknown or not available)
 
 | 5
 | Vertical position uncertainty
-| [[vu]]verticalUncertainty
+| verticalUncertainty
 | 1
-| Float 32-bit
+| Float +
+32-bit
 | Value: -1.0 (if unknown or not available)
 
 | 6
 | Number of feature instances
 | numInstances
 | 1
-| Integer unsigned +
+| Integer +
+unsigned +
 8-bit
 | Value: 1
 
@@ -457,78 +702,73 @@ All cells shall be HDF5 variable length strings. The minimum and maximum values 
 | sequencingRule.type
 ^| 1
 | Enumeration
-| Value: 1 (linear) see <<iho-s100,table=10c-21>>
+| Value: 1 (linear) +
+see <<iho-s100,part=10c,table=21>>.
 
 | 7b
+
 | sequencingRule.scanDirection
 ^| 1
 | String
-| Value: <axisNames entry> (comma-separated). For example, "latitude,longitude". Reverse scan direction along an axis is indicated by prefixing a '-' sign to the axis name. See <<scanDirection>>
+| Value: <axisNames entry> (comma-separated). + 
+For example, "latitude,longitude". Reverse scan direction along an axis is indicated by prefixing a '-' sign to the axis name. See <<scanDirection>>
 
 | 8
 | Interpolation type
 | interpolationType
 | 1
 | Enumeration
-| Code value from <<iho-s100,table=10c-22>>
+| Code value from <<iho-s100,part=10c,table=22>>
 
 |===
 
-[reviewer=Lawrence Haynes Haselmaier,from=enum]
-****
-If we do not adopt BSH position, "unsigned 16-bit" must be added after "Enumeration"
-****
-
-[reviewer=Lawrence Haynes Haselmaier,from=hpu]
-****
-After Andy/Anthony/Lawrence meeting: This is likely to vary throughout an S-102 surface. What is the value expected here? Is it the maximum? How does this relate to the nodal uncertainty values?
-
-Chair has action to discuss with PT at-large
-****
-
-[reviewer=Lawrence Haynes Haselmaier,from=vu]
-****
-After Andy/Anthony/Lawrence meeting: This is likely to vary throughout an S-102 surface. What is the value expected here? Is it the maximum? How does this relate to the nodal uncertainty values?
-
-Chair has action to discuss with PT at-large
-****
-
-==== Feature Instance group - BathymetryCoverage.01
-As per <<iho-s100,part=10c,clause=10c-9.7>> and <<iho-s100,table=10c-12>> Attributes of feature instance groups
+==== Feature Instance group -- BathymetryCoverage.01
+Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
 [[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
-.Attributes of BathymetryCoverage feature instance group
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
+.Attributes of *BathymetryCoverage* feature instance group
 |===
-h| No h| Name h| Camel Case h| Mult h| Data Type h| Remarks
+| No
+| Name
+| Camel Case
+| Mult
+| Data Type
+| Remarks
 
 | 1a
 .4+| Bounding box
 | westBoundLongitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 .4+| Coordinates should refer to the previously defined Coordinate Reference System.
 
 | 1b
 | eastBoundLongitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 
 | 1c
 | southBoundLatitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 
 | 1d
 | northBoundLatitude
 ^| 1
-<| Float 32-bit
+<| Float +
+32-bit
 
 | 2
 | Number of groups
 | numGRP
 ^| 1
-<| Integer unsigned 8-bit
+<| Integer +
+unsigned +
+8-bit
 | The number of data values groups contained in this instance group. +
 Value: 1
 
@@ -536,42 +776,52 @@ Value: 1
 | Longitude of grid origin
 | gridOriginLongitude
 ^| 1
-<| Float 64-bit
-| Longitude or easting of grid origin. Unit: (to correspond with previously defined Coordinate Reference System)
+<| Float +
+64-bit
+| Longitude or easting of grid origin. +
+Unit: (to correspond with previously defined Coordinate Reference System)
 
 | 4
 | Latitude of grid origin
 | gridOriginLatitude
 ^| 1
-<| Float 64-bit
-| Latitude or northing of grid origin. Unit: (to correspond with previously defined Coordinate Reference System)
+<| Float +
+64-bit
+| Latitude or northing of grid origin. +
+Unit: (to correspond with previously defined Coordinate Reference System)
 
 | 5
 | Grid spacing, longitude
 | gridSpacingLongitudinal
 ^| 1
-<| Float 64-bit
+<| Float +
+64-bit
 | Cell size in x dimension.
 
 | 6
 | Grid spacing, latitude
 | gridSpacingLatitudinal
 ^| 1
-<| Float 64-bit
+<| Float +
+64-bit
 | Cell size in y dimension.
 
 | 7
 | Number of points, longitude
 | numPointsLongitudinal
 ^| 1
-<| Integer unsigned 32-bit
+<| Integer +
+unsigned +
+32-bit
 | Number of points in x dimension.
 
 | 8
 | Number of points, latitude
 | numPointsLatitudinal
 ^| 1
-<| Integer unsigned 32-bit
+<| Integer +
+unsigned +
+32-bit
 | Number of points in y dimension.
 
 | 9
@@ -579,58 +829,69 @@ Value: 1
 | startSequence
 ^| 1
 <| String
-| Grid coordinates of the grid point to which the first in the sequence of values is to be assigned. The choice of a valid point for the start sequence is determined by the sequencing rule. Format: n, n +
+| Grid coordinates of the grid point to which the first in the sequence of values is to be assigned. +
+The choice of a valid point for the start sequence is determined by the sequencing rule. +
+Format: n, n +
 Example: "0,0" (without quotes)
 |===
 
-The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this deviates from S100 where it indicates that this should be in Arc Degrees. This has the effect that gridOriginLongitude and gridOriginLatitude are identical to westBoundLongitude and southBoundLatitude.
+The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees. This practice has the effect that gridOriginLongitude and gridOriginLatitude are identical to westBoundLongitude and southBoundLatitude.
 
 The gridOriginLongitude and gridOriginLatitude are the cell center of the cell.
 
 numPointsLongitude and numPointsLatitude must contain the number of cells in the x and y dimensions of the values table.
 
-==== The values group - Group_001
+==== The values group -- Group_001
 This group contains the following attributes. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
 
 [[tab-attributes-of-values-group]]
 .Attributes of values group
-[cols="<,<,<,^,<,<"]
+[cols="<,<,<,^,<,<",options="header"]
 |===
-h| No h| Name h| Camel Case h| Mult h| Data Type h| Remarks
+| No
+| Name
+| Camel Case
+| Mult
+| Data Type
+| Remarks
 
 | 1
 | minimum Depth
 | minimumDepth
 | 1
-| Float 32-bit
+| Float +
+32-bit
 | The minimum depth value in the values dataset(s) of this group
 
 | 2
 | maximum Depth
 | maximumDepth
 | 1
-| Float 32-bit
+| Float +
+32-bit
 | The maximum depth value in the values dataset(s) of this group
 
 | 3
 | minimum Uncertainty
 | minimumUncertainty
 | 1
-| Float 32-bit
+| Float +
+32-bit
 | The minimum uncertainty value in the values dataset(s) of this group. If no uncertainty values are in the dataset(s) the value must be the fillValue
 
 | 4
 | maximum Uncertainty
 | maximumUncertainty
 | 1
-| Float 32-bit
+| Float +
+32-bit
 | The maximum uncertainty value in the values dataset(s) of this group. If no uncertainty values are in the dataset(s) the value must be the fillValue
 |===
 
 The group contains an HDF5 dataset named values containing the bathymetric gridded data.
 
-[[cls-10.2.6]]
-==== The Dataset - values
+[[subsec-BathymetryCoverage-feature-instance-group-values-dataset]]
+==== BathymetryCoverage feature instance group -- values dataset
 
 This dataset contains the compound data arrays containing bathymetric gridded data. These components are explained below.
 
@@ -638,204 +899,289 @@ For bathymetric gridded data, the dataset includes a two-dimensional array conta
 
 The depth and uncertainty values (depth and uncertainty) are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with two members.
 
-[[cls-10.2.7]]
-==== Root QualityOfSurveyCoverage 
+[[root-qualityOfSurvey]]
+==== Root QualityOfSurvey
 
-The QualityOfSurveyCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. 
+The QualityOfSurvey container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group.
 
-The QualityOfSurveyCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,table=10c-9>>; <<iho-s100,clause=10c-9.6.2>>). This dataset is mandatory within the QualityOfSurveyCoverage group. Each element of this array is a metadata record of HDF5 compound type. The [[fieldstart]]fields[[fieldsend]] are described in <<table-10.7>> below. 
+The QualityOfSurvey container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfSurvey group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
-[reviewer=Raphael Malyankar,from=fieldstart,to=fieldsend]
-****
-(1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing?
-****
+//(1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing? (RM comment 4Jan2023)
+//All optional except id. Producers should not add other fields. (RM comment 23Jan2023)
 
-[[table-10.7]]
-[options=header,cols="a,a,a,a,a,a"]
-.Elements of featureAttributeTable compound datatype 
+[[tab-elements-of-featureAttributeTable-compound-datatype]]
+.Elements of featureAttributeTable compound datatype
+[cols="<,<,<,^,<,<",options="header"]
 |===
-| No | Attribute | Description | Mult | Data type | Remarks
+
+| No
+| Attribute
+| Description
+| Mult
+| Data Type
+| Remarks
 
 | 1
 | id
 | Metadata record identifier
 | 1
-| Integer unsigned 32-bit
+| Integer +
+unsigned +
+32-bit
 | Each record must have a unique identifier.
 
 | 2
 | dataAssessment
 | The categorization of the assessment level of bathymetric data for an area.
 | 0..1
-| Integer unsigned 8-bit
-| 1: Assessed +
-2: Unassessed +
-3: Oceanic
+| Integer +
+unsigned +
+8-bit
+| *1: Assessed +
+*2: Unassessed +
+*3: Oceanic
 
 | 3
-| featuresDetected +
-.leastDepthOfDetectedFeaturesMeasured
+| featuresDetected.leastDepthOfDetectedFeaturesMeasured
 | Expression stating if the least depth of detected features in an area was measured.
 | 0..1
-| Integer unsigned 8-bit
-| Boolean, Values: 1 (TRUE); 0 (FALSE) +
-See <<note-10.7-1>>.
+| Integer +
+unsigned +
+8-bit
+| Boolean, Values: +
+*1 (TRUE) +
+*0 (FALSE). +
+See <<note4>>.
 
 | 4
-| featuresDetected +
-.significantFeaturesDetected
+| featuresDetected.significantFeaturesDetected
 | A statement expressing if significant features have or have not been detected in the course of a survey.
 | 0..1
-| Integer unsigned 8-bit
-| Boolean, Values: 1 (TRUE); 0 (FALSE) +
-See <<note-10.7-2>>.
+| Integer +
+unsigned +
+8-bit
+| Boolean, Values: +
+*1 (TRUE) +
+*0 (FALSE). +
+See <<note5>>.
 
-|5
-|featuresDetected +
-.sizeOfFeaturesDetected
+| 5
+| featuresDetected.sizeOfFeaturesDetected
 | The size of detected bathymetric features in an area.
 | 0..1
-| Float 32-bit
-| See <<note-10.7-3>> and <<note-10.7-4>>.
+| Float +
+32-bit
+| See <<note6>> and <<note7>>.
 
-|6
-a|featureSizeVar
-
-[EDITOR]
-====
-PT11: New in the IHO registry
-====
-| Percentage of depth that a feature of such size could be detected
-|0..1
-|Float 32-bit
-|Set to zero if the feature size does not scale with depth. +
-See <<note-10.7-3>> and <<note-10.7-4>>.
-
-|7
-|fullSeafloorCoverageAchieved
-|Expression stating if full seafloor coverage has been achieved in the area covered by hydrographic surveys.
-|0..1
-| Integer unsigned 8-bit
-|Boolean, Values: 1 (TRUE); 0 (FALSE) +
-See <<note-10.7-5>>.
-
-|8
-| bathyCoverage
-
-[EDITOR]
-====
-PT11: New in the IHO Registry
-====
-| Flag for nodes populated by interpolation.
-|0..1
-|Integer unsigned 8-bit
-|Boolean, Values: 1 (TRUE); 0 (FALSE) +
-See <<note-10.7-6>>.
-
-|9
-| zoneOfConfidence +
-.horizontalPositionUncertainty +
-.uncertaintyFixed
-| The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
-|0..1
-|Float 32-bit
-|Specialized from uncertaintyFixed in GI Registry
-
-|10
-|zoneOfConfidence +
-.horizontalPositionUncertainty +
-.uncertaintyVariableFactor
-| The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
+| 6
+| featureSizeVar
+//editorial note:: PT11: new in the IHO registry
+| Percentage of depth that a feature of such size could be detected.
 | 0..1
-| Float 32-bit
-|Specialized from uncertaintyVariableFactor in GI Registry
+| Float +
+32-bit
+| Set to zero if the feature size does not scale with depth. +
+See <<note6>> and <<note7>>.
 
-|11
+| 7
+| fullSeafloorCoverageAchieved
+| Expression stating if full seafloor coverage has been achieved in the area by hydrographic surveys.
+| 0..1
+| Integer +
+unsigned +
+8-bit
+| Boolean, Values: +
+*1 (TRUE) +
+*0 (FALSE). +
+See <<note8>>.
+
+| 8
+| bathyCoverage
+//editorial note:: PT11: new in the IHO registry
+| Flag for nodes populated by interpolation.
+| 0..1
+| Integer +
+unsigned +
+8-bit
+| Boolean, Values: +
+*1 (TRUE) +
+*0 (FALSE). +
+See <<note9>>.
+
+| 9
+| zoneOfConfidence.horizontalPositionUncertainty.uncertaintyFixed
+| The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances, and vertical clearances.
+| 0..1
+| Float +
+32-bit
+|
+
+| 10
+| zoneOfConfidence.horizontalPositionUncertainty.uncertaintyVariableFactor
+| The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances, and vertical clearances.
+| 0..1
+| Float +
+32-bit
+|
+
+| 11
 | surveyDateRange.dateStart
-|The start date of the period of the hydrographic survey.
+| The start date of the period of the hydrographic survey.
 | 0..1
 | String
-| ISO 8601:2004 date format. Complete or truncated date, see <<iho-s100,table=1-2>>.
+| ISO 8602:2004 date format. +
+Complete or truncated date, +
+see <<iho-s100,part=1,table=2>>.
 
-|12
-|surveyDateRange.dateEnd
-|The end date of the period of the hydrographic survey.
+| 12
+| surveyDateRange.dateEnd
+| The end date of the period of the hydrographic survey.
 | 0..1
-|String
-|ISO 8601:2004 date format. Complete or truncated date, see <<iho-s100,table=1-2>>.
+| String
+| ISO 8602:2004 date format. +
+Complete or truncated date, +
+see <<iho-s100,part=1,table=2>>.
 
-|13
+| 13
 | sourceSurveyID
-|The survey filename or ID
-|0..1
-|String
+| The survey filename or ID.
+| 0..1
+| String
 |
 
-|14
-|surveyAuthority
-|The authority which was responsible for the survey.
-|0..1
-|String
+| 14
+| surveyAuthority
+| The authority which was responsible for the survey.
+| 0..1
+| String
 |
+
+| 15
+| bathymetricUncertaintyType
+| An estimate of the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.
+| 0..1
+| Enumeration
+| See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>. +
+See <<note10>>.
 
 |===
 
-[[note-10.7-1]]
+[[note4]]
 [NOTE]
 ====
-A feature in this context is any object, whether man-made or not, projecting above the sea floor, which may be a danger for surface navigation (reference: IHO publication S-44).- least depth of detected features measured does not describe the least depth of features that were actually detected during a hydrographic survey, but the ability of the survey to detect the least depth of features with a maximum uncertainty as defined in IHO publication S-44.
+A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation <<iho-s44>>. Least depth of detected features measured does not describe the least depth of features that were actually detected during a hydrographic survey, but the ability of the survey to detect the least depth of features with a maximum uncertainty as defined in <<iho-s44>>.
 ====
 
-[[note-10.7-2]]
+[[note5]]
 [NOTE]
 ====
-A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation (reference: IHO publication S-44). Significant features detected does not describe if significant features were actually detected during a hydrographic survey, but whether the survey had the capacity to detect significant features.
+A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation <<iho-s44>>. Significant features detected does not describe if significant features were actually detected during a hydrographic survey, but whether the survey had the capacity to detect significant features.
 ====
 
-[[note-10.7-3]]
+[[note6]]
 [NOTE]
 ====
-The role of the attribute, featureSizeVar is described in clause 7.1. The expectation is that featureSizeVar will be set to zero if the feature size does not scale with depth. As with featureSize, featureSizeVar should be ignored if significantFeatures is False.
+The role of the attribute, featureSizeVar is described in <<qualityAndSourceMetadata>>. The expectation is that featureSizeVar will be set to zero if the feature size does not scale with depth. As with featureSize, featureSizeVar should be ignored if significantFeatures is False.
 ====
 
-[[note-10.7-4]]
+[[note7]]
 [NOTE]
 ====
-When both featureSize and featureSizeVar are present, the [[gottstart]]greater of the two[[gottend]] should be considered valid.
+When both featureSize and featureSizeVar are present, the greater of the two should be considered valid.
 ====
 
-[[note-10.7-5]]
+[[note8]]
 [NOTE]
 ====
-Full seafloor coverage achieved applies to both the spatial completeness of feature detection and to the spatial completeness of the measurement of the regular seafloor. The former is further specified by the complex attribute features detected, the latter by the attributes depth range maximum value and depth range minimum value.
+Full seafloor coverage achieved applies to both the spatial completeness of feature detection and to the spatial completeness of the measurement of the regular seafloor. The former is further specified by the complex attribute features detected; the latter by the attributes depth range maximum value and depth range minimum value.
 ====
 
-[[note-10.7-6]]
+[[note9]]
 [NOTE]
 ====
-The attribute bathyCoverage is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery (interpolated gaps between bathymetry coverage in this situation would show fullCoverage = True and bathyCoverage = False). If full coverage = False, bathyCoverage must also equal False, such as gaps between single beam echosounder data without correlating side scan sonar coverage.
+The attribute bathyCoverage is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery (interpolated gapes between bathymetry coverage in this situation would show fullCoverage = True and bathyCoverage = False). If fullCoverage = False, bathyCoverage must also equal False, such as gaps between single beam echosounder data without correlating side-scan sonar coverage.
 ====
 
-[reviewer=Raphael Malyankar,from=gottstart,to=gottend]
-****
-As I understand it, one is a volume and the other a percentage of a length (depth). How are they to be compared?
-****
+[[note10]]
+[NOTE]
+====
+Names and listed values which are not currently defined in the IHO GI Registry are subject to change upon acceptance in the Registry.
+====
 
-==== Instance group QualityOfSurveyCoverage.01
+[[tab-codes-defining-how-bathy-depth-uncertainty-determined]]
+.Codes defining how uncertainty of bathymetric depth was determined
+[cols="<,<,<,<,<",options="header"]
+|===
 
-The QualityOfSurveyCoverage.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
+| Role Name
+| Name
+| Description
+| Code
+| Remarks
 
-==== Values group for QualityOfSurveyCoverage 
+| Enumeration
+| S102_BatymetricUncertaintyType
+| An estimate of the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.
+| -
+| 
 
-The values group for QualityOfSurveyCoverage contains no metadata attributes and a single dataset named values, which is described in <<cls-10.2.10>>.
+| Value
+| rawStandardDeviation
+| Raw standard deviations of soundings that contributed to the node.
+| 1
+| -
 
-[[cls-10.2.10]]
-==== Values dataset for QualityOfSurveyCoverage 
 
-The values dataset for QualityOfSurveyCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the "id" field in featureAttributeTable - <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<cls-10.2.6>>).
+| Value
+| cUBEStandardDeviation
+| Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE's standard output of uncertainty).
+| 2
+| -
 
-Each cell in this values dataset must be populated with a value that is one of the record identifiers in the featureAttributeTable dataset, or the fill value 0 (zero). 
+
+| Value
+| productUncertainty
+| The greater of (1) standard deviation of the soundings contributing to the depth solution or, (2) the _a priori_ computed uncertainty estimate (that is, modelled Total Vertical Uncertainty).
+| 3
+| -
+
+
+| Value
+| historicalStandardDeviation
+| Estimated standard deviation based on historical/archive data.
+| 4
+| -
+
+
+| Value
+| (fill value representing "unknown")
+| (fill value when the uncertainty is an unknown layer type)
+| 0
+| This is a "fill value" and will not be in the feature catalogue.
+
+|===
+
+==== Instance group QualityOfSurvey.01
+The QualityOfSurvey.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
+
+==== Values group for QualityOfSurvey
+The values group for QualityOfSurvey contains no metadata attributes and a single dataset named values, which is described in <<subsec-values-dataset-for-QualityOfSurvey>>.
+
+[[subsec-values-dataset-for-QualityOfSurvey]]
+==== Values dataset for QualityOfSurvey
+The values dataset for QualityOfSurvey is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>).
+
+Each cell in this values dataset must be populated with a value that is one of the record identifiers in the featureAttributeTable dataset or with the fill value 0 (zero).
 
 ==== Mandatory Naming Conventions
 
-The following group and attribute names are mandatory in S-100: Group_F, featureCode, and (for S-102) *BathymetryCoverage*, axisNames, **BathymetryCoverage**01, *QualityOfSurveyCoverage*, *QualityOfSurveyCoverage.01*, featureAttributeTable, and Group_nnn.
+The following group and attribute names are mandatory in S-100:
+*Group_F
+*featureCode
+*(for S-102)
+** *BathymetryCoverage*
+** axisNames
+** *BathymetryCoverage.01*
+** *QualityOfSurvey.01*
+** featureAttributeTable
+** Group_nnn

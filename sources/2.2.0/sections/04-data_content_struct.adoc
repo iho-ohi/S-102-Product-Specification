@@ -7,9 +7,9 @@ The Bathymetric Surface Product incorporates aspects of the Navigation Surface c
 
 [[fig-overview-structure-s102]]
 .Overview Structure of S-102
-image::figure-overview-structure-s102.png[]
+image::../images/figure-overview-structure-s102.png[]
 
-Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<iho-s100,part=8>>, and Information Types as defined in <<iho-s100,part=4>>, together with a point set tracking list. This is described in <<subsec-application-schema>>.
+Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<iho-s100,part=8>>, and metadata packages as defined in <<iho-s100,part=4>>. This is described in <<subsec-application-schema>>.
 
 [[subsec-application-schema]]
 === Application Schema
@@ -17,20 +17,18 @@ The Application Schema Data Set Structure is shown in <<fig-data-set-structure-s
 
 [[fig-data-set-structure-s102]]
 .Data Set Structure of S-102
-image::figure-data-set-structure-s102.png[]
+image::../images/figure-data-set-structure-s102.png[]
 
 
 The model in <<fig-data-set-structure-s102>> states that:
 
-* An S-102 data set (*S102_DataSet*), which is inherited from *S100_DataSet*, references an S-102 Image and Gridded Data Collection (*S102_IGCollection*). In S-100 it is possible to have multiple collections but in S-102 only one is needed to hold the bathymetry coverage. The S-102 discovery metadata class (*S102_DiscoveryMetadata*) describes the metadata entities required for the identification of the entire data set. The required discovery metadata is implemented through the *S102_DSMetadataBlock* class.
+* An S-102 data set (*S102_DataSet*), which is inherited from *S100_DataSet*, references an S-102 Image and Gridded Data Collection (*S102_IGCollection*). In S-100 it is possible to have multiple collections but in S-102 only one is needed to hold the bathymetry coverage. The S-102 discovery metadata class (*S102_DiscoveryMetadata*) describes the metadata entities required for the identification of the entire data set. The required discovery metadata is implemented through the *S100_DatasetDiscovery* class defined in <<iho-s100,part=17>>.
 
-* An instance of an S-102 Image and Gridded Data Collection (*S102_IGCollection*) which is a subtype of *S100_IGCollection*, is described by a set of S-102 Collection Metadata (*S102_CollectionMetadata*). This relationship is 1 to 1 meaning that there is one set of collection metadata for each instance of *S102_IGCollection*. There is a large choice of metadata that may be used in an S-100 compliant data product. Only a small amount of this metadata is mandated by <<iso19115>> for discovery. The choice of metadata is discussed in <<subsec-discovery-metadata>>. Much of the metadata can be resolved as part of the product specification. Only that metadata that varies IG_collection item to item needs be included in the S102_MetadataBlock implementation class.
-
-This matter is discussed further in <<subsec-tiling-scheme-partitioning>>.
+* An instance of an S-102 Image and Gridded Data Collection (*S102_IGCollection*) which is a subtype of *S100_IGCollection*, is described by a set of S-102 Collection Metadata (*S102_CollectionMetadata*). This relationship is 1 to 1 meaning that there is one set of collection metadata for each instance of *S102_IGCollection*. There is a large choice of metadata that may be used in an S-100 compliant data product. Only a small amount of this metadata is mandated by <<iso-19115-1>> for discovery. This edition of S-102 neither uses ISO metadata files nor extends S-100 generic metadata and therefore *S102_CollectionMetadata*, *S102_StructuralMetadata*, *S100_QualityMetadata*, and *S102_AcquisitionMetadata* are abstract classes as in S-100 Part 8 Figure 8-27. This edition of S-102 uses the dataset metadata elements defined in <<iho-s100,part=17>> and <<iho-s100,part=10c>> with restrictions defined in this product specification. The metadata elements defined in <<iho-s100,part=17>> are encoded in a discovery block within the exchange catalogue (<<iho-s100,part=12,clause=12.6>> to <<iho-s100,part=12,clause=12.10>>), and the metadata elements defined in <<iho-s100,part=10c>> are encoded as attributes and datasets within the HDF5 file (<<iho-s100,part=12,clause=10.2>>). The conceptual structure of coverage features in an S-102 dataset is discussed further in <<subsec-tiling-scheme-partitioning>>.
 
 [[fig-coverage-structure-of-s102]]
 .Coverage Structure of S-102
-image::figure-coverage-structure-of-s102.png[]
+image::../images/figure-coverage-structure-of-s102.png[]
 
 The model in <<fig-coverage-structure-of-s102>> depicts the coverage type in this application schema: 
 
@@ -45,7 +43,7 @@ In order to simplify the implementation, a number of defaults are assumed for S-
 
 [[fig-implementation-of-classes]]
 .Implementation of Classes of S-102
-image::figure-implementation-of-classes.png[]
+image::../images/figure-implementation-of-classes.png[]
 
 
 ===== Implementation classes description
@@ -57,8 +55,6 @@ image::figure-implementation-of-classes.png[]
 ===== BathymetryCoverage semantics
 
 The class *BathymetryCoverage* has the attributes _minimumDepth_, _maximumDepth_, _minimumUncertainty_, and _maximumUncertainty_ which bound the depth attribute and the uncertainty attribute from the *S102_BathymetryValues* record. *BathymetryCoverage* additionally contains the inherited attributes _origin_, _offsetVectors_, _dimension_, _axisName_, _extent_, _sequenceRule_, and _startSequence_ from *S100_Grid* and *CV_Grid*.
-
-EDITOR: Removed the scale properties as handled with dataset/exchangeset metadata
 
 The origin is a position in a specified coordinate reference system, and a set of offset vectors specify the direction and distance between the grid lines. It also contains the additional geometric characteristics of a rectified grid.
 
@@ -90,7 +86,7 @@ The attribute _origin_ has the value class _DirectPosition_ which is a position 
 [level=7]
 ===== offsetVectors
 
-The attribute _offsetVectors_ has the value class _Sequence<Vector>_ that shall be a sequence of offset vector elements that determine the grid spacing in each direction. The data type Vector is specified in <<iso-ts-19103>>. This attribute is required. There is no default. The HDF5 encoding implements and simplifies _offsetVectors_ in the form of two HDF5 attributes: gridSpacingLatitudinal and gridSpacingLongitudinal.
+The attribute _offsetVectors_ has the value class _Sequence<Vector>_ that shall be a sequence of offset vector elements that determine the grid spacing in each direction. The data type Vector is specified in <<iso-19103>>. This attribute is required. There is no default. The HDF5 encoding implements and simplifies _offsetVectors_ in the form of two HDF5 attributes: gridSpacingLatitudinal and gridSpacingLongitudinal.
 
 [level=7]
 ===== dimension
@@ -129,7 +125,7 @@ The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a compos
 [level=7]
 ===== values
 
-The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and _uncertainty_ in the *S102_BathymetryValues* class. The definition for the _depth_ is defined by the _depthCorrectionType_ attribute in the *S102_DataIdentification* class. The definition of the type of data in the values record is defined by the _verticalUncertaintyType_ attribute in the *S102_DataIdentification* class.
+The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and _uncertainty_ in the *S102_BathymetryValues* class.
 
 
 [level=6]
@@ -148,7 +144,7 @@ The attribute _coordinate_ is a sequence of Numbers that hold the coordinate of 
 [level=7]
 ===== dimension
 
-The attribute _dimension_ is a derived attribute that describes the length of coordinate.
+The attribute _dimension_ is a derived attribute that describes the number of coordinate axes.
 
 [level=6]
 ===== CV_GridEnvelope
@@ -193,7 +189,7 @@ The class *CV_SequenceRule* contains information for mapping grid coordinates to
 [level=7]
 ===== type
 
-The attribute _type_ shall identify the type of sequencing method that shall be used. A code list of scan types is provided in S-100 Part 8. Only the value -- linear shall be used in S-102, which describes scanning row by row by column.
+The attribute _type_ shall identify the type of sequencing method that shall be used. A code list of scan types is provided in <<iho-s100,part=10c>>. Only the value -- linear shall be used in S-102, which describes scanning row by row by column.
 
 [level=7]
 [[scanDirection]]
@@ -207,12 +203,7 @@ The attribute _scanDirection_ has the value class _Sequence<CharacterString>_ a 
 ==== Introduction
 The S-102 Feature Catalogue describes the feature types, attributes and attribute values which may be used in the product.
 
-[[tsf]]The S-102 Feature Catalogue is available in an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be downloaded from the IHO website.[[ihoweb]]
-
-[reviewer=Lawrence Haynes Haselmaier,from=tsf,to=ihoweb]
-****
-Chair has overall action to simplify/correct how the FC will be referenced in the document. Suggest here (1) uploading current (draft) version of FC and (2) providing link within this document.
-****
+[[tsf]]The S-102 Feature Catalogue is available in an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be downloaded from the IHO Geospatial Information Registry.[[ihoweb]]
 
 ==== Feature types
 S-102 is a coverage feature product. *BathymetryCoverage* implements *S102_DepthCoverage* and includes *S102_BathymetryValues*.
@@ -249,13 +240,16 @@ The grid properties of origin and spacing are defined by attributes in the *Bath
 
 [[fig-s102-grid-node-location]]
 .S-102 Grid Node location
-image::figure-s102-grid-node.location.png[]
+image::../images/figure-s102-grid-node.location.png[]
 
 The two values, depth and uncertainty, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value.
 
 The reference vertical datum for the surface is one of the mandatory Metadata items. The unknown state for depth is defined to be 1,000,000.0 (1.0e6).
 
-The uncertainty values are expressed as positive quantities at a node. As detailed in <<subsec-discovery-metadata>> the uncertainty grid supports multiple definitions of vertical uncertainty. This allows grids to span the expected range of data products from raw, full resolution grid to final compiled product. For example, a grid at the stage of final survey data processing should contain uncertainty information germane to the survey data itself and intended to be used for information compilation. A recipient of an S-102 file can refer to the uncertainty definition in the Metadata to gain an understanding of how the uncertainty was computed.
+//Tables 14 and 15 are the QualityOfSurvey table and the new table describing vertical uncertainty type (formerly Table 19). The old clause 12.2 describing S-102-specific discovery metadata in the exchange catalogue has been deleted. This is a snapshot of the state of discussion on GitHub Issue #30 as of 23 March (RM comments in Word doc submitted circa 27Feb2023)
+
+
+The uncertainty values are expressed as positive quantities at a node. As detailed in <<tab-elements-of-featureAttributeTable-compound-datatype>> and <<tab-codes-defining-how-bathy-depth-uncertainty-determined>> the uncertainty grid supports multiple definitions of vertical uncertainty. This allows grids to span the expected range of data products from raw, full resolution grid to final compiled product. For example, a grid at the stage of final survey data processing should contain uncertainty information germane to the survey data itself and intended to be used for information compilation. A recipient of an S-102 file can refer to the uncertainty definition in the Metadata to gain an understanding of how the uncertainty was computed.
 
 The undetermined state for uncertainty is defined to be 1,000,000.0 (1.0e6).
 

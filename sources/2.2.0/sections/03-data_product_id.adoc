@@ -47,6 +47,6 @@ Main topics for the product, as according to <<iso-19115-1>> MD_TopicCategoryCod
 Chair has action to draft a request to S-100 to add an "Other" designation. Selection of "Other" would be accompanied by a free text description of the not-otherwise-specified designation.
 ****
 
-*Spatial Representation Type*:: Type of spatial representation for the product, as defined by the <<iso19115>> MD_SpatialRepresentationTypeCode: 002 - grid.
+*Spatial Representation Type*:: Type of spatial representation for the product, as defined by the <<iso-19115-1>> MD_SpatialRepresentationTypeCode: 002 - grid.
 
 *Point of Contact*:: Producing Agency

@@ -14,7 +14,7 @@ Most modern hydrographic surveys are conducted using high-resolution multibeam s
 
 Utilization of a gridded data structure eases the data management concerns of the hydrographer, providing the ability to safely reduce the total sum of collected depth estimates into a manageable quantity of representative nodal depths for processing and production. All gridded datasets should be exposed to rigid Quality Assurance/Control procedures to ensure the final gridded dataset accurately represents the real-world environment. Once a dataset passes an established Quality Assurance/Control process, modern chart production software is used to extract candidate nodal depths from the grid for consideration as final charted soundings.
 
-_<<annex-s102-gridding-methods>> provides a listing of S-102 accepted gridding methods._
+_<<tab-s102-gridding-method-parameters>> provides a listing of S-102 accepted gridding methods._
 
 _<<annex-gridding-full-resolution-source-bathymetry>> provides an example gridding process, discussing the difference between full-resolution source bathymetry, product scale grid, and charted sounding._
 

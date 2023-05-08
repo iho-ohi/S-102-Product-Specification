@@ -46,16 +46,6 @@ Three types of dataset files may be produced and contained within an exchange se
 * New edition of a dataset: Includes new information. New editions must cover at least the same area as its predecessor.
 * [[canc]]Cancellation: The dataset is cancelled and no longer available to be displayed or used.
 
-[reviewer=Lawrence Haynes Haselmaier,from=canc]
-****
-After Andy/Anthony/Lawrence meeting:
-
-No guidance provided.
-For S-57: The Edition Number@ [EDTN] subfield must be set to 0. This message is only used to cancel a base cell file.
-
-Chair has action to discuss with PT at-large
-****
-
 [[subsec-dataset-size]]
 ==== Dataset size
 S-102 delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
@@ -146,10 +136,29 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 ==== Dataset file naming
 Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets. S-102 dataset naming conventions must follow these rules.
 
+//If ISO metadata files are included, a clause about naming them must be added. (RM comment 25 Jan 2023)
+
 *102CCCCØØØØØØØØØØØØ.H5*::
 102::: the first 3 characters identify the dataset as an S-102 dataset (mandatory).
 CCCC::: the fourth to seventh characters identify the producer code of the issuing agency (mandatory for S-102). Where the producer code is derived from a 2- or 3-character format (for instance when converting S-57 ENCs), the missing characters of the producer code must be populated with zeros ("00" or "0" respectively) for the sixth and seventh characters of the dataset file name, as required ØØØØØØØØØØØØ::: the eighth to the maximum nineteenth characters are optional and may be used in any way by the producer to provide the unique file name. The following characters are allowed in the dataset name: A to Z, 0 to 9 and the special character _ (underscore).
 H5::: denotes and HDF5 file.
+
+=== Exchange Set
+The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=17-4.2>>.
+
+//Revise in addordance with whatever is ultimately decided about ISO metadata files in S-102. (RM Comment 25Jan2023)
+
+. An S-102 Exchange Set must contain an Exchange Set Catalogue, CATALOG.XML, its digital signature CATALOG.SIGN, and may contain any number of S-102 conformant dataset files, support files, and Catalogue files.
+
+. All content must be placed inside a top root folder named S100_ROOT. This is the only top level root folder in an Exchange Set containing only S-100 products.
+
+. The S100_ROOT folder must contain a subfolder named S-102. This subfolder holds content specific to the S-102 Product Specification.
+
+. The S-102 subfolder must contain subfolders for the component dataset files (DATASET_FILES) and Catalogues (CATALOGUES) as required.
+
+. The required Exchange Set Catalogue XML document instance must be named CATALOG.XML and placed in the S100_ROOT folder, together with its digital signature (CATALOG.SIGN) file. All other digital signatures are included within their corresponding resource metadata records in the CATALOG.XML.
+
+. Support files are not allowed in S-102 exchange sets for this edition of S-102.
 
 === Exchange Catalogue
 The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATATLOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
@@ -162,14 +171,16 @@ The data producer decides if compression will be used on the S-102 product files
 
 It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in S-100 Part 15 must be applied to the product files.
 
-The use of compression will be encoded: +
-Since information about compression is encoded in the S-102_ExchangeCatalogue, it is implicitly applied to all the dataset files in the Exchange Set. It will not be possible to create an Exchange Set where some HDF5 files are compressed while others are not. In cases where a data distributor produces an integrated S-102 product, all sources are required to be either compressed or uncompressed at time of integration. In this situation the digital signature encoded into source data (that is, original data producer) will be replaced with that of the distributor (Data Server).
+//Not clear what "The use of compression will be encoded" is saying, and the paragraph following is no longer correct (compression is an attribute of dataset discovery metadata blocks. Delete the following paragraph. (RM comment 23Jan2023) (Next paragraph commented out by LH)
+
+//The use of compression will be encoded: +
+//Since information about compression is encoded in the S-102_ExchangeCatalogue, it is implicitly applied to all the dataset files in the Exchange Set. It will not be //possible to create an Exchange Set where some HDF5 files are compressed while others are not. In cases where a data distributor produces an integrated S-102 product, //all sources are required to be either compressed or uncompressed at time of integration. In this situation the digital signature encoded into source data (that is, //original data producer) will be replaced with that of the distributor (Data Server).
 
 
 ==== Use of data protection
-It is recommended to encrypt all the dataset files, for example HDF5. The encryption method defined in S-100 Part 15 must be applied.
+It is recommended to encrypt all the dataset files, for example HDF5. The encryption method defined in <<iho-s100,part=15>> must be applied.
 
 ==== Use of digital signatures
-Digital signatures shall be used on all files included in a S-102 compliant Exchange Set to meet the requirements of IMO resolution MSC.428(98) to reduce cyber security risks among users, especially when used in navigations systems at sea. The recommended signature method is defined in S-100 Part 15.
+Digital signatures shall be used on all files included in a S-102 compliant Exchange Set to meet the requirements of IMO resolution MSC.428(98) to reduce cyber security risks among users, especially when used in navigations systems at sea. The recommended signature method is defined in <<iho-s100,part=15>>.
 
-The digital signature information is encoded either in the S102_DatasetDiscoveryMetaData or the S102_CatalogueMetadata record for each file included in the Exchange Set.
+The digital signature information is encoded in the corresponding discovery block in the exchange catalogue for each file included in the Exchange Set.
