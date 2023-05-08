@@ -17,7 +17,7 @@ The Application Schema Data Set Structure is shown in <<fig-data-set-structure-s
 
 [[fig-data-set-structure-s102]]
 .Data Set Structure of S-102
-image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", scaledwidth=100vw]
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", pdfwidth=100%,width=100%, scalewidth=16cm]
 
 
 The model in <<fig-data-set-structure-s102>> states that:
