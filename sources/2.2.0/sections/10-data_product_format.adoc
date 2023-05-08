@@ -27,7 +27,7 @@ _Dataspace_:: a description of the dimensions of a multidimensional array;
 
 _Datatype_:: a description of a specific class of data element including its storage layout as a pattern of bits; (Enumerations are encoded with unsigned 8-bit or unsigned 16-bit indices, depending on the number of transported values.)
 
-_Attribute_:: a named data value associated with a group, dataset, or named datatype;
+_Attribute_:: a named data value associated with a group, dataset, or named datatype and stored as a scalar;
 
 _Property List_:: a collection of parameters (some permanent and some transient).
 
