@@ -13,7 +13,7 @@
 :mn-output-extensions: xml,html,doc,pdf,rxl
 :local-cache-only:
 :imagesdir: images
-:status: draft-development
+:status: in-force
 
 include::sections/00-document-history.adoc[]
 
