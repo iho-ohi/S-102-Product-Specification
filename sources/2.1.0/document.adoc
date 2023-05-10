@@ -6,7 +6,7 @@
 :language: en
 :published-date: 2022-10
 :copyright-year: 2022
-:status: in-force
+:status: retired
 :committee: hssc
 :workgroup: tsmad
 :toclevels: 3
