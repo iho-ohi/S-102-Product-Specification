@@ -2,7 +2,6 @@
 metanorma:
   source:
     files:
-      - ../blob/Developing/sources/2.3.0/document.adoc
       - sources/2.2.0/document.adoc
       - sources/2.1.0/document.adoc
       - sources/2.0.0/document.adoc
