@@ -161,7 +161,7 @@ The structure of an S-102 Exchange Set must be according to the structure descri
 . Support files are not allowed in S-102 exchange sets for this edition of S-102.
 
 === Exchange Catalogue
-The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATATLOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
+The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATALOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
 
 === Data integrity and encryption
 S-100 Part 15 defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
