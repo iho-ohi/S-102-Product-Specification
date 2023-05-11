@@ -6,6 +6,7 @@
 :language: en
 :published-date: 2023-04
 :copyright-year: 2023
+:status: in-force
 :committee: hssc
 :workgroup: tsmad
 :toclevels: 3
@@ -13,7 +14,7 @@
 :mn-output-extensions: xml,html,doc,pdf,rxl
 :local-cache-only:
 :imagesdir: images
-:status: draft-development
+
 
 include::sections/00-document-history.adoc[]
 
