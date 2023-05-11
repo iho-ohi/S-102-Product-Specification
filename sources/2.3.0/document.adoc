@@ -2,9 +2,9 @@
 :series: S
 :docnumber: 102
 :doctype: standard
-:edition: 2.2.0
+:edition: 2.3.0
 :language: en
-:published-date: 2023-04
+:published-date: 2023-05
 :copyright-year: 2023
 :committee: hssc
 :workgroup: tsmad
