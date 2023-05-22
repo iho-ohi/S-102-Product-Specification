@@ -31,7 +31,7 @@ h|EPSG Code h|Coordinate Reference System
 *Coordinate Reference System registry*:: link:https://epsg.org/[EPSG Geodetic Parameter Registry]
 *Date type (according to <<iso-19115-1>>)*:: 002 - publication
 *Responsible party*:: International Organisation of Oil and Gas Producers (OGP)
-*URL*:: http://www.ogp.org.uk/
+*URL*:: https://www.ogp.org.uk/
 
 
 === Vertical Coordinate Reference System
