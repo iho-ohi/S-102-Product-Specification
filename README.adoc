@@ -1,20 +1,20 @@
-image::./sources/2.2.0/images/figure-s102-signal-flags-swag.png[signalFlagsSpellingS102,248,120]
+image::./sources/2.3.0/images/figure-s102-logo.svg[S102_logo__signalFlagsSpellingS102,248,120]
 
 = IHO S-102 Bathymetric Surface Product Specification
 
 image:https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml/badge.svg["Build Status", link="https://github.com/metanorma/S-102-Product-Specification/actions/workflows/generate.yml"]
 
-These documents are available in its rendered forms here:
+This document is available in its rendered forms here:
 
 * https://iho-ohi.github.io/S-102-Product-Specification/[IHO S-102 (HTML)]
 
 == Purpose
 
 This is the IHO repository for developing the next edition of
-"S-102 Bathymetric Surface Product Specification".
+the S-102 Bathymetric Surface Product Specification.
 
-WARNING: The contents of this repository are in draft form and not yet in force.
-Please refer to the final versions published on the official
+WARNING: The contents of this repository are in draft form and are not necessarily in force yet.
+Please refer to the final version published on the official
 https://iho.int[IHO] website.
 
 
@@ -24,7 +24,8 @@ This repository contains the source files of S-102 standards, including:
 
 * S-102 2.0.0
 * S-102 2.1.0
-* S-102 (new version in development)
+* S-102 2.2.0
+* S-102 2.3.0 (in development)
 
 These documents are encoded in the
 https://www.metanorma.org/author/topics/document-format/[Metanorma AsciiDoc format].
@@ -65,7 +66,7 @@ If you use a locally installed Metanorma, run:
 metanorma site generate
 ----
 
-If you don't want to deal with local dependencies, use the docker
+If you avoid using local dependencies, use the docker
 version by:
 
 [source,sh]
