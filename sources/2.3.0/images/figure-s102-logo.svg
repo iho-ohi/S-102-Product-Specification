@@ -68,5 +68,5 @@ z"/>
 <ellipse cx="1422" cy="335" rx="35" ry="86" fill="#FFFFFF" stroke="none" transform="rotate(2)" /> 
 <circle cx="1188" cy="975" r="194" stroke = "#FBD403" stroke-width="8" fill = "#FF0000"/>
 <circle cx="2626" cy="940" r="194" stroke = "#FBD403" stroke-width="8" fill = "#FFFFFF"/>
-<path fill="#0000FF" stroke="#FBD403" stroke-width="3" d="M320,800 574,819 555,1073 300,1053 320,800 z"/>
+<path fill="#0000FF" stroke="#FBD403" stroke-width="8" d="M320,800 574,819 555,1073 300,1053 320,800 z"/>
 </svg>
