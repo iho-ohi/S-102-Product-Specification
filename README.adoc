@@ -1,4 +1,4 @@
-image::./sources/2.2.0/images/figure-signal-flags-with-banner.png[signalFlagsSpellingS102_and_banner,240,160]
+image::./sources/2.3.0/images/figure-s102-logo.svg[S102_logo__signalFlagsSpellingS102,248,120]
 
 = IHO S-102 Bathymetric Surface Product Specification
 
@@ -11,7 +11,7 @@ This document is available in its rendered forms here:
 == Purpose
 
 This is the IHO repository for developing the next edition of
-S-102 Bathymetric Surface Product Specification.
+the S-102 Bathymetric Surface Product Specification.
 
 WARNING: The contents of this repository are in draft form and are not necessarily in force yet.
 Please refer to the final version published on the official
