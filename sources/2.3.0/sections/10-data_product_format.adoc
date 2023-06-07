@@ -439,14 +439,6 @@ _Vertical Datum_ attribute except +
 *48 (seaSurface) +
 *49 (hydrographicZero).
 
-6+| Additional attributes for S-102
-
-| 27
-| Gridding method
-| griddingMethod
-^| 0..1
-<| Enumeration
-| See S102_GriddingMethod
 |===
 
 [[note1]]
@@ -470,80 +462,6 @@ The value horizontalCRS specifies the horizontal Coordinate Reference System. At
 ====
 The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,table=6>>).
 ====
-
-===== Gridding method
-
-//If griddingMethod is retained in the above table, move Table 32 S102_GriddingMethod here.
-// If verticalUncertaintyType and depthCorrectionType are desired in the "navigation S-102" product, add them as attributes in the root group. The type should be "Enumeration" given that they are currently enumerations. (See clause 12.2 "Discovery Metadata").
-
-[[tab-s102-gridding-method-parameters]]
-.S102_GriddingMethod parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role name |Name |Description |Code |Remarks
-
-|Enumeration
-|S102_GriddingMethod
-|Gridding methods
-|-
-|-
-
-|Value
-|basicWeightedMean
-|The *Basic Weighted Mean* algorithm computes an average depth for each grid node. Contributing depth estimates within a given area of influence are weighted and averaged to compute the final nodal value.
-|1
-|
-
-|Value
-|shoalestDepth
-|The *Shoalest Depth* algorithm examines depth estimates within a specific area of influence and assigns the shoalest value to the nodal position. The resulting surface represents the shallowest depths across a given area.
-|2
-|
-
-
-|Value
-|tpuWeightedMean
-|The *Total Propagated Uncertainty (TPU) Weighted Mean* algorithm makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute a weighted average depth for each nodal position.
-|3
-|TPU is a measure of the expected accuracy of the depth estimate when all relevant error/uncertainty sources have been considered.
-
-|Value
-|cube
-|The *Combined Uncertainty and Bathymetric Estimator, or CUBE* makes use of the depth and associated total propagated uncertainty for each contributing depth estimate to compute one or many hypotheses for an area of interest. The resulting hypotheses are used to estimate statistical representative depths at each nodal position.
-|4
-|
-
-|Value
-|nearestNeighbour
-|The *Nearest Neighbour* algorithm identifies the nearest depth value within an area of interest and assigns that value to the nodal position. This method does not consider values from neighbouring points.
-|5
-|
-
-|Value
-|naturalNeighbour
-|*Natural Neighbour* interpolation identifies and weights a subset of input samples within the area of interest to interpolate the final nodal value.
-|6
-|
-
-|Value
-|polynomialTendency
-|The *Polynomial Tendency* gridding method attempts to fit a polynomial trend, or best fit surface to a set of input data points. This method can project trends into areas with little to no data, but does not work well when there is no discernible trend within the data set.
-|7
-|
-
-|Value
-|spline
-|The *Spline* algorithm estimates nodal depths using a mathematical function to minimize overall surface curvature. The final “smoothed” surface passes exactly through the contributing input depth estimates.
-|8
-|
-
-|Value
-|kriging
-|*Kriging* is a geostatistical interpolation method that generates an estimated surface from a scattered set of points with a known depth.
-|9
-|
-
-|===
 
 ==== Feature Codes (Group_F)
 No attributes.
