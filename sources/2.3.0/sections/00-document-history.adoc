@@ -114,9 +114,10 @@ Other revisions and clarifications: +
 * Removed Annex for Feature Catalogue and changed all its references to the IHO Geospatial Information registry +
 * Moved gridding method information from Annex into Clause 10 +
 * Updated references to more recent versions
-|===
+
 
 |2.3.0
 |(ongoing from June 2023)
 |S-102PT
 |* Removed gridding method from product specification entirely
+|===
