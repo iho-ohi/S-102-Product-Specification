@@ -119,9 +119,4 @@ Other revisions and clarifications: +
 |2.3.0
 |(ongoing from June 2023)
 |S-102PT
-|* Removed gridding method information and references
-
-[reviewer=Lawrence Haynes Haselmaier, from=lhh1-start1, to=lhh1-end1]
-****
-From J. Le Deunf – It would be helpful to specify and/or indicate the amended §
-****
+|* Removed gridding method from product specification entirely
