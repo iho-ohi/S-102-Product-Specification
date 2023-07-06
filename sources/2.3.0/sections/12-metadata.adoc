@@ -320,7 +320,7 @@ _False_ indicates an unencrypted dataset resource.
 |Attribute
 |digitalSignatureReference
 |Specifies the algorithm used to compute digitalSignatureValue
-|0..1
+|1
 |S100_SE_DigitalSignatureReference (see <<iho-s100,part=15>>)
 |
 
