@@ -39,7 +39,7 @@ The structure of the data product follows the form given in <<iho-s100,part=10c>
 
 [[fig-outline-of-the-generic-data-file-structure]]
 .Outline of the generic data file structure
-image::../images/figure-outline-of-the-generic-data-file-structure.png[]
+image::../images/figure-outline-of-the-generic-data-file-structure.png[UML diagram depicting the generic data file structure as described between this figure and the table Overview of S-102 Data Product]
 
 <<fig-outline-of-the-generic-data-file-structure>> shows the four levels defined within the HDF encoding as defined in <<iho-s100,part=10c>>. Below is a further definition of these levels.
 
@@ -159,7 +159,9 @@ _(h5_dataset)_
 
 [[fig-hierarchy-of-s102-data-product]]
 .Hierarchy of S-102 Data Product
-image::../images/figure-hierarchy-of-s102-data-product.png[]
+image::../images/figure-hierarchy-of-s102-data-product.png["Diagram depicting hierarchical structure of S-102 Data Product. Let the following block names be represented by letters. A=Group_F ; B=BathymetryCoverage ; C=QualityOfSurvey ; D=BathymetryCoverage ; E=QualityOfSurvey ; F=featureCode ; G=BathymetryCoverage.01 ; H=axisNames ; I=QualityOfSurvey.01 ; J=featureAttributeTable ; K=Group_001 ; L=Group_001 ; M=values ; N=values. A, B, and C reside in Level 1. A connects to D, E, and F in Level 2. B connects to G and H in Level 2. C connects to I and J in Level 2. G connects to K in Level 3. I connects to L in Level 3. K connects to M in Level 4. L connects to N in Level 4."]
+
+//I have struggled mightily with writing alt text for fig-hierarchy-of-s102-data-product. What is included is my best draft. Also considered was the following: "Three blocks reside at Level 1: Group_F, BathymetryCoverage, and QualityOfSurvey. Group_F spawns 3 blocks in Level 2 (each of which spawn no further blocks): BathymetryCoverage, QualityOfSurvey, and featureCode. BathymetryCoverage in Level 1 spawns 2 blocks in Level 2: BathymetryCoverage.01 and axisNames (which spawns no further blocks). QualityOfSurvey in Level 1 spawns 2 blocks in Level 2: QualityOfSurvey.01 and featureAttributeTable (which spawns no further blocks). BathymetryCoverage.01 spawns Group_001 in Level 3, which spawns values in Level 4. QualityOfSurvey.01 spawns Group_001 in Level 3, which spawns values in Level 4." (lhh comment 7 July 2023)
 
 The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
 
