@@ -7,7 +7,7 @@ The Bathymetric Surface Product incorporates aspects of the Navigation Surface c
 
 [[fig-overview-structure-s102]]
 .Overview Structure of S-102
-image::../images/figure-overview-structure-s102.png[]
+image::../images/figure-overview-structure-s102.png["Within a larger block: Version Tag, Metadata Block, and Bathymetry Coverage blocks. As a separate block: Digital Certification Block."]
 
 Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<iho-s100,part=8>>, and metadata packages as defined in <<iho-s100,part=4>>. This is described in <<subsec-application-schema>>.
 
@@ -17,7 +17,7 @@ The Application Schema Data Set Structure is shown in <<fig-data-set-structure-s
 
 [[fig-data-set-structure-s102]]
 .Data Set Structure of S-102
-image::../images/figure-data-set-structure-s102.png[]
+image::../images/figure-data-set-structure-s102.png[UML diagram depicting the Application Schema Data Set Structure as described between this figure and the Coverage Structure figure]
 
 
 The model in <<fig-data-set-structure-s102>> states that:
@@ -28,13 +28,13 @@ The model in <<fig-data-set-structure-s102>> states that:
 
 [[fig-coverage-structure-of-s102]]
 .Coverage Structure of S-102
-image::../images/figure-coverage-structure-of-s102.png[]
+image::../images/figure-coverage-structure-of-s102.png[UML diagram depicting the Application Schema Coverage Structure as described between this figure and Application Schema implementation classes]
 
 The model in <<fig-coverage-structure-of-s102>> depicts the coverage type in this application schema: 
 
 * The coverage type is a discrete Regular Grid Coverage called *S102_DepthCoverage* which inherits from (*S100_GridCoverage*). Many of the parameters of the coverage are described in the product specification.
 
-[[subsec-tiling-scheme-partitioning]]
+[[subsec-application-schema-implementation-classes]]
 ==== Application Schema implementation classes
 The implementation classes for the template application schema are shown in <<fig-implementation-of-classes>>. The attributes are shown for the coverage related classes together with the attribute classes.
 
@@ -43,7 +43,7 @@ In order to simplify the implementation, a number of defaults are assumed for S-
 
 [[fig-implementation-of-classes]]
 .Implementation of Classes of S-102
-image::../images/figure-implementation-of-classes.png[]
+image::../images/figure-implementation-of-classes.png[UML diagram depicting the implementation classes for the template application schema as described between this figure and Feature Catalogue]
 
 
 ===== Implementation classes description
@@ -240,7 +240,7 @@ The grid properties of origin and spacing are defined by attributes in the *Bath
 
 [[fig-s102-grid-node-location]]
 .S-102 Grid Node location
-image::../images/figure-s102-grid-node.location.png[]
+image::../images/figure-s102-grid-node.location.png[A matrix with 5 rows and 6 columns of cells. The overall matrix is labeled _X rows x C columns_. The leftmost element of the second lowest row is highlighted and labeled _C + 1_. The origin is shown at the bottom left and extends rightward.]
 
 The two values, depth and uncertainty, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value.
 
