@@ -40,7 +40,7 @@ h|Sun-Illuminated h|Flat Surface
 
 [[fig-sun-illuminated-and-static-flat-shading]]
 .Sun-illuminated and Static (Flat) Shading
-image::figure-sun-illuminated-and-static-flat-shading.png[]
+image::figure-sun-illuminated-and-static-flat-shading.png[Side-by-side depiction of a seafloor area with and without sun-illumination. Both views show varying gray shades as depth varies by a large amount. The left view is labeled _Sun-Illuminated_ and also shows hillshade effects according to all depth variation. The right view is labeled _Flat_ and shows no hillshading.]
 
 ==== Transparency
 S-102 dataset transparency display settings are identified in <<tab-transparency-values-for-s102-dataset>>. The level of opaqueness is represented by the value alpha. A value of 1 represents zero transparency. A value of 0 represents 100% transparency.
@@ -167,4 +167,4 @@ NOTE: colour parameters listed in <<tab-depth-zone-and-colour-token-information-
 
 [[fig-s52-depth-zone-colouring-for-day]]
 .S-52, Edition 6.1(.1) Depth Zone Colouring for Day
-image::figure-s52-depth-zone-colouring-for-day.png[]
+image::figure-s52-depth-zone-colouring-for-day.png[Depiction of a seafloor area coloured according to the above table Depth Zone and Colour Token Information for Day]
