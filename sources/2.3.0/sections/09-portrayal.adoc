@@ -33,7 +33,7 @@ Informative values for sun azimuth angle and elevation have been provided in <<t
 .2+^.^h|Attribute 2+^h|Value in Degrees
 h|Sun-Illuminated h|Flat Surface
 
-|Sun Azimuth Angle |315 Degrees |0.0 Degrees
+|Sun Azimuth Angle |135 Degrees |0.0 Degrees
 |Sun Elevation |45 Degrees |0.0 Degrees
 |===
 
