@@ -21,17 +21,17 @@ h|EPSG Code h|Coordinate Reference System
 |32701 - 32760 |WGS 84 / UTM Zone 1S to Zone 60S
 |5041 |WGS 84 / UPS North (E,N)
 |5042 |WGS 84 / UPS South (E,N)
-2+|The full reference to EPSG can be found at link:http://www.epsg-registry.org/[www.epsg-registry.org].
+2+|The full reference to EPSG can be found at link:http://www.epsg.org/[www.epsg.org].
 |===
 
 
 *Horizontal Coordinate Reference System*:: EPSG (see <<tab-s102-coordinate-reference-systems-epsg-codes>>)
 *Projection*:: NONE/UTM/UPS
 *Temporal reference system*:: Gregorian Calendar
-*Coordinate Reference System registry*:: link:http://www.epsg-registry.org/[EPSG Geodetic Parameter Registry]
+*Coordinate Reference System registry*:: link:http://www.epsg.org/[EPSG Geodetic Parameter Registry]
 *Date type (according to <<iso-19115-1>>)*:: 002 - publication
-*Responsible party*:: International Organisation of Oil and Gas Producers (OGP)
-*URL*:: http://www.ogp.org.uk/
+*Responsible party*:: International Association of Oil & Gas Producers (IOGP)
+*URL*:: http://www.iogp.org/
 
 
 === Vertical Coordinate Reference System
