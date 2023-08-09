@@ -1,0 +1,7 @@
+
+[[annex-validation-checks]]
+[appendix]
+== Validation
+
+=== Introduction
+The following checks are intended for production systems designed to produce S-102 datasets. The checks can be administered at any time during the production phase. They can also be applied downstream in the distribution and end user systems to test the conformance of a dataset to the format rules specified in S-100 Part 10c and the S-102 Product Specification.
