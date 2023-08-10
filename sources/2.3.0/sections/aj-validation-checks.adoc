@@ -1,0 +1,50 @@
+
+[[annex-validation-checks]]
+[appendix]
+== Validation
+
+=== Introduction
+The following checks are intended for production systems designed to produce S-102 datasets. The checks can be administered at any time during the production phase. They can also be applied downstream in the distribution and end user systems to test the conformance of a dataset to the format rules specified in S-100 Part 10c and the S-102 Product Specification.
+
+=== Check Classification
+Checks are classified as critical, error, or warning checks as described in the Table below.
+
+[[tab-check-classification]]
+.Classification of checks
+[cols="a,a,a",options="header"]
+|===
+|Category Code | Category Name | Category Description
+
+| C	| Critical Error	| An error which would make a dataset unusable in ECDIS through not loading or causing an ECDIS to crash or presenting data which is unsafe for navigation.
+| E	| Error	| An error which may degrade the quality of the dataset through appearance or usability but which will not pose a significant danger when used to support navigation.
+| W	| Warning	| An error which may be duplication or an inconsistency which will not noticeably degrade the usability of a dataset in ECDIS.
+
+|===
+
+=== Check Application
+Checks do not apply to dataset terminations or cancellations, except where the check description explicitly states it applies in case of a termination or cancellation.
+
+The checks apply to each HDF5 file which constitutes a dataset (in the S-100 sense of “dataset” as an entire HDF5 file).
+
+There being no update dataset format defined in S-102, checks are not designated as applying to “base” or “update” datasets.
+
+=== Validation Steps
+==== Dataset validation
+Dataset validation checks the structure and content of individual HDF5 data files. The checks for each HDF5 dataset file are divided into five phases:
+
+[[tab-phases-in-validation-processing-for-HDF5-datasets]]
+.Phases in validation processing for HDF5 datasets
+[cols="a,a,a",options="header"]
+|===
+| Phase	| Name	| Description
+
+| 1	| Validate Dataset Root and Feature Information	| Validation of root group of HDF5 file and feature type information.
+| 2	| Validate Feature Container Groups	| Validation of metadata and structure for each feature type (“Feature Container”). In S-104 there is only one feature container, so this set of checks is executed only once. If future Editions introduce multiple feature container HDF5 groups, this set must be executed for each feature container HDF5 group.
+| 3	| Validate Feature Instance Groups	| Validation of feature instances. This set of checks, along with Phase 4 and 5 checks, must be executed once for each feature instance group contained within a feature container.
+| 4	| Validate Values Datasets	| Validation of bathymetry data values. This set of checks is applied to the values group in a feature instance group.
+| 5 | Validate Quality Information | Validation of quality information. This set of checks is applied to the QualityOfBathymetryCoverage group and executed if and only if that group is present.
+|===
+
+Since S-102 uses regular grids which do not require explicit positioning for individual grid points as described in <<iho-s100,part=10c,clause=9.10>>, there is no Positioning group and the correspondin validation phase is not required in S-102.
+
+
