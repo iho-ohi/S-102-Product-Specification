@@ -30,6 +30,7 @@ There being no update dataset format defined in S-102, checks are not designated
 
 === Validation Steps
 ==== Dataset validation
+
 Dataset validation checks the structure and content of individual HDF5 data files. The checks for each HDF5 dataset file are divided into five phases:
 
 [[tab-phases-in-validation-processing-for-HDF5-datasets]]
@@ -47,4 +48,23 @@ Dataset validation checks the structure and content of individual HDF5 data file
 
 Since S-102 uses regular grids which do not require explicit positioning for individual grid points as described in <<iho-s100,part=10c,clause=9.10>>, there is no Positioning group and the correspondin validation phase is not required in S-102.
 
+Certain check failures in earlier phases prevent progress to later phases (for example, because information for the later phase is not available). If such checks fail, processing of other checks in the current phase may continue, but subsequent phases cannot be executed due to a lack of necessary information.
+
+==== Exchange Set validation (informative)
+
+Exchange Set validation involves the following phases.
+. Checking the presence and correctness of the Exchange Catalogue (CATALOG.XML).
+. Verification of signatures, including the Exchange Catalogue signature and signatures for individual datasets, catalogues, and support files.
+. Checking the structure and contents of the Exchange Set package, including whether there is a discovery block for each file in the Exchange Set.
+. Checking that the metadata encoded in a discovery block and the headers and embedded metadata in the corresponding dataset or Catalogue are compatible.
+
+Generalised checks for Exchange Set validation are being developed by the S-100WG and will be introduced into S-104 when ready.
+
+==== System validation (informative)
+
+System validation consists of verifying the suitability of the Exchange Set and dataset for its intended use and its compatibility with other data products with which it will be used. For example, an S-102 dataset intended for use on an ECDIS should:
+* Conform to the applicable user experience requirements for coverage data specified in S-98 Annex C (User Experience);
+* Use the same datum as the underlying ENC(s), in order to be usable for water level adjustment calculations.
+
+The requirements for system validation are under development at this time and will be described later, possibly in a separate Specification.   
 
