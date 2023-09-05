@@ -43,7 +43,7 @@ Dataset validation checks the structure and content of individual HDF5 data file
 
 | 1	| Validate Dataset Root and Feature Information	| Validation of root group of HDF5 file and feature type information.
 
-| 2	| Validate Feature Container Groups	| Validation of metadata and structure for each feature type (“Feature Container”). In S-104 there is only one feature container, so this set of checks is executed only once. If future Editions introduce multiple feature container HDF5 groups, this set must be executed for each feature container HDF5 group.
+| 2	| Validate Feature Container Groups	| Validation of metadata and structure for each feature type (“Feature Container”). In S-102 there are two feature containers (one for the bathymetry data and another for survey information), so this set of checks is executed only once for each. If future Editions introduce more feature container HDF5 groups, this set must be executed for each feature container HDF5 group.
 
 | 3	| Validate Feature Instance Groups	| Validation of feature instances. This set of checks, along with Phase 4 and 5 checks, must be executed once for each feature instance group contained within a feature container.
 
@@ -69,7 +69,7 @@ Exchange Set validation involves the following phases.
 
 . Checking that the metadata encoded in a discovery block and the headers and embedded metadata in the corresponding dataset or Catalogue are compatible.
 
-Generalised checks for Exchange Set validation are being developed by the S-100WG and will be introduced into S-104 when ready.
+Generalised checks for Exchange Set validation are being developed by the S-100WG and will be introduced into S-102 when ready.
 
 ==== System validation (informative)
 
