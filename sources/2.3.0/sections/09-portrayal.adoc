@@ -42,22 +42,6 @@ h|Sun-Illuminated h|Flat Surface
 .Sun-illuminated and Static (Flat) Shading
 image::figure-sun-illuminated-and-static-flat-shading.png[Side-by-side depiction of a seafloor area with and without sun-illumination. Both views show varying gray shades as depth varies by a large amount. The left view is labeled _Sun-Illuminated_ and also shows hillshade effects according to all depth variation. The right view is labeled _Flat_ and shows no hillshading.]
 
-==== Transparency
-S-102 dataset transparency display settings are identified in <<tab-transparency-values-for-s102-dataset>>. The level of opaqueness is represented by the value alpha. A value of 1 represents zero transparency. A value of 0 represents 100% transparency.
-
-[[tab-transparency-values-for-s102-dataset]]
-.Transparency values for S-102 Dataset
-[cols="2"]
-|===
-h|ENC Display Setting h|Alpha
-
-|ENC Day |1.0
-|ENC Dusk |0.4
-|ENC Night |0.2
-|===
-
-
-
 === Generation and display of navigation zones
 The addition of an S-102 dataset enhances the mariner's ability to render and display, using colours, and higher resolution depth zoning directly from the grid.
 
