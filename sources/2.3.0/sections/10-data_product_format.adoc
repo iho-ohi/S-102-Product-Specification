@@ -470,7 +470,7 @@ No attributes.
 
 This group specifies the S-100 features to which the data applies, and consists of three components:
 
-*featureCode* -- a 1-dimesional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfSurvey*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
+*featureCode* -- a 1-dimensional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfSurvey*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
 
 *BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,table=8>>.
 
