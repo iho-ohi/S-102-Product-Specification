@@ -15,9 +15,24 @@ Thus, the Bathymetric Surface Product is a hybrid of coverages, as defined in <<
 === Application Schema
 The Application Schema Data Set Structure is shown in <<fig-data-set-structure-s102>> and <<fig-coverage-structure-of-s102>>. They show a number of classes specialized for use in S-102 and two sets of implementation classes. An actual data set of S-102 bathymetry data only contains the implementation classes. All of the required attributes from the other classes in the application schema are satisfied by statements within the Product Specification. This approach to producing the Application Schema results in a very simple structure for implementation.
 
+.Data Set Structure of S-102 (Width)
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", width=100%]
+
+.Data Set Structure of S-102 (ScaleWidth)
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", scaledwidth=100%]
+
+.Data Set Structure of S-102 (Scale)
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", scaledwidth=100vw]
+
+.Data Set Structure of S-102 (Scale CM)
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", pdfwidth=100%,width=100%, scalewidth=16cm]
+
+.Data Set Structure of S-102 (PDF Role)
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102", pdfwidth=100%, role=full-width]
+
 [[fig-data-set-structure-s102]]
 .Data Set Structure of S-102
-image::../images/figure-data-set-structure-s102.png[]
+image::../images/figure-data-set-structure-s102.png[alt="Data Set Structure of S-102"]
 
 
 The model in <<fig-data-set-structure-s102>> states that:
