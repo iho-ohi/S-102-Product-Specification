@@ -125,7 +125,7 @@ The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a compos
 [level=7]
 ===== values
 
-The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and _uncertainty_ in the *S102_BathymetryValues* class.
+The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and optional _uncertainty_ in the *S102_BathymetryValues* class.
 
 
 [level=6]
