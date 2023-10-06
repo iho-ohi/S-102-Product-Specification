@@ -242,7 +242,7 @@ The grid properties of origin and spacing are defined by attributes in the *Bath
 .S-102 Grid Node location
 image::../images/figure-s102-grid-node.location.png[A matrix with 5 rows and 6 columns of cells. The overall matrix is labeled _X rows x C columns_. The leftmost element of the second lowest row is highlighted and labeled _C + 1_. The origin is shown at the bottom left and extends rightward.]
 
-The two values, depth and uncertainty, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value.
+The two values, depth and optional uncertainty, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value.
 
 The reference vertical datum for the surface is one of the mandatory Metadata items. The unknown state for depth is defined to be 1,000,000.0 (1.0e6).
 
