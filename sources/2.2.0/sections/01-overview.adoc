@@ -32,7 +32,7 @@ This document describes an S-100 compliant product specification for a bathymetr
 
 * [[[iso-19123,ISO 19123:2005]]]
 
-* [[[iso-19129,ISO/TS 19129:2009]]]
+* [[[iso-ts-19129,ISO/TS 19129:2009]]]
 
 * [[[iso-19131,ISO 19131:2007/Amd 1:2011]]]
 
