@@ -113,7 +113,7 @@ Other revisions and clarifications: +
 * Revised text variously for accuracy and clarity +
 * Removed Annex for Feature Catalogue and changed all its references to the IHO Geospatial Information registry +
 * Moved gridding method information from Annex into Clause 10 +
-* Updated references to more recent versions
+* Updated references to more recent versions.
 |===
 
 [reviewer=Lawrence Haynes Haselmaier, from=lhh1-start1, to=lhh1-end1]
