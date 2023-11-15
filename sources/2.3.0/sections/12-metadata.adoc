@@ -741,7 +741,7 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 .S100_CompliancyCategory
 [cols="a,a,a,^a,a",options="header"]
 |===
-|Role Name |Name |Description |Code + (see <<subsec-s100-compliancy-category-note1>>) |Remarks
+|Role Name |Name |Description |Code + (see <<subsec-s100-compliancy-category>>) |Remarks
 
 
 |Enumeration
