@@ -741,7 +741,7 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 .S100_CompliancyCategory
 [cols="a,a,a,^a,a",options="header"]
 |===
-|Role Name |Name |Description |Code + (see <<s100-compliancy-category-note1>>) |Remarks
+|Role Name |Name |Description |Code + (see <<subsec-s100-compliancy-category-note1>>) |Remarks
 
 
 |Enumeration
@@ -780,7 +780,7 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |*Qualifies as _category3_; plus additional requirements, including a portrayal catalogue, cybersecurity (digital signatures and encryption), test material, use of a CRS from the EPSG Registry, and compliance with the IHO S-98 interoperability catalogue. [S-100 5.0.0 4a-5.5.4]*
 
 |===
-[[s100-compliancy-category-note1]]
+[[subsec-s100-compliancy-category-note1]]
 [NOTE]
 ====
 Numeric codes are not provided in S-100 Edition 5.0.0 but have since been determined by the S-100WG; they are needed only if the enumeration is also encoded as an HDF5 enumeration.
