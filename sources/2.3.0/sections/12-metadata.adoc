@@ -56,7 +56,7 @@ image::../images/figure-relationship-between-exchange-catalogue-discovery-metada
 <<<
 [[fig-s102-exchange-set-class-details]]
 .S-102 Exchange Set Class Details
-image::../images/figure-s102-exchange-set-class-details.png[figure-s102-exchange-set-class-details.png, 1672,1029]
+image::../images/figure-s102-exchange-set-class-details.png[]
 
 [%portrait]
 <<<
