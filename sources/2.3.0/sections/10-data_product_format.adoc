@@ -436,10 +436,8 @@ The only allowed value is 1: s100VerticalDatum +
 unsigned +
 16-bit
 | Numeric code from IHO GI Registry +
-_Vertical Datum_ attribute except +
-*47 (seaFloor) +
-*48 (seaSurface) +
-*49 (hydrographicZero).
+_Vertical Datum_ attribute +
+stem:[1-41] & stem:[43-46]
 
 |===
 
