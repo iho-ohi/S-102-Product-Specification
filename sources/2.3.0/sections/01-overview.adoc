@@ -233,22 +233,13 @@ NOTE: A directed line segment represents a vector if the length and direction of
 ==== Abbreviations
 This Product Specification adopts the following convention for presentation purposes:
 
-API:: Application Programming Interface
 //BAG removed here as it is not mentioned anywhere else in the document. LHH from SMA comments 4Apr2023
-DS:: Digital Signature
-DSS:: Digital Signature Scheme
 ECDIS:: Electronic Chart Display Information System
-ECS:: Electronic Chart System
 ENC:: Electronic Navigational Chart
-GML:: Geography Markup Language
 IEC:: International Electrotechnical Commission
 IHO:: International Hydrographic Organization
 ISO:: International Organization for Standardization
-NS:: Navigation Surface
-ONS:: Open Navigation Surface
-PK:: Public Key
 SA:: Signature Authority
-SK:: Secret Key
 UML:: Universal Modelling Language
 
 
