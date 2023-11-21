@@ -28,10 +28,10 @@ h|EPSG Code h|Coordinate Reference System
 *Horizontal Coordinate Reference System*:: EPSG (see <<tab-s102-coordinate-reference-systems-epsg-codes>>)
 *Projection*:: NONE/UTM/UPS
 *Temporal reference system*:: Gregorian Calendar
-*Coordinate Reference System registry*:: link:https://epsg.org/[EPSG Geodetic Parameter Registry]
+*Coordinate Reference System registry*:: link:https://epsg.org/[EPSG Geodetic Parameter Dataset]
 *Date type (according to <<iso-19115-1>>)*:: 002 - publication
-*Responsible party*:: International Organisation of Oil and Gas Producers (OGP)
-*URL*:: https://www.ogp.org.uk/
+*Responsible party*:: International Association of Oil & Gas Producers (IOGP)
+*URL*:: https://www.iogp.org/
 
 
 === Vertical Coordinate Reference System
