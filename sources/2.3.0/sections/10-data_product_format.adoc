@@ -548,6 +548,12 @@ BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, who
 |geSemiInterval
 |===
 
+[[note11]]
+[NOTE]
+====
+The uncertainty attribute of BathymetryCoverage may be omitted under certain conditions. See <<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>.
+====
+
 According to <<iho-s100,part=10c,clause=9.5>>, "All the numeric values in the feature description dataset are string representations of numeric values; for example, "-9999.0" not the float value -9999.0."
 
 While the sample contents are shown in the two attributes columns, these are actually rows in the BathymetryCoverage table. They are also each a single HDF5 compound type and represent a single HDF5 element in the table.
@@ -813,9 +819,13 @@ The group contains an HDF5 dataset named values containing the bathymetric gridd
 
 This dataset contains the compound data arrays containing bathymetric gridded data. These components are explained below.
 
-For bathymetric gridded data, the dataset includes a two-dimensional array containing both the depth and uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every point in the grid can be simply computed. If uncertainty data is not used, it must be filled with the fillValue specified in the Group_F feature information dataset.
+For bathymetric gridded data, the dataset includes a two-dimensional array containing always the depth and under certain conditions uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every point in the grid can be simply computed. 
 
-The depth and uncertainty values (depth and uncertainty) are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with two members.
+If the uncertainty for each discrete point in the grid is equal, it is not necessary to store it at each discrete point in the grid. The uniqueness of the uncertainty results from the equality of the attributes "minimumUncertainty" and "maximumUncertainty" of Group_001 of the BathymetryCoverage (see <<tab-attributes-of-values-group>> No. 3 & 4). If the uncertainty values at the discrete points in the grid are omitted, it must be ensured that the entry of the uncertainty of the BathymetryCoverage in the Group_F is also omitted (see <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfSurvey-arrays>>). This type of storage technique can reduce the amount of memory required for the uncertainty without loss of information. The uncertainty of each discrete point in the grid can be immediately obtained from the "minimumUncertainty" or "maximumUncertainty" attributes of Group_001 of the BathymetryCoverage.
+
+If the uncertainty is not the same for each discrete point in the grid, it must be stored at each discrete point in the grid. For unknown or unused uncertainty data, it must be filled with the fillValue specified in the Group_F feature information dataset.
+
+The discrete points in the grid are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with one or two members.
 
 [[root-qualityOfSurvey]]
 ==== Root QualityOfSurvey
