@@ -116,7 +116,7 @@ Other revisions and clarifications: +
 * Updated references to more recent versions
 
 
-|2.3.0
+|3.0.0
 |(ongoing from June 2023)
 |S-102PT
 |* Removed gridding method from product specification entirely
