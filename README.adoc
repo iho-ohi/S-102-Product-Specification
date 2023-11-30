@@ -1,4 +1,4 @@
-image::./sources/2.3.0/images/figure-s102-logo.svg[S102_logo__signalFlagsSpellingS102,248,120]
+image::./sources/3.0.0/images/figure-s102-logo.svg[S102_logo__signalFlagsSpellingS102,248,120]
 
 = IHO S-102 Bathymetric Surface Product Specification
 
@@ -23,7 +23,7 @@ https://iho.int[IHO] website.
 This repository contains the source files of S-102 standards, including:
 
 * S-102 2.2.0
-* S-102 2.3.0/3.0.0 (in development)
+* S-102 3.0.0 (in development)
 
 These documents are encoded in the
 https://www.metanorma.org/author/topics/document-format/[Metanorma AsciiDoc format].
