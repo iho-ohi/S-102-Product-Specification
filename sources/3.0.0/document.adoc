@@ -2,7 +2,7 @@
 :series: S
 :docnumber: 102
 :doctype: standard
-:edition: 2.3.0
+:edition: 3.0.0
 :language: en
 :published-date: 2023-11
 :copyright-year: 2023
