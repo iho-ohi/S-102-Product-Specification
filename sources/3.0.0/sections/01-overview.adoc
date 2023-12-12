@@ -268,7 +268,7 @@ This information uniquely identifies this Product Specification and provides inf
 
 *Title*:: Bathymetric Surface Product Specification
 *S-100 Version*:: 5.0.0
-*S-102 Version*:: 2.2.0
+*S-102 Version*:: 3.0.0
 *Date*:: April 2023
 
 *Language*:: English
@@ -285,7 +285,7 @@ Fax: +377 93 10 81 40 +
 Email: mailto:info@iho.int[] +
 --
 *URL*:: link:http://www.iho.int/[www.iho.int]
-*Identifier*:: IHO:S100:S102:2:2:0
+*Identifier*:: IHO:S100:S102:3:0:0
 *Maintenance*:: Changes to the Product Specification S-102 are coordinated by the IHO S-100 Working Group (S-100WG), and must be made available via the IHO web site. Maintenance of the Product Specification must conform to IHO Resolution 2/2007, as amended.
 
 
