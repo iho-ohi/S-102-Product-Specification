@@ -233,6 +233,10 @@ Bathymetric Surface datasets are represented as a discrete array of points conta
 
 The geo-referencing for an S-102 Bathymetric Surface product shall be raster-based, referenced from the southwestern-most node in a grid. Each sample in a grid represents the value in the cell. The reference position included in the metadata shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
 
+[[fig-s102-cell-area-and-Bbox]]
+.Cell Geometry
+image::../images/figure-s102-cell-area-and-Bbox.png["grid lines, grid nodes and grid cells."]
+
 ==== Regular grid
 
 ===== S-102 coverages
