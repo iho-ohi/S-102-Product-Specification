@@ -9,7 +9,7 @@ A number of sounding techniques are used to capture bathymetric data. It is perm
 
 Quality and source metadata in S-102 are intended to enable and support future navigation software to appropriately auto-generate and attribute cartographic features such as custom depth contours and soundings from S-102 products, all while minimally impacting the overall file size of the product.
 
-Quality and source metadata are encoded in a raster attribute table that is compliant with HDF-5 and S-100 and will provide valuable information about the bathymetry on a node-by-node basis compared to traditional vector-based metadata files, simplifying the interpretation and implementation by navigation software systems.
+Quality and source metadata are encoded in a raster attribute table that is compliant with HDF-5 and S-100 and will provide valuable information about the bathymetry on a cell-by-cell basis compared to traditional vector-based metadata files, simplifying the interpretation and implementation by navigation software systems.
 
 The fields of the feature attribute table are defined elsewhere in this Product Specification (<<tab-attributes-of-values-group>>).
 
