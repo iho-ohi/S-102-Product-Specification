@@ -229,9 +229,9 @@ In S-102 there are currently no complex attributes defined.
 === Dataset types
 
 ==== Introduction
-Bathymetric Surface datasets are represented as a discrete array of points contained in a regular grid. The general structure for a regular grid is defined in <<iho-s100,part=8>>.
+Bathymetric Surface datasets are represented as regular grids. The general structure for a regular grid is defined in <<iho-s100,part=8>>.
 
-The geo-referencing for an S-102 Bathymetric Surface product shall be raster-based, referenced from the southwestern-most node in a grid. Each sample in a grid represents the value in the cell. The reference position included in the metadata shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
+The geo-referencing for an S-102 Bathymetric Surface product shall be node-based, referenced from the southwestern-most node in a grid. Each sample in a grid represents the value in the grid cell. The reference position included in the metadata shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
 
 [[fig-s102-cell-area-and-Bbox]]
 .Cell Geometry
