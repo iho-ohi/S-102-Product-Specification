@@ -401,7 +401,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 
 |Attribute
 |boundingBox
-|The extent of the dataset limits defined as a rectangle coincident with the outermost cell boundaries of the dataset. NoData cells included.
+|The extent of the dataset limits defined as a rectangle coincident with the outermost cell boundaries of the dataset.
 |1
 |EX_GeographicBoundingBox
 |*Mandatory in S-102*
