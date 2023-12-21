@@ -933,7 +933,7 @@ See <<note8>>.
 | 8
 | bathyCoverage
 //editorial note:: PT11: new in the IHO registry
-| Flag for nodes populated by interpolation.
+| Flag for grid cells populated by interpolation.
 | 0..1
 | Integer +
 unsigned +
@@ -1062,7 +1062,7 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 
 | Value
 | rawStandardDeviation
-| Raw standard deviations of soundings that contributed to the node.
+| Raw standard deviations of soundings that contributed to the grid cell.
 | 1
 | -
 
