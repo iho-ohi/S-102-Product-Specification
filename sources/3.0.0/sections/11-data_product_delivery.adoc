@@ -52,7 +52,7 @@ S-102 delivery will take place in one form: network transfer to platform (that i
 
 NOTE: The use of 10 MB in this and other sections should be treated as informative information only. Additionally, any computed values associated with either file size limit should be treated as approximate answers. Final selection of an appropriate file size limit or grid resolution is left to the discretion of the data producer.
 
-*Network Transfer*:: To minimize overall file size, the HO produces a 10 MB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 nodes by 600 nodes.
+*Network Transfer*:: To minimize overall file size, the HO produces a 10 MB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 by 600 grid cells.
 
 <<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of S-102 data for specific charting scales.
 
@@ -69,7 +69,7 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 
 |NULL (only allowed on minimum display scale where the maximum display scale = 10,000,000)
 |
-|Approximate Linear Distance in Nautical Miles (M) for a 600 X 600 node grid
+|Approximate Linear Distance in Nautical Miles (M) for a 600 X 600 cell grid
 
 |1:10,000,000
 |900 metres
