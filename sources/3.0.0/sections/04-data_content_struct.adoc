@@ -32,7 +32,7 @@ image::../images/figure-coverage-structure-of-s102.png[UML diagram depicting the
 
 The model in <<fig-coverage-structure-of-s102>> depicts the coverage type in this application schema: 
 
-* The coverage type is a discrete Regular Grid Coverage called *S102_DepthCoverage* which inherits from (*S100_GridCoverage*). Many of the parameters of the coverage are described in the product specification.
+* The coverage type is a continuous Regular Grid Coverage called *S102_DepthCoverage* which inherits from (*S100_GridCoverage*). Many of the parameters of the coverage are described in the product specification.
 
 [[subsec-application-schema-implementation-classes]]
 ==== Application Schema implementation classes
