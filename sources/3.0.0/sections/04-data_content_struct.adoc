@@ -101,7 +101,7 @@ The attribute _axisNames_ has the value class _Sequence<CharacterString>_ that s
 [level=7]
 ===== extent
 
-The attribute _extent_ has the value class *CV_GridEnvelope* that shall contain the extent of the spatial domain of the coverage. It uses the value class *CV_GridEnvelope* which provides the grid coordinate values for the diametrically opposed corners of the grid. The [underline]#default is that this value is derived# from the bounding box for the data set or tile in a multi tile data set. The extent of the dataset limits is defined as a rectangle coincident with the outermost cell boundaries of the dataset. In the encoding the property BoundingBox is used to hold the extent.
+The attribute _extent_ has the value class *CV_GridEnvelope* that shall contain the extent of the spatial domain of the coverage. It uses the value class *CV_GridEnvelope* which provides the grid coordinate values for the diametrically opposed corners of the grid. The [underline]#default is that this value is derived# from the bounding box for the data set. The extent of the dataset limits is defined as a rectangle coincident with the outermost cell boundaries of the dataset. In the encoding the property BoundingBox is used to hold the extent.
 
 [level=7]
 ===== sequencingRule
