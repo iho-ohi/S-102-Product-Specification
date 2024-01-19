@@ -139,7 +139,7 @@ Certain parameters need to be initialized before processing of the phase begins.
 The individual checks are given in a spreadsheet file accompanying this Product Specification. The checks are a part of this Product Specification.
 
 
-Words in angle brackets <> indicate the content is a parameter which must be substituted by the appropriate value. For example, <FX> (Phase 1 in the dataset checks) should be replaced by the appropriate codes for the bathymetry coverage and quality coverage features (BathymetryCoverage and QualityOfSurvey for S-102 Ed. 2.2.0).
+Words in angle brackets <> indicate the content is a parameter which must be substituted by the appropriate value. For example, <FX> (Phase 1 in the dataset checks) should be replaced by the appropriate codes for the bathymetry coverage and quality coverage features (BathymetryCoverage and QualityOfBathymetryCoverage for S-102 Ed. 2.2.0).
 
 Bold type indicates a literal name (for example Group_F.featureCode means the HDF5 array named “featureCode” in the HDF5 group named “Group_F”).
 

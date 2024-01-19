@@ -77,7 +77,7 @@ _(h5_dataset)_
 |
 
 |
-|QualityOfSurvey +
+|QualityOfBathymetryCoverage +
 _(h5_dataset)_
 |
 |
@@ -125,7 +125,7 @@ _(h5_dataset)_
 _(h5_dataset)_
 
 | Feature Type +
-QualityOfSurvey +
+QualityOfBathymetryCoverage +
 _(h5_group)_
 |Metadata +
 _(h5_attribute)_ +
@@ -134,7 +134,7 @@ _(h5_attribute)_ +
 |
 
 |
-|QualityOfSurvey.01 +
+|QualityOfBathymetryCoverage.01 +
 _(h5_group)_
 |Group_001 +
 _(h5_group)_
@@ -145,7 +145,7 @@ _(h5_attribute)_
 |
 |
 |
-|Quality of Survey Data Array +
+|Quality of Bathymetry Data Array +
 values +
 _(h5_dataset)_
 
@@ -159,7 +159,7 @@ _(h5_dataset)_
 
 [[fig-hierarchy-of-s102-data-product]]
 .Hierarchy of S-102 Data Product
-image::../images/figure-hierarchy-of-s102-data-product.png["Diagram depicting hierarchical structure of S-102 Data Product. Let the following block names be represented by letters. A=Group_F ; B=BathymetryCoverage ; C=QualityOfSurvey ; D=BathymetryCoverage ; E=QualityOfSurvey ; F=featureCode ; G=BathymetryCoverage.01 ; H=axisNames ; I=QualityOfSurvey.01 ; J=featureAttributeTable ; K=Group_001 ; L=Group_001 ; M=values ; N=values. A, B, and C reside in Level 1. A connects to D, E, and F in Level 2. B connects to G and H in Level 2. C connects to I and J in Level 2. G connects to K in Level 3. I connects to L in Level 3. K connects to M in Level 4. L connects to N in Level 4."]
+image::../images/figure-hierarchy-of-s102-data-product.png["Diagram depicting hierarchical structure of S-102 Data Product. Let the following block names be represented by letters. A=Group_F ; B=BathymetryCoverage ; C=QualityOfBathymetryCoverage ; D=BathymetryCoverage ; E=QualityOfBathymetryCoverage ; F=featureCode ; G=BathymetryCoverage.01 ; H=axisNames ; I=QualityOfBathymetryCoverage.01 ; J=featureAttributeTable ; K=Group_001 ; L=Group_001 ; M=values ; N=values. A, B, and C reside in Level 1. A connects to D, E, and F in Level 2. B connects to G and H in Level 2. C connects to I and J in Level 2. G connects to K in Level 3. I connects to L in Level 3. K connects to M in Level 4. L connects to N in Level 4."]
 
 //I have struggled mightily with writing alt text for fig-hierarchy-of-s102-data-product. What is included is my best draft. Also considered was the following: "Three blocks reside at Level 1: Group_F, BathymetryCoverage, and QualityOfSurvey. Group_F spawns 3 blocks in Level 2 (each of which spawn no further blocks): BathymetryCoverage, QualityOfSurvey, and featureCode. BathymetryCoverage in Level 1 spawns 2 blocks in Level 2: BathymetryCoverage.01 and axisNames (which spawns no further blocks). QualityOfSurvey in Level 1 spawns 2 blocks in Level 2: QualityOfSurvey.01 and featureAttributeTable (which spawns no further blocks). BathymetryCoverage.01 spawns Group_001 in Level 3, which spawns values in Level 4. QualityOfSurvey.01 spawns Group_001 in Level 3, which spawns values in Level 4." (lhh comment 7 July 2023)
 
@@ -468,20 +468,20 @@ No attributes.
 
 This group specifies the S-100 features to which the data applies, and consists of three components:
 
-*featureCode* -- a 1-dimensional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfSurvey*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
+*featureCode* -- a 1-dimensional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfBathymetryCoverage*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
 
 *BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,table=8>>.
 
-*QualityOfSurvey* -- A 1-dimensional dataset of the same datatype as the *BathymetryCoverage* dataset described above. This *QualityOfSurvey* dataset contains the definition of the reference to metadata records. The reference is a single integer which identifies a metadata record in _featureAttributeTable_ (described in <<iho-s100,part=10c,clause=9.6.2>> and <<root-qualityOfSurvey>>.
+*QualityOfBathymetryCoverage* -- A 1-dimensional dataset of the same datatype as the *BathymetryCoverage* dataset described above. This *QualityOfBathymetryCoverage* dataset contains the definition of the reference to metadata records. The reference is a single integer which identifies a metadata record in _featureAttributeTable_ (described in <<iho-s100,part=10c,clause=9.6.2>> and <<root-QualityOfBathymetryCoverage>>.
 
 //QualityOfBathymetricData is defined in the GI Registry as “An area within which a uniform assessment of the quality of the bathymetric data exists.” That does not describe this dataset, which provides information at the level of individual cells. Recommend new type QualityOfSurveyCoverage or QualityOfBathymetryCoverage, defined as “A set of references to value records that provide localised information about depths, uncertainties, and survey metadata.” It can be proposed to the GI Registry after the S-102 team approves it. (RM comment 23Jan2023)
 
-==== BathymetryCoverage and QualityOfSurvey Tables (in Group_F)
+==== BathymetryCoverage and QualityOfBathymetryCoverage Tables (in Group_F)
 
-BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfSurvey-arrays>>.
+BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>.
 
-[[tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfSurvey-arrays]]
-.Sample contents of the BathymetryCoverage and QualityOfSurvey arrays
+[[tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays]]
+.Sample contents of the BathymetryCoverage and QualityOfBathymetryCoverage arrays
 //It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1 (RM comment 4Jan2023)
 
 [cols="a,a,a,a,a",options="header"]
@@ -490,7 +490,7 @@ BathymetryCoverage and QualityOfSurvey are arrays of compound type elements, who
 | Name 
 | Explanation 
 2+| BathymetryCoverage
-| QualityOfSurvey
+| QualityOfBathymetryCoverage
 
 | 
 | 
@@ -834,12 +834,12 @@ If the uncertainty is not the same for each grid cell, it must be stored at each
 
 The grid cell values are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each cell in the grid. The data type of the array values is a compound with one or two members.
 
-[[root-qualityOfSurvey]]
-==== Root QualityOfSurvey
+[[root-QualityOfBathymetryCoverage]]
+==== Root QualityOfBathymetryCoverage
 
-The QualityOfSurvey container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'
+The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'
 
-The QualityOfSurvey container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfSurvey group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
+The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
 //(1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing? (RM comment 4Jan2023)
 //All optional except id. Producers should not add other fields. (RM comment 23Jan2023)
@@ -1096,15 +1096,15 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 
 |===
 
-==== Instance group QualityOfSurvey.01
-The QualityOfSurvey.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
+==== Instance group QualityOfBathymetryCoverage.01
+The QualityOfBathymetryCoverage.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
 
-==== Values group for QualityOfSurvey
-The values group for QualityOfSurvey contains no metadata attributes and a single dataset named values, which is described in <<subsec-values-dataset-for-QualityOfSurvey>>.
+==== Values group for QualityOfBathymetryCoverage
+The values group for QualityOfBathymetryCoverage contains no metadata attributes and a single dataset named values, which is described in <<subsec-values-dataset-for-QualityOfBathymetryCoverage>>.
 
-[[subsec-values-dataset-for-QualityOfSurvey]]
-==== Values dataset for QualityOfSurvey
-The values dataset for QualityOfSurvey is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>).
+[[subsec-values-dataset-for-QualityOfBathymetryCoverage]]
+==== Values dataset for QualityOfBathymetryCoverage
+The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>).
 
 Each cell in this values dataset must be populated with a value that is one of the record identifiers in the featureAttributeTable dataset or with the fill value 0 (zero).
 
@@ -1117,6 +1117,6 @@ The following group and attribute names are mandatory in S-100:
 ** *BathymetryCoverage*
 ** axisNames
 ** *BathymetryCoverage.01*
-** *QualityOfSurvey.01*
+** *QualityOfBathymetryCoverage.01*
 ** featureAttributeTable
 ** Group_nnn
