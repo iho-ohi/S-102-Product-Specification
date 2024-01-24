@@ -157,12 +157,12 @@ The class *CV_GridEnvelope* provides the grid coordinate values for the diametri
 [level=7]
 ===== low
 
-The attribute _low_ shall be the minimal coordinate values for all grid points within the envelope. For this specification this represents the Southwestern corner coordinate of the southwesternmost grid cell.
+The attribute _low_ shall be the minimum coordinate values for each coordinate axis among all grid cells within the envelope. For this specification the value is the southwesternmost grid point coordinate minus half of the grid spacing for each coordinate axis.
 
 [level=7]
 ===== high
 
-The attribute _high_ shall be the maximal coordinate values for all grid points within the envelope. For this specification this represents the Northeastern corner coordinate of the northeasternmost grid cell.
+The attribute _high_ shall be the maximum coordinate values for each coordinate axis among all grid cells within the envelope. For this specification the value is the northeasternmost grid point coordinate plus half of the grid spacing for each coordinate axis.
 
 [level=6]
 ===== CV_GridCoordinate
