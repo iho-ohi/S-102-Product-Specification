@@ -639,10 +639,10 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 
 | 8
 | Interpolation type
-| nearestNeighbor
+| interpolationType
 | 1
 | Enumeration
-| Value: 1. See code value from <<iho-s100,part=10c,table=22>>
+| Value: 1 nearestneighbor. See <<iho-s100,part=10c,table=22>>
 
 | 9
 | Offset of data point in cell
