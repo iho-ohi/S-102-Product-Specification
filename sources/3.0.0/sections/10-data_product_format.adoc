@@ -594,7 +594,8 @@ unsigned +
 | commonPointRule
 | 1
 | Enumeration
-| Value: 1-4 <<iho-s100,part-10c,table=20>>.
+| Value: 2 (low) + 
+see <<iho-s100,part-10c,table=20>>.
 
 | 4
 | Horizontal position uncertainty
