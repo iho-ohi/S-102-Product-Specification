@@ -645,13 +645,6 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 | Enumeration
 | Value: 1 (nearestneighbor). See <<iho-s100,part=10c,table=22>>
 
-| 9
-| Offset of data point in cell
-| dataOffsetCode
-| 1
-| Enumeration
-| Value: 5 barycenter (centroid) of cell. See code value from <<iho-s100,part=10c,table=10>>
-
 |===
 
 ==== Feature Instance group -- BathymetryCoverage.01
