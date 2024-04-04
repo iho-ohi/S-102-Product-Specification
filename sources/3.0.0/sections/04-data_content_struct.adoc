@@ -233,8 +233,8 @@ Bathymetric Surface datasets are represented as regular grids. The general struc
 The georeferencing for an S-102 Bathymetric Surface product shall be based on southwesternmost grid cell corner of the southwesternmost grid cell. The reference position (grid origin) included in the metadata, precisely the attributes _gridOriginLatitude_ and _gridOriginLongitude_, shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
 
 [[fig-s102-cell-area-and-Bbox]]
-.Grid lines, grid points and grid cells. Grid cells are centered around grid points.
-image::../images/figure-s102-cell-area-and-Bbox.png["grid lines, grid points and grid cells."]
+.Grid lines, grid points, grid cells, grid origin and bounding box. Grid cells are centered around grid points. Note that grid origin (georeferencing point) is not a grid point.
+image::../images/figure-s102-cell-area-and-Bbox.png["S-102 grid components"]
 
 ==== Regular grid
 
