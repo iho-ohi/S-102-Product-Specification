@@ -81,7 +81,7 @@ The attribute _maximumUncertainty_ has the value type _Real_ and describes the u
 [level=7]
 ===== origin
 
-The attribute _origin_ has the value class _DirectPosition_ which is a position that shall locate the origin of the rectified grid in the coordinate reference system. This attribute is required. There is no default. In the encoding this is split into properties gridOriginLatitude and gridOriginLongitude.
+The attribute _origin_ has the value class _DirectPosition_ which is a position that shall locate the origin of the rectified grid in the coordinate reference system. This attribute is required. There is no default. For this specification the value is the [underline]#southwest corner coordinate of the southwesternmost grid cell#. In the encoding this is split into properties gridOriginLatitude and gridOriginLongitude.
 
 [level=7]
 ===== offsetVectors
@@ -106,12 +106,12 @@ The attribute _extent_ has the value class *CV_GridEnvelope* that shall contain 
 [level=7]
 ===== sequencingRule
 
-The attribute _sequencingRule_ has the value class *CV_SequenceRule* that shall describe how the grid points are ordered for association to the elements of the sequence values. The [underline]#default value is "Linear". No other options are allowed.#
+The attribute _sequencingRule_ has the value class *CV_SequenceRule* that shall describe how the grid cells are ordered for association to the elements of the sequence values. The [underline]#default value is "Linear". No other options are allowed.#
 
 [level=7]
 ===== startSequence
 
-The attribute _startSequence_ has the value class *CV_GridCoordinate* that shall identify the grid point to be associated with the first record in the values sequence. The [underline]#default value is the lower left corner# of the grid. No other options are allowed.
+The attribute _startSequence_ has the value class *CV_GridCoordinate* that shall identify the grid cell to be associated with the first record in the values sequence. The [underline]#default value is the lower left corner# of the grid. No other options are allowed.
 
 
 [level=6]
@@ -125,7 +125,7 @@ The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a compos
 [level=7]
 ===== values
 
-The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and optional _uncertainty_ in the *S102_BathymetryValues* class.
+The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid cells. There are two attributes in the bathymetry value record, _depth_ and optional _uncertainty_ in the *S102_BathymetryValues* class.
 
 
 [level=6]
@@ -157,12 +157,12 @@ The class *CV_GridEnvelope* provides the grid coordinate values for the diametri
 [level=7]
 ===== low
 
-The attribute _low_ shall be the minimum coordinate values for each coordinate axis among all grid cells within the envelope. For this specification the value is the southwesternmost grid point coordinate minus half of the grid spacing for each coordinate axis.
+The attribute _low_ shall be the minimum coordinate values for each coordinate axis among all grid cells within the envelope. For this specification the value is the southwest corner coordinate of the southwesternmost grid cell. This is the same as grid origin.
 
 [level=7]
 ===== high
 
-The attribute _high_ shall be the maximum coordinate values for each coordinate axis among all grid cells within the envelope. For this specification the value is the northeasternmost grid point coordinate plus half of the grid spacing for each coordinate axis.
+The attribute _high_ shall be the maximum coordinate values for each coordinate axis among all grid cells within the envelope. For this specification the value is the northeast corner coordinate of the northeasternmost grid cell.
 
 [level=6]
 ===== CV_GridCoordinate
@@ -175,8 +175,7 @@ The class *CV_GridCoordinate* is a data type for holding the grid coordinates of
 [level=7]
 ===== coordValues
 
-The attribute _coordValues_ has the value class _Sequence<Integer>_ that shall hold one integer value for each dimension of the grid. The ordering of these coordinate values shall be the same as that of the elements of _axisNames_. The value of a single coordinate shall be the number of offsets from the origin of the grid in the direction of a specific axis.
-
+The attribute _coordValues_ has the value class _Sequence<Integer>_ that shall hold one integer value for each dimension of the grid. The ordering of these coordinate values shall be the same as that of the elements of _axisNames_. The value of a single coordinate shall be the number of offsets from the first sample (grid point) of the grid in the direction of a specific axis.
 
 [level=6]
 ===== CV_SequenceRule
@@ -195,7 +194,7 @@ The attribute _type_ shall identify the type of sequencing method that shall be 
 [[scanDirection]]
 ===== scanDirection
 
-The attribute _scanDirection_ has the value class _Sequence<CharacterString>_ a list of axis names that indicates the order in which grid points shall be mapped to position within the sequence of records of feature attribute values.
+The attribute _scanDirection_ has the value class _Sequence<CharacterString>_ a list of axis names that indicates the order in which grid cells shall be mapped to position within the sequence of records of feature attribute values.
 
 
 === Feature Catalogue
@@ -231,7 +230,7 @@ In S-102 there are currently no complex attributes defined.
 ==== Introduction
 Bathymetric Surface datasets are represented as regular grids. The general structure for a regular grid is defined in <<iho-s100,part=8>>. Each sample in a grid represents the value in the grid cell.
 
-The georeferencing for an S-102 Bathymetric Surface product shall be grid point based, referenced from the southwesternmost grid point. The reference position (grid origin) included in the metadata, precisely the attributes _gridOriginLatitude_ and _gridOriginLongitude_, shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
+The georeferencing for an S-102 Bathymetric Surface product shall be based on southwesternmost grid cell corner of the southwesternmost grid cell. The reference position (grid origin) included in the metadata, precisely the attributes _gridOriginLatitude_ and _gridOriginLongitude_, shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
 
 [[fig-s102-cell-area-and-Bbox]]
 .Grid lines, grid points and grid cells. Grid cells are centered around grid points.
@@ -242,7 +241,7 @@ image::../images/figure-s102-cell-area-and-Bbox.png["grid lines, grid points and
 ===== S-102 coverages
 The *BathymetryCoverage* contains depth and, optionally, uncertainty. The general structure of each is defined in <<iho-s100,part=8>> as a georectified grid.
 
-The grid properties of origin and spacing are defined by attributes in the *BathymetryCoverage.01* Feature Container Group. The grid is a two-dimensional matrix organized in row major order and starting from the southwestern-most grid cell. Thus, the first sample of the grid is the grid point at the southwest corner of the grid with location specified by the georeferencing parameters, the second is one grid resolution unit to the east of that position and at the same northing or latitude, and the third is two grid resolution units to the east and at the same northing or latitude. For stem:[C] columns in the grid, the stem:[(C+1)]^th^ sample in the grid is located one grid resolution unit to the north but on the same easting or longitude as the first sample in the grid.
+The grid properties of origin and spacing are defined by attributes in the *BathymetryCoverage.01* Feature Container Group. The grid is a two-dimensional matrix organized in row major order and starting from the southwestern-most grid cell. Thus, the first sample of the grid is the center point (grid point) of the southwesternmost grid cell, the second is one grid resolution unit to the east of that position and at the same northing or latitude, and the third is two grid resolution units to the east and at the same northing or latitude. For stem:[C] columns in the grid, the stem:[(C+1)]^th^ sample in the grid is located one grid resolution unit to the north but on the same easting or longitude as the first sample in the grid.
 
 [[fig-s102-grid-point-location]]
 .S-102 Grid point location
