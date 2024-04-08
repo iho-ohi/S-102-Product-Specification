@@ -243,9 +243,9 @@ The *BathymetryCoverage* contains depth and, optionally, uncertainty. The genera
 
 The grid properties of origin and spacing are defined by attributes in the *BathymetryCoverage.01* Feature Container Group. The grid is a two-dimensional matrix organized in row major order and starting from the southwestern-most grid cell. Thus, the first sample of the grid is the center point (grid point) of the southwesternmost grid cell, the second is one grid resolution unit to the east of that position and at the same northing or latitude, and the third is two grid resolution units to the east and at the same northing or latitude. For stem:[C] columns in the grid, the stem:[(C+1)]^th^ sample in the grid is located one grid resolution unit to the north but on the same easting or longitude as the first sample in the grid.
 
-[[fig-s102-grid-point-location]]
-.S-102 Grid point location
-image::../images/figure-s102-grid-point-location.png[A matrix with 5 rows and 6 columns of cells. The overall matrix is labeled _X rows x C columns_. The leftmost element of the second lowest row is highlighted and labeled _C + 1_. The origin is shown at the bottom left and extends rightward.]
+[[fig-s102-grid-cell-location]]
+.S-102 Grid cell location
+image::../images/figure-s102-grid-cell-location.png[A matrix with 4 rows and 5 columns of cells. The overall matrix is labeled _X rows x C columns_. The leftmost element of the second lowest row is highlighted and labeled _C + 1_. The origin is shown at the bottom left and extends rightward.]
 
 The two values, depth and optional uncertainty, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value.
 
