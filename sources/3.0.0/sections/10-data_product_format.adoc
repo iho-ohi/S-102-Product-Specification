@@ -439,7 +439,7 @@ unsigned +
 _Vertical Datum_ attribute +
 stem:[1-41] & stem:[43-46]
 
-see <<note11>>
+see <<note12>>
 |===
 
 [[note1]]
@@ -465,7 +465,7 @@ The baseCRS is the geodetic CRS on which the projected CRS is based. In particul
 ====
 
 
-[[note11]]
+[[note12]]
 [NOTE]
 ====
 This is the default vertical datum (verticalDatum), unless a distinct vertical datum(verticalDatum) is specified for the corresponding feature instance group (BathymetryCoverage.nn).
