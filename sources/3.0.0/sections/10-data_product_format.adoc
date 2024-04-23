@@ -661,7 +661,7 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 [[note13]]
 [NOTE]
 ====
-The number depends on the number of different vertical date ranges in the Feature Container Group in the Feature Container Group.
+The number depends on the number of different vertical datum ranges in the Feature Container Group in the Feature Container Group.
 ====
 
 [[subsec-BathymetryCoverage-feature-instance]]
