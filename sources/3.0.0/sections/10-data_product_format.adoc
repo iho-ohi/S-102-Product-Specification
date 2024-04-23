@@ -661,12 +661,12 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 [[note13]]
 [NOTE]
 ====
-The number depends on the number of different vertical datum ranges in the Feature Container Group in the Feature Container Group.
+The number depends on the number of different vertical datum areas in the Feature Container Group in the Feature Container Group.
 ====
 
 [[subsec-BathymetryCoverage-feature-instance]]
 ==== Feature Instance group -- BathymetryCoverage.nn
-The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each Feature Instance Group implements an area of a unique vertical datum. All feature instance groups must share the same position and extent.
+The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each Feature Instance Group implements an area of a unique vertical datum. All feature instance groups must share the same spatial location and extent.
 
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
@@ -740,7 +740,7 @@ Either this or the bounding box attribute must be populated.
 <| Float +
 32-bit
 .4+| Coordinates should refer to the previously defined Coordinate Reference System. +
-Either this or the domainExtent polygon dataset must be populated
+Either this or the domainExtent.polygon dataset must be populated
 
 | 1b
 | eastBoundLongitude
@@ -849,7 +849,7 @@ The gridOriginLongitude and gridOriginLatitude are the cell center of the cell.
 
 numPointsLongitude and numPointsLatitude must contain the number of cells in the x and y dimensions of the values table.
 
-The S-102 uses the "Attribute Overwriting" option of the <<iho-s100,part=10c,clause=9.7.1>>. This allows the feature instance group to overwrite the attributes of a higher group, in this case the 'verticalDatum'. The default vertical datum is specified in the root group (see table <<tab-root-group-attributes>>). A new separate feature instance group must be created for all areas with a vertical date that differs from the standard vertical date. Only feature instance groups with a value that differs from the standard vertical date use the additional attribute "verticalDatum" on the feature instance group. The use of multiple vertical datums within an S-102 product requires the use of "DomainExtend.Polygon". In addition, according to S-100, either the BoundingBox at the Feature Instance Group or the "DomainExtend.Polygon" must be specified. When using multiple vertical datums, the use of the "DomainExtend.Polygon" is mandatory, which means that the BoundingBox is not specified in this case. The grid cells that do not belong to the area of the respective vertical datum are to be assigned the no-data values.
+The S-102 uses the "Attribute Overwriting" option of the <<iho-s100,part=10c,clause=9.7.1>>. This allows the feature instance group to overwrite the attributes of a higher group, in this case the 'verticalDatum'. The default vertical datum is specified in the root group (see table <<tab-root-group-attributes>>). A new separate feature instance group must be created for all areas with a vertical datum that differs from the default vertical datum. Only feature instance groups with a value that differs from the default vertical datum use the additional attribute "verticalDatum" on the feature instance group. The use of multiple vertical datums within an S-102 product requires the use of "domainExtent.polygon". In addition, according to S-100, either the BoundingBox at the Feature Instance Group or the "domainExtent.polygon" must be specified. When using multiple vertical datums, the use of the "domainExtent.polygon" is mandatory, which means that the BoundingBox is not specified in this case. The grid cells that do not belong to the area of the respective vertical datum are to be assigned the no-data values.
 
 ==== The values group -- Group_001
 This group contains the following attributes. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
