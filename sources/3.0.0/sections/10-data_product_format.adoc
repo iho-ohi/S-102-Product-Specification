@@ -101,6 +101,8 @@ _(h5_attribute)_
 |
 |Feature Instance +
 BathymetryCoverage.01 +
+... +
+BathymetryCoverage.nn +
 _(h5_group)_
 |Instance Metadata +
 (metadata) +
@@ -662,7 +664,8 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 The number depends on the number of different vertical date ranges in the Feature Container Group in the Feature Container Group.
 ====
 
-==== Feature Instance group -- BathymetryCoverage.01
+[[subsec-BathymetryCoverage-feature-instance]]
+==== Feature Instance group -- BathymetryCoverage.nn
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
 [[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
