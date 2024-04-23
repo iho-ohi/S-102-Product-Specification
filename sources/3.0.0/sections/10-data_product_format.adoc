@@ -101,6 +101,8 @@ _(h5_attribute)_
 |
 |Feature Instance +
 BathymetryCoverage.01 +
+... +
+BathymetryCoverage.nn +
 _(h5_group)_
 |Instance Metadata +
 (metadata) +
@@ -628,7 +630,6 @@ unsigned +
 unsigned +
 8-bit
 | Value: 1
-
 | 7a
 .2+| Sequencing rule
 | sequencingRule.type
@@ -654,7 +655,8 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 
 |===
 
-==== Feature Instance group -- BathymetryCoverage.01
+[[subsec-BathymetryCoverage-feature-instance]]
+==== Feature Instance group -- BathymetryCoverage.nn
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
 [[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
