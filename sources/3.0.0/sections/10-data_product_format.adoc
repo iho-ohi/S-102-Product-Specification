@@ -667,6 +667,7 @@ The number depends on the number of different vertical datum ranges in the Featu
 [[subsec-BathymetryCoverage-feature-instance]]
 ==== Feature Instance group -- BathymetryCoverage.nn
 The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each Feature Instance Group implements an area of a unique vertical datum. All feature instance groups must share the same position and extent.
+
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
 
