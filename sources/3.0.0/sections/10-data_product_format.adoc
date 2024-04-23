@@ -765,6 +765,16 @@ unsigned +
 The choice of a valid point for the start sequence is determined by the sequencing rule. +
 Format: n, n +
 Example: "0,0" (without quotes)
+
+| 10
+| Vertical datum
+| verticalDatum
+^| 0..1
+<| Integer +
+unsigned +
+16-bit
+| see remark <<tab-root-group-attributes>> +
+row vertical datum
 |===
 
 The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees. This practice has the effect that gridOriginLongitude and gridOriginLatitude are identical to westBoundLongitude and southBoundLatitude.
