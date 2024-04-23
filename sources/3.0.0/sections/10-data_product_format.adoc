@@ -627,7 +627,9 @@ unsigned +
 | Integer +
 unsigned +
 8-bit
-| Value: 1
+| This is the total number of Feature Instance Groups within the Feature Container Group. +
+The minimum is 1. +
+see <<note13>>
 
 | 7a
 .2+| Sequencing rule
@@ -653,6 +655,12 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 | Code value from <<iho-s100,part=10c,table=22>>
 
 |===
+
+[[note13]]
+[NOTE]
+====
+The number depends on the number of different vertical date ranges in the Feature Container Group in the Feature Container Group.
+====
 
 ==== Feature Instance group -- BathymetryCoverage.01
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
