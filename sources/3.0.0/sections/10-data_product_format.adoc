@@ -439,6 +439,7 @@ unsigned +
 _Vertical Datum_ attribute +
 stem:[1-41] & stem:[43-46]
 
+see <<note11>>
 |===
 
 [[note1]]
@@ -461,6 +462,13 @@ The value horizontalCRS specifies the horizontal Coordinate Reference System. At
 [NOTE]
 ====
 The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,table=6>>).
+====
+
+
+[[note11]]
+[NOTE]
+====
+This is the default vertical datum (verticalDatum), unless a distinct vertical datum(verticalDatum) is specified for the corresponding feature instance group (BathymetryCoverage.nn).
 ====
 
 ==== Feature Codes (Group_F)
