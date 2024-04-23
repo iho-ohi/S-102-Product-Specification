@@ -669,6 +669,58 @@ The number depends on the number of different vertical datum ranges in the Featu
 The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each Feature Instance Group implements an area of a unique vertical datum. All feature instance groups must share the same position and extent.
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
+
+[[tab-structure-of-bathymetrycoverage-feature-instance-group]]
+[cols="<,<,<,^,<,<",options="header"]
+.Structure of *BathymetryCoverage* feature instance group
+|===
+| Group
+| HDF5 +
+Category
+| Name
+| Mult
+| Data Type
+| Remarks / Data Space
+
+.2+| /BathymetryCoverage/ +
+  BathymetryCoverage.01
+| attributes
+| (see Remarks)
+| 1
+| (see Remarks)
+| Single-valued attributes as descripted in <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>
+
+
+| Dataset
+| domainExtent.polygon
+| 0..1
+| Compound +
+(Float, Float)
+| Spatial extent of the domain of the coverage +
+Array (1-d): i=0, P +
+Components: <longitude, latitude> or <X, Y> (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
+Either this or the bounding box attribute must be populated.
+
+.2+| /BathymetryCoverage/ +
+  BathymetryCoverage.nn
+| attributes
+| (see Remarks)
+| 1
+| (see Remarks)
+| Single-valued attributes as descripted in <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>
+
+
+| Dataset
+| domainExtent.polygon
+| 0..1
+| Compound +
+(Float, Float)
+| Spatial extent of the domain of the coverage +
+Array (1-d): i=0, P +
+Components: <longitude, latitude> or <X, Y> (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
+Either this or the bounding box attribute must be populated.
+|===
+
 [[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
 [cols="<,<,<,^,<,<",options="header"]
 .Attributes of *BathymetryCoverage* feature instance group
@@ -683,26 +735,27 @@ Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attribu
 | 1a
 .4+| Bounding box
 | westBoundLongitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
-.4+| Coordinates should refer to the previously defined Coordinate Reference System.
+.4+| Coordinates should refer to the previously defined Coordinate Reference System. +
+Either this or the domainExtent polygon dataset must be populated
 
 | 1b
 | eastBoundLongitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
 
 | 1c
 | southBoundLatitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
 
 | 1d
 | northBoundLatitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
 
