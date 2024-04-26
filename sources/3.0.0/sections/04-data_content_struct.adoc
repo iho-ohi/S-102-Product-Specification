@@ -228,12 +228,12 @@ In S-102 there are currently no complex attributes defined.
 === Dataset types
 
 ==== Introduction
-Bathymetric Surface datasets are represented as regular grids. The general structure for a regular grid is defined in <<iho-s100,part=8>>. Each sample in a grid represents the value in the grid cell.
+Bathymetric Surface datasets are represented as regular grids. The general structure for a regular grid is defined in <<iho-s100,part=8>>. Each sample in a grid represents the value in the grid cell area.
 
 The georeferencing for an S-102 Bathymetric Surface product shall be grid point based, referenced from the southwesternmost grid point. The reference position (grid origin) included in the metadata, precisely the attributes _gridOriginLatitude_ and _gridOriginLongitude_, shall be given in the coordinates used for the grid and shall contain sufficient digits of precision to locate the grid with accuracy no worse than a decimetre on the surface of the ellipsoid of rotation of the chosen horizontal datum.
 
 [[fig-s102-cell-area-and-Bbox]]
-.S-102 grid structure. Grid cells are the sample space of grid points.
+.S-102 grid structure. Grid origin is the lower left grid point. Grid cells are centered around grid points. Bounding box is coincident with the outermost grid cell boundaries.
 image::../images/figure-s102-cell-area-and-Bbox.png["S-102 grid components"]
 
 ==== Regular grid
@@ -241,7 +241,7 @@ image::../images/figure-s102-cell-area-and-Bbox.png["S-102 grid components"]
 ===== S-102 coverages
 The *BathymetryCoverage* contains depth and, optionally, uncertainty. The general structure of each is defined in <<iho-s100,part=8>> as a georectified grid.
 
-The grid properties of origin and spacing are defined by attributes in the *BathymetryCoverage.01* Feature Container Group. The grid is a two-dimensional matrix organized in row major order and starting from the southwestern-most grid point. Thus, the first sample of the grid is the grid point at the southwest corner of the grid with location specified by the georeferencing parameters, the second is one grid resolution unit to the east of that position and at the same northing or latitude, and the third is two grid resolution units to the east and at the same northing or latitude. For stem:[C] columns in the grid, the stem:[(C+1)]^th^ sample in the grid is located one grid resolution unit to the north but on the same easting or longitude as the first sample in the grid.
+The grid properties of origin and spacing are defined by attributes in the *BathymetryCoverage.01* Feature Container Group. The grid is a two-dimensional matrix organized in row major order and starting from the southwesternmost grid point. Thus, the first sample of the grid is the grid point at the southwest corner of the grid with location specified by the georeferencing parameters, the second is one grid resolution unit to the east of that position and at the same northing or latitude, and the third is two grid resolution units to the east and at the same northing or latitude. For stem:[C] columns in the grid, the stem:[(C+1)]^th^ sample in the grid is located one grid resolution unit to the north but on the same easting or longitude as the first sample in the grid.
 
 [[fig-s102-grid-point-location]]
 .S-102 Grid point location
