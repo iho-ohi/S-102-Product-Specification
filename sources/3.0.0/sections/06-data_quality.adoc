@@ -27,10 +27,10 @@ The formatting consistency of S-102 grids is maintained due to the overriding en
 === Positional accuracy
 
 ==== Gridded data positional accuracy
-Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each grid cell using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference points and spatial resolution are important and are another factor in gridded positional accuracy.
+Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each grid point using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference point and spatial resolution are important and are another factor in gridded positional accuracy.
 
 ==== Relative internal positional accuracy
-The internal positional accuracy is defined as the precision of the location of each grid cell within the S-102 grid. The position of each grid cell within the grid is referenced by a row and column combination. The metadata for S-102 defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid cell within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
+The internal positional accuracy is defined as the precision of the location of each grid point within the S-102 grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for S-102 defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
 
 === Temporal accuracy
 
@@ -39,14 +39,14 @@ Temporal accuracy, consistency, and validity of bathymetric grids are confined t
 === Thematic accuracy
 
 ==== Thematic classification correctness
-For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for accessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid cell must be considered. This uncertainty value is a +/- value and when assessing the classification correctness must be applied. The new value(s) generated when applied may cause a change in the classification.
+For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for accessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value is a +/- value and when assessing the classification correctness must be applied. The new value(s) generated when applied may cause a change in the classification.
 
 ==== Non-quantitative attribute accuracy
 Thematic accuracy of S-102 bathymetric data is wholly quantitative.
 
 
 ==== Quantitative attribute accuracy
-As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located coverage, uncertainty. Uncertainty is defined as the vertical uncertainty at each grid cell. The uncertainty coverage supports multiple definitions of vertical uncertainty.
+As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located coverage, uncertainty. Uncertainty is defined as the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 
