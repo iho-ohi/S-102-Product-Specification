@@ -1,5 +1,5 @@
 
-[.preface]
+[preface%notitle]
 == Document History
 
 Changes to this Specification are coordinated by the IHO S-100 Working Group. New editions will be made available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution 2/2007 (as amended).

@@ -1,4 +1,4 @@
-
+:sectnums:
 [[sec-overview]]
 == Overview
 With the advent of electronic navigation and the technological progress of surveying systems and production capabilities, the ability to enhance maritime navigation with the portrayal of high-resolution bathymetry has become a requirement. The provision and utilization of such data in a standardized format is essential to support the safe and precise navigation of marine vessels, and furthermore an important basis for many other maritime applications.
