@@ -594,7 +594,8 @@ unsigned +
 | commonPointRule
 | 1
 | Enumeration
-| Value: 1 (average) or other values from <<iho-s100,part-10c,table=20>>.
+| Value: 2 (low) + 
+see <<iho-s100,part-10c,table=20>>.
 
 | 4
 | Horizontal position uncertainty
@@ -642,7 +643,14 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 | interpolationType
 | 1
 | Enumeration
-| Code value from <<iho-s100,part=10c,table=22>>
+| Value: 1 (nearestneighbor). See <<iho-s100,part=10c,table=22>>
+
+| 9
+| Offset of data point in cell
+| dataOffsetCode
+| 1
+| Enumeration
+| Value: 5 barycenter (centroid) of cell. See <<iho-s100,part=10c,table=10>>
 
 |===
 
@@ -759,9 +767,7 @@ Format: n, n +
 Example: "0,0" (without quotes)
 |===
 
-The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees. This practice has the effect that gridOriginLongitude and gridOriginLatitude are identical to westBoundLongitude and southBoundLatitude.
-
-The gridOriginLongitude and gridOriginLatitude are the cell center of the cell.
+The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
 
 numPointsLongitude and numPointsLatitude must contain the number of cells in the x and y dimensions of the values table.
 
@@ -819,13 +825,13 @@ The group contains an HDF5 dataset named values containing the bathymetric gridd
 
 This dataset contains the compound data arrays containing bathymetric gridded data. These components are explained below.
 
-For bathymetric gridded data, the dataset includes a two-dimensional array containing always the depth and under certain conditions uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every point in the grid can be simply computed. 
+For bathymetric gridded data, the dataset includes a two-dimensional array containing always the depth and under certain conditions uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every grid point and grid cell can be simply computed. 
 
-If the uncertainty for each discrete point in the grid is equal, it is not necessary to store it at each discrete point in the grid. The uniqueness of the uncertainty results from the equality of the attributes "minimumUncertainty" and "maximumUncertainty" of Group_001 of the BathymetryCoverage (see <<tab-attributes-of-values-group>> No. 3 & 4). If the uncertainty values at the discrete points in the grid are omitted, it must be ensured that the entry of the uncertainty of the BathymetryCoverage in the Group_F is also omitted (see <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>). This type of storage technique can reduce the amount of memory required for the uncertainty without loss of information. The uncertainty of each discrete point in the grid can be immediately obtained from the "minimumUncertainty" or "maximumUncertainty" attributes of Group_001 of the BathymetryCoverage.
+If the uncertainty for each grid cell is equal, it is not necessary to store it at each cell in the grid. The uniqueness of the uncertainty results from the equality of the attributes "minimumUncertainty" and "maximumUncertainty" of Group_001 of the BathymetryCoverage (see <<tab-attributes-of-values-group>> No. 3 & 4). If the uncertainty values at the grid cells are omitted, it must be ensured that the entry of the uncertainty of the BathymetryCoverage in the Group_F is also omitted (see <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>). This type of storage technique can reduce the amount of memory required for the uncertainty without loss of information. The uncertainty of each grid cell can be immediately obtained from the "minimumUncertainty" or "maximumUncertainty" attributes of Group_001 of the BathymetryCoverage.
 
-If the uncertainty is not the same for each discrete point in the grid, it must be stored at each discrete point in the grid. For unknown or unused uncertainty data, it must be filled with the fillValue specified in the Group_F feature information dataset.
+If the uncertainty is not the same for each grid cell, it must be stored at each cell in the grid. For unknown or unused uncertainty data, it must be filled with the fillValue specified in the Group_F feature information dataset.
 
-The discrete points in the grid are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with one or two members.
+The grid cell values are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each cell in the grid. The data type of the array values is a compound with one or two members.
 
 [[root-QualityOfBathymetryCoverage]]
 ==== Root QualityOfBathymetryCoverage
@@ -926,7 +932,7 @@ See <<subsec-note8>>.
 | 8
 | bathyCoverage
 //editorial note:: PT11: new in the IHO registry
-| Flag for nodes populated by interpolation.
+| Flag for grid cells populated by interpolation.
 | 0..1
 | Integer +
 unsigned +
@@ -1055,7 +1061,7 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 
 | Value
 | rawStandardDeviation
-| Raw standard deviations of soundings that contributed to the node.
+| Raw standard deviations of soundings that contributed to the grid cell.
 | 1
 | -
 
