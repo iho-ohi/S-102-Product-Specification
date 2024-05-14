@@ -604,7 +604,8 @@ unsigned +
 | commonPointRule
 | 1
 | Enumeration
-| Value: 1 (average) or other values from <<iho-s100,part-10c,table=20>>.
+| Value: 2 (low) + 
+see <<iho-s100,part-10c,table=20>>.
 
 | 4
 | Horizontal position uncertainty
@@ -654,7 +655,14 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 | interpolationType
 | 1
 | Enumeration
-| Code value from <<iho-s100,part=10c,table=22>>
+| Value: 1 (nearestneighbor). See <<iho-s100,part=10c,table=22>>
+
+| 9
+| Offset of data point in cell
+| dataOffsetCode
+| 1
+| Enumeration
+| Value: 5 barycenter (centroid) of cell. See <<iho-s100,part=10c,table=10>>
 
 |===
 
@@ -843,9 +851,7 @@ unsigned +
 row vertical datum
 |===
 
-The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees. This practice has the effect that gridOriginLongitude and gridOriginLatitude are identical to westBoundLongitude and southBoundLatitude.
-
-The gridOriginLongitude and gridOriginLatitude are the cell center of the cell.
+The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
 
 numPointsLongitude and numPointsLatitude must contain the number of cells in the x and y dimensions of the values table.
 
@@ -905,13 +911,13 @@ The group contains an HDF5 dataset named values containing the bathymetric gridd
 
 This dataset contains the compound data arrays containing bathymetric gridded data. These components are explained below.
 
-For bathymetric gridded data, the dataset includes a two-dimensional array containing always the depth and under certain conditions uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every point in the grid can be simply computed. 
+For bathymetric gridded data, the dataset includes a two-dimensional array containing always the depth and under certain conditions uncertainty data. These dimensions are defined by _numPointsLongitudinal_ and _numPointsLatitudinal_. By knowing the grid origin and the grid spacing, the position of every grid point and grid cell can be simply computed. 
 
-If the uncertainty for each discrete point in the grid is equal, it is not necessary to store it at each discrete point in the grid. The uniqueness of the uncertainty results from the equality of the attributes "minimumUncertainty" and "maximumUncertainty" of Group_001 of the BathymetryCoverage (see <<tab-attributes-of-values-group>> No. 3 & 4). If the uncertainty values at the discrete points in the grid are omitted, it must be ensured that the entry of the uncertainty of the BathymetryCoverage in the Group_F is also omitted (see <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>). This type of storage technique can reduce the amount of memory required for the uncertainty without loss of information. The uncertainty of each discrete point in the grid can be immediately obtained from the "minimumUncertainty" or "maximumUncertainty" attributes of Group_001 of the BathymetryCoverage.
+If the uncertainty for each grid cell is equal, it is not necessary to store it at each cell in the grid. The uniqueness of the uncertainty results from the equality of the attributes "minimumUncertainty" and "maximumUncertainty" of Group_001 of the BathymetryCoverage (see <<tab-attributes-of-values-group>> No. 3 & 4). If the uncertainty values at the grid cells are omitted, it must be ensured that the entry of the uncertainty of the BathymetryCoverage in the Group_F is also omitted (see <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>). This type of storage technique can reduce the amount of memory required for the uncertainty without loss of information. The uncertainty of each grid cell can be immediately obtained from the "minimumUncertainty" or "maximumUncertainty" attributes of Group_001 of the BathymetryCoverage.
 
-If the uncertainty is not the same for each discrete point in the grid, it must be stored at each discrete point in the grid. For unknown or unused uncertainty data, it must be filled with the fillValue specified in the Group_F feature information dataset.
+If the uncertainty is not the same for each grid cell, it must be stored at each cell in the grid. For unknown or unused uncertainty data, it must be filled with the fillValue specified in the Group_F feature information dataset.
 
-The discrete points in the grid are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each discrete point in the grid. The data type of the array values is a compound with one or two members.
+The grid cell values are stored in two-dimensional arrays with a prescribed number of columns (numCOL) and rows (numROW). This grid is defined as a regular grid (dataCodingFormat = 2); therefore, the depth and uncertainty values will be for each cell in the grid. The data type of the array values is a compound with one or two members.
 
 [[root-QualityOfBathymetryCoverage]]
 ==== Root QualityOfBathymetryCoverage
@@ -965,7 +971,7 @@ unsigned +
 | Boolean, Values: +
 *1 (TRUE) +
 *0 (FALSE). +
-See <<note4>>.
+See <<subsec-note4>>.
 
 | 4
 | featuresDetected.significantFeaturesDetected
@@ -977,7 +983,7 @@ unsigned +
 | Boolean, Values: +
 *1 (TRUE) +
 *0 (FALSE). +
-See <<note5>>.
+See <<subsec-note5>>.
 
 | 5
 | featuresDetected.sizeOfFeaturesDetected
@@ -985,7 +991,7 @@ See <<note5>>.
 | 0..1
 | Float +
 32-bit
-| See <<note6>> and <<note7>>.
+| See <<subsec-note6>> and <<subsec-note7>>.
 
 | 6
 | featureSizeVar
@@ -995,7 +1001,7 @@ See <<note5>>.
 | Float +
 32-bit
 | Set to zero if the feature size does not scale with depth. +
-See <<note6>> and <<note7>>.
+See <<subsec-note6>> and <<subsec-note7>>.
 
 | 7
 | fullSeafloorCoverageAchieved
@@ -1007,12 +1013,12 @@ unsigned +
 | Boolean, Values: +
 *1 (TRUE) +
 *0 (FALSE). +
-See <<note8>>.
+See <<subsec-note8>>.
 
 | 8
 | bathyCoverage
 //editorial note:: PT11: new in the IHO registry
-| Flag for nodes populated by interpolation.
+| Flag for grid cells populated by interpolation.
 | 0..1
 | Integer +
 unsigned +
@@ -1020,7 +1026,7 @@ unsigned +
 | Boolean, Values: +
 *1 (TRUE) +
 *0 (FALSE). +
-See <<note9>>.
+See <<subsec-note9>>.
 
 | 9
 | zoneOfConfidence.horizontalPositionUncertainty.uncertaintyFixed
@@ -1076,47 +1082,47 @@ see <<iho-s100,part=1,table=2>>.
 | 0..1
 | Enumeration
 | See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>. +
-See <<note10>>.
+See <<subsec-note10>>.
 
 |===
 
-[[note4]]
+[[subsec-note4]]
 [NOTE]
 ====
 A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation <<iho-s44>>. Least depth of detected features measured does not describe the least depth of features that were actually detected during a hydrographic survey, but the ability of the survey to detect the least depth of features with a maximum uncertainty as defined in <<iho-s44>>.
 ====
 
-[[note5]]
+[[subsec-note5]]
 [NOTE]
 ====
 A feature in this context is any object, whether manmade or not, projecting above the sea floor, which may be a danger for surface navigation <<iho-s44>>. Significant features detected does not describe if significant features were actually detected during a hydrographic survey, but whether the survey had the capacity to detect significant features.
 ====
 
-[[note6]]
+[[subsec-note6]]
 [NOTE]
 ====
 The role of the attribute, featureSizeVar is described in <<qualityAndSourceMetadata>>. The expectation is that featureSizeVar will be set to zero if the feature size does not scale with depth. As with featureSize, featureSizeVar should be ignored if significantFeatures is False.
 ====
 
-[[note7]]
+[[subsec-note7]]
 [NOTE]
 ====
 When both featureSize and featureSizeVar are present, the greater of the two should be considered valid.
 ====
 
-[[note8]]
+[[subsec-note8]]
 [NOTE]
 ====
 Full seafloor coverage achieved applies to both the spatial completeness of feature detection and to the spatial completeness of the measurement of the regular seafloor. The former is further specified by the complex attribute features detected; the latter by the attributes depth range maximum value and depth range minimum value.
 ====
 
-[[note9]]
+[[subsec-note9]]
 [NOTE]
 ====
 The attribute bathyCoverage is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery (interpolated gapes between bathymetry coverage in this situation would show fullCoverage = True and bathyCoverage = False). If fullCoverage = False, bathyCoverage must also equal False, such as gaps between single beam echosounder data without correlating side-scan sonar coverage.
 ====
 
-[[note10]]
+[[subsec-note10]]
 [NOTE]
 ====
 Names and listed values which are not currently defined in the IHO GI Registry are subject to change upon acceptance in the Registry.
@@ -1141,7 +1147,7 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 
 | Value
 | rawStandardDeviation
-| Raw standard deviations of soundings that contributed to the node.
+| Raw standard deviations of soundings that contributed to the grid cell.
 | 1
 | -
 
