@@ -8,7 +8,7 @@ This document describes an S-100 compliant product specification for a bathymetr
 
 [bibliography]
 === References
-* [[[iho-s100,IHO S-100 5.0.0]]]
+* [[[iho-s100,IHO S-100 5.2.0]]]
 
 * [[[iho-s44,IHO S-44]]]
 
