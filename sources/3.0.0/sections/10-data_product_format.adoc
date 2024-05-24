@@ -212,7 +212,7 @@ Example: INT.IHO.S-102.3.0.0
 ^| 1
 <| Integer +
 32-bit
-| The identifier (EPSG code) of the horizontal CRS as defined in <<horizontal-crs>> (see <<note1>>).
+| The identifier (EPSG code) of the horizontal CRS as defined in <<horizontal-crs>> (see <<note2>>).
 
 | 5
 | Name of the horizontal CRS
@@ -452,7 +452,7 @@ The _productIdentifier_ ("S-102") and _version_ fields (X.X.X) of S100_ProductSp
 [[note2]]
 [NOTE]
 ====
-The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding (such as an enumeration of horizontal CRSs). Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,part=10c,table=6>>.
+The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding (such as an enumeration of horizontal CRSs). Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,part=10c,clause=9.4,table=6>>.
 ====
 
 //Tentative, TBD. If so-called “user defined crs” is also allowed in order to encode projection parameters in the HDF5 dataset, #s 5-19 from S-100 Table 10c-6 will have to be added to the table. (RM comment from 4Jan2023)
