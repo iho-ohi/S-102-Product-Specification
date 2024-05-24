@@ -29,7 +29,7 @@ _Datatype_:: a description of a specific class of data element including its sto
 
 _Attribute_:: a named data value associated with a group, dataset, or named datatype and stored as a scalar;
 
-_Property List_:: a collection of parameters (some permanent and some transient).
+_Property List_:: a collection of parameters (some permanent and some transient) controlling options in the library.
 
 In addition, datasets may be a compound (a single record consisting of an array of simple value types) and have multiple dimensions.
 
