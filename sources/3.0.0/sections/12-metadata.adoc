@@ -688,7 +688,7 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |1
 |CharacterString
 |The name in the GI Registry should be used for this field. +
-For S-102, this name is "Bathymetric Surface" (as of 24 January 2023).
+For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).
 
 |Attribute
 |version
