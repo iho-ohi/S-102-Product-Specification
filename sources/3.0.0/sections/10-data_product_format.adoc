@@ -286,7 +286,7 @@ EPSG Code
 32-bit
 | Mandatory if typeOfHorizontalCRS = 2; +
 EPSG Code +
-See <<iho-s100,part=10c,clause=8>>.
+See <<iho-s100,part=10c,clause=10.5,table=24>.
 
 | 13
 | Projection parameter 1
@@ -295,7 +295,7 @@ See <<iho-s100,part=10c,clause=8>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.8>>.
+See <<iho-s100,part=10c,clause=10.5,table=24>>.
 
 | 14
 | Projection parameter 2
@@ -304,7 +304,7 @@ See <<iho-s100,part=10c,clause=10.8>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.8>>.
+See <<iho-s100,part=10c,clause=10.5,table=24>>.
 
 | 15
 | Projection parameter 3
@@ -313,7 +313,7 @@ See <<iho-s100,part=10c,clause=10.8>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.8>>.
+See <<iho-s100,part=10c,clause=10.5,table=24>>.
 
 | 16
 | Projection parameter 4
@@ -322,7 +322,7 @@ See <<iho-s100,part=10c,clause=10.8>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.8>>.
+See <<iho-s100,part=10c,clause=10.5,table=24>>.
 
 | 17
 | Projection parameter 5
@@ -331,7 +331,7 @@ See <<iho-s100,part=10c,clause=10.8>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.8>>.
+See <<iho-s100,part=10c,clause=10.5,table=24>>.
 
 | 18
 | False northing
