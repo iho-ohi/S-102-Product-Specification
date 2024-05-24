@@ -462,7 +462,7 @@ The value horizontalCRS specifies the horizontal Coordinate Reference System. At
 [[note3]]
 [NOTE]
 ====
-The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,table=6>>).
+The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,clause=4.3.2,table=6>>).
 ====
 
 ==== Feature Codes (Group_F)
