@@ -484,7 +484,7 @@ CI_Responsibility>CI_Organisation
 |Indicates if a cancelled dataset is replaced by another data file(s)
 |0..1
 |Boolean
-|See <<subsec-s102-replacedData-dataReplacement-note1>> +
+|See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 *Mandatory when purpose = cancellation*
 
 |Attribute
@@ -493,7 +493,7 @@ CI_Responsibility>CI_Organisation
 |0..*
 |CharacterString
 |A dataset may be replaced by 1 or more datasets. +
-See <<subsec-s102-replacedData-dataReplacement-note1>> +
+See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 *Mandatory when replacedData = true*
 
 |Attribute
@@ -515,11 +515,6 @@ Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100
 *S-102 discovery metadata blocks should populate maintenance information if and only if the date of the next edition is definite, whether it is due on a regular or irregular schedule.*
 
 |===
-[[subsec-s102-replacedData-dataReplacement-note1]]
-[NOTE]
-====
-_replacedData_ and _dataReplacement_: The intended use of the attributes _replacedData_ and _dataReplacement_ could be, for example, to provide a mechanism for service providers to build automation when providing replacement datasets to customers within existing subscription periods.
-====
 
 ==== S100_NavigationPurpose
 [[tab-s100-navigationPurpose]]
