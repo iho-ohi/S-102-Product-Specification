@@ -444,7 +444,7 @@ stem:[1-41] & stem:[43-46]
 [[note1]]
 [NOTE]
 ====
-The remark in S-100 Edition 5.0.0 is outdated. The _productIdentifier_ ("S-102") and _version_ fields (N.N.N) of S100_ProductSpecification must be used instead of _name_ and _number_.
+The _productIdentifier_ ("S-102") and _version_ fields (X.X.X) of S100_ProductSpecification must be used.
 ====
 
 [[note2]]
