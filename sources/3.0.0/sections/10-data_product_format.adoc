@@ -190,7 +190,7 @@ The root group is required by HDF5. The S-100 HDF5 format (<<iho-s100,part=10c>>
 ^| 1
 <| String
 | <<iho-s100,part=10c,table=6>> +
-Example: INT.IHO.S-102.2.2
+Example: INT.IHO.S-102.3.0.0
 
 | 2
 | Time of data product issue

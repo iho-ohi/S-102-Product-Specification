@@ -604,18 +604,10 @@ S-102 uses S100_DataCoverage without modification.
 |*Mandatory in S-102* +
 A single value may be provided when all axes have a common resolution. +
 For multiple value provision, use axis order as specified in dataset. +
-May be approximate for ungeorectified data (*not applicable to this edition of S-102*). +
 For example, for 5-metre resolution, the value 5 must be encoded. +
-See note immediately below.
-
+If the grid cell size varies over the extent of the grid +
+(i.e., when using a geographic grid), an approximated value should be used.
 |===
-[[s100-dataCoverage-params-note1]]
-[NOTE]
-====
-If the grid cell size varies over the extent of the grid, an approximated value based on model parameters or production metadata should be used.
-====
-
-
 
 ==== S100_Purpose
 [[tab-s100-purpose]]
