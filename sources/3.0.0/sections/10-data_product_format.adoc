@@ -286,7 +286,7 @@ EPSG Code
 32-bit
 | Mandatory if typeOfHorizontalCRS = 2; +
 EPSG Code +
-See <<iho-s100,part=10c,clause=10.5,table=24>.
+See <<iho-s100,part=10c,clause=10.5,table=24>>.
 
 | 13
 | Projection parameter 1
