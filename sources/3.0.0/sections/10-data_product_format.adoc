@@ -194,15 +194,17 @@ Example: INT.IHO.S-102.3.0.0
 | Time of data product issue
 | issueTime
 ^| 0..1
-<| String (Time Format)
-|
+<| String (Time format)
+| <<iho-s100,part=1,clause=4.5.2,table=2>> +
+<<iho-s100,part=10c,clause=7,table=1>>
 
 | 3
 | Issue date
 | issueDate
 ^| 1
-<| String (Date Format)
-|
+<| String (Date format)
+| <<iho-s100,part=1,clause=4.5.2,table=2>> +
+<<iho-s100,part=10c,clause=7,table=1>>
 
 | 4
 | Horizontal CRS
