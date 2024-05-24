@@ -630,7 +630,7 @@ unsigned +
 ^| 1
 | Enumeration
 | Value: 1 (linear) +
-see <<iho-s100,part=10c,table=21>>.
+see <<iho-s100,part=8,clause=7.7.2,table=12>>.
 
 | 7b
 
