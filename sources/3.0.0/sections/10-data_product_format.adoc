@@ -419,7 +419,7 @@ Allowed values: +
 <| Enumeration
 | Mandatory in S-102. +
 The only allowed value is 2: verticalDatum +
-(see <<iho-s100,part=10c,clause=10.6>>).
+(see <<iho-s100,part=10c,clause=10.3,table=22>>).
 
 | 25
 | Vertical datum reference
