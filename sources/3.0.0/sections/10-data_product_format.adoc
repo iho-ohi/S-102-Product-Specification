@@ -227,7 +227,7 @@ Example: INT.IHO.S-102.3.0.0
 ^| 0..1
 <| Enumeration
 | Mandatory if horizontalCRS = -1 +
-See <<iho-s100,part=10c,clause=10.5>>.
+See <<iho-s100,part=10c,clause=10.2,table=21>>.
 
 | 7
 | Horizontal coordinate system
