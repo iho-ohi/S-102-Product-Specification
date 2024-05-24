@@ -195,16 +195,16 @@ Example: INT.IHO.S-102.3.0.0
 | issueTime
 ^| 0..1
 <| String (Time format)
-| <<iho-s100,part=1,clause=4.5.2,table=2>> +
-<<iho-s100,part=10c,clause=7,table=1>>
+| <<iho-s100,part=1,table=2>> +
+<<iho-s100,part=10c,table=1>>
 
 | 3
 | Issue date
 | issueDate
 ^| 1
 <| String (Date format)
-| <<iho-s100,part=1,clause=4.5.2,table=2>> +
-<<iho-s100,part=10c,clause=7,table=1>>
+| <<iho-s100,part=1,table=2>> +
+<<iho-s100,part=10c,table=1>>
 
 | 4
 | Horizontal CRS
@@ -227,7 +227,7 @@ Example: INT.IHO.S-102.3.0.0
 ^| 0..1
 <| Enumeration
 | Mandatory if horizontalCRS = -1 +
-See <<iho-s100,part=10c,clause=10.2,table=21>>.
+See <<iho-s100,part=10c,table=21>>.
 
 | 7
 | Horizontal coordinate system
@@ -286,7 +286,7 @@ EPSG Code
 32-bit
 | Mandatory if typeOfHorizontalCRS = 2; +
 EPSG Code +
-See <<iho-s100,part=10c,clause=10.5,table=24>>.
+See <<iho-s100,part=10c,table=24>>.
 
 | 13
 | Projection parameter 1
@@ -295,7 +295,7 @@ See <<iho-s100,part=10c,clause=10.5,table=24>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.5,table=24>>.
+See <<iho-s100,part=10c,table=24>>.
 
 | 14
 | Projection parameter 2
@@ -304,7 +304,7 @@ See <<iho-s100,part=10c,clause=10.5,table=24>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.5,table=24>>.
+See <<iho-s100,part=10c,table=24>>.
 
 | 15
 | Projection parameter 3
@@ -313,7 +313,7 @@ See <<iho-s100,part=10c,clause=10.5,table=24>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.5,table=24>>.
+See <<iho-s100,part=10c,table=24>>.
 
 | 16
 | Projection parameter 4
@@ -322,7 +322,7 @@ See <<iho-s100,part=10c,clause=10.5,table=24>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.5,table=24>>.
+See <<iho-s100,part=10c,table=24>>.
 
 | 17
 | Projection parameter 5
@@ -331,7 +331,7 @@ See <<iho-s100,part=10c,clause=10.5,table=24>>.
 <| Float +
 64-bit
 | Only if projectionMethod is used. +
-See <<iho-s100,part=10c,clause=10.5,table=24>>.
+See <<iho-s100,part=10c,table=24>>.
 
 | 18
 | False northing
@@ -419,7 +419,7 @@ Allowed values: +
 <| Enumeration
 | Mandatory in S-102. +
 The only allowed value is 2: verticalDatum +
-(see <<iho-s100,part=10c,clause=10.3,table=22>>).
+(see <<iho-s100,part=10c,table=22>>).
 
 | 25
 | Vertical datum reference
@@ -428,7 +428,7 @@ The only allowed value is 2: verticalDatum +
 <| Enumeration
 | Mandatory in S-102. +
 The only allowed value is 1: s100VerticalDatum +
-(see <<iho-s100,part=10c,clause=10.4,table=23>>).
+(see <<iho-s100,part=10c,table=23>>).
 
 | 26
 | Vertical datum
@@ -452,7 +452,7 @@ The _productIdentifier_ ("S-102") and _version_ fields (X.X.X) of S100_ProductSp
 [[note2]]
 [NOTE]
 ====
-The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding (such as an enumeration of horizontal CRSs). Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,part=10c,clause=9.4,table=6>>.
+The value horizontalCRS specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding (such as an enumeration of horizontal CRSs). Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,part=10c,table=6>>.
 ====
 
 //Tentative, TBD. If so-called “user defined crs” is also allowed in order to encode projection parameters in the HDF5 dataset, #s 5-19 from S-100 Table 10c-6 will have to be added to the table. (RM comment from 4Jan2023)
@@ -462,7 +462,7 @@ The value horizontalCRS specifies the horizontal Coordinate Reference System. At
 [[note3]]
 [NOTE]
 ====
-The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,clause=4.3.2,table=6>>).
+The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,table=6>>).
 ====
 
 ==== Feature Codes (Group_F)
@@ -472,7 +472,7 @@ This group specifies the S-100 features to which the data applies, and consists 
 
 *featureCode* -- a 1-dimensional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfBathymetryCoverage*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
 
-*BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,clause=9.5,table=8>>.
+*BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,table=8>>.
 
 *QualityOfBathymetryCoverage* -- A 1-dimensional dataset of the same datatype as the *BathymetryCoverage* dataset described above. This *QualityOfBathymetryCoverage* dataset contains the definition of the reference to metadata records. The reference is a single integer which identifies a metadata record in _featureAttributeTable_ (described in <<iho-s100,part=10c,clause=9.6.2>> and <<root-QualityOfBathymetryCoverage>>.
 
@@ -597,7 +597,7 @@ unsigned +
 | 1
 | Enumeration
 | Value: 2 (low) + 
-see <<iho-s100,part=8,clause=7.7.1,table=11>>.
+see <<iho-s100,part=8,table=11>>.
 
 | 4
 | Horizontal position uncertainty
@@ -630,7 +630,7 @@ unsigned +
 ^| 1
 | Enumeration
 | Value: 1 (linear) +
-see <<iho-s100,part=8,clause=7.7.2,table=12>>.
+see <<iho-s100,part=8,table=12>>.
 
 | 7b
 
@@ -645,7 +645,7 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 | interpolationType
 | 1
 | Enumeration
-| Value: 1 (nearestneighbor). See <<iho-s100,part=8,clause=7.7.3,table=13>>
+| Value: 1 (nearestneighbor). See <<iho-s100,part=8,table=13>>
 
 | 9
 | Offset of data point in cell
@@ -840,7 +840,7 @@ The grid cell values are stored in two-dimensional arrays with a prescribed numb
 
 The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'
 
-The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,clause=9.6,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
+The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
 //(1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing? (RM comment 4Jan2023)
 //All optional except id. Producers should not add other fields. (RM comment 23Jan2023)
