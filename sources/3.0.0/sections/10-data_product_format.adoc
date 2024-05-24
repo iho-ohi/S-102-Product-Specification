@@ -472,7 +472,7 @@ This group specifies the S-100 features to which the data applies, and consists 
 
 *featureCode* -- a 1-dimensional dataset with the featureCode(s) of the S-100 feature(s) contained in the data product. For S-102, the dataset has only two elements -- the string "*BathymetryCoverage*" and "*QualityOfBathymetryCoverage*" (without quotes). The entries in this dataset give the names of the other two components of Group_F.
 
-*BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,table=8>>.
+*BathymetryCoverage* -- A 1-dimensional dataset that contains the standard definition of the bathymetry coverage feature class in terms of its attributes and their types, units of measure, etc. The datatype of its elements is the compound type described in <<iho-s100,part=10c,clause=9.5,table=8>>.
 
 *QualityOfBathymetryCoverage* -- A 1-dimensional dataset of the same datatype as the *BathymetryCoverage* dataset described above. This *QualityOfBathymetryCoverage* dataset contains the definition of the reference to metadata records. The reference is a single integer which identifies a metadata record in _featureAttributeTable_ (described in <<iho-s100,part=10c,clause=9.6.2>> and <<root-QualityOfBathymetryCoverage>>.
 
@@ -597,7 +597,7 @@ unsigned +
 | 1
 | Enumeration
 | Value: 2 (low) + 
-see <<iho-s100,part-10c,table=20>>.
+see <<iho-s100,part=8,clause=7.7.1,table=11>>.
 
 | 4
 | Horizontal position uncertainty
