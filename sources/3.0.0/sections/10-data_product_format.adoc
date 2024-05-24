@@ -428,7 +428,7 @@ The only allowed value is 2: verticalDatum +
 <| Enumeration
 | Mandatory in S-102. +
 The only allowed value is 1: s100VerticalDatum +
-(see <<iho-s100,part=10c,clause=10.7>>).
+(see <<iho-s100,part=10c,clause=10.4,table=23>>).
 
 | 26
 | Vertical datum
