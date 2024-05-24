@@ -645,7 +645,7 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 | interpolationType
 | 1
 | Enumeration
-| Value: 1 (nearestneighbor). See <<iho-s100,part=10c,table=22>>
+| Value: 1 (nearestneighbor). See <<iho-s100,part=8,clause=7.7.3,table=13>>
 
 | 9
 | Offset of data point in cell
@@ -840,7 +840,7 @@ The grid cell values are stored in two-dimensional arrays with a prescribed numb
 
 The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'
 
-The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
+The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,clause=9.6,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
 //(1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing? (RM comment 4Jan2023)
 //All optional except id. Producers should not add other fields. (RM comment 23Jan2023)
