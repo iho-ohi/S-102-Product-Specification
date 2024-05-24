@@ -64,7 +64,7 @@ S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clau
 
 * all other mandatory attributes to the same values as in the discovery metadata block for the dataset being cancelled.
 
-[[subsec-production of a cancellation]]
+[[subsec-production-of-a-cancellation]]
 ===== Production of a cancellation
 S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
 
