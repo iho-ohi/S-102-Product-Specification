@@ -7,7 +7,7 @@ The S-102 data set must be encoded using the Hierarchical Data Format standard, 
 
 *Format Name*:: HDF5
 
-*Version*:: 1.8
+*Version*:: 1.8.8
 
 *Character Set*:: UTF-8
 
