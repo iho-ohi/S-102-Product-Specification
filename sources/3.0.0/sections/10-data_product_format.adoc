@@ -358,7 +358,7 @@ To be applied to the coordinates at axis Easting. [m]
 <| String
 |
 
-| 21
+| 21a
 .4+| Bounding box 
 | westBoundLongitude
 ^| 1
@@ -367,14 +367,14 @@ To be applied to the coordinates at axis Easting. [m]
 .4+| The values are in decimal degrees. +
 If a projected CRS is used for the dataset, these values refer to those of the baseCRS underlying the projected CRS (see <<note3>>).
 
-| 21
+| 21b
 
 | eastBoundLongitude
 ^| 1
 <| Float +
 32-bit
 
-| 21
+| 21c
 
 | southBoundLatitude
 ^| 1
@@ -382,7 +382,7 @@ If a projected CRS is used for the dataset, these values refer to those of the b
 32-bit
 
 
-| 21
+| 21d
 
 | northBoundLatitude
 ^| 1
