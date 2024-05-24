@@ -50,7 +50,7 @@ Three types of dataset files may be produced and contained within an exchange se
 ===== Metadata for cancellation
 S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
 
-* _fileName_ = _fileName_ of the cancelled dataset (for a series, the _fileName_ of the last dataset in the series)
+* _fileName_ = _fileName_ of the cancelled dataset
 
 * _purpose_ = _cancellation_
 
@@ -58,9 +58,9 @@ S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clau
 
 * issueDate and issueTime = the issue date and time of the cancellation
 
-* _replacedData_ = _true_ if and only if the cancelled dataset or sequence is replaced by another dataset/sequence; otherwise _false_. This attribute must be populated for a cancellation.
+* _replacedData_ = _true_ if and only if the cancelled dataset is replaced by another dataset; otherwise _false_. This attribute must be populated for a cancellation.
 
-* _dataReplacement_ = cell name of the replacement dataset (if and only if the cancelled dataset/sequence is replaced by another dataset/sequence). This attribute must be populated when _replacedData_=_true_.
+* _dataReplacement_ = cell name of the replacement dataset (if and only if the cancelled dataset is replaced by another dataset). This attribute must be populated when _replacedData_=_true_.
 
 * all other mandatory attributes to the same values as in the discovery metadata block for the dataset being cancelled.
 
