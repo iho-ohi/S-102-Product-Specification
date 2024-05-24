@@ -510,7 +510,7 @@ See <<subsec-s102-replacedData-dataReplacement-note1>> +
 |Information about the frequency and scope of resource updates
 |0..1
 |
-|S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <iho-s100,part=17>>. +
+|S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <<iho-s100,part=17>>. +
 Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100,part=17,clause=17-4.9>>. +
 *S-102 discovery metadata blocks should populate maintenance information if and only if the date of the next edition is definite, whether it is due on a regular or irregular schedule.*
 
