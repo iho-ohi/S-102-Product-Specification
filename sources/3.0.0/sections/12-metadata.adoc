@@ -55,7 +55,7 @@ image::../images/figure-relationship-between-exchange-catalogue-discovery-metada
 [%landscape]
 <<<
 [[fig-s102-exchange-set-class-details]]
-.S-102 Exchange Set Class Details
+.S-102 Exchange Set Class Details (<<iho-s100,part=17,figure=7>> with items not used by S-102 omitted)
 image::../images/figure-s102-exchange-set-class-details.png[]
 
 [%portrait]
