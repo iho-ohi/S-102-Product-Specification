@@ -40,7 +40,7 @@ For information exchange, there are several categories of metadata required: met
 
 <<fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset>> depicts the structure of the exchange catalogue and its component discovery metadata blocks. The structure is the same as in <<iho-s100,part=17>>.
 
-More detailed information about the various classes is shown in in <<fig-s102-exchange-set-class-details>> and a textual description in <<tab-s102-exchangeCatalogue-params;to!tab-pt-locale-params>>.
+More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> with further description in <<tab-s100-datasetDiscoveryMetadata-params;to!tab-pt-locale-params>>. In the cases in which classes are used without modification, refer to <<iho-s100,part=17>> for their descriptions.
 
 The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load, etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 
@@ -81,78 +81,14 @@ Character strings must be encoded using the character set defined in <<iso-10646
 
 Each Exchange Set has a single S100_ExchangeCatalogue which contains meta information for the data in the Exchange Set.
 
-S-102 uses S100_ExchangeCatalogue without extension. 
+S-102 uses S100_ExchangeCatalogue without modification. 
 
 
 ==== S100_ExchangeCatalogueIdentifier
 S-102 uses S100_ExchangeCatalogueIdentifier without modification.
 
-[[tab-s100-exchangeCatalogueIdentifier-params]]
-.S100_ExchangeCatalogueIdentifier parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_ExchangeCatalogueIdentifier
-|An identifier for an Exchange Catalogue
-|-
-|-
-|The concatenation of identifier, edition number, and dateTime for the unique name.
-
-|Attribute
-|identifier
-|Uniquely identifies this Exchange Catalogue
-|1
-|CharacterString
-| (Rules, if any, for S-102 identifiers are TBD.)
-
-|Attribute
-|dateTime
-|Creation date and time of the Exchange Catalogue, including time zone
-|1
-|DateTime
-|Format: yyyy-mm-ddThh:mm:ssZ
-|===
-
 ==== S100_CataloguePointOfContact
 S-102 uses S100_CataloguePointOfContact without modification.
-
-[[tab-s100-cataloguePointContact-params]]
-.S100_CataloguePointOfContact parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_CataloguePointOfContact
-|Contact details of the issuer of this Exchange Catalogue
-|-
-|-
-|-
-
-|Attribute
-|organization
-|The organization distributing this Exchange Catalogue
-|1
-|CharacterString
-|This could be an individual producer, value added reseller, etc.
-
-|Attribute
-|phone
-|The phone number of the organization
-|0..1
-|CI_Telephone
-|
-
-|Attribute
-|address
-|The address of the organization
-|0..1
-|CI_Address
-|
-|===
-
 
 === S100_DatasetDiscoveryMetadata
 Dataset discovery metadata in S-102 restricts certain attributes and roles as described in <<tab-s100-datasetDiscoveryMetadata-params>>. Optional S-100 attributes which are mandatory in S-102 are indicated in the Remarks column.
@@ -964,7 +900,7 @@ S-102 uses S100_CatalogueScope without modification.
 
 |===
 
-The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.0.0 schema distribution.
+The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.2.0 schema distribution.
 
 === Certificates and Digital Signatures
 The classes S100_SE_CertificateContainer, S100_SE_DigitalSignatureReference, and S100_DigitalSignatureValue are defined in <<iho-s100,part=15>> and implemented in the S-100 generic schemas.
