@@ -165,7 +165,7 @@ The structure of an S-102 Exchange Set must be according to the structure descri
 The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATALOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
 
 === Data integrity and encryption
-S-100 Part 15 defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
+<<iho-s100,part=15>> defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
 
 ==== Use of compression
 The data producer decides if compression will be used on the S-102 product files (HDF5). It is expected that a hydrographic office will make a policy decision and that all the S-102 datasets from the producer will be either compressed or uncompressed.
