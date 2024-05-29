@@ -481,21 +481,22 @@ CI_Responsibility>CI_Organisation
 
 |Attribute
 |replacedData
-//Earlier comment from PT11 in change guide states: "Add, 'Not used in S-102'. For service management, RENCs and service providers will need to use this attribute to manage coverage changes."
-//If not used, this row should be deleted and the remark in 'Classname' row updated. Does the PT11 comment mean it is needed after all? (RM Metacomment 24Jan2023)
-|If a data file is cancelled, it is replaced by another data file.
+|Indicates if a cancelled dataset is replaced by another data file(s)
 |0..1
 |Boolean
-|
+|See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
+*Mandatory when purpose = cancellation*
 
 |Attribute
 |dataReplacement
-//Earlier comment from PT11 in change guide states: "Add, 'Not used in S-102'. For service management, RENCs and service providers will need to use this attribute to manage coverage changes."
-//If not used, this row should be deleted and the remark in 'Classname' row updated. Does the PT11 comment mean it is needed after all? (RM Metacomment 24Jan2023)
-|Cell name
+|Dataset name
 |0..*
 |CharacterString
-|A dataset may be replaced by 1 or more datasets.
+|A dataset may be replaced by 1 or more datasets. +
+Dataset name must be according to format defined in <<subsec-dataset-file-naming>>. +
+For example, *102DE00XXXXX.H5* +
+See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
+*Mandatory when replacedData = true*
 
 |Attribute
 |navigationPurpose
@@ -511,12 +512,11 @@ CI_Responsibility>CI_Organisation
 |Information about the frequency and scope of resource updates
 |0..1
 |
-|S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <iho-s100,part=17>>. +
+|S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <<iho-s100,part=17>>. +
 Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100,part=17,clause=17-4.9>>. +
 *S-102 discovery metadata blocks should populate maintenance information if and only if the date of the next edition is definite, whether it is due on a regular or irregular schedule.*
 
 |===
-
 
 ==== S100_NavigationPurpose
 [[tab-s100-navigationPurpose]]
@@ -685,7 +685,7 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |1
 |CharacterString
 |The name in the GI Registry should be used for this field. +
-For S-102, this name is "Bathymetric Surface" (as of 24 January 2023).
+For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).
 
 |Attribute
 |version
@@ -733,7 +733,8 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 .S100_CompliancyCategory
 [cols="a,a,a,^a,a",options="header"]
 |===
-|Role Name |Name |Description |Code + (see <<subsec-s100-compliancy-category>>) |Remarks
+|Role Name |Name |Description |Code + 
+(see <<subsec-s100-compliancy-category>>) |Remarks
 
 
 |Enumeration

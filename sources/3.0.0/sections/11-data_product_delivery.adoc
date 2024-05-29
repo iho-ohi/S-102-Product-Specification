@@ -46,6 +46,30 @@ Three types of dataset files may be produced and contained within an exchange se
 * New edition of a dataset: Includes new information. New editions must cover at least the same area as its predecessor.
 * [[canc]]Cancellation: The dataset is cancelled and no longer available to be displayed or used.
 
+[[subsec-production-of-a-cancellation]]
+===== Production of a cancellation
+S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
+
+1. Prepare an exchange catalogue with an S100_DatasetDiscoveryMetadata block with field values as described in <<subsec-metadata-for-cancellation>>.
+2. Complete other parts of the exchange catalogue as required by <<subsec-s102_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
+3. Sign and distribue the exchange catalogue in a normally structured exchange set.
+
+[[subsec-metadata-for-cancellation]]
+===== Metadata for cancellation
+S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
+
+* _fileName_ = _fileName_ of the cancelled dataset
+
+* _purpose_ = _cancellation_
+
+* issueDate and issueTime = the issue date and time of the cancellation
+
+* _replacedData_ = _true_ if and only if the cancelled dataset is replaced by another dataset; otherwise _false_. This attribute must be populated for a cancellation.
+
+* _dataReplacement_ = _fileName_ of the replacement dataset (if and only if the cancelled dataset is replaced by another dataset). This attribute must be populated when _replacedData_=_true_.
+
+* all other mandatory attributes to the same values as in the discovery metadata block for the dataset being cancelled.
+
 [[subsec-dataset-size]]
 ==== Dataset size
 S-102 delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
