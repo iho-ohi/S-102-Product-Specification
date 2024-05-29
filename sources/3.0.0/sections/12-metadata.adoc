@@ -76,108 +76,12 @@ Character strings must be encoded using the character set defined in <<iso-10646
 [%landscape]
 <<<
 
-[[subsec-s102_exchangecatalogue]]
-=== S102_ExchangeCatalogue
+[[subsec-s100_exchangecatalogue]]
+=== S100_ExchangeCatalogue
 
 Each Exchange Set has a single S100_ExchangeCatalogue which contains meta information for the data in the Exchange Set.
 
-S-102 uses S100_ExchangeCatalogue without extension. S-102 restricts certain attributes and roles as described in <<tab-s102-exchangeCatalogue-params>>. These restrictions are in bold type and noted in the Remarks column.
-
-[[tab-s102-exchangeCatalogue-params]]
-.S102_ExchangeCatalogue parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_ExchangeCatalogue
-|An exchange catalogue contains the discovery metadata about the exchange datasets and support files
-|-
-|-
-|Support file discovery metadata is not permitted because S-102 does not use support files
-//Review above after PT decision about ISO metadata files (RM comment 25Jan2023)
-
-|Attribute
-|identifier
-|Uniquely identifies this Exchange Catalogue
-|1
-|S100_ExchangeCatalogueIdentifier
-|*Mandatory in S-102*
-
-|Attribute
-|contact
-|Details about the issuer of this Exchange Catalogue
-|1
-|S100_CataloguePointOfContact
-|*Mandatory in S-102*
-
-|Attribute
-|productSpecification
-|Details about the Product Specifications used for the datasets contained in the Exchange Catalogue
-|0..*
-|S100_ProductSpecification
-|
-
-|Attribute
-|defaultLocale
-|Default language and character set used for all metadata records in this Exchange Catalogue
-|0..1
-|PT_Locale
-|Default is English and UTF-8
-
-|Attribute
-|otherLocale
-|Other languages and character sets used for the localized metadata records in this Exchange Catalogue
-|0..*
-|PT_Locale
-|Required if any localized entries are present in the Exchange Catalogue
-
-
-|Attribute
-|exchangeCatalogueDescription
-|Description of what the Exchange Catalogue contains
-|0..1
-|CharacterString
-|
-
-|Attribute
-|exchangeCatalogueComment
-|Any additional information
-|0..1
-|CharacterString
-|
-
-|Attribute
-|certificates
-|Signed public key certificates referred to by digital signatures in the Exchange Set
-|0..*
-|S100_SE_CertificateContainer
-|Content defined in <<iho-s100,part=15>>. +
-All certificates used, except the SA root certificate (installed separately by the implementing system) shall be included.
-
-|Attribute
-|dataServerIdentifier
-|Identifies the data server for the permit
-|0..1
-|CharacterString
-|
-
-|Role
-|datasetDiscoveryMetadata|Exchange catalogues may include or reference discovery metadata for the datasets in the Exchange Set
-|0..*
-|Aggregation +
-S100_DatasetDiscoveryMetadata
-|
-
-|Role
-|catalogueDiscoveryMetadata
-|Metadata for catalogue
-|0..*
-|Aggregation +
-S100_CatalogueDiscoveryMetadata
-|Metadata for the feature, portrayal, and interoperability catalogues, if any
-
-|===
+S-102 uses S100_ExchangeCatalogue without extension. 
 
 
 ==== S100_ExchangeCatalogueIdentifier
