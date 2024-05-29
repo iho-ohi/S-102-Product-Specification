@@ -45,11 +45,11 @@ More detailed information about the various classes is shown in in <<fig-s102-ex
 The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load, etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 
 [[fig-components-and-associated-metadata-for-the-s102-exchange-set]]
-.Components and associated metadata for the S-102 exchange set (S-100 5.0.0 Figure 17-2 with items not used by S-102 omitted)
+.Components and associated metadata for the S-102 exchange set (<<iho-s100,part=17,figure=2>> with items not used by S-102 omitted)
 image::../images/figure-components-and-associated-metadata-for-the-s102-exchange-set.png[]
 
 [[fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset]]
-.Relationship between exchange catalogue, discovery metadata, and dataset (from S-100 5.0.0 Figure 17-6)
+.Relationship between exchange catalogue, discovery metadata, and dataset (<<iho-s100,part=17,figure=6>> with items not used by S-102 omitted)
 image::../images/figure-relationship-between-exchange-catalogue-discovery-metadata-and-dataset.png[]
 
 [%landscape]
