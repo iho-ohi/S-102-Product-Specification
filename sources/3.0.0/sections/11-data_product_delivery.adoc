@@ -145,7 +145,7 @@ YYYY::: the fourth to seventh characters identify the producer code according to
 H5::: denotes and HDF5 file.
 
 === Exchange Set
-The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=17-4.2>>.
+The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=4.2>>.
 
 //Revise in addordance with whatever is ultimately decided about ISO metadata files in S-102. (RM Comment 25Jan2023)
 
@@ -170,7 +170,7 @@ The Exchange Catalogue acts as the table of contents for the Exchange Set. The C
 ==== Use of compression
 The data producer decides if compression will be used on the S-102 product files (HDF5). It is expected that a hydrographic office will make a policy decision and that all the S-102 datasets from the producer will be either compressed or uncompressed.
 
-It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in S-100 Part 15 must be applied to the product files.
+It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in <<iho-s100,part=15,clause=5.2>> must be applied to the product files.
 
 //Not clear what "The use of compression will be encoded" is saying, and the paragraph following is no longer correct (compression is an attribute of dataset discovery metadata blocks. Delete the following paragraph. (RM comment 23Jan2023) (Next paragraph commented out by LH)
 
