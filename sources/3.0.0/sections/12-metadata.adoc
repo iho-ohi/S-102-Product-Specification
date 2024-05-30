@@ -581,47 +581,8 @@ S-102 uses S100_ProtectionScheme without modification.
 
 
 === MD_MaintenanceInformation
-[[tab-md-maintenance-information]]
-.MD_MaintenanceInformation parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role Name |Name |Description |Mult |Type |Remarks
+S-102 uses MD_MaintenanceInformation without modification.
 
-|Class
-|MD_MaintenanceInformation
-|Information about the scope and frequency of updating
-|-
-|-
-|S-100 restricts the ISO 19115-class to: +
-* prohibit maintenanceScope, maintenanceNote, and contact attributes +
-* define restrictions on maintenanceAndUpdateFrequency, maintenanceDate, and userDefinedMaintenanceFrequency attributes
-
-|Attribute
-|maintenanceAndUpdateFrequency
-|Frequency with which changes and additions are made to the resource after the initial resource is completed
-|0..1
-|MD_MaintenanceFrequencyCode +
-(codelist)
-|Must be populated if userDefinedMaintenanceFrequency is not present, otherwise optional. +
-See <<tab-md-maintenance-frequency-code>> for values allowed in S-100 metadata.
-
-|Attribute
-|maintenanceDate
-|Date information associated with maintenance of the resource
-|0..1
-|CI_Date
-|Exactly one of maintenanceDate and userDefinedMaintenanceFrequency must be populated. +
-Allowed value for dateType: nextUpdate
-
-|Attribute
-|userDefinedMaintenanceFrequency
-|Maintenance period other than those defined
-|0..1
-|TM_PeriodDuration
-|Exactly one of maintenanceDate and userDefinedMaintenanceFrequency must be populated. +
-Only positive durations allowed
-
-|===
 
 === MD_MaintenanceFrequencyCode
 S-100 (and therefore S-102) use a subset of the values allowed in ISO 19115-1.
