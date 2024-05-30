@@ -464,7 +464,7 @@ S-102 uses S100_EncodingFormat with a restriction on the allowed values to permi
 |S100_EncodingFormat
 |The encoding format
 |-
-|The only value allowed in S-102 is "`HDF5`".
+|*The only value allowed in S-102 is "`HDF5`".*
 
 |Value
 |HDF5
