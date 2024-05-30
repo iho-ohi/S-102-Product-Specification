@@ -585,35 +585,8 @@ S-102 uses MD_MaintenanceInformation without modification.
 
 
 === MD_MaintenanceFrequencyCode
-S-100 (and therefore S-102) use a subset of the values allowed in ISO 19115-1.
+S-102 uses MD_MaintenanceFrequencyCode without modification.
 
-[[tab-md-maintenance-frequency-code]]
-.MD_MaintenanceFrequencyCode parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role Name |Name |Description |Code |Remarks
-
-|Enumeration
-|MD_MaintenanceFrequencyCode
-|Frequency with which modifications and deletions are made to the data after it is first produced
-|-
-|S-100 is restricted to only the values listed in this table (from the ISO 19115-1 codelist). The conditions for the use of a particular value are described in its Remarks.
-
-|Value
-|asNeeded
-|Resource is updated as deemed necessary.
-|1
-|Use only for datasets which normally use a regular interval for update or supersession but will have the next update issued at an interval different from the usual. +
-Allowed if and only if userDefinedMaintenanceFrequency is not populated
-
-|Value
-|irregular
-|Resource is updated in intervals that are uneven in duration.
-|2
-|Use only for datasets which do not use a regular schedule for update or supersession. +
-Allowed if and only if userDefinedMaintenanceFrequency is not populated
-
-|===
 
 === S100_CatalogueDiscoveryMetadata
 //Should this heading title have the word "Discovery" in it? It is neither in the text description nor the table. (LH comment 8Feb2023)
