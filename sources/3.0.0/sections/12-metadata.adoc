@@ -577,25 +577,8 @@ Numeric codes are not provided in S-100 Edition 5.0.0 but have since been determ
 
 
 ==== S100_ProtectionScheme
+S-102 uses S100_ProtectionScheme without modification.
 
-[[tab-s100-protectionScheme-params]]
-.S100_ProtectionScheme parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role name |Name |Description |Code |Remarks
-
-|Enumeration
-|S100_ProtectionScheme
-|Data protection schemes
-|-
-|-
-
-|Value
-|S100p15
-|IHO S-100 Part 15
-|-
-|See <<iho-s100,part=15>>.
-|===
 
 === MD_MaintenanceInformation
 [[tab-md-maintenance-information]]
