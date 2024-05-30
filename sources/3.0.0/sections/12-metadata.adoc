@@ -495,7 +495,7 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |1
 |CharacterString
 |The name in the GI Registry should be used for this field. +
-For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).
+*For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).*
 
 |Attribute
 |version
@@ -517,7 +517,7 @@ For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).
 |1
 |CharacterString +
 (Restricted to Product ID values from the IHO Product Specification Register in the IHO Geospatial Information (GI) Registry)
-|For S-102, this identifier is "S-102" (without quotes).
+|*For S-102, this identifier is "S-102" (without quotes).*
 
 |Attribute
 |number
