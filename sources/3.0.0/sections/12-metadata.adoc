@@ -430,7 +430,7 @@ If the grid cell size varies over the extent of the grid +
 |S100_Purpose
 |The purpose of the dataset
 |-
-|The S-100 values _update_, _reissue_, and _delta_ are not used in S-102.
+|*The S-100 values _update_, _reissue_, and _delta_ are not used in S-102.*
 
 |Value
 |newDataset
