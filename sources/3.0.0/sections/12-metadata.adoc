@@ -359,37 +359,7 @@ Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100
 |===
 
 ==== S100_NavigationPurpose
-[[tab-s100-navigationPurpose]]
-.S100_NavigationPurpose
-[cols="a,a,a,^a,a,options="header"]
-|===
-|Role Name |Name |Description |Code |Remarks
-
-|Enumeration
-|S100_NavigationPurpose
-|The purpose of the dataset
-|-
-|
-
-|Value
-|port
-|For port and near shore operations
-|1
-|-
-
-|Value
-|transit
-|For coast and planning purposes
-|2
-|-
-
-|Value
-|overview
-|For ocean crossing and planning purposes
-|3
-|-
-
-|===
+S-102 uses S100_NavigationPurpose without modification.
 
 ==== S100_DataCoverage
 S-102 uses S100_DataCoverage without modification.
