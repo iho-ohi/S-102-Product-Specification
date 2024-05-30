@@ -551,7 +551,7 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |S100_CompliancyCategory
 |(not provided in S-100 Ed. 5.0.0)
 |-
-|S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.
+|*S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
 
 |Value
 |category1
