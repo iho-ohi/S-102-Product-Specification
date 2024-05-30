@@ -40,7 +40,7 @@ For information exchange, there are several categories of metadata required: met
 
 <<fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset>> depicts the structure of the exchange catalogue and its component discovery metadata blocks. The structure is the same as in <<iho-s100,part=17>>.
 
-More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> with further description in <<tab-s100-datasetDiscoveryMetadata-params;to!tab-pt-locale-params>>. In the cases in which classes are used without modification, refer to <<iho-s100,part=17>> for their descriptions.
+More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> with further description in <<tab-s100-datasetDiscoveryMetadata-params;to!sec-pt-locale>>. In the cases in which classes are used without modification, refer to <<iho-s100,part=17>> for their descriptions.
 
 The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load, etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 
@@ -596,46 +596,11 @@ S-102 uses S100_CatalogueDiscoveryMetadata without modification.
 S-102 uses S100_CatalogueScope without modification.
 
 
+[[sec-pt-locale]]
 ==== PT_Locale
-
-[[tab-pt-locale-params]]
-.PT_Locale parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|PT_Locale
-|Description of a locale
-|-
-|-
-|From <<iso-19115-1>>
-
-|Attribute
-|language
-|Designation of the locale language
-|1
-|LanguageCode
-|<<iso-639-2>> 3-letter language codes. +
-*(S-100 Part 17 mandates the "T" codes.)*
-
-|Attribute
-|country
-|Designation of the specific country of the locale language
-|0..1
-|CountryCode
-|<<iso3166>> 2-letter country codes
-
-|Attribute
-|characterEncoding
-|Designation of the character set to be used to encode the textual value of the locale
-|1
-|MD_CharacterSetCode
-|UTF-8 is used in S-100
-
-|===
-
+S-102 uses PT_Locale without modification.
 The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.2.0 schema distribution.
+
 
 === Certificates and Digital Signatures
 The classes S100_SE_CertificateContainer, S100_SE_DigitalSignatureReference, and S100_DigitalSignatureValue are defined in <<iho-s100,part=15>> and implemented in the S-100 generic schemas.
