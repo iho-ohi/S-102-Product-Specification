@@ -595,38 +595,6 @@ S-102 uses S100_CatalogueDiscoveryMetadata without modification.
 ==== S100_CatalogueScope
 S-102 uses S100_CatalogueScope without modification.
 
-[[tab-s100-catalogueScope-params]]
-.S100_CatalogueScope parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role name |Name |Description |Code |Remarks
-
-|Enumeration
-|S100_CatalogueScope
-|The scope of the Catalogue
-|-
-|-
-
-|Value
-|featureCatalogue
-|S-100 feature catalogue
-|1
-|
-
-|Value
-|portrayalCatalogue
-|S-100 portrayal catalogue
-|2
-|
-
-|Value
-|interoperabilityCatalogue
-|S-100 interoperability information
-|3
-|
-
-|===
-
 
 ==== PT_Locale
 
