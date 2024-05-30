@@ -553,20 +553,6 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |-
 |*S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
 
-|Value
-|category1
-|IHO S-100 object model compliant
-|1
-|*S-102 conforms to the S-100 object model.* +
-*Not used for S-102; use _category3_ or _category4_ instead.*
-
-|Value
-|category2
-|IHO S-100 compliant with non-standard encoding
-|2
-|*Qualifies as _category1_; plus: Product Specification complies with <<iho-s100,part=11>>; metadata complies with <<iho-s100,part=4>> or an extension thereof; <<iho-s100,part=10>> encoding or custom encoding mapped to the S-100 GFM. [S-100 5.0.0 4a-5.5.2]* +
-*Not used for S-102; use _category3_ or _category4_ instead.*
-
 //category2 Remarks lists 3 items after "plus:" (a) PS complies ..., (b) metadata complies with ..., (c) S-100 Part 10 encoding or .... Item (c) is ambiguous--maybe could be clearer if rephrased as XX complies with YY ... (LH comment 8Feb2023)
 
 |Value
