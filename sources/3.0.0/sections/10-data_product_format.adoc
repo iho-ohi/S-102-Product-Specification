@@ -922,7 +922,7 @@ The grid cell values are stored in two-dimensional arrays with a prescribed numb
 [[root-QualityOfBathymetryCoverage]]
 ==== Root QualityOfBathymetryCoverage
 
-The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'
+The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'. The use of multiple BathymetryCoverage Feature Instance groups (different Vertical Datums) does not affect the multiplicity of the QualityOfBathymetryCoverage, which remains 0 to 1. This means that the different BathymetryCoverage Feature Instance groups share a common QualityOfBathymetryCoverage.
 
 The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
