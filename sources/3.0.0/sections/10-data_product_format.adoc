@@ -674,7 +674,7 @@ The number depends on the number of different vertical datum areas in the Featur
 
 [[subsec-BathymetryCoverage-feature-instance]]
 ==== Feature Instance group -- BathymetryCoverage.nn
-The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each Feature Instance Group implements an area of a unique vertical datum. All feature instance groups must share the same spatial location and extent.
+The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each feature instance group implements an independent geographical area with a unique vertical datum. The reason for this are the restrictions to which the domainExtent.polygon is subjected (see <<para-domain-extent-polygon,below>>). All feature instance groups must share the same spatial location and extent.
 
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
 
@@ -857,6 +857,7 @@ numPointsLongitude and numPointsLatitude must contain the number of cells in the
 
 The S-102 uses the "Attribute Overwriting" option of the <<iho-s100,part=10c,clause=9.7.1>>. This allows the feature instance group to overwrite the attributes of a higher group, in this case the 'verticalDatum'. The default vertical datum is specified in the root group (see table <<tab-root-group-attributes>>). A new separate feature instance group must be created for all areas with a vertical datum that differs from the default vertical datum. Only feature instance groups with a value that differs from the default vertical datum use the additional attribute "verticalDatum" on the feature instance group.
 
+[[para-domain-extent-polygon]]
 The use of multiple vertical datums within an S-102 product requires the use of "domainExtent.polygon". In addition, according to S-100, either the BoundingBox at the Feature Instance Group or the "domainExtent.polygon" must be specified. When using multiple vertical datums, the use of the "domainExtent.polygon" is mandatory, which means that the BoundingBox is not specified in this case. The grid cells that do not belong to the area of the respective vertical datum are to be assigned the no-data values. The domainExtent.polgons of different Feature Instance groups must not overlap. At positions where the polygons of different Feature Instance groups touch, the edges must be identical. The domainExtent.polgon does not have to follow the borders of the grid cells, but is an independent vector geometry based on the SoundingDatum surface from S-101. The domainExtent.polgon only supports a simple polygon geometry in accordance with <<iho-s100,part=10c,table=11>>. The mapping of multi-polygons and inner rings is not possible.
 
 ==== The values group -- Group_001
