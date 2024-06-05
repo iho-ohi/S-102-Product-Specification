@@ -29,7 +29,7 @@
 					<S100CI:onlineResource>
 						<S100CI:linkage>www.iho.int</S100CI:linkage>
 					</S100CI:onlineResource>
-		</S100CI:contactInfo>
+				</S100CI:contactInfo>
 			</S100CI:CI_Organisation>
 		</S100CI:party>
 	</S100FC:producer>
