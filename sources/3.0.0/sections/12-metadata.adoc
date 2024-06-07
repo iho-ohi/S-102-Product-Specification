@@ -484,7 +484,7 @@ S-102 uses S100_EncodingFormat with a restriction on the allowed values to permi
 |===
 
 ==== S100_ProductSpecification
-S-102 uses S100_ProductSpecification without modification. The Product Specification attributes encoded must be for this edition of S-102.
+S-102 uses S100_ProductSpecification without modification, but with additional remarks and changes to the multiplicity.
 
 [[tab-s100-productSpecification-params]]
 .S100_ProductSpecification parameters
@@ -502,7 +502,7 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |Attribute
 |name
 |The name of the Product Specification used to create the datasets
-|1
+|*1*
 |CharacterString
 |The name in the GI Registry should be used for this field. +
 *For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).*
@@ -510,16 +510,17 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |Attribute
 |version
 |The version number of the Product Specification
-|1
+|*1*
 |CharacterString
-|
+|TR 2/2007 specifies versioning of Product Specifications +
+*Example: 030000 for S-102 Edition 3.0.0*
 
 |Attribute
 |date
 |The version date of the Product Specification
-|1
+|*1*
 |Date
-|
+|-
 
 |Attribute
 |productIdentifier
@@ -534,14 +535,15 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |The number used to lookup the product in the Product Specification Register of the IHO GI registry
 |1
 |Integer
-|For IHO Product Specifications, these numbers should be taken from the IHO Product Specification Register in the IHO GI Registry.
+|For IHO Product Specifications, these numbers should be taken from the IHO Product Specification Register in the IHO GI Registry. +
+*The corresponding Idx-number of the IHO Registry for S-102 is numbered 199.*
 
 |Attribute
 |compliancyCategory
 |The level of compliance of the Product Specification to S-100
 |0..1
 |S100_CompliancyCategory
-|See <<iho-s100,part=4a,clause=4a-5.5>> and <<subsec-s100-compliancy-category>> below.
+|See <<iho-s100,part=4a,clause=4a-5.5>> *and <<subsec-s100-compliancy-category>> below.*
 |===
 
 [[subsec-s100-compliancy-category]]
