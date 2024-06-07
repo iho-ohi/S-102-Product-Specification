@@ -40,7 +40,7 @@ For information exchange, there are several categories of metadata required: met
 
 <<fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset>> depicts the structure of the exchange catalogue and its component discovery metadata blocks. The structure is the same as in <<iho-s100,part=17>>.
 
-More detailed information about the various classes is shown in in <<fig-s102-exchange-set-class-details>> and a textual description in <<tab-s102-exchangeCatalogue-params;to!tab-pt-locale-params>>.
+More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> with further description in <<tab-s100-datasetDiscoveryMetadata-params;to!sec-pt-locale>>. In the cases in which classes are used without modification, refer to <<iho-s100,part=17>> for their descriptions.
 
 The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load, etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 
@@ -76,179 +76,19 @@ Character strings must be encoded using the character set defined in <<iso-10646
 [%landscape]
 <<<
 
-[[subsec-s102_exchangecatalogue]]
-=== S102_ExchangeCatalogue
+[[subsec-s100_exchangecatalogue]]
+=== S100_ExchangeCatalogue
 
 Each Exchange Set has a single S100_ExchangeCatalogue which contains meta information for the data in the Exchange Set.
 
-S-102 uses S100_ExchangeCatalogue without extension. S-102 restricts certain attributes and roles as described in <<tab-s102-exchangeCatalogue-params>>. These restrictions are in bold type and noted in the Remarks column.
-
-[[tab-s102-exchangeCatalogue-params]]
-.S102_ExchangeCatalogue parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_ExchangeCatalogue
-|An exchange catalogue contains the discovery metadata about the exchange datasets and support files
-|-
-|-
-|Support file discovery metadata is not permitted because S-102 does not use support files
-//Review above after PT decision about ISO metadata files (RM comment 25Jan2023)
-
-|Attribute
-|identifier
-|Uniquely identifies this Exchange Catalogue
-|1
-|S100_ExchangeCatalogueIdentifier
-|*Mandatory in S-102*
-
-|Attribute
-|contact
-|Details about the issuer of this Exchange Catalogue
-|1
-|S100_CataloguePointOfContact
-|*Mandatory in S-102*
-
-|Attribute
-|productSpecification
-|Details about the Product Specifications used for the datasets contained in the Exchange Catalogue
-|0..*
-|S100_ProductSpecification
-|
-
-|Attribute
-|defaultLocale
-|Default language and character set used for all metadata records in this Exchange Catalogue
-|0..1
-|PT_Locale
-|Default is English and UTF-8
-
-|Attribute
-|otherLocale
-|Other languages and character sets used for the localized metadata records in this Exchange Catalogue
-|0..*
-|PT_Locale
-|Required if any localized entries are present in the Exchange Catalogue
-
-
-|Attribute
-|exchangeCatalogueDescription
-|Description of what the Exchange Catalogue contains
-|0..1
-|CharacterString
-|
-
-|Attribute
-|exchangeCatalogueComment
-|Any additional information
-|0..1
-|CharacterString
-|
-
-|Attribute
-|certificates
-|Signed public key certificates referred to by digital signatures in the Exchange Set
-|0..*
-|S100_SE_CertificateContainer
-|Content defined in <<iho-s100,part=15>>. +
-All certificates used, except the SA root certificate (installed separately by the implementing system) shall be included.
-
-|Attribute
-|dataServerIdentifier
-|Identifies the data server for the permit
-|0..1
-|CharacterString
-|
-
-|Role
-|datasetDiscoveryMetadata|Exchange catalogues may include or reference discovery metadata for the datasets in the Exchange Set
-|0..*
-|Aggregation +
-S100_DatasetDiscoveryMetadata
-|
-
-|Role
-|catalogueDiscoveryMetadata
-|Metadata for catalogue
-|0..*
-|Aggregation +
-S100_CatalogueDiscoveryMetadata
-|Metadata for the feature, portrayal, and interoperability catalogues, if any
-
-|===
+S-102 uses S100_ExchangeCatalogue without modification. 
 
 
 ==== S100_ExchangeCatalogueIdentifier
 S-102 uses S100_ExchangeCatalogueIdentifier without modification.
 
-[[tab-s100-exchangeCatalogueIdentifier-params]]
-.S100_ExchangeCatalogueIdentifier parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_ExchangeCatalogueIdentifier
-|An identifier for an Exchange Catalogue
-|-
-|-
-|The concatenation of identifier, edition number, and dateTime for the unique name.
-
-|Attribute
-|identifier
-|Uniquely identifies this Exchange Catalogue
-|1
-|CharacterString
-| (Rules, if any, for S-102 identifiers are TBD.)
-
-|Attribute
-|dateTime
-|Creation date and time of the Exchange Catalogue, including time zone
-|1
-|DateTime
-|Format: yyyy-mm-ddThh:mm:ssZ
-|===
-
 ==== S100_CataloguePointOfContact
 S-102 uses S100_CataloguePointOfContact without modification.
-
-[[tab-s100-cataloguePointContact-params]]
-.S100_CataloguePointOfContact parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_CataloguePointOfContact
-|Contact details of the issuer of this Exchange Catalogue
-|-
-|-
-|-
-
-|Attribute
-|organization
-|The organization distributing this Exchange Catalogue
-|1
-|CharacterString
-|This could be an individual producer, value added reseller, etc.
-
-|Attribute
-|phone
-|The phone number of the organization
-|0..1
-|CI_Telephone
-|
-
-|Attribute
-|address
-|The address of the organization
-|0..1
-|CI_Address
-|
-|===
-
 
 === S100_DatasetDiscoveryMetadata
 Dataset discovery metadata in S-102 restricts certain attributes and roles as described in <<tab-s100-datasetDiscoveryMetadata-params>>. Optional S-100 attributes which are mandatory in S-102 are indicated in the Remarks column.
@@ -481,21 +321,22 @@ CI_Responsibility>CI_Organisation
 
 |Attribute
 |replacedData
-//Earlier comment from PT11 in change guide states: "Add, 'Not used in S-102'. For service management, RENCs and service providers will need to use this attribute to manage coverage changes."
-//If not used, this row should be deleted and the remark in 'Classname' row updated. Does the PT11 comment mean it is needed after all? (RM Metacomment 24Jan2023)
-|If a data file is cancelled, it is replaced by another data file.
+|Indicates if a cancelled dataset is replaced by another data file(s)
 |0..1
 |Boolean
-|
+|See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
+*Mandatory when purpose = cancellation*
 
 |Attribute
 |dataReplacement
-//Earlier comment from PT11 in change guide states: "Add, 'Not used in S-102'. For service management, RENCs and service providers will need to use this attribute to manage coverage changes."
-//If not used, this row should be deleted and the remark in 'Classname' row updated. Does the PT11 comment mean it is needed after all? (RM Metacomment 24Jan2023)
-|Cell name
+|Dataset name
 |0..*
 |CharacterString
-|A dataset may be replaced by 1 or more datasets.
+|A dataset may be replaced by 1 or more datasets. +
+Dataset name must be according to format defined in <<subsec-dataset-file-naming>>. +
+For example, *102DE00XXXXX.H5* +
+See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
+*Mandatory when replacedData = true*
 
 |Attribute
 |navigationPurpose
@@ -511,45 +352,14 @@ CI_Responsibility>CI_Organisation
 |Information about the frequency and scope of resource updates
 |0..1
 |
-|S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <iho-s100,part=17>>. +
+|S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <<iho-s100,part=17>>. +
 Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100,part=17,clause=17-4.9>>. +
 *S-102 discovery metadata blocks should populate maintenance information if and only if the date of the next edition is definite, whether it is due on a regular or irregular schedule.*
 
 |===
 
-
 ==== S100_NavigationPurpose
-[[tab-s100-navigationPurpose]]
-.S100_NavigationPurpose
-[cols="a,a,a,^a,a,options="header"]
-|===
-|Role Name |Name |Description |Code |Remarks
-
-|Enumeration
-|S100_NavigationPurpose
-|The purpose of the dataset
-|-
-|
-
-|Value
-|port
-|For port and near shore operations
-|1
-|-
-
-|Value
-|transit
-|For coast and planning purposes
-|2
-|-
-
-|Value
-|overview
-|For ocean crossing and planning purposes
-|3
-|-
-
-|===
+S-102 uses S100_NavigationPurpose without modification.
 
 ==== S100_DataCoverage
 S-102 uses S100_DataCoverage without modification.
@@ -620,7 +430,7 @@ If the grid cell size varies over the extent of the grid +
 |S100_Purpose
 |The purpose of the dataset
 |-
-|The S-100 values _update_, _reissue_, and _delta_ are not used in S-102.
+|*The S-100 values _update_, _reissue_, and _delta_ are not used in S-102.*
 
 |Value
 |newDataset
@@ -654,7 +464,7 @@ S-102 uses S100_EncodingFormat with a restriction on the allowed values to permi
 |S100_EncodingFormat
 |The encoding format
 |-
-|The only value allowed in S-102 is "`HDF5`".
+|*The only value allowed in S-102 is "`HDF5`".*
 
 |Value
 |HDF5
@@ -685,7 +495,7 @@ S-102 uses S100_ProductSpecification without modification. The Product Specifica
 |1
 |CharacterString
 |The name in the GI Registry should be used for this field. +
-For S-102, this name is "Bathymetric Surface" (as of 24 January 2023).
+*For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).*
 
 |Attribute
 |version
@@ -707,7 +517,7 @@ For S-102, this name is "Bathymetric Surface" (as of 24 January 2023).
 |1
 |CharacterString +
 (Restricted to Product ID values from the IHO Product Specification Register in the IHO Geospatial Information (GI) Registry)
-|For S-102, this identifier is "S-102" (without quotes).
+|*For S-102, this identifier is "S-102" (without quotes).*
 
 |Attribute
 |number
@@ -733,28 +543,15 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 .S100_CompliancyCategory
 [cols="a,a,a,^a,a",options="header"]
 |===
-|Role Name |Name |Description |Code + (see <<subsec-s100-compliancy-category>>) |Remarks
+|Role Name |Name |Description |Code + 
+(see <<subsec-s100-compliancy-category>>) |Remarks
 
 
 |Enumeration
 |S100_CompliancyCategory
 |(not provided in S-100 Ed. 5.0.0)
 |-
-|S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.
-
-|Value
-|category1
-|IHO S-100 object model compliant
-|1
-|*S-102 conforms to the S-100 object model.* +
-*Not used for S-102; use _category3_ or _category4_ instead.*
-
-|Value
-|category2
-|IHO S-100 compliant with non-standard encoding
-|2
-|*Qualifies as _category1_; plus: Product Specification complies with <<iho-s100,part=11>>; metadata complies with <<iho-s100,part=4>> or an extension thereof; <<iho-s100,part=10>> encoding or custom encoding mapped to the S-100 GFM. [S-100 5.0.0 4a-5.5.2]* +
-*Not used for S-102; use _category3_ or _category4_ instead.*
+|*S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
 
 //category2 Remarks lists 3 items after "plus:" (a) PS complies ..., (b) metadata complies with ..., (c) S-100 Part 10 encoding or .... Item (c) is ambiguous--maybe could be clearer if rephrased as XX complies with YY ... (LH comment 8Feb2023)
 
@@ -780,286 +577,30 @@ Numeric codes are not provided in S-100 Edition 5.0.0 but have since been determ
 
 
 ==== S100_ProtectionScheme
+S-102 uses S100_ProtectionScheme without modification.
 
-[[tab-s100-protectionScheme-params]]
-.S100_ProtectionScheme parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role name |Name |Description |Code |Remarks
-
-|Enumeration
-|S100_ProtectionScheme
-|Data protection schemes
-|-
-|-
-
-|Value
-|S100p15
-|IHO S-100 Part 15
-|-
-|See <<iho-s100,part=15>>.
-|===
 
 === MD_MaintenanceInformation
-[[tab-md-maintenance-information]]
-.MD_MaintenanceInformation parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role Name |Name |Description |Mult |Type |Remarks
+S-102 uses MD_MaintenanceInformation without modification.
 
-|Class
-|MD_MaintenanceInformation
-|Information about the scope and frequency of updating
-|-
-|-
-|S-100 restricts the ISO 19115-class to: +
-* prohibit maintenanceScope, maintenanceNote, and contact attributes +
-* define restrictions on maintenanceAndUpdateFrequency, maintenanceDate, and userDefinedMaintenanceFrequency attributes
-
-|Attribute
-|maintenanceAndUpdateFrequency
-|Frequency with which changes and additions are made to the resource after the initial resource is completed
-|0..1
-|MD_MaintenanceFrequencyCode +
-(codelist)
-|Must be populated if userDefinedMaintenanceFrequency is not present, otherwise optional. +
-See <<tab-md-maintenance-frequency-code>> for values allowed in S-100 metadata.
-
-|Attribute
-|maintenanceDate
-|Date information associated with maintenance of the resource
-|0..1
-|CI_Date
-|Exactly one of maintenanceDate and userDefinedMaintenanceFrequency must be populated. +
-Allowed value for dateType: nextUpdate
-
-|Attribute
-|userDefinedMaintenanceFrequency
-|Maintenance period other than those defined
-|0..1
-|TM_PeriodDuration
-|Exactly one of maintenanceDate and userDefinedMaintenanceFrequency must be populated. +
-Only positive durations allowed
-
-|===
 
 === MD_MaintenanceFrequencyCode
-S-100 (and therefore S-102) use a subset of the values allowed in ISO 19115-1.
+S-102 uses MD_MaintenanceFrequencyCode without modification.
 
-[[tab-md-maintenance-frequency-code]]
-.MD_MaintenanceFrequencyCode parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role Name |Name |Description |Code |Remarks
-
-|Enumeration
-|MD_MaintenanceFrequencyCode
-|Frequency with which modifications and deletions are made to the data after it is first produced
-|-
-|S-100 is restricted to only the values listed in this table (from the ISO 19115-1 codelist). The conditions for the use of a particular value are described in its Remarks.
-
-|Value
-|asNeeded
-|Resource is updated as deemed necessary.
-|1
-|Use only for datasets which normally use a regular interval for update or supersession but will have the next update issued at an interval different from the usual. +
-Allowed if and only if userDefinedMaintenanceFrequency is not populated
-
-|Value
-|irregular
-|Resource is updated in intervals that are uneven in duration.
-|2
-|Use only for datasets which do not use a regular schedule for update or supersession. +
-Allowed if and only if userDefinedMaintenanceFrequency is not populated
-
-|===
 
 === S100_CatalogueDiscoveryMetadata
-//Should this heading title have the word "Discovery" in it? It is neither in the text description nor the table. (LH comment 8Feb2023)
-S-102 uses S100_CatalogueMetadata without modification.
+S-102 uses S100_CatalogueDiscoveryMetadata without modification.
 
-[[tab-s102-catalogueMetadata-params]]
-.S102_CatalogueMetadata parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|S100_CatalogueMetadata
-|Class for S-100 Catalogue metadata
-|-
-|-
-|-
-
-|Attribute
-|filename
-|The name for the catalogue
-|1
-|URI
-|See <<iho-s100,part=1,clause=1-4.6>>.
-
-|Attribute
-|purpose
-|The purpose for which the Catalogue has been issued
-|0..1
-|S100_Purpose
-|The values must be one of the following: +
-* 2 new edition +
-* 5 cancellation +
-Default is new edition +
-See <<tab-s100-purpose>>.
-
-|Attribute
-|editionNumber
-|The Edition number of the Catalogue
-|1
-|Integer
-|Initially set to 1 for a given productSpecification.number +
-Increased by 1 for each subsequent newEdition +
-Uniquely identifies the version of the Catalogue
-
-|Attribute
-|scope
-|Subject domain of the Catalogue
-|1
-|S100_CatalogueScope
-|
-
-|Attribute
-|versionNumber
-|The version identifier of the Catalogue
-|1
-|CharacterString
-|Human readable version identifier
-
-|Attribute
-|issueDate
-|The issue date of the Catalogue
-|1
-|Date
-|
-
-|Attribute
-|productSpecification
-|The Product Specification used to create this file
-|1
-|S100_ProductSpecification
-|
-
-|Attribute
-|digitalSignatureReference
-|Specifies the algorithm used to compute digitalSignatureValue
-|1
-|S100_SE_DigitalSignatureReference (see <<iho-s100,part=15>>)
-|
-
-|Attribute
-|digitalSignatureValue
-|Value derived from the digital signature
-|1..*
-|S100_SE_DigitalSignatureValue
-|The value resulting from application of digitalSignatureReference +
-Implemented as the digital signature format specified in <<iho-s100,part=15>>
-
-|Attribute
-|compressionFlag
-|Indicates if the resource is compressed.
-|1
-|Boolean
-|_True_ indicates a compressed resource. +
-_False_ indicates an uncompressed resource.
-
-|Attribute
-|defaultLocale
-|Default language and character set used in the Exchange Catalogue
-|0..1
-|PT_Locale
-|In absence of defaultLocale, the language is English, and the character set is UTF-8.
-
-|Attribute
-|otherLocale
-|Other languages and character sets used in the Exchange Catalogue
-|0..*
-|PT_Locale
-|
-|===
 
 ==== S100_CatalogueScope
 S-102 uses S100_CatalogueScope without modification.
 
-[[tab-s100-catalogueScope-params]]
-.S100_CatalogueScope parameters
-[cols="a,a,a,^a,a",options="header"]
-|===
-|Role name |Name |Description |Code |Remarks
 
-|Enumeration
-|S100_CatalogueScope
-|The scope of the Catalogue
-|-
-|-
-
-|Value
-|featureCatalogue
-|S-100 feature catalogue
-|1
-|
-
-|Value
-|portrayalCatalogue
-|S-100 portrayal catalogue
-|2
-|
-
-|Value
-|interoperabilityCatalogue
-|S-100 interoperability information
-|3
-|
-
-|===
-
-
+[[sec-pt-locale]]
 ==== PT_Locale
+S-102 uses PT_Locale without modification.
+The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.2.0 schema distribution.
 
-[[tab-pt-locale-params]]
-.PT_Locale parameters
-[cols="a,a,a,^a,a,a",options="header"]
-|===
-|Role name |Name |Description |Mult |Type |Remarks
-
-|Class
-|PT_Locale
-|Description of a locale
-|-
-|-
-|From <<iso-19115-1>>
-
-|Attribute
-|language
-|Designation of the locale language
-|1
-|LanguageCode
-|<<iso-639-2>> 3-letter language codes. +
-*(S-100 Part 17 mandates the "T" codes.)*
-
-|Attribute
-|country
-|Designation of the specific country of the locale language
-|0..1
-|CountryCode
-|<<iso3166>> 2-letter country codes
-
-|Attribute
-|characterEncoding
-|Designation of the character set to be used to encode the textual value of the locale
-|1
-|MD_CharacterSetCode
-|UTF-8 is used in S-100
-
-|===
-
-The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.0.0 schema distribution.
 
 === Certificates and Digital Signatures
 The classes S100_SE_CertificateContainer, S100_SE_DigitalSignatureReference, and S100_DigitalSignatureValue are defined in <<iho-s100,part=15>> and implemented in the S-100 generic schemas.
