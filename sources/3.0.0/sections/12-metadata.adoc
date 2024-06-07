@@ -105,16 +105,17 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |Metadata about the individual datasets in the Exchange Catalogue
 |-
 |-
-|The optional S-100 attributes updateApplicationNubmer, updateApplicationDate, referenceID, and temporalExtent are not used in S-102. +
-References to support file discovery metadata are not permitted because S-102 does not use support files.
+|*The optional S-100 attributes _updateApplicationNubmer_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
+*References to support file discovery metadata are not permitted because S-102 does not use support files.*
 
 |Attribute
 |fileName
 |Dataset file name
 |1
 |URI
-|Format: file:/S-102/DATASET_FILES/<dsname> +
-Dataset file name <dsname> must be according to format defined in <<subsec-dataset-file-naming>>.
+|See <<iho-s100,part=1,clause=4.6 +
+*Format: file:/S-102/DATASET_FILES/<dsname>* +
+*Dataset file name <dsname> must be according to format defined in <<subsec-dataset-file-naming>>.*
 
 |Attribute
 |description
@@ -125,12 +126,12 @@ Dataset file name <dsname> must be according to format defined in <<subsec-datas
 
 |Attribute
 |datasetID
-|Dataset ID expressed as a Maritimefootnote:[S-100 5.0.0 uses an incorrect term: "*Marine* Resource Name".] Resource Name
+|Dataset ID expressed as a Maritime Resource Name
 |0..1
 //listed as 0..1 in Ed. 5, but make it mandatory in S-102? (RM comment 26Jan2023)
 |URN
 |The URN must be an MRN. +
-MRN construction rules will be defined by the IHO.
+*See <<iho-s100,part=3,clause=10>>*
 
 |Attribute
 |compressionFlag
@@ -153,21 +154,22 @@ _False_ indicates an unencrypted dataset resource.
 |Specification of method used for data protection
 |0..1
 |S100_ProtectionScheme
-|*Populate if and only if dataProtection = _True_.*
+|*Populate if and only if _dataProtection- = _True_.*
 
 |Attribute
 |digitalSignatureReference
-|Specifies the algorithm used to compute digitalSignatureValue
+|Specifies the algorithm used to compute _digitalSignatureValue_
 |1
-|S100_SE_DigitalSignatureReference (see <<iho-s100,part=15>>)
-|
+|S100_SE_DigitalSignatureReference
+|*See <<iho-s100,part=15,clause8.11.7>> & <<sec-certs-digsign>>*
 
 |Attribute
 |digitalSignatureValue
 |Value derived from the digital signature
 |1..*
-|S100_SE_DigitalSignatureValue (see <<iho-s100,part=15>>)
-|The value resulting from application of digitalSignatureReference +
+|S100_SE_DigitalSignatureValue ()
+|*see <<iho-s100,part=15,clause=15-8.11.3>>* +
+The value resulting from application of _digitalSignatureReference_ +
 Implemented as the digital signature format specified in <<iho-s100,part=15>>
 
 |Attribute
@@ -198,7 +200,7 @@ MD_SecurityConstraints>MD_ClassificationCode (codelist)
 |Attribute
 |purpose
 |The purpose for which the dataset has been issued
-|1
+|*1*
 |S100_Purpose
 |*Mandatory in S-102*
 
@@ -215,12 +217,13 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |The use for which the dataset is intended
 |0..1
 |MD_USAGE>specificUsage (character string)
-|
+|-
 
 |Attribute
 |editionNumber
 |The edition number of the dataset
-|1
+|*1*
+//Superfluous for product without updates and reissues; S-102 will always replace the full product file; change to 0 as possible accourding to S100 (RohdeBSH 07. June 2024)
 |Integer
 |When a data set is initially created, the Edition number 1 is assigned to it. The Edition number is increased by 1 at each new Edition. Edition number remains the same for a re-issue. +
 *Mandatory in S-102*
@@ -230,28 +233,30 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |Date on which the data was made available by the Data Producer
 |1
 |Date
-|
+|-
 
 |Attribute
 |issueTime
 |Time of day at which the data was made available by the Data Producer
 |0..1
 |Time
-|The S-100 datatype Time
+|The S-100 datatype Time +
+*May be required if multiple instances of a product are issued on the same day.*
 
 |Attribute
 |boundingBox
-|The extent of the dataset limits defined as a rectangle coincident with the outermost cell boundaries of the dataset.
-|1
+|The extent of the dataset limits
+|*1*
 |EX_GeographicBoundingBox
-|*Mandatory in S-102*
+|*Mandatory in S-102* +
+*Defined as a rectangle coincident with the outermost cell boundaries of the dataset.*
 
 |Attribute
 |productSpecification
 |The Product Specification used to create this dataset
 |1
 |S100_ProductSpecification
-|
+|*<<tab-s100-productSpecification-params>>*
 
 |Attribute
 |producingAgency
@@ -265,21 +270,23 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |The official IHO Producer Code from S-62
 |0..1
 |CharacterString
-|
+|-
 
 |Attribute
 |encodingFormat
 |The encoding format of the dataset
 |1
 |S100_EncodingFormat
-|*The only allowed value is HDF5*
+|*The only allowed value is HDF5* +
+*<<tab-s100-encodingFormat-params>>*
 
 |Attribute
 |dataCoverage
 |Provides information about data coverages within the dataset
-|1..*
+|*1*..*
 |S100_DataCoverage
-|*This optional S-100 attribute is mandatory in S-102*
+|*Mandatory in S-102* +
+*<<tab-s100-dataCoverage-params>>*
 
 |Attribute
 |comment
@@ -607,7 +614,7 @@ S-102 uses S100_CatalogueScope without modification.
 S-102 uses PT_Locale without modification.
 The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.2.0 schema distribution.
 
-
+[[sec-certs-digsign]]
 === Certificates and Digital Signatures
 The classes S100_SE_CertificateContainerType (<<iho-s100,part=15,clause=8.11.1>>), S100_SE_DigitalSignatureReference (<<iho-s100,part=15,clause=8.11.7>>), and S100_SE_DigitalSignature are defined in <<iho-s100,part=15>> and implemented in the S-100 generic schemas.
 
