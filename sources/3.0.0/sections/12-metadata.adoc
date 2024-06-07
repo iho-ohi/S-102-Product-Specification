@@ -548,20 +548,18 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 
 [[subsec-s100-compliancy-category]]
 ==== S100_CompliancyCategory
-
 S-102 exchange sets conforming to this edition of S-102 and using a CRS from the EPSG registry may be encoded as category 3 or 4 when the _compliancyCategory_ metadata attribute is populated. Because S-98 interoperability assumes _category4_ datasets, _category4_ may be used for test purposes, though the absence of test datasets and of a published IHO interoperability catalogue mean this edition of S-102 does not yet qualify for _category4_. *Given the uncertainty about interoperability testing requirements and availability of test datasets, the S-100 WG chair and S-102 PT chair should be consulted for up-to-date guidance.*
 
 [[tab-s100-compliancyCategory]]
 .S100_CompliancyCategory
 [cols="a,a,a,^a,a",options="header"]
 |===
-|Role Name |Name |Description |Code + 
-(see <<subsec-s100-compliancy-category>>) |Remarks
+|Role Name |Name |Description |Code |Remarks
 
 
 |Enumeration
 |S100_CompliancyCategory
-|(not provided in S-100 Ed. 5.0.0)
+|-
 |-
 |*S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
 
@@ -571,22 +569,15 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |category3
 |IHO S-100 compliant with standard encoding
 |3
-|*Qualifies as _category2_; plus "The Product Specification uses only an encoding method defined in <<iho-s100,part=10>>" [S-100 5.0.0 4a-5.5.3]* +
-*Allowing for S-100 Edition 5.0.0 separation of metadata into Part 17, this edition of S-102 qualifies.*
+|*Qualifies as _category2_; plus "The Product Specification uses only an encoding method defined in <<iho-s100,part=10;and!part=4a,clause=5.5.3>>"*
 
 |Value
 |category4
 |IHO S-100 and IMO harmonized display compliant
 |4
-|*Qualifies as _category3_; plus additional requirements, including a portrayal catalogue, cybersecurity (digital signatures and encryption), test material, use of a CRS from the EPSG Registry, and compliance with the IHO S-98 interoperability catalogue. [S-100 5.0.0 4a-5.5.4]*
+|*Qualifies as _category3_; plus additional requirements, including a portrayal catalogue, cybersecurity (digital signatures and encryption), test material, use of a CRS from the EPSG Registry, and compliance with the IHO S-98 interoperability catalogue. <<iho-s100,part=4a,clause=5.5.4>>*
 
 |===
-[[subsec-s100-compliancy-category-note1]]
-[NOTE]
-====
-Numeric codes are not provided in S-100 Edition 5.0.0 but have since been determined by the S-100WG; they are needed only if the enumeration is also encoded as an HDF5 enumeration.
-====
-
 
 ==== S100_ProtectionScheme
 S-102 uses S100_ProtectionScheme without modification.
