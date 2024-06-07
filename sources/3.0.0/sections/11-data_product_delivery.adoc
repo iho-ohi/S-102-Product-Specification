@@ -51,7 +51,7 @@ Three types of dataset files may be produced and contained within an exchange se
 S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
 
 1. Prepare an exchange catalogue with an S100_DatasetDiscoveryMetadata block with field values as described in <<subsec-metadata-for-cancellation>>.
-2. Complete other parts of the exchange catalogue as required by <<subsec-s102_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
+2. Complete other parts of the exchange catalogue as required by <<subsec-s100_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
 3. Sign and distribue the exchange catalogue in a normally structured exchange set.
 
 [[subsec-metadata-for-cancellation]]
