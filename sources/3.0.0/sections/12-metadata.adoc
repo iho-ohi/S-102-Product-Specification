@@ -389,7 +389,7 @@ S-102 uses S100_DataCoverage without modification, but with additional remarks a
 |A polygon which defines the actual data limit
 |1
 |EX_BoundingPolygon
-|<<note-s100datacoverage-boundingPolygon>
+|<<note-s100datacoverage-boundingPolygon>>
 
 |Attribute
 |temporalExtent
