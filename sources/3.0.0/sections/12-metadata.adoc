@@ -428,6 +428,8 @@ If the grid cell size varies over the extent of the grid +
 _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 or more interiors expressed as Linear Rings using SRS EPSG:4326. The exterior and optional interiors shall be composed of a closed sequence of >=4 coordinate positions expressed individually or as a list (posList). The GML polygon shall have a valid GML identifier.
 
 ==== S100_Purpose
+S-102 uses S100_Purpose without modification, but with a restriction on the allowed values.
+
 [[tab-s100-purpose]]
 .S100_Purpose
 [cols="a,a,a,^a,a,options="header"]
@@ -450,13 +452,13 @@ _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 
 |newEdition
 |New edition of the dataset or Catalogue
 |2
-|Includes new information which has not been previously distributed by updates 
+|Includes new information which has not been previously distributed by updates.
 
 |Value
 |cancellation
 |Dataset or Catalogue that has been cancelled
 |5
-|Indicates the dataset or Catalogue should no longer be used and can be deleted
+|Indicates the dataset or Catalogue should no longer be used and can be deleted.
 |===
 
 ==== S100_EncodingFormat
