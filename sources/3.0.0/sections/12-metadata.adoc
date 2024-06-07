@@ -113,7 +113,7 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |Dataset file name
 |1
 |URI
-|See <<iho-s100,part=1,clause=4.6 +
+|See <<iho-s100,part=1,clause=4.6>> +
 *Format: file:/S-102/DATASET_FILES/<dsname>* +
 *Dataset file name <dsname> must be according to format defined in <<subsec-dataset-file-naming>>.*
 
