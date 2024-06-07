@@ -382,7 +382,7 @@ S-102 uses S100_DataCoverage without modification, but with additional remarks a
 |A polygon which defines the actual data limit
 |1
 |EX_BoundingPolygon
-|<<note1>
+|<<note-s100datacoverage-boundingPolygon>
 
 |Attribute
 |temporalExtent
@@ -424,8 +424,11 @@ For example, for 5 metre resolution, the value 5 must be encoded. +
 If the grid cell size varies over the extent of the grid +
 (i.e., when using a geographic grid), an approximated value should be used.
 |===
-[[note1]]
+[[note-s100datacoverage-boundingPolygon]]
+[NOTE]
+====
 _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 or more interiors expressed as Linear Rings using SRS EPSG:4326. The exterior and optional interiors shall be composed of a closed sequence of >=4 coordinate positions expressed individually or as a list (posList). The GML polygon shall have a valid GML identifier.
+====
 
 ==== S100_Purpose
 S-102 uses S100_Purpose without modification, but with a restriction on the allowed values.
