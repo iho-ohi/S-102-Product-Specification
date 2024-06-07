@@ -480,7 +480,7 @@ S-102 uses S100_EncodingFormat with a restriction on the allowed values to permi
 |HDF5
 |The HDF5 data format as defined in <<iho-s100,part=10c>>
 |3
-|
+|-
 |===
 
 ==== S100_ProductSpecification
