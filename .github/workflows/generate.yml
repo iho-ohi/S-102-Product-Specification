@@ -27,7 +27,7 @@ jobs:
           submodules: true
 
       - name: Metanorma generate site
-        uses: actions-mn/build-and-publish@v1
+        uses: actions-mn/build-and-publish@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           agree-to-terms: true
