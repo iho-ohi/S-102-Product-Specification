@@ -964,7 +964,7 @@ See <<subsec-note9>>.
 | surveyDateRange.dateStart
 | The start date of the period of the hydrographic survey.
 | 0..1
-| String
+| Date
 | ISO 8602:2004 date format. +
 Complete or truncated date, +
 see <<iho-s100,part=1,table=2>>.
@@ -973,7 +973,7 @@ see <<iho-s100,part=1,table=2>>.
 | surveyDateRange.dateEnd
 | The end date of the period of the hydrographic survey.
 | 0..1
-| String
+| Date
 | ISO 8602:2004 date format. +
 Complete or truncated date, +
 see <<iho-s100,part=1,table=2>>.
