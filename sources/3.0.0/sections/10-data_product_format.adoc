@@ -1112,9 +1112,10 @@ Each cell in this values dataset must be populated with a value that is one of t
 ==== Mandatory Naming Conventions
 
 The following group and attribute names are mandatory in S-100:
-*Group_F
-*featureCode
-*(for S-102)
+
+* Group_F
+* featureCode
+* (for S-102)
 ** *BathymetryCoverage*
 ** axisNames
 ** *BathymetryCoverage.01*
