@@ -62,6 +62,8 @@ S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clau
 
 * _purpose_ = _cancellation_
 
+* _editionNumber_ = 0
+
 * issueDate and issueTime = the issue date and time of the cancellation
 
 * _replacedData_ = _true_ if and only if the cancelled dataset is replaced by another dataset; otherwise _false_. This attribute must be populated for a cancellation.
