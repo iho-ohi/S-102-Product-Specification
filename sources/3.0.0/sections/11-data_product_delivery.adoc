@@ -82,7 +82,6 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 
 <<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of S-102 data for specific charting scales.
 
-<<annex-s102-dataset-size-and-production>> discusses in greater detail the physical size components of an S-102 file.
 
 
 ===== S-102 grid resolution and tiling
