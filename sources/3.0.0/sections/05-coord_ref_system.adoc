@@ -36,7 +36,7 @@ h|EPSG Code h|Coordinate Reference System
 === Vertical Coordinate Reference System
 Although in this product there are no direct vertical coordinates the values of the depth attributes are indirectly such coordinates. Therefore, it is important to specify the vertical CRS to which these values conform. The vertical CRS is an earth gravity-based, one-axis coordinate system. The Orientation of the axis is defined by the vertical coordinate system attribute (_verticalCS_) in the root group (see <<tab-root-group-attributes>>).
 
-The vertical datum must be taken from the code-list specified by the IHO Geospatial Information (GI) Registry for the attribute named _Vertical Datum_. It will be defined in the root element as an HDF5 attribute.
+The vertical datum must be taken from the code-list specified by the IHO Geospatial Information (GI) Registry for the attribute named _Vertical Datum_. It will be defined in the root group as an HDF5 attribute (see <<tab-root-group-attributes>>).
 
 
 === Temporal reference system
