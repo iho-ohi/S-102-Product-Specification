@@ -774,7 +774,7 @@ The _gridOriginLongitude_, _gridOriginLatitude_, _gridSpacingLongitudinal_, and 
 _numPointsLongitude_ and _numPointsLatitude_ must contain the number of cells in the x and y dimensions of the values table.
 
 ==== The values group -- Group_001
-This group contains the following attributes. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
+This group contains the following additional attributes. The mandatory attributes depend on the _dataCodingFormat_ used and can be taken from <<iho-s100,part=10c,table=19>>. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
 
 [[tab-attributes-of-values-group]]
 .Attributes of values group
