@@ -4,12 +4,14 @@
 
 === Introduction
 S-102 portrayal is intended to contribute to the safe operation of an S-100 based marine navigation system by:
+
 * Ensuring display of bathymetric surfaces, standards of colours, and their assignment to depths;
 * Ensuring the display is clear and unambiguous;
 * Establishing an accepted pattern for presentation that becomes familiar to mariners and so can be recognized instantly without confusion; and
 * Utilizing the S-100 portrayal model to ensure interoperability.
 
 To ensure that presentation remains intuitive, the following principles must be followed when changes are made to the S-102 Portrayal Catalogue:
+
 * S-102 must maintain equivalence in terms of alerts and indications functionality in ECDIS;
 * The S-102 Portrayal Catalogue should be modified by extension. Portrayal rules should be retained for items that have been superseded in the current version of S-102. This retention ensures that S-102 data produced to previous versions can be displayed using the latest Portrayal Catalogue.
 
