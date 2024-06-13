@@ -159,7 +159,7 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 
 [[subsec-dataset-file-naming]]
 ==== Dataset file naming
-Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause4.3>>). S-102 dataset naming conventions must follow these rules.
+Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause=4.3>>). S-102 dataset naming conventions must follow these rules.
 
 //If ISO metadata files are included, a clause about naming them must be added. (RM comment 25 Jan 2023)
 
