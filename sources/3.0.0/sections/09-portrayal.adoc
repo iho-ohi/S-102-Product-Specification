@@ -127,7 +127,7 @@ The S-102 Portrayal Catalogue contains the mechanisms for the system to portray 
 
 The Portrayal Catalogue model is defined in <<iho-s100,part=9,clause=9-13>>. The S-102 Portrayal Catalogue is available in an XML document, which conforms to the S-100 XML Portrayal Catalogue Schema. The structure for the Portrayal Catalogue is described in <<iho-s100,part=9,clause=9-13.2>>.
 
-<<fig-s52-depth-zone-colouring-for-day>> is included to illustrate informative depth zone colouring as adapted from <<iho-s52>>. More comprehensive portrayal details can be found in the S-102 Portrayal Catalogue, which is available in the IHO GI Registry (as detailed in <<tab-s102-portrayal-catalogue-citation info>>).
+<<fig-s52-depth-zone-colouring-for-day>> is included to illustrate informative depth zone colouring as adapted from S-52. More comprehensive portrayal details can be found in the S-102 Portrayal Catalogue, which is available in the IHO GI Registry (as detailed in <<tab-s102-portrayal-catalogue-citation-info>>).
 
 [[fig-s52-depth-zone-colouring-for-day]]
 .S-52, Edition 6.1(.1) Depth Zone Colouring for Day
