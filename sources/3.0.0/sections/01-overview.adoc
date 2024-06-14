@@ -3,7 +3,7 @@
 == Overview
 With the advent of electronic navigation and the technological progress of surveying systems and production capabilities, the ability to enhance maritime navigation with the portrayal of high-resolution bathymetry has become a requirement. The provision and utilization of such data in a standardized format is essential to support the safe and precise navigation of marine vessels, and furthermore an important basis for many other maritime applications.
 
-=== Introduction
+=== Scope
 This document describes an S-100 compliant product specification for a bathymetric surface product. Incorporating aspects of the navigation surface concept <<NavigationSurface,[Smith et al, 2002]>>, an S-102 bathymetric surface product is a digital elevation model which represents the seafloor in a regular grid structure. It can be used alone or as an important element/source for future S-100 conformant ECDIS navigation. The product specification is based on the IHO S-100 framework specification and the ISO 19100 series of standards. It comprises the content model (spatial structure and metadata), encoding structure, portrayal and exchange file format for a bathymetric surface product.
 
 [bibliography]
@@ -34,7 +34,7 @@ This document describes an S-100 compliant product specification for a bathymetr
 
 * [[[iso-19129,ISO/TS 19129:2009]]]
 
-* [[[iso-19131,ISO 19131:2007/Amd 1:2011]]]
+* [[[iso-19131,ISO 19131:2022]]]
 
 * [[[iso-iec-19501,ISO/IEC 19501:2005]]]
 
