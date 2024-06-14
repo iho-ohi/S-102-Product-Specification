@@ -216,11 +216,6 @@ NOTE: Errors exist and are the differences between the measured value and the tr
 
 [[itd]]In this document and S-102 uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.[[conlev]]
 
-[reviewer=Lawrence Haynes Haselmaier,from=itd,to=conlev]
-****
-After Andy/Anthony/Lawrence meeting: UKHO -- added this in as discussed. Looking in S-44 section 2.7 as a guide to how confidence level and SD interact it is more complicated when we get to the horizontal uncertainty as technically this is a 2D quantity and should be 2.45 sigma. So I stated here that we consider uncertainty to be 1 dimensional. We may need to revisit this when the Raster Attribute Table is implemented and we add horizontal uncertainty.
-****
-
 ===== Vector
 
 Quantity having direction as well as magnitude.
@@ -231,15 +226,27 @@ NOTE: A directed line segment represents a vector if the length and direction of
 ==== Abbreviations
 This Product Specification adopts the following convention for presentation purposes:
 
-//BAG removed here as it is not mentioned anywhere else in the document. LHH from SMA comments 4Apr2023
+CRS:: Coordinate Reference System
 ECDIS:: Electronic Chart Display Information System
 ENC:: Electronic Navigational Chart
+EPSG:: European Petroleum Survey Group
+GFM:: General Feature Model
+HDF:: Hierarchical Data Format
+HSSC:: IHO Hydrographic Services and Standards Committee (formerly CHRIS)
 IEC:: International Electrotechnical Commission
 IHO:: International Hydrographic Organization
+IMO:: International Maritime Organization
+IOGP:: International association of Oil and Gas Producers (formerly OGP)
 ISO:: International Organization for Standardization
+MRN:: Maritime Resource Name
+S-100 WG:: S-100 Working Group
+S-102 PT:: S-102 Project Team
 SA:: Signature Authority
+TS:: Technical Specification
+TSMAD:: Transfer Standard Maintenance and Application Development Working Group
 UML:: Universal Modelling Language
-
+URI:: Uniform Resource Identifier
+XML:: eXtensible Markup Language
 
 === General S-102 data product description
 
@@ -265,9 +272,9 @@ UML:: Universal Modelling Language
 This information uniquely identifies this Product Specification and provides information about its creation and maintenance. For further information on dataset metadata, see <<sec-metadata>>.
 
 *Title*:: Bathymetric Surface Product Specification
-*S-100 Version*:: 5.0.0
+*S-100 Version*:: 5.2.0
 *S-102 Version*:: 3.0.0
-*Date*:: April 2023
+*Date*:: June 2024
 
 *Language*:: English
 *Classification*:: Unclassified
@@ -283,8 +290,8 @@ Fax: +377 93 10 81 40 +
 Email: mailto:info@iho.int[] +
 --
 *URL*:: link:http://www.iho.int/[www.iho.int]
-*Identifier*:: IHO:S100:S102:3:0:0
-*Maintenance*:: Changes to the Product Specification S-102 are coordinated by the IHO S-100 Working Group (S-100WG), and must be made available via the IHO web site. Maintenance of the Product Specification must conform to IHO Resolution 2/2007, as amended.
+*Identifier*:: S-102
+*Maintenance*:: Changes to the Product Specification S-102 are coordinated by the IHO S-100 Working Group (S-100 WG), and must be made available via the IHO web site. Maintenance of the Product Specification must conform to IHO Resolution 2/2007, as amended.
 
 
 === IHO Product Specification Maintenance
@@ -293,7 +300,7 @@ Email: mailto:info@iho.int[] +
 Changes to S-102 will be released by the IHO as a New Edition, revision, or clarification.
 
 ==== New Edition
-_New Editions_ of S-102 introduce significant changes. _New Editions_ enable new concepts, such as the ability to support new functions or applications, or the introduction of new constructs or data types. _New Editions_ are likely to have a significant impact on either existing users or future users of S-102.
+_New Editions_ of S-102 introduce significant changes. _New Editions_ enable new concepts, such as the ability to support new functions or applications, or the introduction of new constructs or data types. _New Editions_ are likely to have a significant impact on either existing users or future users of S-102. All cumulative _revisions_ and _clarifications_ must be included with the release of approved New Editions.
 
 ==== Revisions
 _Revisions_ are defined as substantive semantic changes to S-102. Typically, _revisions_ will change S-102 to correct factual errors; introduce necessary changes that have become evident as a result of practical experience or changing circumstances. A _revision_ must not be classified as a clarification. Revisions could have an impact on either existing users or future users of S-102. All cumulative _clarifications_ must be included with the release of approved _revisions_.
