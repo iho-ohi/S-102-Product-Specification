@@ -51,7 +51,7 @@ image::../images/figure-outline-of-the-generic-data-file-structure.png[UML diagr
 
 *Level 4*:: This level contains the actual data for each feature. In S-102 the BathymetryCoverage uses the ValuesGroup to define the content. The other groups at this level are not used.
 
-In <<tab-overview-of-s102-data-product>> below, levels refer to HDF5 structuring (see <<iho-s100,part=10c,figure=7>>). Naming in each box below the header line is as follows: Generic name; S-100 or S-102 name, or nothing if none; and (_HDF5 type_) group, attribute or attribute list, or dataset. <<fig-hierarchy-of-s102-data-product>> depicts the same structure using a graphical representation.
+In <<tab-overview-of-s102-data-product>> below, levels refer to HDF5 structuring (see <<fig-outline-of-the-generic-data-file-structure>>). Naming in each box below the header line is as follows: Generic name; S-100 or S-102 name, or nothing if none; and (_HDF5 type_) group, attribute or attribute list, or dataset. <<fig-hierarchy-of-s102-data-product>> depicts the same structure using a graphical representation.
 
 
 [[tab-overview-of-s102-data-product]]
