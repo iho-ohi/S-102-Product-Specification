@@ -32,7 +32,7 @@ image::../images/figure-coverage-structure-of-s102.png[UML diagram depicting the
 
 The model in <<fig-coverage-structure-of-s102>> depicts the coverage type in this application schema: 
 
-* The coverage type is a continuous Regular Grid Coverage called *S102_DepthCoverage* which inherits from (*S100_GridCoverage*). Many of the parameters of the coverage are described in the product specification.
+* The coverage type is a continuous Regular Grid Coverage called *S102_DepthCoverage* which inherits from *S100_IF_GridCoverage*. Many of the parameters of the coverage are described in the product specification.
 
 [[subsec-application-schema-implementation-classes]]
 ==== Application Schema implementation classes
@@ -54,7 +54,7 @@ image::../images/figure-implementation-of-classes.png[UML diagram depicting the 
 [level=7]
 ===== BathymetryCoverage semantics
 
-The class *BathymetryCoverage* has the attributes _minimumDepth_, _maximumDepth_, _minimumUncertainty_, and _maximumUncertainty_ which bound the depth attribute and the uncertainty attribute from the *S102_BathymetryValues* record. *BathymetryCoverage* additionally contains the inherited attributes _origin_, _offsetVectors_, _dimension_, _axisName_, _extent_, _sequenceRule_, and _startSequence_ from *S100_Grid* and *CV_Grid*.
+The class *BathymetryCoverage* has the attributes _minimumDepth_, _maximumDepth_, _minimumUncertainty_, and _maximumUncertainty_ which bound the depth attribute and the uncertainty attribute from the *S102_BathymetryValues* record. *BathymetryCoverage* additionally contains the inherited attributes _origin_, _offsetVectors_, _dimension_, _axisName_, _extent_, _sequenceRule_, and _startSequence_ from *S100_IF_Grid* and *CV_Grid*.
 
 The origin is a position in a specified coordinate reference system, and a set of offset vectors specify the direction and distance between the grid lines. It also contains the additional geometric characteristics of a rectified grid.
 
@@ -120,7 +120,7 @@ The attribute _startSequence_ has the value class *CV_GridCoordinate* that shall
 [level=7]
 ===== S102_BathymetryValues semantics
 
-The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a composition relationship in which an ordered sequence of _depth_ values provide data values for each grid cell. The class *S102_BathymetryValues* inherits from S100_Grid.
+The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a composition relationship in which an ordered sequence of _depth_ values provide data values for each grid cell. The class *S102_BathymetryValues* inherits from S100_IF_Grid.
 
 [level=7]
 ===== values
