@@ -45,7 +45,7 @@ image::../images/figure-outline-of-the-generic-data-file-structure.png[UML diagr
 
 *Level 1*:: At the top level lies the Root Group, and it contains the Root Metadata and two subsidiary groups. The Root Metadata applies to all S-100 type products.
 
-*Level 2*:: The next Level contains the Feature Information Group and the Feature Container Group. The Feature Information Group contains the feature *BathymetryCoverage*, the feature attribute codes and the option feature *QualityOfBathymetryCoverage*. The Feature Container Group contains the Feature Metadata and one or more Feature Instance Groups.
+*Level 2*:: The next Level contains the Feature Information Group and the Feature Container Group. The Feature Information Group contains the feature *BathymetryCoverage*, the feature attribute codes and the optional feature *QualityOfBathymetryCoverage*. The Feature Container Group contains the Feature Metadata and one or more Feature Instance Groups.
 
 *Level 3*:: This level contains a Feature Instance group. A feature instance is a bathymetric gridded data set for a single region.
 
