@@ -42,5 +42,3 @@ include::sections/11-data_product_delivery.adoc[]
 include::sections/12-metadata.adoc[]
 
 include::sections/aa-data_class_enc_.adoc[]
-
-include::sections/aj-validation-checks.adoc[]
