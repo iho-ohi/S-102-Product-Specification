@@ -29,6 +29,20 @@ h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 |1
 |===
 
+==== QualityOfBathymetryCoverage
+
+.QualityOfBathymetryCoverage feature parameters
+[cols="a,a,a,a"]
+|===
+4+|IHO Definition: Quality Of Bathymetry Coverage. A set of references to value records that provide localised information about depth, uncertainties, and bathymetry coverage metadata.
+4+h|Primitive: S-100_Grid_Coverage
+h|Attribute h|Constraint h|Type h|Multiplicity
+
+|id
+|Each record must have a unique identifier.
+|unsigned 32-bit Integer
+|1
+|===
 
 === Feature Attributes
 
