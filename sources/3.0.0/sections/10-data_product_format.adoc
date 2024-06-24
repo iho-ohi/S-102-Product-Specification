@@ -215,150 +215,13 @@ Example: INT.IHO.S-102.3.0.0
 | The identifier (EPSG code) of the horizontal CRS as defined in <<horizontal-crs>> (see <<note2>>).
 
 | 5
-| Name of the horizontal CRS
-| nameOfHorizontalCRS
-^| 0..1
-<| String
-| Mandatory if _horizontalCRS_ = -1
-
-| 6
-| Type of the horizontal CRS
-| typeOfHorizontalCRS
-^| 0..1
-<| Enumeration
-| Mandatory if _horizontalCRS_ = -1 +
-See <<iho-s100,part=10c,table=21>>.
-
-| 7
-| Horizontal coordinate system
-| horizontalCS
-^| 0..1
-<| Integer +
-32-bit
-| Mandatory if _horizontalCRS_ = -1 +
-Allowed values if _typeOfHorizontalCRS_ = 1 +
-(Geodetic CRS 2D): +
-*6422 (Lat, Lon -- degree) +
-Allowed values if _typeOfHorizontalCRS_ = 2 +
-(Projected CRS): +
-*4400 (Easting, Northing -- metres) +
-*4500 (Northing, Easting -- metres)
-
-| 8
-| Horizontal datum
-| horizontalDatum
-^| 0..1
-<| Integer +
-32-bit
-| Mandatory if _horizontalCRS_ = -1 +
-EPSG code or -1 if user defined
-
-| 9
-| Name of horizontal datum
-| nameOfHorizontalDatum
-^| 0..1
-<| String
-| Mandatory if _horizontalDatum_ = -1
-
-| 10
-| Prime meridian
-| primeMeridian
-^| 0..1
-<| Integer +
-32-bit
-| Mandatory if _horizontalDatum_ = -1; +
-EPSG Code
-
-| 11
-| Spheroid
-| spheroid
-^| 0..1
-<| Integer +
-32-bit
-| Mandatory if _horizontalDatum_ = -1; +
-EPSG Code
-
-| 12
-| Projection method
-| projectionMethod
-^| 0..1
-<| Integer +
-32-bit
-| Mandatory if _typeOfHorizontalCRS_ = 2; +
-EPSG Code +
-See <<iho-s100,part=10c,table=24>>.
-
-| 13
-| Projection parameter 1
-| projectionParameter1
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-See <<iho-s100,part=10c,table=24>>.
-
-| 14
-| Projection parameter 2
-| projectionParameter2
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-See <<iho-s100,part=10c,table=24>>.
-
-| 15
-| Projection parameter 3
-| projectionParameter3
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-See <<iho-s100,part=10c,table=24>>.
-
-| 16
-| Projection parameter 4
-| projectionParameter4
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-See <<iho-s100,part=10c,table=24>>.
-
-| 17
-| Projection parameter 5
-| projectionParameter5
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-See <<iho-s100,part=10c,table=24>>.
-
-| 18
-| False northing
-| falseNorthing
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-To be applied to the coordinates at axis Northing. [m]
-
-| 19
-| False easting
-| falseEasting
-^| 0..1
-<| Float +
-64-bit
-| Only if _projectionMethod_ is used. +
-To be applied to the coordinates at axis Easting. [m]
-
-| 20
 | Epoch of realization
 | epoch
 ^| 0..1
 <| String
 |
 
-| 21a
+| 6a
 .4+| Bounding box 
 | westBoundLongitude
 ^| 1
@@ -367,14 +230,14 @@ To be applied to the coordinates at axis Easting. [m]
 .4+| The values are in decimal degrees. +
 If a projected CRS is used for the dataset, these values refer to those of the baseCRS underlying the projected CRS (see <<note3>>).
 
-| 21b
+| 6b
 
 | eastBoundLongitude
 ^| 1
 <| Float +
 32-bit
 
-| 21c
+| 6c
 
 | southBoundLatitude
 ^| 1
@@ -382,7 +245,7 @@ If a projected CRS is used for the dataset, these values refer to those of the b
 32-bit
 
 
-| 21d
+| 6d
 
 | northBoundLatitude
 ^| 1
@@ -390,7 +253,7 @@ If a projected CRS is used for the dataset, these values refer to those of the b
 32-bit
 
 
-| 22
+| 7
 | Metadata
 | metadata
 ^| 0..1
@@ -399,7 +262,7 @@ If a projected CRS is used for the dataset, these values refer to those of the b
 MD_<HDF5 data file base name>.XML (or .xml) ISO metadata +
 (per <<iho-s100,part=10c,clause=12>> & <<iho-s100,part=8>>).
 
-| 23
+| 8
 | Vertical coordinate system
 | verticalCS
 ^| 1
@@ -412,7 +275,7 @@ Allowed values: +
 *6498 (Depth--metres--orientation down) +
 *6499 (Height--metres--orientation up)
 
-| 24
+| 9
 | Vertical coordinate base
 | verticalCoordinateBase
 ^| 1
@@ -421,7 +284,7 @@ Allowed values: +
 The only allowed value is 2: _verticalDatum_ +
 (see <<iho-s100,part=10c,table=22>>).
 
-| 25
+| 10
 | Vertical datum reference
 | verticalDatumReference
 ^| 1
@@ -430,7 +293,7 @@ The only allowed value is 2: _verticalDatum_ +
 The only allowed value is 1: s100VerticalDatum +
 (see <<iho-s100,part=10c,table=23>>).
 
-| 26
+| 11
 | Vertical datum
 | verticalDatum
 ^| 1
@@ -454,9 +317,6 @@ The _productIdentifier_ ("S-102") and _version_ fields (X.X.X) of S100_ProductSp
 ====
 The value _horizontalCRS_ specifies the horizontal Coordinate Reference System. At the time of writing, S-100 does not yet provide a mechanism for this value's definition within HDF5 encoding (such as an enumeration of horizontal CRSs). Consequently, this configuration causes a deviation from S-100. The horizontal datum is implicitly defined by this CRS because each horizontal CRS consists of a coordinate system and a datum. S-102 does not use "user defined" CRS as mentioned in <<iho-s100,part=10c,table=6>>.
 ====
-
-//Tentative, TBD. If so-called “user defined crs” is also allowed in order to encode projection parameters in the HDF5 dataset, #s 5-19 from S-100 Table 10c-6 will have to be added to the table. (RM comment from 4Jan2023)
-//Parameters 5-19 from S-100 Table 10c-6 have been provisionally added. Delete the sentence about S-102 not using “user-defined” CRS if S-102 will use “user-defined” CRS. (RM comment from 20Jan2023
 
 
 [[note3]]
