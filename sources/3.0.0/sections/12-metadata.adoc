@@ -84,11 +84,10 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 
 |Class
 |S100_DatasetDiscoveryMetadata
-//Review after decision about ISO metadata files (RM comment 25Jan2023)
 |Metadata about the individual datasets in the Exchange Catalogue
 |-
 |-
-|*The optional S-100 attributes _updateApplicationNubmer_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
+|*The optional S-100 attributes _updateNubmer_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
 *References to support file discovery metadata are not permitted because S-102 does not use support files.*
 
 |Attribute
