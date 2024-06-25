@@ -15,34 +15,17 @@ S-102 metadata is encoded in two places:
 
 * Metadata required by the S-100 HDF5 encoding (<<iho-s100,part=10c>>) and product-specific metadata defined by this product specification are encoded at various levels in the HDF5 group hierarchy, as specified by <<iho-s100,part=10c>> or <<subsec-product-structure>>.
 
-//Recommend either:
-//(a) deletion of <<subsec-discovery-metadata>> and <<subsec-structure-metadata>>  along with Table 15 “S-102 Handling of Core Metadata Elements”, and try to encode any of their contents that are absolutely //essential described in the NOTE below;
-//
-//OR
-//
-//(b) Combine Table 15 and <<subsec-discovery-metadata>> and <<subsec-structure-metadata>> into a new clause (“Metadata in ISO format”) and make it clear that this is encoded as ISO-format metadata in a //separate ISO metadata file. (NB: ECDIS isn’t required to process this ISO metadata file - at most it would be displayed to the mariner as if it were any other XML //support file.)
-//
-//CATALOG.XML should conform to S-100 Part 17 with product-specific restrictions only (no extensions).
-//
-//NOTE: S-102 PT should review Table and <<subsec-discovery-metadata>> and <<subsec-structure-metadata>>  and determine which of their metadata *must* be included in S-102. Then add attributes (or datasets) to the root group, feature container group, or feature instance groups to encode that metadata, depending on whether it applies to all features, to a feature type, or feature instance. (Given that S-102 2.2 has only 2 feature types, it should probably be the root group, meaning it applies to all feature types and instances.)
-
-//Above comments from RM circa 23Jan2023
-
 [[subsec-exchange-set-metadata]]
 === Exchange Set metadata
 For information exchange, there are several categories of metadata required: metadata about the overall Exchange Catalogue, metadata about each of the datasets contained in the Catalogue.
 
-//<<subsec-exchange-set-metadata>> mixed exchange set structure with metadata, as does <<iho-s100,part=17>>, as did the old Part 4a in previous editions of S-100. Exchange set structure and metadata are different topics and the structure of the exchange set fits better as a new sub-clause of Clause 11 (Data Product Delivery) than it does under Clause 12 (Metadata) (or in a new top-level clause). Exchange set structure is now described in a new sub-clause of clause 11 and the diagram “realization of the exchange set classes” below is recommended for deletion. (RM comment 25Jan2023)
-
-<<fig-components-and-associated-metadata-for-the-s102-exchange-set>> depicts the relationships of exchange set elements (datasets and feature/portrayal catalogues) and exchange set metadata. This figure is derived from Figure 17-2 in S-100 Edition 5.0.0 with relationships not applicable to S-102 omitted.
-
-//We need to correct the S-100 reference to a proper one. (LH comment 7Feb2023)
+<<fig-components-and-associated-metadata-for-the-s102-exchange-set>> depicts the relationships of exchange set elements (datasets and feature/portrayal catalogues) and exchange set metadata. This figure is derived from <<iho-s100,part=17,figure=2>> with relationships not applicable to S-102 omitted.
 
 <<fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset>> depicts the structure of the exchange catalogue and its component discovery metadata blocks. The structure is the same as in <<iho-s100,part=17>>.
 
 More detailed information about the various classes is shown in <<fig-s102-exchange-set-class-details>> with further description in <<tab-s100-datasetDiscoveryMetadata-params;to!sec-pt-locale>>. In the cases in which classes are used without modification, refer to <<iho-s100,part=17>> for their descriptions.
 
-The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data, for example, decrypt, decompress, load, etc. Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
+The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data (e.g., decryption, decompression, loading). Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 
 [[fig-components-and-associated-metadata-for-the-s102-exchange-set]]
 .Components and associated metadata for the S-102 exchange set (<<iho-s100,part=17,figure=2>> with items not used by S-102 omitted)
