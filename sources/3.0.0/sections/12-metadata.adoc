@@ -110,7 +110,6 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |datasetID
 |Dataset ID expressed as a Maritime Resource Name
 |0..1
-//listed as 0..1 in Ed. 5, but make it mandatory in S-102? (RM comment 26Jan2023)
 |URN
 |The URN must be an MRN. +
 *See <<iho-s100,part=3,clause=10>>*
@@ -136,7 +135,7 @@ _False_ indicates an unencrypted dataset resource.
 |Specification of method used for data protection
 |0..1
 |S100_ProtectionScheme
-|*Populate if and only if _dataProtection- = _True_.*
+|*Populate if and only if _dataProtection_ = _True_.*
 
 |Attribute
 |digitalSignatureReference
@@ -149,7 +148,7 @@ _False_ indicates an unencrypted dataset resource.
 |digitalSignatureValue
 |Value derived from the digital signature
 |1..*
-|S100_SE_DigitalSignatureValue ()
+|S100_SE_DigitalSignature
 |*see <<iho-s100,part=15,clause=15-8.11.3>>* +
 The value resulting from application of _digitalSignatureReference_ +
 Implemented as the digital signature format specified in <<iho-s100,part=15>>
