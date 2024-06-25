@@ -496,7 +496,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |*1*
 |CharacterString
 |The name in the GI Registry should be used for this field. +
-*For S-102, this name is "Bathymetric Surface" (as of 24 May 2024).*
+*For S-102, this name is "Bathymetric Surface" (as of 25 June 2024).*
 
 |Attribute
 |version
@@ -553,8 +553,6 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |-
 |-
 |*S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
-
-//category2 Remarks lists 3 items after "plus:" (a) PS complies ..., (b) metadata complies with ..., (c) S-100 Part 10 encoding or .... Item (c) is ambiguous--maybe could be clearer if rephrased as XX complies with YY ... (LH comment 8Feb2023)
 
 |Value
 |category3
