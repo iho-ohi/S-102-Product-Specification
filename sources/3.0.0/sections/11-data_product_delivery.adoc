@@ -56,13 +56,9 @@ S-102 uses only the fileless cancellation method described in <<iho-s100,part=17
 
 [[subsec-metadata-for-cancellation]]
 ===== Metadata for cancellation
-S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
+S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
 
 * _fileName_ = _fileName_ of the cancelled dataset
-
-* _purpose_ = _cancellation_
-
-* _editionNumber_ = 0
 
 * issueDate and issueTime = the issue date and time of the cancellation
 
