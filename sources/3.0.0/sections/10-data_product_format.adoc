@@ -101,6 +101,8 @@ _(h5_attribute)_
 |
 |Feature Instance +
 BathymetryCoverage.01 +
+... +
+BathymetryCoverage.nn +
 _(h5_group)_
 |Instance Metadata +
 (metadata) +
@@ -439,6 +441,7 @@ unsigned +
 _Vertical Datum_ attribute +
 stem:[1-41] & stem:[43-46]
 
+see <<note12>>
 |===
 
 [[note1]]
@@ -461,6 +464,13 @@ The value horizontalCRS specifies the horizontal Coordinate Reference System. At
 [NOTE]
 ====
 The baseCRS is the geodetic CRS on which the projected CRS is based. In particular, the datum of the base CRS is also used for the derived CRS (see <<iho-s100,part=6,table=6>>).
+====
+
+
+[[note12]]
+[NOTE]
+====
+This is the default vertical datum (verticalDatum), unless a distinct vertical datum (verticalDatum) is specified for the corresponding feature instance group (BathymetryCoverage.nn).
 ====
 
 ==== Feature Codes (Group_F)
@@ -620,7 +630,9 @@ see <<iho-s100,part-10c,table=20>>.
 | Integer +
 unsigned +
 8-bit
-| Value: 1
+| This is the total number of Feature Instance Groups within the Feature Container Group. +
+The minimum is 1. +
+see <<note13>>
 
 | 7a
 .2+| Sequencing rule
@@ -654,8 +666,69 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 
 |===
 
-==== Feature Instance group -- BathymetryCoverage.01
+[[note13]]
+[NOTE]
+====
+The number depends on the number of different vertical datum areas in the Feature Container Group.
+====
+
+[[subsec-BathymetryCoverage-feature-instance]]
+==== Feature Instance group -- BathymetryCoverage.nn
+The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each feature instance group implements an independent geographical area with a unique vertical datum. The reason for this are the restrictions to which the domainExtent.polygon is subjected (see <<para-domain-extent-polygon,below>>). All feature instance groups must share the same spatial location and extent.
+
 Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
+
+
+[[tab-structure-of-bathymetrycoverage-feature-instance-group]]
+[cols="<,<,<,^,<,<",options="header"]
+.Structure of *BathymetryCoverage* feature instance group
+|===
+| Group
+| HDF5 +
+Category
+| Name
+| Mult
+| Data Type
+| Remarks / Data Space
+
+.2+| /BathymetryCoverage/ +
+  BathymetryCoverage.01
+| attributes
+| (see Remarks)
+| 1
+| (see Remarks)
+| Single-valued attributes as descripted in <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>
+
+
+| Dataset
+| domainExtent.polygon
+| 0..1
+| Compound +
+(Float, Float)
+| Spatial extent of the domain of the coverage +
+Array (1-d): i=0, P +
+Components: <longitude, latitude> or <X, Y> (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
+Either this or the bounding box attribute must be populated.
+
+.2+| /BathymetryCoverage/ +
+  BathymetryCoverage.nn
+| attributes
+| (see Remarks)
+| 1
+| (see Remarks)
+| Single-valued attributes as descripted in <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>
+
+
+| Dataset
+| domainExtent.polygon
+| 0..1
+| Compound +
+(Float, Float)
+| Spatial extent of the domain of the coverage +
+Array (1-d): i=0, P +
+Components: <longitude, latitude> or <X, Y> (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
+Either this or the bounding box attribute must be populated.
+|===
 
 [[tab-attributes-of-bathymetrycoverage-feature-instance-group]]
 [cols="<,<,<,^,<,<",options="header"]
@@ -671,26 +744,27 @@ Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attribu
 | 1a
 .4+| Bounding box
 | westBoundLongitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
-.4+| Coordinates should refer to the previously defined Coordinate Reference System.
+.4+| Coordinates should refer to the previously defined Coordinate Reference System. +
+Either this or the domainExtent.polygon dataset must be populated
 
 | 1b
 | eastBoundLongitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
 
 | 1c
 | southBoundLatitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
 
 | 1d
 | northBoundLatitude
-^| 1
+^| 0..1
 <| Float +
 32-bit
 
@@ -765,11 +839,26 @@ unsigned +
 The choice of a valid point for the start sequence is determined by the sequencing rule. +
 Format: n, n +
 Example: "0,0" (without quotes)
+
+| 10
+| Vertical datum
+| verticalDatum
+^| 0..1
+<| Integer +
+unsigned +
+16-bit
+| see remark <<tab-root-group-attributes>> +
+row vertical datum
 |===
 
-The gridOriginLongitude, gridOriginLatitude, gridSpacingLongitudinal, and gridSpacingLatitudinal attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
+The _gridOriginLongitude_, _gridOriginLatitude_, _gridSpacingLongitudinal_, and _gridSpacingLatitudinal_ attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
 
-numPointsLongitude and numPointsLatitude must contain the number of cells in the x and y dimensions of the values table.
+_numPointsLongitude_ and _numPointsLatitude_ must contain the number of cells in the x and y dimensions of the values table.
+
+The S-102 uses the "Overriding of Attributes" concept of the <<iho-s100,part=10c,clause=9.7.1>>. This allows the feature instance group to overwrite the attributes of a higher group, in this case the _verticalDatum_. The default vertical datum is specified in the root group (see table <<tab-root-group-attributes>>). A new separate feature instance group must be created for all areas with a vertical datum that differs from the default vertical datum. Only feature instance groups with a value that differs from the default vertical datum use the additional attribute _verticalDatum_ on the feature instance group.
+
+[[para-domain-extent-polygon]]
+The use of multiple vertical datums within an S-102 product requires the use of _domainExtent.polygon_. In addition, according to S-100, either the BoundingBox at the Feature Instance Group or the _domainExtent.polygon_ must be specified. When using multiple vertical datums, the use of the _domainExtent.polygon_ is mandatory, which means that the BoundingBox is not specified in this case. The grid cells that do not belong to the area of the respective vertical datum are to be assigned the no-data values. The _domainExtent.polygon_'s of different Feature Instance groups must not overlap. At positions where the polygons of different Feature Instance groups touch, the edges must be identical. The _domainExtent.polygon_ does not have to follow grid cell boundaries, but is an independent vector geometry based on the _SoundingDatum_ surface from S-101. The _domainExtent.polygon_ only supports a simple polygon geometry in accordance with <<iho-s100,part=10c,table=11>>. The mapping of multi-polygons and inner rings is not possible.
 
 ==== The values group -- Group_001
 This group contains the following attributes. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
@@ -836,7 +925,7 @@ The grid cell values are stored in two-dimensional arrays with a prescribed numb
 [[root-QualityOfBathymetryCoverage]]
 ==== Root QualityOfBathymetryCoverage
 
-The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9.'
+The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute 'dataCodingFormat', which must be '9'. The use of multiple BathymetryCoverage Feature Instance groups (different Vertical Datums) does not affect the multiplicity of the QualityOfBathymetryCoverage, which remains 0 to 1. This means that the different BathymetryCoverage Feature Instance groups share a common QualityOfBathymetryCoverage.
 
 The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
