@@ -117,7 +117,17 @@ Other revisions and clarifications: +
 
 
 |3.0.0
-|(ongoing from June 2023)
+|July 2024
 |S-102PT
-|* Removed gridding method from product specification entirely
+|Major changes: +
+* Modified text and figures to reflect a cell area-based approach to representation. (Clause 4) +
+* Added support for multiple vertical datums in a single product (Clause 10) +
+* Modified to refer to new _QualityOfBathymetryCoverage_ vice _QualityOfSurvey_. (Clause 10) +
+ +
+Other revisions and clarifications: +
+* Removed annexes on Normative Implementation Guidance, Portrayal Catalogue, Dataset Size, Multi-Resolution Gridding, and Gridding Source Bathymetry. (Annexes) +
+* Removed gridding method from product specification entirely. (Clause 10) +
+* Revised throughout document to ensure alignment with S-100 Ed. 5.2.0. +
+* Revised text variously for accuracy and clarity. +
+* Update UML and other diagrams to align with aforementioned changes.
 |===
