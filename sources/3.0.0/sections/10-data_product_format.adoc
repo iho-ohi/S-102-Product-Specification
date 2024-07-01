@@ -529,14 +529,20 @@ For example, "latitude,longitude". Reverse scan direction along an axis is indic
 [[note13]]
 [NOTE]
 ====
-The number depends on the number of different vertical datum areas in the Feature Container Group.
+The number depends on the number of different vertical datums in the Feature Container Group.
 ====
 
 [[subsec-BathymetryCoverage-feature-instance]]
 ==== Feature Instance group -- BathymetryCoverage.nn
-The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". Each feature instance group implements an independent geographical area with a unique vertical datum. The reason for this are the restrictions to which the domainExtent.polygon is subjected (see <<para-domain-extent-polygon,below>>). All feature instance groups must share the same spatial location and extent.
+The BathymetryCoverage Feature Container Group can contain one or more Feature Instance Groups. The naming of the Feature Instance Groups follows the notation specified by the S-100. For generalization, the numbering is indicated with ".nn". 
 
-Per <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>: Attributes of feature instance groups
+Each feature instance group implements a unique vertical datum. All feature instance groups must share the same spatial location and extent. For each feature instance group, only the grid cells falling within the area of validity for that feature instance group's vertical datum should be populated with (real) data. Within that feature instance group, all other grid cells should be populated with the fill value. Therefore, it is expected that:
+
+* The only grid cells that should be populated in more than one feature instance group are those that fall along a vertical datum boundary.
+
+* Where multiple population occurs, the ECDIS should choose the set of values resulting in the most conservative description to the mariner. (I.e., it should choose the shoalest adjusted depth.)
+
+As derived from <<iho-s100,part=10c,clause=9.7>> and <<iho-s100,part=10c,table=12>>, <<tab-structure-of-bathymetrycoverage-feature-instance-group>> and <<tab-attributes-of-bathymetrycoverage-feature-instance-group>> describe the structure and attributes, respectively, of the *BathymetryCoverage* feature instance group.
 
 
 [[tab-structure-of-bathymetrycoverage-feature-instance-group]]
