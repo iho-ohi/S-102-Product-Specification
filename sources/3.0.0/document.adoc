@@ -4,8 +4,8 @@
 :doctype: standard
 :edition: 3.0.0
 :language: en
-:published-date: 2023-11
-:copyright-year: 2023
+:published-date: 2024-06
+:copyright-year: 2024
 :committee: hssc
 :workgroup: tsmad
 :toclevels: 3
@@ -42,13 +42,3 @@ include::sections/11-data_product_delivery.adoc[]
 include::sections/12-metadata.adoc[]
 
 include::sections/aa-data_class_enc_.adoc[]
-
-include::sections/ac-norm_impl_guidance.adoc[]
-
-include::sections/ae-portrayal-catalogue.adoc[]
-
-include::sections/af-dataset_size_production.adoc[]
-
-include::sections/ah-multi-res_gridding.adoc[]
-
-include::sections/aj-validation-checks.adoc[]

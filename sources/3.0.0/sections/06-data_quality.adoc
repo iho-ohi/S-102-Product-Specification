@@ -6,21 +6,37 @@ Data quality allows users and user systems to assess fitness for use of the prov
 === Completeness
 
 ==== Commission
-The S-102 bathymetric grid has a high-level of completeness regarding commission, due to the fact that the issuing hydrographic office has deemed the grid to contain all the necessary data and/or considered all contributing factors required to make a navigationally valid product. These factors are recorded in the metadata for the file.
+Commission is applicable for S-102. Data Producers must verify that no excess items have been included in the dataset. Such excess items include duplicate items, which must be removed.
+
+If no excess items are present, the dataset PASSES this test.
 
 ==== Omission
-The S-102 bathymetric grid has a high level of completeness in regards to omission, due to the fact that the issuing hydrographic office will have noted any major discrepancies or negative quality factors in the applicable fields of the metadata for the file.
+Omission is applicable for S-102. Data Producers must verify that no items that should have been included in the dataset have been omitted.
+
+If no necessary items have been omitted, the dataset PASSES this test.
 
 === Logical consistency
 
 ==== Conceptual consistency
-The conceptual consistency of S-102 grids is maintained through this and related specifications which are conceptually consistent with the accepted standards.
+Conceptual Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=1>>.
+
+Data Producers must verify that the dataset conforms to the S-100 General Feature Model.
+
+If the dataset conforms to the S-100 General Feature Model, the dataset PASSES this test.
 
 ==== Domain consistency
-The domain consistency of S-102 grids is maintained through the definition of their primary purpose, which is safety of navigation. The data contained can also be used derivatively for other scientific/fields domains (secondary purposes). All processes used in primary purpose generation is geared solely towards the satisfaction of safety of navigation concerns.
+Domain consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=5>>.
+
+Data Producers must verify that the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>.
+
+If the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>, the dataset PASSES this test.
 
 ==== Format consistency
-The formatting consistency of S-102 grids is maintained due to the overriding encoding (HDF5) defined in the S-100 specification and the other IHO standards on which the data is based.
+Format Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=10c>>.
+
+Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification.
+
+If the dataset conforms to <<sec-data-product-format-encoding>>, the dataset PASSES this test.
 
 
 
@@ -39,14 +55,14 @@ Temporal accuracy, consistency, and validity of bathymetric grids are confined t
 === Thematic accuracy
 
 ==== Thematic classification correctness
-For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for accessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value is a +/- value and when assessing the classification correctness must be applied. The new value(s) generated when applied may cause a change in the classification.
+For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
 
 ==== Non-quantitative attribute accuracy
 Thematic accuracy of S-102 bathymetric data is wholly quantitative.
 
 
 ==== Quantitative attribute accuracy
-As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located coverage, uncertainty. Uncertainty is defined as the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
+As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 

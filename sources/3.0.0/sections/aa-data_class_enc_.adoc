@@ -14,8 +14,14 @@
 .BathymetryCoverage feature parameters
 [cols="a,a,a,a"]
 |===
-4+|IHO Definition: Bathymetry Coverage. A set of value items required to define a dataset representing a depth calculation and its associated uncertainty.
-4+h|Primitive: S-100_Grid_Coverage
+
+4+|*Term*: Bathymetry Coverage
+
+4+|*IHO Definition*: A set of value items required to define a dataset representing a depth calculation and its associated uncertainty.
+
+4+|*Primitive*: S100_IF_GridCoverage
+
+
 h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 
 |depth
@@ -29,6 +35,25 @@ h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 |1
 |===
 
+==== QualityOfBathymetryCoverage
+
+.QualityOfBathymetryCoverage feature parameters
+[cols="a,a,a,a"]
+|===
+
+4+|*Term*: Quality Of Bathymetry Coverage. 
+
+4+|*IHO Definition*: A set of references to value records that provide localised information about depth, uncertainties, and bathymetry coverage metadata.
+
+4+|*Primitive*: S100_IF_GridCoverage
+
+h|Attribute h|Constraint h|Type h|Multiplicity
+
+|id
+|Each record must have a unique identifier.
+|unsigned 32-bit Integer
+|1
+|===
 
 === Feature Attributes
 

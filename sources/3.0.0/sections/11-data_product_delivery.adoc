@@ -51,12 +51,12 @@ Three types of dataset files may be produced and contained within an exchange se
 S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
 
 1. Prepare an exchange catalogue with an S100_DatasetDiscoveryMetadata block with field values as described in <<subsec-metadata-for-cancellation>>.
-2. Complete other parts of the exchange catalogue as required by <<subsec-s102_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
+2. Complete other parts of the exchange catalogue as required by <<subsec-s100_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
 3. Sign and distribue the exchange catalogue in a normally structured exchange set.
 
 [[subsec-metadata-for-cancellation]]
 ===== Metadata for cancellation
-S-102 uses the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
+S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
 
 * _fileName_ = _fileName_ of the cancelled dataset
 
@@ -80,7 +80,6 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 
 <<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of S-102 data for specific charting scales.
 
-<<annex-s102-dataset-size-and-production>> discusses in greater detail the physical size components of an S-102 file.
 
 
 ===== S-102 grid resolution and tiling
@@ -158,17 +157,18 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 
 [[subsec-dataset-file-naming]]
 ==== Dataset file naming
-Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets. S-102 dataset naming conventions must follow these rules.
+Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause=4.3>>). S-102 dataset naming conventions must follow these rules.
 
 //If ISO metadata files are included, a clause about naming them must be added. (RM comment 25 Jan 2023)
 
-*102CCCCØØØØØØØØØØØØ.H5*::
+*102YYYYØØØØØØØØØØØØ.H5*::
 102::: the first 3 characters identify the dataset as an S-102 dataset (mandatory).
-CCCC::: the fourth to seventh characters identify the producer code of the issuing agency (mandatory for S-102). Where the producer code is derived from a 2- or 3-character format (for instance when converting S-57 ENCs), the missing characters of the producer code must be populated with zeros ("00" or "0" respectively) for the sixth and seventh characters of the dataset file name, as required ØØØØØØØØØØØØ::: the eighth to the maximum nineteenth characters are optional and may be used in any way by the producer to provide the unique file name. The following characters are allowed in the dataset name: A to Z, 0 to 9 and the special character _ (underscore).
+YYYY::: the fourth to seventh characters identify the producer code according to the Producer Code Register.
+ØØØØ::: the eighth to the maximum nineteenth characters are optional and may be used in any way by the producer to provide the unique file name. The following characters are allowed in the dataset name: A to Z, 0 to 9 and the special character _ (underscore).
 H5::: denotes and HDF5 file.
 
 === Exchange Set
-The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=17-4.2>>.
+The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=4.2>>.
 
 //Revise in addordance with whatever is ultimately decided about ISO metadata files in S-102. (RM Comment 25Jan2023)
 
@@ -188,12 +188,12 @@ The structure of an S-102 Exchange Set must be according to the structure descri
 The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATALOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
 
 === Data integrity and encryption
-S-100 Part 15 defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
+<<iho-s100,part=15>> defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
 
 ==== Use of compression
 The data producer decides if compression will be used on the S-102 product files (HDF5). It is expected that a hydrographic office will make a policy decision and that all the S-102 datasets from the producer will be either compressed or uncompressed.
 
-It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in S-100 Part 15 must be applied to the product files.
+It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in <<iho-s100,part=15,clause=5.2>> must be applied to the product files.
 
 //Not clear what "The use of compression will be encoded" is saying, and the paragraph following is no longer correct (compression is an attribute of dataset discovery metadata blocks. Delete the following paragraph. (RM comment 23Jan2023) (Next paragraph commented out by LH)
 
