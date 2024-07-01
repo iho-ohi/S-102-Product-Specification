@@ -161,9 +161,7 @@ _(h5_dataset)_
 
 [[fig-hierarchy-of-s102-data-product]]
 .Hierarchy of S-102 Data Product
-image::../images/figure-hierarchy-of-s102-data-product.png["Diagram depicting hierarchical structure of S-102 Data Product. Let the following block names be represented by letters. A=Group_F ; B=BathymetryCoverage ; C=QualityOfBathymetryCoverage ; D=BathymetryCoverage ; E=QualityOfBathymetryCoverage ; F=featureCode ; G=BathymetryCoverage.01 ; H=axisNames ; I=QualityOfBathymetryCoverage.01 ; J=featureAttributeTable ; K=Group_001 ; L=Group_001 ; M=values ; N=values. A, B, and C reside in Level 1. A connects to D, E, and F in Level 2. B connects to G and H in Level 2. C connects to I and J in Level 2. G connects to K in Level 3. I connects to L in Level 3. K connects to M in Level 4. L connects to N in Level 4."]
-
-//I have struggled mightily with writing alt text for fig-hierarchy-of-s102-data-product. What is included is my best draft. Also considered was the following: "Three blocks reside at Level 1: Group_F, BathymetryCoverage, and QualityOfSurvey. Group_F spawns 3 blocks in Level 2 (each of which spawn no further blocks): BathymetryCoverage, QualityOfSurvey, and featureCode. BathymetryCoverage in Level 1 spawns 2 blocks in Level 2: BathymetryCoverage.01 and axisNames (which spawns no further blocks). QualityOfSurvey in Level 1 spawns 2 blocks in Level 2: QualityOfSurvey.01 and featureAttributeTable (which spawns no further blocks). BathymetryCoverage.01 spawns Group_001 in Level 3, which spawns values in Level 4. QualityOfSurvey.01 spawns Group_001 in Level 3, which spawns values in Level 4." (lhh comment 7 July 2023)
+image::../images/figure-hierarchy-of-s102-data-product.png["Diagram depicting hierarchical structure of S-102 Data Product. Let the following block names be represented by letters. A=Group_F ; B=BathymetryCoverage ; C=QualityOfBathymetryCoverage ; D=BathymetryCoverage ; E=QualityOfBathymetryCoverage ; F=featureCode ; G=BathymetryCoverage.01 ; H=... ; I=BathymetryCoverage.nn; J=axisNames ; K=QualityOfBathymetryCoverage.01 ; L=featureAttributeTable ; M=axisNames; N=Group_001 ; O=Group_001 ; P=Group_001; Q=Group_001; R=values ; S=values; T=values; U=values. A, B, and C reside in Level 1. A connects to D, E, and F in Level 2. B connects to G, H, I, and J in Level 2. C connects to K, L, and M in Level 2. G connects to N in Level 3. H connects to O in Level 3. I connects to P in Level 3. K connects to Q in Level 3. N connects to R in Level 4. O connects to S in Level 4. P connects to T in Level 4. Q connects to U in Level 4."]
 
 The following sections explain entries in <<tab-overview-of-s102-data-product>> in greater detail.
 
@@ -332,7 +330,7 @@ The baseCRS is the geodetic CRS on which the projected CRS is based. In particul
 [[note12]]
 [NOTE]
 ====
-This is the default vertical datum (verticalDatum), unless a distinct vertical datum (verticalDatum) is specified for the corresponding feature instance group (BathymetryCoverage.nn).
+This is the default vertical datum. If and only if a *BathymetryCoverage* feature instance group does not specify a vertical datum, this (Root Group) vertical datum shall apply. 
 ====
 
 ==== Feature Codes (Group_F)
