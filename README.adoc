@@ -1,4 +1,4 @@
-image::./sources/2.3.0/images/figure-s102-logo.svg[S102_logo__signalFlagsSpellingS102,248,120]
+image::./sources/3.0.0/images/figure-s102-logo.svg[S102_logo__signalFlagsSpellingS102,248,120]
 
 = IHO S-102 Bathymetric Surface Product Specification
 

@@ -1,0 +1,6 @@
+
+[[annex-multi-resolution-gridding]]
+[appendix]
+== Multi-Resolution Gridding
+
+NOTE: Multi-Resolution gridding to be addressed in a future version of S-102.

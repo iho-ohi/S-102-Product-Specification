@@ -1,0 +1,6 @@
+[[annex-portrayal-catalogue]]
+//[appendix,obligation="informative"] -- To force MN to abide by the "annex" label, I am attempting to comment out this line. lhh
+[appendix]
+== Portrayal Catalogue
+
+NOTE: Portrayal Catalogue currently under development.

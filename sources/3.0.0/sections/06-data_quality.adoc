@@ -1,0 +1,68 @@
+
+[[sec-data-quality]]
+== Data Quality
+Data quality allows users and user systems to assess fitness for use of the provided data. Data quality measures and the associated evaluation are reported as metadata of a data product. This metadata improves interoperability with other data products and provides usage by user groups that the data product was not originally intended for. The secondary users can make assessments of the data product usefulness in their application based on the reported data quality measures.
+
+=== Completeness
+
+==== Commission
+Commission is applicable for S-102. Data Producers must verify that no excess items have been included in the dataset. Such excess items include duplicate items, which must be removed.
+
+If no excess items are present, the dataset PASSES this test.
+
+==== Omission
+Omission is applicable for S-102. Data Producers must verify that no items that should have been included in the dataset have been omitted.
+
+If no necessary items have been omitted, the dataset PASSES this test.
+
+=== Logical consistency
+
+==== Conceptual consistency
+Conceptual Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=1>>.
+
+Data Producers must verify that the dataset conforms to the S-100 General Feature Model.
+
+If the dataset conforms to the S-100 General Feature Model, the dataset PASSES this test.
+
+==== Domain consistency
+Domain consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=5>>.
+
+Data Producers must verify that the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>.
+
+If the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>, the dataset PASSES this test.
+
+==== Format consistency
+Format Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=10c>>.
+
+Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification.
+
+If the dataset conforms to <<sec-data-product-format-encoding>>, the dataset PASSES this test.
+
+
+
+=== Positional accuracy
+
+==== Gridded data positional accuracy
+Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each grid point using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference point and spatial resolution are important and are another factor in gridded positional accuracy.
+
+==== Relative internal positional accuracy
+The internal positional accuracy is defined as the precision of the location of each grid point within the S-102 grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for S-102 defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
+
+=== Temporal accuracy
+
+Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+
+=== Thematic accuracy
+
+==== Thematic classification correctness
+For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
+
+==== Non-quantitative attribute accuracy
+Thematic accuracy of S-102 bathymetric data is wholly quantitative.
+
+
+==== Quantitative attribute accuracy
+As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
+
+See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
+

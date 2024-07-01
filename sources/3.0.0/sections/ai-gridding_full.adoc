@@ -1,0 +1,96 @@
+
+[[annex-gridding-full-resolution-source-bathymetry]]
+[appendix]
+== Gridding Full Resolution Source Bathymetry and its Relationship to a Charted Sounding
+
+=== Modern High-Resolution Hydrographic Multibeam Sonars
+As stated in <<sec-data-content-and-structure>>, the majority of modern hydrographic surveys are conducted using high-resolution multibeam sonar systems. These systems provide great target detection capability and allow for the production of highly detailed images of the seafloor. It must be understood that this capability comes at a price. These systems collect a tremendous amount of information which requires sufficient processing power and data storage to reduce an overwhelming quantity of depth estimates to a manageable number for charting production. The following example describes one method to grid high-resolution multibeam sonar data. This example additionally shows the relationship of a product scale grid to the actual charted sounding.
+
+
+
+==== Example collection scenario
+
+*Environmental Characteristics*:: Relatively Flat Seafloor +
+Average Water Depth: 20 metres
+
+*Charting Parameters*::
+Intended charting scale: 1:22,000
+
+*Survey Plan*::
+Survey Length: 30 days +
+Daily Collection Window: 12 hours each day Collection Speed: 8 kts.
+
+*Collection Sonar Characteristics*::
+Sonar Frequency: 400kHz +
+Beam Width: 0.5° X 0.5° +
+Number of Beams Across Swath: 400 soundings per ping +
+Swath Coverage: 5 times water depth +
+Sonar Max Ping Rate: 20 Hz
+
+
+
+=== Survey Metrics
+
+==== Ping rate and number of depth estimates
+
+In 20 metres of water the system described above would collect 400 individual depth estimates each ping. If maximum ping rate of 20 Hz is realized the sonar has the ability to collect 8,000 individual depth estimates every second.
+
+[%unnumbered]
+[pseudocode]
+====
+400 depth estimates per ping X 20 Hz = 8000 depth estimates / second +
+-OR- +
+28.8 million depth estimates each hour. +
+345.6 million depth estimates every day. +
+*[underline]#10.4 billion#* depth estimates at the end of the survey.
+====
+
+==== Sonar footprint
+Sonar footprint is a function of water depth (20 metres) and beam angle (stem:[0.5° xx 0.5°]). Computed footprint at nadir:
+
+latexmath:[\textrm{Footprint @ Nadir} = 2 \times \left((\textrm{Depth}) \times (tan \frac{\varnothing}{2})\right)], where latexmath:[\varnothing = \textrm{Beam Width}]
+
+latexmath:[\textrm{Footprint} = 2 \times \left((20 \textrm{ m}) \times (tan .25)\right) = 0.17 \textrm{ metres}]
+
+Since this is a stem:[0.5° xx 0.5°] system, the total footprint at Nadir is: stem:[0.17 "unitsml(m)" xx 0.17 "unitsml(m)"]
+
+
+[[fig-sonar-footprint-at-nadir]]
+.Sonar Footprint at Nadir
+image::figure-sonar-footprint-at-nadir.png[]
+
+
+==== Sonar coverage
+A benefit of multibeam sonars is the ability to collect a swath of depth estimates with each ping. The example sonar lists swath coverage as 5 times water depth. In 20 metres of water this system will ensonify 100 metres of seafloor every ping. This results in a 100-metre swath (50 metres to port and starboard) along the entire length of the survey line. See <<fig-swath-coverage-of-survey-vessel>>.
+
+
+[[fig-swath-coverage-of-survey-vessel]]
+.Swath Coverage of survey vessel
+image::figure-swath-coverage-of-survey-vessel.png[]
+
+
+Total coverage:
+
+stem:[17.8 "unitsml(km^2)"] _of coverage each day._
+
+stem:[533.4 "unitsml(km^2)"] _of total coverage after 30 days._
+
+
+=== Post Survey Process
+
+==== High-density processing grid
+Throughout the survey or at its completion hydrographers will process collected bathymetry, removing gross outliers and erroneous depth estimates. The current trend for processing large quantities of multibeam bathymetry is to generate grids to aid in this process. Generation of a grid improves visualization of the survey and allows for the use of statistics to clean collected data. For the purpose of this example, the described process will produce a high-density seafloor model, selecting a grid resolution representative of twice the sonar footprint at nadir. Since twice the footprint is ~0.3 metres the processing resolution has been increased to 0.5 metres.
+
+NOTE: The reason for gridding at such a high resolution is to eliminate the need to revisit the full source data point cloud (10.4 Billion Depth Estimates) every time a production effort is initiated. Production and archival of a high-density grid allows the HO to defocus the high-density surface to a coarser resolution more applicable to the intended charting product.
+
+Results: A 0.5-metre grid for the example survey area: 2.1 Billion depth nodes, or < 20% of the total collected depth estimates.
+
+==== Generation of a production grid
+Referencing the beginning of this Annex, the intended product is a 1:22,000 ENC. Reduction of the "`high-density`" grid to a 6-metre grid reduces the number of grid nodes from 2.1 Billion to 14.6 million. The resulting 6-metre grid serves as an example of soundings extracted to support chart production. *In total, less than 1% of collected depth estimates make it on a charting product*.
+
+NOTE: If the 6-metre surface serves as the source for a complimentary S-102 dataset there will be ~169 nodal depths underneath a single charted sounding. See <<fig-charted-sounding-vs-6-metre-s102-grid>>.
+
+
+[[fig-charted-sounding-vs-6-metre-s102-grid]]
+.Charted Soundings vs 6-metre S-102 Grid
+image::figure-charted-sounding-vs-6-metre-s102-grid.png[]
