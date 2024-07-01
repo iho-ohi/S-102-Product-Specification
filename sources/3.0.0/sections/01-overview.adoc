@@ -302,7 +302,7 @@ Changes to S-102 will be released by the IHO as a New Edition, revision, or clar
 ==== New Edition
 _New Editions_ of S-102 introduce significant changes. _New Editions_ enable new concepts, such as the ability to support new functions or applications, or the introduction of new constructs or data types. _New Editions_ are likely to have a significant impact on either existing users or future users of S-102. All cumulative _revisions_ and _clarifications_ must be included with the release of approved New Editions.
 
-==== Revisions
+==== Revision
 _Revisions_ are defined as substantive semantic changes to S-102. Typically, _revisions_ will change S-102 to correct factual errors; introduce necessary changes that have become evident as a result of practical experience or changing circumstances. A _revision_ must not be classified as a clarification. Revisions could have an impact on either existing users or future users of S-102. All cumulative _clarifications_ must be included with the release of approved _revisions_.
 
 Changes in a revision are minor and ensure backward compatibility with the previous versions within the same Edition. Newer revisions, for example, introduce new features and attributes. Within the same Edition, a dataset of one version could always be processed with a later version of the Feature and Portrayal Catalogues.
