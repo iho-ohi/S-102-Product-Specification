@@ -729,7 +729,8 @@ If multiple vertical datums are present in the product, a separate feature insta
 According to S-100, either the BoundingBox at the Feature Instance Group or the _domainExtent.polygon_ must be specified. If _domainExtent.polygon_ is specified, the BoundingBox is not specified in this case. The grid cells that do not belong to the area of the respective vertical datum should be assigned the fill value. If _domainExtent.polygon_s are used, those of different feature instance groups should not overlap. At positions where the polygons of different Feature Instance groups touch, the edges should be identical. The _domainExtent.polygon_ does not have to follow grid cell boundaries but is an independent vector geometry based on the _SoundingDatum_ surface from S-101. The _domainExtent.polygon_ only supports a simple polygon geometry in accordance with <<iho-s100,part=10c,table=11>>. The mapping of multi-polygons and inner rings is not possible.
 
 ==== The values group -- Group_001
-This group contains the following additional attributes. The mandatory attributes depend on the _dataCodingFormat_ used and can be taken from <<iho-s100,part=10c,table=19>>. These attributes are not defined by <<iho-s100,part=10c>>. They are an extension of this Product Specification.
+This group contains 5 attributes, all of which are mandatory. According to <<iho-s100,part=10c,table=19>>, _timePoint_ applies because the _dataCodingFormat_ = _2_. 
+The other four attributes for this group are an extension of this Product Specification and, thus, are not defined by <iho-s100,part=10c>>. <<tab-attributes-of-values-group>> lists all 5 attributes.
 
 [[tab-attributes-of-values-group]]
 .Attributes of values group
@@ -773,6 +774,15 @@ This group contains the following additional attributes. The mandatory attribute
 | Float +
 32-bit
 | The maximum uncertainty value in the values dataset(s) of this group. If no uncertainty values are in the dataset(s) the value must be the fillValue
+
+| 5
+| Time stamp
+| timePoint
+| 1
+| String
+| Because S-102 specifies survey dates elsewhere in its structure, this value should always be the fill value: +
+_00010101T000000Z_
+
 |===
 
 The group contains an HDF5 dataset named values containing the bathymetric gridded data.
