@@ -58,7 +58,7 @@ Citation information for the S-102 Portrayal Catalogue is provided in <<tab-s102
 |3
 |  edition
 |CharacterString
-|1.2.0
+|3.0.0
 
 |4
 |  editionDate
