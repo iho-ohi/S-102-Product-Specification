@@ -34,7 +34,7 @@ The model in <<fig-coverage-structure-of-s102>> depicts the coverage type in thi
 
 * The coverage type for *BathymetryCoverage* is a continuous Regular Grid Coverage called *S102_DepthCoverage* which inherits from *S100_IF_GridCoverage*. Many of the parameters of the coverage are described in the Product Specification.
 
-* The coverage type for *QualityOfBathymetryCoverage* is a continuous Regular Grid Coverage called *S102_QualityCoverage which inherits from *S100_IF_GridCoverage*. Many of the parameters of the coverage are described in the Product Specification.
+* The coverage type for *QualityOfBathymetryCoverage* is a continuous Regular Grid Coverage called *S102_QualityCoverage* which inherits from *S100_IF_GridCoverage*. Many of the parameters of the coverage are described in the Product Specification.
 
 [[subsec-application-schema-implementation-classes]]
 ==== Application Schema implementation classes
