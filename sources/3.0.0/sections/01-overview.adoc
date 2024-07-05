@@ -214,7 +214,7 @@ The interval (about a given value) that will contain the true value of the measu
 
 NOTE: Errors exist and are the differences between the measured value and the true value. Since the true value is never known it follows that the error itself cannot be known. Uncertainty is a statistical assessment of the likely magnitude of this error. The numbers must be qualified by units.
 
-[[itd]]In this document and S-102 uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.[[conlev]]
+[[itd]]In this document an S-102 uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.[[conlev]]
 
 ===== Vector
 
@@ -265,7 +265,7 @@ XML:: eXtensible Markup Language
 *North Bounding Latitude*: 90° +
 *South Bounding Latitude*: -90°
 
-*Purpose*:: The primary purpose of the Bathymetric Surface Product is to provide high-resolution bathymetry in gridded form in support of safety of navigation. A Bathymetric Surface Product may exist anywhere in the maritime domain. There are no limitations to its extent. Portrayal of S-102 bathymetry with other S-100 compliant products are intended to support safe passage, precise berthing and mooring, as well as route planning of marine vessels. A secondary purpose of a bathymetric surface product is to provide high-resolution bathymetric data for other maritime applications.
+*Purpose*:: The primary purpose of the Bathymetric Surface Product is to provide high-resolution bathymetry in gridded form in support of safety of navigation. A Bathymetric Surface Product may exist anywhere in the maritime domain. There are no limitations to its extent. Portrayal of S-102 bathymetry with other S-100 compliant products are intended to support safe passage, precise berthing and mooring, as well as route planning of marine vessels.
 
 
 === Product Specification metadata
