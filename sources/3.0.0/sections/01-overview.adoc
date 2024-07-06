@@ -227,6 +227,7 @@ NOTE: A directed line segment represents a vector if the length and direction of
 This Product Specification adopts the following convention for presentation purposes:
 
 CRS:: Coordinate Reference System
+DCEG:: Data Classification and Encoding Guide
 ECDIS:: Electronic Chart Display Information System
 ENC:: Electronic Navigational Chart
 EPSG:: European Petroleum Survey Group
