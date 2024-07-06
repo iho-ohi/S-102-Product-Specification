@@ -255,7 +255,7 @@ XML:: eXtensible Markup Language
 
 *Acronym*:: S-102
 
-*Content*:: The Product Specification defines all requirements to which S-102 bathymetric data products must conform. Specifically, it defines the data product content in terms of features and attributes within the feature catalogue. The display of features is defined by the symbols and rule sets contained in the portrayal catalogue. The Data Classification and Encoding Guide (DCEG) provides guidance on how data product content must be captured. <<annex-data-classification-and-encoding-guide>>, in addition to [[acstart]]<<tsf>>[[acend]], will provide implementation guidance for developers.
+*Content*:: The Product Specification defines all requirements to which S-102 bathymetric data products must conform. Specifically, it defines the data product content in terms of features and attributes within the feature catalogue. The display of features is defined by the symbols and rule sets contained in the portrayal catalogue. The DCEG provides guidance on how data product content must be captured. <<annex-data-classification-and-encoding-guide>>, in addition to [[acstart]]<<tsf>>[[acend]], will provide implementation guidance for developers.
 
 *Spatial Extent*::
 *Description*: Areas specific to marine navigation. +
