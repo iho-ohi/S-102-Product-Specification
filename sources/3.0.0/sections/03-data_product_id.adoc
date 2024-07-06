@@ -40,7 +40,7 @@ Main topics for the product, as according to <<iso-19115-1>> MD_TopicCategoryCod
 . Top Secret;
 . Sensitive but unclassified;
 . For official use only;
-. Protected; or
+. Protected;
 . Limited distribution
 --
 
