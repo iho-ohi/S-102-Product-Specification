@@ -93,7 +93,7 @@ The attribute _offsetVectors_ has the value class _Sequence<Vector>_ that shall 
 [level=7]
 ===== dimension
 
-The attribute _dimension_ has the value class Integer that shall identify the dimensionality of the grid. The value of the grid dimension in this product specification is 2. This value is [underline]#fixed# in this Product Specification and does not need to be encoded.
+The attribute _dimension_ has the value class Integer that shall identify the dimensionality of the grid. The value of the grid dimension in this product specification is 2. This value is [underline]#fixed# in this Product Specification.
 
 [level=7]
 ===== axisNames
@@ -108,7 +108,7 @@ The attribute _extent_ has the value class *CV_GridEnvelope* that shall contain 
 [level=7]
 ===== sequencingRule
 
-The attribute _sequencingRule_ has the value class *CV_SequenceRule* that shall describe how the grid points are ordered for association to the elements of the sequence values. The [underline]#default value is "Linear". No other options are allowed.#
+The attribute _sequencingRule_ has the value class *CV_SequenceType* that shall describe how the grid points are ordered for association to the elements of the sequence values. The [underline]#default value is "linear". No other options are allowed.#
 
 [level=7]
 ===== startSequence
@@ -127,7 +127,11 @@ The class *S102_BathymetryValues* is related to *BathymetryCoverage* by a compos
 [level=7]
 ===== values
 
-The attribute _values_ has the value type *_S102_BathymetryValueRecord_* which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record, _depth_ and optional _uncertainty_ in the *S102_BathymetryValues* class.
+The attribute _values_ has the value type *_S102_BathymetryValueRecord_*, which is a sequence of value items that shall assign values to the grid points. There are two attributes in the bathymetry value record in the *S102_BathymetryValues* class:
+
+* _depth_ 
+
+* (optional) _uncertainty_ 
 
 [level=6]
 ===== QualityOfBathymetryCoverage
@@ -167,7 +171,7 @@ The attribute _extent_ has the value class *CV_GridEnvelope* that shall contain 
 [level=7]
 ===== sequencingRule
 
-The attribute _sequencingRule_ has the value class *CV_SequenceRule* that shall describe how the grid points are ordered for association to the elements of the sequence values. The [underline]#default value is "Linear". No other options are allowed.#
+The attribute _sequencingRule_ has the value class *CV_SequenceType* that shall describe how the grid points are ordered for association to the elements of the sequence values. The [underline]#default value is "linear". No other options are allowed.#
 
 [level=7]
 ===== startSequence
@@ -248,13 +252,13 @@ The class *CV_SequenceRule* contains information for mapping grid coordinates to
 [level=7]
 ===== type
 
-The attribute _type_ shall identify the type of sequencing method that shall be used. A code list of scan types is provided in <<iho-s100,part=10c>>. Only the value -- linear shall be used in S-102, which describes scanning row by row by column.
+The attribute _type_ shall identify the type of sequencing method that shall be used. A code list of scan types is provided in <<iho-s100,part=10c>>. Only the value "linear" shall be used in S-102, which describes scanning row by row by column.
 
 [level=7]
 [[scanDirection]]
 ===== scanDirection
 
-The attribute _scanDirection_ has the value class _Sequence<CharacterString>_ a list of axis names that indicates the order in which grid points shall be mapped to position within the sequence of records of feature attribute values.
+The attribute _scanDirection_ has the value class _Sequence<CharacterString>_: a list of axis names that indicates the order in which grid points shall be mapped to position within the sequence of records of feature attribute values.
 
 
 === Feature Catalogue
