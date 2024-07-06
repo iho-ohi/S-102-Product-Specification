@@ -230,7 +230,6 @@ CRS:: Coordinate Reference System
 ECDIS:: Electronic Chart Display Information System
 ENC:: Electronic Navigational Chart
 EPSG:: European Petroleum Survey Group
-GFM:: General Feature Model
 HDF:: Hierarchical Data Format
 HSSC:: IHO Hydrographic Services and Standards Committee (formerly CHRIS)
 IEC:: International Electrotechnical Commission
@@ -241,7 +240,6 @@ ISO:: International Organization for Standardization
 MRN:: Maritime Resource Name
 S-100 WG:: S-100 Working Group
 S-102 PT:: S-102 Project Team
-SA:: Signature Authority
 TS:: Technical Specification
 TSMAD:: Transfer Standard Maintenance and Application Development Working Group
 UML:: Universal Modelling Language
