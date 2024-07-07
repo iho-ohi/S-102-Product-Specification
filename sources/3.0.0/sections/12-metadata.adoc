@@ -336,7 +336,6 @@ See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 
 |Role
 |resourceMaintenance
-//TBD whether S-102 actually needs resource maintenance information even in the case described by the added paragraph in the Remarks column. (RM comment 24Jan2023)
 |Information about the frequency of resource updates, and the scope of those updates
 |0..1
 |MD_MaintenanceInformation
@@ -363,7 +362,7 @@ S-102 uses S100_DataCoverage without modification, but with additional remarks a
 |A spatial extent where data is provided along with the display scale information for the provided data
 |-
 |-
-|This field is used by user systems as part of the data loading and unloading algorithms, and it is stringly encouraged that Product Specifications mandate the use of one or more of the displayScale provided as part of S100_DataCoverage.
+|This field is used by user systems as part of the data loading and unloading algorithms, and it is strongly encouraged that Product Specifications mandate the use of one or more of the displayScale provided as part of S100_DataCoverage.
 
 |Attribute
 |boundingPolygon
