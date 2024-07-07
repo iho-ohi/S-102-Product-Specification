@@ -24,7 +24,7 @@ Main topics for the product, as according to <<iso-19115-1>> MD_TopicCategoryCod
 
 *Spatial Resolution*:: The spatial resolution, or the spatial dimension on the earth covered by the size of a grid matrix cell (nominal ground sample distance), varies according to the model adopted by the producing hydrographic office.
 
-*Purpose*:: The primary purpose of the bathymetric surface product is to provide high-resolution bathymetry in gridded form in support of safety of navigation. The secondary purpose is to provide high-resolution bathymetry for other maritime applications.
+*Purpose*:: The primary purpose of the bathymetric surface product is to provide high-resolution bathymetry in gridded form in support of safety of navigation.
 
 *Language*:: English (Mandatory), other (Optional)
 
