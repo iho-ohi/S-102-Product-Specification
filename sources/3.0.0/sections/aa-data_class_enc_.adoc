@@ -32,7 +32,7 @@ h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 |uncertainty
 |Must be in decimal metres with resolution not to exceed 0.01 metres
 |real (32-bit Float)
-|1
+|0..1
 |===
 
 ==== QualityOfBathymetryCoverage
