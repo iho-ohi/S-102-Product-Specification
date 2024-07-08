@@ -271,9 +271,8 @@ MD_<HDF5 data file base name>.XML (or .xml) ISO metadata +
 | Mandatory in S-102. +
 EPSG code; +
 
-Allowed values: +
-*6498 (Depth--metres--orientation down) +
-*6499 (Height--metres--orientation up)
+The only allowed value is: +
+*6498 (Depth--metres--orientation down)
 
 | 9
 | Vertical coordinate base
@@ -401,14 +400,14 @@ BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type e
 
 |lower
 |Lower bound on value of attribute
-|-12000
+|-14
 |0
 |1
 
 |upper
 |Upper bound on value of attribute
-|12000
-|12000
+|11050
+|11050
 |(empty)
 
 |closure
