@@ -335,4 +335,4 @@ Each S-102 dataset must only have a single extent as it is a coverage feature.
 There should be no overlapping data of the same maximum display scale, except at the agreed adjoining limits. Where it is difficult to achieve a perfect join, a buffer to be agreed upon by the producing agencies may be used. 
 
 === Geometry
-S-102 regular gridded coverages are an implementation of S100_IF_GridCoverage <iho-s100,part=8,clause=8.7>. 
+S-102 regular gridded coverages are an implementation of S100_IF_GridCoverage <<iho-s100,part=8,clause=8.7>>. 
