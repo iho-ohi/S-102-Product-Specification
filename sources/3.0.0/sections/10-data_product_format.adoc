@@ -386,7 +386,6 @@ BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type e
 |metres
 |metres
 |(empty)
-//TBC by project team review (RM comment 4Jan2023)
 
 |fillValue
 |Fill value (integer or float, string representation, for missing values)
@@ -409,13 +408,13 @@ BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type e
 |upper
 |Upper bound on value of attribute
 |11050
-|11050
+|(empty)
 |(empty)
 
 |closure
 |Open or Closed data interval. See S100_IntervalType in <<iho-s100,part=1>>.
 |closedInterval
-|gtLeInterval
+|geSemiInterval
 |geSemiInterval
 |===
 
