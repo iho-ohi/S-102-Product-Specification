@@ -73,7 +73,7 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 
 * Drying heights (drying depths) are indicated by a negative value.
 
-|IHO Definition: *uncertainty*. The interval (about a given value) that will contain the true value of the measurement at a specific confidence level [<<iho-s44>>].
+|IHO Definition: *uncertainty*. Estimate characterising the range of values within which the true value of a measurement is expected to lie as defined within a particular confidence level. It is expressed as a positive value.
 
 |Unit: metres
 
