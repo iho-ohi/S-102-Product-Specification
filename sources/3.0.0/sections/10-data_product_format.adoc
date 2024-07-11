@@ -730,8 +730,7 @@ unsigned +
 | The only allowed value is 1: s100VerticalDatum +
 (see <<iho-s100,part=10c,table=23>>). +
 see <<mvdvdr>> +
-Mandatory for feature instance groups with a different vertical datum from that specified in the Root Group +
-(prohibited otherwise)
+Mandatory if this value were to differ from what is contained in the Root Group +
 |===
 
 The _gridOriginLongitude_, _gridOriginLatitude_, _gridSpacingLongitudinal_, and _gridSpacingLatitudinal_ attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
@@ -741,7 +740,9 @@ _numPointsLongitude_ and _numPointsLatitude_ must contain the number of cells in
 The S-102 uses the "Overriding of Attributes" concept of the <<iho-s100,part=10c,clause=9.7.1>>. This usage allows the feature instance group to overwrite the attributes of a higher group, in this case the _verticalDatum_. The default vertical datum is specified in the root group (see table <<tab-root-group-attributes>>). The feature instance group for this default vertical datum must not use the additional attributes _verticalDatum_ and _verticalDatumReference_ (on the feature instance group).
 
 [[mvdvdr]]
-If multiple vertical datums are present in the product, a separate feature instance group must be created for each vertical datum. These feature instance groups must use the additional attributes _verticalDatum_ and _verticalDatumReference_ (on the feature instance group).
+If multiple vertical datums are present in the product, a separate feature instance group must be created for each vertical datum. These feature instance groups must use the additional attribute _verticalDatum_ (on the feature instance group).
+
+_Note: At present, this Product Specification does not allow values other than *1: s100VerticalDatum* for *verticalDatumReference*. However, if future changes allow the value of *2: EPSG* (and if the value at the feature instance group differs from what is contained in the Root Group), then this value would become mandatory._
 
 [[para-domain-extent-polygon]]
 According to S-100, either the BoundingBox at the Feature Instance Group or the _domainExtent.polygon_ must be specified. If _domainExtent.polygon_ is specified, the BoundingBox is not specified in this case. The grid cells that do not belong to the area of the respective vertical datum should be assigned the fill value. If more than one _domainExtent.polygon_ is used, those of different feature instance groups should not overlap. At positions where the polygons of different Feature Instance groups touch, the edges should be identical. The _domainExtent.polygon_ does not have to follow grid cell boundaries but is an independent vector geometry based on the _SoundingDatum_ surface from S-101. The _domainExtent.polygon_ only supports a simple polygon geometry in accordance with <<iho-s100,part=10c,table=11>>. The mapping of multi-polygons and inner rings is not possible.
