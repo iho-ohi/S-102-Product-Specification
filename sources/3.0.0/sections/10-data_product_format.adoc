@@ -303,7 +303,7 @@ unsigned +
 16-bit
 | Numeric code from IHO GI Registry +
 _Vertical Datum_ attribute +
-stem:[1-30] & stem:[44] & stem:[46]
+stem:[1-30] & stem:[44]
 
 see <<note12>>
 |===
