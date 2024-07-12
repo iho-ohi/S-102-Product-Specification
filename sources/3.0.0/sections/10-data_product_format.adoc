@@ -13,7 +13,7 @@ The S-102 data set must be encoded using the Hierarchical Data Format standard, 
 
 *Specification*:: https://www.hdfgroup.org/
 
-The key idea behind the S-102 product structure is that each coverage is a feature. Each of these features is co-located with the others. Therefore, they share the same spatial metadata and each is required to correctly interpret the others.
+The key idea behind the S-102 product structure is that each coverage is a feature. Each of these features is co-located with the others. Therefore, they share the same spatial metadata, and each is required to correctly interpret the others.
 
 For the use of HDF5, the following key concepts (<<iho-s100,part=10c,clause=5.1>>) are important:
 
