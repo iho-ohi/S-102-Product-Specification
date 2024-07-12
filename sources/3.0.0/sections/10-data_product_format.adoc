@@ -977,8 +977,8 @@ see <<iho-s100,part=1,table=2>>.
 |
 
 | 15
-| bathymetricUncertaintyType
-| An estimate of the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.
+| typeOfBathymetricEstimationUncertainty
+| The measure used to estimate the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.
 | 0..1
 | Enumeration
 | See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>. +
