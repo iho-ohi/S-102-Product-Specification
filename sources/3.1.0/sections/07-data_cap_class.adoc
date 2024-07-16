@@ -1,0 +1,28 @@
+
+== Data Capture and Classification
+The DCEG describes how data describing the real world should be captured using the types defined in the S-102 Feature Catalogue. The DCEG is located at <<annex-data-classification-and-encoding-guide>>.
+
+A number of sounding techniques are used to capture bathymetric data. It is permitted, but not required, to include data acquisition information in the metadata of an S-102 Bathymetric Surface product. The metadata class S102_AcquisitionMetadata has been defined, but the information elements to populate this metadata class should be identified in a national profile of S-102.
+
+[[qualityAndSourceMetadata]]
+=== Quality and source metadata
+
+Quality and source metadata in S-102 are intended to enable and support future navigation software to appropriately auto-generate and attribute cartographic features such as custom depth contours and soundings from S-102 products, all while minimally impacting the overall file size of the product.
+
+Quality and source metadata are encoded in a feature attribute table compliant with both HDF5 and S-100. This feature attribute table will provide valuable information about the bathymetry on a grid cellwise basis compared to traditional vector-based metadata files, simplifying the interpretation and implementation by navigation software systems.
+
+The fields of the feature attribute table are defined elsewhere in this Product Specification (<<tab-attributes-of-values-group>>).
+
+Quality and source metadata in S-102 are based on S-101 quality attributes, with significant augmentations and omissions described below. The quality and source metadata support a threefold purpose:
+
+. Support S-101-defined attribution of auto-generated vector depth areas, depth contours, and soundings created directly from the S-102 dataset.
+
+.. The attribute _featureSizeVar_ is meant to augment _featureSize_ which corresponds to S-101 size of features detected. As noted in S-101, size of features detected is intended to be described as the smallest size in cubic metres the survey was capable of detecting. Depending on various survey parameters, this definition might require different depth ranges to have different values. For example, a survey vessel working at a fixed height off the seafloor (such as an autonomous underwater survey vessel) could maintain a fixed feature detection size capability over a wide range of depths. Conversely, a surface vessel working over that same range of depths may have a feature detection capability that varies with depth. The latter situation could foreseeably cause the detection capability to be ambiguous and potentially misrepresented. For this reason, _featureSizeVar_ is defined as the ratio (expressed as a percentage) of minimum detectable feature size to water depth. When both _featureSize_ and _featureSizeVar_ are present, the whichever value implies a larger feature size should be considered valid. The expectation is that _featureSizeVar_ will be set to zero if the feature size does not scale with depth. As with _featureSize_, _featureSizeVar_ should be ignored if _significantFeatures_ is False.
+
+.. Note that depth range maximum and minimum in S-101 are omitted. The assumption is that if this information is required, then the corresponding grid cells in the elevation layer can be queried for a minimum and maximum depth for each table row.
+
+. Provide necessary uncertainty information as an input into critical underkeel clearance precision navigation systems.
+
+. Prevent the automated selection of soundings from interpolated grid cells, while still providing the continuous data required for depth contour creation. This purpose is accomplished by the _bathyCoverage_ Boolean attribute field. This field enables the flagging of grid cells populated by interpolation (when that interpolation occurs across gaps in bathymetric observations greater than the S-102 grid spatial resolution). This functionality is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery. In this case, interpolated gaps between bathymetry coverage would show _fullSeafloorCoverageAchieved_ = True and _bathyCoverage_ = False. However, if _fullSeafloorCoverageAchieved_ = False, _bathyCoverage_ must also equal False (e.g., gaps between single beam echosounder data without correlating side scan sonar coverage). Thus, this facility will provide navigation software systems with the required information necessary to preferably select soundings from direct bathymetric observations.
+
+Quality and source metadata are encoded as records within a featureAttributeTable dataset, which is itself within the QualityOfBathymetryCoverage container group (<<tab-attributes-of-values-group>>).

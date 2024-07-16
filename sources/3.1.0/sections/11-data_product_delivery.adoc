@@ -1,0 +1,200 @@
+
+[[sec-data-product-delivery]]
+== Data Product Delivery
+
+=== Introduction
+This clause describes how S-102 data will be delivered from the charting authority to the mariner.
+
+*Units of Delivery*:: Exchange Set
+
+*Transfer Size*:: See <<subsec-dataset-size>>.
+
+*Medium Name*:: Digital Data Delivery
+
+*Other Delivery Information*::
++
+--
+Each dataset must be contained in a physically separate, uniquely identified file on the transfer medium.
+
+Each exchange set has a single exchange catalogue which contains the discovery metadata for each dataset.
+
+An exchange set is encapsulated into a form suitable for transmission by a mapping called an encoding. An encoding translates each of the elements of the exchange set into a logical form suitable for writing to media and for transmission online. An encoding may also define other elements in addition to the exchange set contents (This is media identification, data extents etc. ...) and may define commercial constructs such as encryption and compression methods.
+
+If the data is transformed in S-102 it must not be changed.
+
+This Product Specification defines the encoding which must be used as a default for transmission of data between parties.
+
+The encoding encapsulates exchange set elements as follows:
+
+*Mandatory Elements*
+
+* S-102 datasets -- HDF encoding
+* Exchange Catalogue -- the XML encoded representation of exchange set catalogue features [discovery metadata].
+
+*Optional Elements*
+
+* S-102 Feature Catalogue -- If it is necessary to deliver the latest Feature Catalogue to the end user it may be done using the S-102 exchange set mechanism for datasets
+* S-102 Portrayal Catalogue -- If it is necessary to deliver the latest Portrayal Catalogue to the end user it may be done using the S-102 exchange set mechanism for datasets.
+--
+
+=== Dataset
+
+==== Dataset management
+Three types of dataset files may be produced and contained within an exchange set:
+
+* New dataset: Initial.
+* New edition of a dataset: Includes new information. New editions must cover at least the same area as its predecessor.
+* [[canc]]Cancellation: The dataset is cancelled and no longer available to be displayed or used.
+
+[[subsec-production-of-a-cancellation]]
+===== Production of a cancellation
+S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
+
+1. Prepare an exchange catalogue with an S100_DatasetDiscoveryMetadata block with field values as described in <<subsec-metadata-for-cancellation>>.
+2. Complete other parts of the exchange catalogue as required by <<subsec-s100_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
+3. Sign and distribute the exchange catalogue in a normally structured exchange set.
+
+[[subsec-metadata-for-cancellation]]
+===== Metadata for cancellation
+S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
+
+* _fileName_ = _fileName_ of the cancelled dataset
+
+* _purpose_ = _cancellation_
+
+* issueDate and issueTime = the issue date and time of the cancellation
+
+* _replacedData_ = _true_ if and only if the cancelled dataset is replaced by another dataset; otherwise _false_. This attribute must be populated for a cancellation.
+
+* _dataReplacement_ = _fileName_ of the replacement dataset (if and only if the cancelled dataset is replaced by another dataset). This attribute must be populated when _replacedData_=_true_.
+
+* all other mandatory attributes to the same values as in the discovery metadata block for the dataset being cancelled.
+
+[[subsec-dataset-size]]
+==== Dataset size
+S-102 delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
+
+NOTE: The use of 10 MB in this and other sections should be treated as informative information only. Additionally, any computed values associated with either file size limit should be treated as approximate answers. Final selection of an appropriate file size limit or grid resolution is left to the discretion of the data producer.
+
+*Network Transfer*:: To minimize overall file size, the HO produces a 10 MB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 by 600 grid cells.
+
+<<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of S-102 data for specific charting scales.
+
+
+
+===== S-102 grid resolution and tiling
+
+[[tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale]]
+.Informative Grid Resolution and Resulting Tile Size at Chart Scale
+[cols="<a,<a,<a",options="header"]
+|===
+|Scale |Informative Grid Resolution |Resulting Tile Size @ 10 MB
+
+|NULL (only allowed on minimum display scale where the maximum display scale = 10,000,000)
+|
+|Approximate Linear Distance in Nautical Miles (M) for a 600 X 600 cell grid
+
+|1:10,000,000
+|900 metres
+|291 X 291
+
+|1:3,500,000
+|900 metres
+|291 X 291
+
+|1:1,500,000
+|450 metres
+|145 X 145
+
+|1:700,000
+|210 metres
+|68 X 68
+
+|1:350,000
+|105 metres
+|34 X 34
+
+|1:180,000
+|54 metres
+|17.5 X 17.5
+
+|1:90,000
+|27 metres
+|8.7 X 8.7
+
+|1:45,000
+|13 metres
+|4.2 X 4.2
+
+|1:22,000
+|6 metres
+|1.9 X 1.9
+
+|1:12,000
+|3 metres
+|1.0 X 1.0
+
+|1:8,000
+|2 metres
+|0.6 X 0.6
+
+|1:4,000
+|1 metres
+|0.3 X 0.3
+
+|1:3,000
+|1 metres
+|0.3 X 0.3
+
+|1:2,000
+|1 metres
+|0.3 X 0.3
+
+|1:1,000
+|1 metres
+|0.3 X 0.3
+|===
+
+[[subsec-dataset-file-naming]]
+==== Dataset file naming
+Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause=4.3>>). S-102 dataset naming conventions must follow these rules.
+
+*102YYYYØØØØØØØØØØØØ.H5*::
+102::: the first 3 characters identify the dataset as an S-102 dataset (mandatory).
+YYYY::: the fourth to seventh characters identify the producer code according to the Producer Code Register.
+ØØØØ::: the eighth to the maximum nineteenth characters are optional and may be used in any way by the producer to provide the unique file name. The following characters are allowed in the dataset name: A to Z, 0 to 9 and the special character _ (underscore).
+H5::: denotes an HDF5 file.
+
+=== Exchange Set
+The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=4.2>>.
+
+. An S-102 Exchange Set must contain an Exchange Set Catalogue, CATALOG.XML, its digital signature CATALOG.SIGN, and may contain any number of S-102 conformant dataset files, support files, and Catalogue files.
+
+. All content must be placed inside a top root folder named S100_ROOT. This is the only top level root folder in an Exchange Set containing only S-100 products.
+
+. The S100_ROOT folder must contain a subfolder named S-102. This subfolder holds content specific to the S-102 Product Specification.
+
+. The S-102 subfolder must contain subfolders for the component dataset files (DATASET_FILES) and Catalogues (CATALOGUES) as required.
+
+. The required Exchange Set Catalogue XML document instance must be named CATALOG.XML and placed in the S100_ROOT folder, together with its digital signature (CATALOG.SIGN) file. All other digital signatures are included within their corresponding resource metadata records in the CATALOG.XML.
+
+. Support files are not allowed in S-102 exchange sets for this edition of S-102.
+
+=== Exchange Catalogue
+The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATALOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
+
+=== Data integrity and encryption
+<<iho-s100,part=15>> defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
+
+==== Use of compression
+The data producer decides if compression will be used on the S-102 product files (HDF5). It is expected that a hydrographic office will make a policy decision and that all the S-102 datasets from the producer will be either compressed or uncompressed.
+
+It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in <<iho-s100,part=15,clause=5.2>> must be applied to the product files.
+
+==== Use of data protection
+It is recommended to encrypt all the dataset files, for example HDF5. The encryption method defined in <<iho-s100,part=15>> must be applied.
+
+==== Use of digital signatures
+Digital signatures shall be used on all files included in a S-102 compliant Exchange Set to meet the requirements of IMO resolution MSC.428(98) to reduce cyber security risks among users, especially when used in navigations systems at sea. The recommended signature method is defined in <<iho-s100,part=15>>.
+
+The digital signature information is encoded in the corresponding discovery block in the exchange catalogue for each file included in the Exchange Set.
