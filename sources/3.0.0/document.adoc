@@ -4,7 +4,7 @@
 :doctype: standard
 :edition: 3.0.0
 :language: en
-:published-date: 20240716
+:published-date: 2024-07
 :copyright-year: 2024
 :committee: hssc
 :workgroup: tsmad
