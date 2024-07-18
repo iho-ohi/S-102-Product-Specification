@@ -49,7 +49,7 @@ h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 
 h|Attribute h|Constraint h|Type h|Multiplicity
 
-|id
+|iD
 |Each record must have a unique identifier.
 |unsigned 32-bit Integer
 |1
