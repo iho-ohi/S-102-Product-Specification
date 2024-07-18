@@ -379,7 +379,7 @@ BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type e
 |Long name as in Feature Catalogue
 |depth
 |uncertainty
-|
+|(empty)
 
 |uom.name
 |Units (uom.name from S-100 Feature Catalogue)
