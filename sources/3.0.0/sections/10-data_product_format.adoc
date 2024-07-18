@@ -367,19 +367,19 @@ BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type e
 | 
 | S-100 Attribute 1 
 | S-100 Attribute 2
-| Attribute 1
+| S-100 Attribute 1
 
 |code
 |Camel Case code of attribute as in Feature Catalogue
 |depth
 |uncertainty
-|id
+|iD
 
 |name
 |Long name as in Feature Catalogue
 |depth
 |uncertainty
-|(empty)
+|ID
 
 |uom.name
 |Units (uom.name from S-100 Feature Catalogue)
