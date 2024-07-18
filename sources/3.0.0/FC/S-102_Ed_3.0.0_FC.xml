@@ -68,8 +68,13 @@
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>ID</S100FC:name>
-			<S100FC:definition>Unknown</S100FC:definition>
-			<S100FC:code>id</S100FC:code>
+			<S100FC:definition>Meta data identifier for QualityOfBathymetric Coverage</S100FC:definition>
+			<S100FC:code>iD</S100FC:code>
+			<S100FC:alias>ID</S100FC:alias>
+			<!--S100FC:definitionReference>
+				<S100FC:sourceIdentifier>missing, need to be change after the approval in the IHO registry</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference-->
 			<S100FC:valueType>integer</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 	</S100FC:S100_FC_SimpleAttributes>
@@ -112,7 +117,7 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="id" />
+				<S100FC:attribute ref="iD" />
 			</S100FC:attributeBinding>
 			<S100FC:featureUseType>meta</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>coverage</S100FC:permittedPrimitives>
