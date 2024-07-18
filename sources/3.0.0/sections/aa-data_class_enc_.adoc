@@ -85,3 +85,15 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 * Expressed as a positive number.
 
 |===
+
+==== QualityOfBathymetryCoverage
+
+.QualityOfBathymetryCoverage feature attribute parameters
+[cols="a"]
+|===
+|IHO Definition: *iD*. Meta data record identifier for QualityOfBathymetryCoverage
+|Unit:
+|Resolution:
+|Remarks:
+|===
+
