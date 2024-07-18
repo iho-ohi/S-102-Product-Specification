@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.2" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100FC/5.2 https://schemas.s100dev.net/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd">
-
 	<S100FC:name>S-102</S100FC:name>
 	<S100FC:scope>Global</S100FC:scope>
 	<S100FC:fieldOfApplication>Marine Navigation</S100FC:fieldOfApplication>
@@ -52,7 +51,7 @@
 			<S100FC:alias>DEPTH</S100FC:alias>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>820</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG"/>
+				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:valueType>real</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
@@ -63,9 +62,15 @@
 			<S100FC:remarks>Represents a +/- value defining the possible range of associated depth, expressed as a positive number.</S100FC:remarks>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>884</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG"/>
+				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:valueType>real</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>ID</S100FC:name>
+			<S100FC:definition>Unknown</S100FC:definition>
+			<S100FC:code>id</S100FC:code>
+			<S100FC:valueType>integer</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 	</S100FC:S100_FC_SimpleAttributes>
 	<S100FC:S100_FC_FeatureTypes>
@@ -74,22 +79,22 @@
 			<S100FC:definition>A set of value items required to define a dataset representing an depth calculation and its associated uncertainty.</S100FC:definition>
 			<S100FC:code>BathymetryCoverage</S100FC:code>
 			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>401</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG"/>
+				<S100FC:sourceIdentifier>657</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="depth"/>
+				<S100FC:attribute ref="depth" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="uncertainty"/>
+				<S100FC:attribute ref="uncertainty" />
 			</S100FC:attributeBinding>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>coverage</S100FC:permittedPrimitives>
@@ -100,21 +105,14 @@
 			<S100FC:code>QualityOfBathymetryCoverage</S100FC:code>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>642</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG"/>
+				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="depth"/>
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="uncertainty"/>
+				<S100FC:attribute ref="id" />
 			</S100FC:attributeBinding>
 			<S100FC:featureUseType>meta</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>coverage</S100FC:permittedPrimitives>
