@@ -737,7 +737,7 @@ The _gridOriginLongitude_, _gridOriginLatitude_, _gridSpacingLongitudinal_, and 
 
 _numPointsLongitude_ and _numPointsLatitude_ must contain the number of cells in the x and y dimensions of the values table.
 
-The S-102 uses the "Overriding of Attributes" concept of the <<iho-s100,part=10c,clause=9.7.1>>. This usage allows the feature instance group to overwrite the attributes of a higher group, in this case the _verticalDatum_. The default vertical datum is specified in the root group (see table <<tab-root-group-attributes>>). The feature instance group for this default vertical datum must not use the additional attributes _verticalDatum_ and _verticalDatumReference_ (on the feature instance group).
+The S-102 uses the "Overriding of Attributes" concept of the <<iho-s100,part=10c,clause=9.7.1>>. This usage allows the feature instance group to overwrite the attributes of a higher group, in this case the _verticalDatum_. The default vertical datum is specified in the root group (see <<tab-root-group-attributes>>). The feature instance group for this default vertical datum must not use the additional attributes _verticalDatum_ and _verticalDatumReference_ (on the feature instance group).
 
 [[mvdvdr]]
 If multiple vertical datums are present in the product, a separate feature instance group must be created for each vertical datum. These feature instance groups must use the additional attribute _verticalDatum_ (on the feature instance group).
@@ -749,7 +749,7 @@ According to S-100, either the BoundingBox at the Feature Instance Group or the 
 
 ==== The values group -- Group_001
 This group contains 5 attributes, all of which are mandatory. According to <<iho-s100,part=10c,table=19>>, _timePoint_ applies because the _dataCodingFormat_ = _2_. 
-The other four attributes for this group are an extension of this Product Specification and, thus, are not defined by <iho-s100,part=10c>>. <<tab-attributes-of-values-group>> lists all 5 attributes.
+The other four attributes for this group are an extension of this Product Specification and, thus, are not defined by <<iho-s100,part=10c>>. <<tab-attributes-of-values-group>> lists all 5 attributes.
 
 [[tab-attributes-of-values-group]]
 .Attributes of values group
