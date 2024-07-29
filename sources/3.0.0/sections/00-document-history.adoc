@@ -1,5 +1,5 @@
 
-[preface%notitle]
+[.preface]
 == Document History
 
 Changes to this Specification are coordinated by the IHO S-100 Working Group. New editions will be made available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution 2/2007 (as amended).
@@ -114,9 +114,20 @@ Other revisions and clarifications: +
 * Removed Annex for Feature Catalogue and changed all its references to the IHO Geospatial Information registry +
 * Moved gridding method information from Annex into Clause 10 +
 * Updated references to more recent versions
-|===
 
-[reviewer=Lawrence Haynes Haselmaier, from=lhh1-start1, to=lhh1-end1]
-****
-From J. Le Deunf – It would be helpful to specify and/or indicate the amended §
-****
+
+|3.0.0
+|July 2024
+|S-102PT
+|Major changes: +
+* Modified text and figures to reflect a cell area-based approach to representation. (Clause 4) +
+* Added support for multiple vertical datums in a single product (Clause 10) +
+* Modified to refer to new _QualityOfBathymetryCoverage_ vice _QualityOfSurvey_. (Clause 10) +
+ +
+Other revisions and clarifications: +
+* Removed annexes on Normative Implementation Guidance, Portrayal Catalogue, Dataset Size, Multi-Resolution Gridding, and Gridding Source Bathymetry. (Annexes) +
+* Removed gridding method from product specification entirely. (Clause 10) +
+* Revised throughout document to ensure alignment with S-100 Ed. 5.2.0. +
+* Revised text variously for accuracy and clarity. +
+* Update UML and other diagrams to align with aforementioned changes.
+|===

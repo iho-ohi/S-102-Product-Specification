@@ -1,0 +1,158 @@
+
+[[sec-portrayal]]
+== Portrayal
+
+=== Introduction
+S-102 portrayal is intended to contribute to the safe operation of an S-100 based marine navigation system by:
+
+* Ensuring display of bathymetric surfaces, standards of colours, and their assignment to depths;
+* Ensuring the display is clear and unambiguous;
+* Establishing an accepted pattern for presentation that becomes familiar to mariners and so can be recognized instantly without confusion; and
+* Utilizing the S-100 portrayal model to ensure interoperability.
+
+To ensure that presentation remains intuitive, the following principles must be followed when changes are made to the S-102 Portrayal Catalogue:
+
+* S-102 must maintain equivalence in terms of alerts and indications functionality in ECDIS;
+* The S-102 Portrayal Catalogue should be modified by extension. Portrayal rules should be retained for items that have been superseded in the current version of S-102. This retention ensures that S-102 data produced to previous versions can be displayed using the latest Portrayal Catalogue.
+
+S-102 portrayal is covered by the portrayal model as defined in S-100. This model reflects how the Portrayal Catalogue is defined for use in marine navigation systems.
+
+S-102 uses the portrayal processes defined in <<iho-s100,part=9>> and <<iho-s100,part=9a>>. Items included in the S-102 Portrayal Catalogue must be registered in the IHO Geospatial Information (GI) Registry.
+
+=== Portrayal Catalogue
+Citation information for the S-102 Portrayal Catalogue is provided in <<tab-s102-portrayal-catalogue-citation-info>> below.
+
+[[tab-s102-portrayal-catalogue-citation-info]]
+.S-102 Portrayal Catalogue Citation Information
+[cols="a,a,a,a",options="header"]
+|===
+|No. |ISO class or attribute |Type |Value
+
+|--
+|CI_Citation
+|Class
+|--
+
+|1
+|  title
+|Character String
+|S-102 Portrayal Catalogue
+
+|2
+|  date
+|CI_Date +
+(class)
+|--
+
+|2.1
+|    date
+|DateTime
+|2024-06-11T00:00:00
+
+|2.2
+|    dateType
+|CI_DateTypeCode +
+(ISO codelist)
+|publication
+
+|3
+|  edition
+|CharacterString
+|3.0.0
+
+|4
+|  editionDate
+|DateTime
+|2024-06-11T00:00:00
+
+|5
+|  citedResponsibleParty
+|CI_responsibility +
+(class)
+|--
+
+|5.1
+|    role
+|CI_RoleCode +
+(ISO codelist)
+|publisher
+
+|5.2
+|    party
+|CI_Organisation +
+(class)
+|--
+
+|5.2.1
+|      name
+|CharacterString
+|International Hydrographic Organization
+
+|6
+|  otherCitationDetails
+|CharacterString
+|Found under: +
+GI Registers +
+Product Specifications +
+Bathymetric Surface
+
+|7
+|  onlineResource
+|CI_OnlineResource +
+(class)
+|--
+
+|7.1
+|    linkage
+|CharacterString +
+(URL)
+|https://registry.iho.int/
+
+|7.2
+|    name
+|CharacterString
+|S-102 Portrayal Catalogue
+
+|7.3
+|    description
+|CharacterString
+|XML Portrayal Catalogue accompanied by related files for colour profiles, rules, etc.
+
+|===
+
+The S-102 Portrayal Catalogue contains the mechanisms for the system to portray information found in S-102 bathymetric surfaces. The S-102 Portrayal Catalogue contains the following types of mechanisms and structures:
+
+* Set of portrayal rules;
+* Set of colour profiles.
+
+The Portrayal Catalogue model is defined in <<iho-s100,part=9,clause=9-13>>. The S-102 Portrayal Catalogue is available in an XML document, which conforms to the S-100 XML Portrayal Catalogue Schema. The structure for the Portrayal Catalogue is described in <<iho-s100,part=9,clause=9-13.2>>.
+
+<<fig-s52-depth-zone-colouring-for-day>> is included to illustrate informative depth zone colouring as adapted from S-52. More comprehensive portrayal details can be found in the S-102 Portrayal Catalogue, which is available in the IHO GI Registry (as detailed in <<tab-s102-portrayal-catalogue-citation-info>>).
+
+[[fig-s52-depth-zone-colouring-for-day]]
+.S-52, Edition 6.1(.1) Depth Zone Colouring for Day
+image::figure-s52-depth-zone-colouring-for-day.png[Depiction of a seafloor area coloured according to S-52 Ed. 6.1.1 for Day]
+
+==== Use of sun-illumination
+S-102 data can be visualized as a sun-illuminated or static (flat) dataset. The depiction of sun-illumination requires the entry of a sun azimuth and corresponding elevation. <<fig-sun-illuminated-and-static-flat-shading>> shows the difference between a sun-illuminated and static (flat) surface.
+
+NOTE: Although sun-illumination provides marked benefit to the user, it is not currently supported by S-100. As such, it is advisable for ECDIS manufacturers to implement the facility of sun-illumination in order to make such a benefit available.
+
+
+Informative values for sun azimuth angle and elevation have been provided in <<tab-sun-azimuth-and-elevation-values>> below. 
+
+[[tab-sun-azimuth-and-elevation-values]]
+.Sun Azimuth and Elevation Values
+[cols="3"]
+|===
+.2+^.^h|Attribute 2+^h|Value in Degrees
+h|Sun-Illuminated h|Flat Surface
+
+|Sun Azimuth Angle |135 Degrees |0.0 Degrees
+|Sun Elevation |45 Degrees |0.0 Degrees
+|===
+
+
+[[fig-sun-illuminated-and-static-flat-shading]]
+.Sun-illuminated and Static (Flat) Shading
+image::figure-sun-illuminated-and-static-flat-shading.png[Side-by-side depiction of a seafloor area with and without sun-illumination. Both views show varying gray shades as depth varies by a large amount. The left view is labeled _Sun-Illuminated_ and also shows hillshade effects according to all depth variation. The right view is labeled _Flat_ and shows no hillshading.]
