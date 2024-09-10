@@ -315,7 +315,7 @@ For *BathymetryCoverage.nn*, _depth_ and optional _uncertainty_, are stored in t
 
 The unknown state for depth is defined to be 1,000,000.0 (1.0e6).
 
-The uncertainty values are expressed as positive quantities at each grid cell. As detailed in <<tab-elements-of-featureAttributeTable-compound-datatype>> and <<tab-codes-defining-how-bathy-depth-uncertainty-determined>> the uncertainty grid supports multiple definitions of vertical uncertainty. This allows grids to span the expected range of data products from raw, full resolution grid to final compiled product. For example, a grid at the stage of final survey data processing should contain uncertainty information germane to the survey data itself and intended to be used for information compilation. A recipient of an S-102 file can refer to the uncertainty definition in the Metadata to gain an understanding of how the uncertainty was computed.
+The uncertainty values are expressed as positive quantities at each grid cell. As detailed in <<tab-elements-of-featureAttributeTable-compound-datatype>> and <<tab-codes-defining-how-bathy-depth-uncertainty-determined>> the uncertainty grid supports multiple definitions of vertical uncertainty. A recipient of an S-102 file can refer to the uncertainty definition in the Metadata to gain an understanding of how the uncertainty was computed.
 
 The undetermined state for uncertainty is defined to be 1,000,000.0 (1.0e6).
 
