@@ -87,7 +87,7 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |Metadata about the individual datasets in the Exchange Catalogue
 |-
 |-
-|*The optional S-100 attributes _updateNubmer_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
+|*The optional S-100 attributes _updateNumber_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
 *References to support file discovery metadata are not permitted because S-102 does not use support files.*
 
 |Attribute
@@ -164,10 +164,11 @@ _False_ indicates the resource is not copyrighted.
 |Attribute
 |classification
 |Indicates the security classification of the dataset
-|0..1
+|1
 |Class +
 MD_SecurityConstraints>MD_ClassificationCode (codelist)
-|[loweralpha]
+|*Mandatory in S-102* +
+[loweralpha]
 . unclassified
 . restricted
 . confidential
@@ -249,9 +250,9 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |Attribute
 |producerCode
 |The official IHO Producer Code from S-62
-|0..1
+|1
 |CharacterString
-|-
+|*Mandatory in S-102*
 
 |Attribute
 |encodingFormat
@@ -503,7 +504,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |*1*
 |CharacterString
 |TR 2/2007 specifies versioning of Product Specifications +
-*Example: 030000 for S-102 Edition 3.0.0*
+*Example: 3.0.0 for S-102 Edition 3.0.0*
 
 |Attribute
 |date
