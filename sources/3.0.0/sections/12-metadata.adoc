@@ -527,7 +527,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |1
 |Integer
 |For IHO Product Specifications, these numbers should be taken from the IHO Product Specification Register in the IHO GI Registry. +
-*The corresponding Idx-number of the IHO Registry for S-102 is numbered 199.*
+*The corresponding Idx-number of the IHO Registry for S-102 Ed. 3.0.0 is 215.*
 
 |Attribute
 |compliancyCategory
