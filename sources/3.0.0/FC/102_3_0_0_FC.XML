@@ -68,13 +68,13 @@
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>ID</S100FC:name>
-			<S100FC:definition>1251</S100FC:definition>
+			<S100FC:definition>Meta data record identifier for QualityOfBathymetric Coverage</S100FC:definition>
 			<S100FC:code>iD</S100FC:code>
 			<S100FC:alias>ID</S100FC:alias>
-			<!--S100FC:definitionReference>
-				<S100FC:sourceIdentifier>missing, need to be change after the approval in the IHO registry</S100FC:sourceIdentifier>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1251</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference-->
+			</S100FC:definitionReference>
 			<S100FC:valueType>integer</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 	</S100FC:S100_FC_SimpleAttributes>
