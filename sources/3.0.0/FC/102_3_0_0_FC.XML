@@ -68,7 +68,7 @@
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>ID</S100FC:name>
-			<S100FC:definition>Meta data identifier for QualityOfBathymetric Coverage</S100FC:definition>
+			<S100FC:definition>1251</S100FC:definition>
 			<S100FC:code>iD</S100FC:code>
 			<S100FC:alias>ID</S100FC:alias>
 			<!--S100FC:definitionReference>
