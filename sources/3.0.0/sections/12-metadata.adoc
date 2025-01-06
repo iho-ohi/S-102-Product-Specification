@@ -42,6 +42,7 @@ image::../images/figure-page-intentionally-left-blank.svg[]
 .S-102 Exchange Set Class Details (<<iho-s100,part=17,figure=7>> with items not used by S-102 omitted)
 image::../images/figure-s102-exchange-set-class-details.png[]
 <<<
+
 image::../images/figure-page-intentionally-left-blank.svg[]
 [%portrait]
 <<<
@@ -58,6 +59,7 @@ The exchange language must be English.
 
 Character strings must be encoded using the character set defined in <<iso-10646-1>>, in Unicode Transformation Format-8 (UTF-8). A BOM (byte order mark) must not be used.
 <<<
+
 image::../images/figure-page-intentionally-left-blank.svg[]
 [%landscape]
 <<<
