@@ -34,16 +34,14 @@ image::../images/figure-components-and-associated-metadata-for-the-s102-exchange
 [[fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset]]
 .Relationship between exchange catalogue, discovery metadata, and dataset (<<iho-s100,part=17,figure=6>> with items not used by S-102 omitted)
 image::../images/figure-relationship-between-exchange-catalogue-discovery-metadata-and-dataset.png[]
-<<<
-image::../images/figure-page-intentionally-left-blank.svg[]
+
 [%landscape]
 <<<
+
 [[fig-s102-exchange-set-class-details]]
 .S-102 Exchange Set Class Details (<<iho-s100,part=17,figure=7>> with items not used by S-102 omitted)
 image::../images/figure-s102-exchange-set-class-details.png[]
-<<<
 
-image::../images/figure-page-intentionally-left-blank.svg[]
 [%portrait]
 <<<
 
@@ -58,9 +56,8 @@ The S-102 exchange catalogue uses the S-100 exchange catalogue schemas which are
 The exchange language must be English.
 
 Character strings must be encoded using the character set defined in <<iso-10646-1>>, in Unicode Transformation Format-8 (UTF-8). A BOM (byte order mark) must not be used.
-<<<
 
-image::../images/figure-page-intentionally-left-blank.svg[]
+
 [%landscape]
 <<<
 
@@ -608,5 +605,3 @@ S-102 uses S100_SE_DigitalSignature without modification. As stated in <<iho-s10
 
 "The class S100_SE_DigitalSignature is realized as one of either S100_SE_SignatureOnData (a digital signature of a particular identified resource) or an additional digital signature defined using the class S100_SE_AdditionalSignature, each of which is either a S100_SE_SignatureOnData or S100_SE_SignatureOnSignature element as described in <<iho-s100,part=15,clause=8.8>>. <<iho-s100,part=17>> metadata thus allows for multiple digital signatures, a single mandatory S100_SE_SignatureOnData and any number of additional signatures, either of the data or other signatures."
 
-<<<
-image::../images/figure-page-intentionally-left-blank.svg[]
