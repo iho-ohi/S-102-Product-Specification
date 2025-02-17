@@ -37,6 +37,7 @@ image::../images/figure-relationship-between-exchange-catalogue-discovery-metada
 
 [%landscape]
 <<<
+
 [[fig-s102-exchange-set-class-details]]
 .S-102 Exchange Set Class Details (<<iho-s100,part=17,figure=7>> with items not used by S-102 omitted)
 image::../images/figure-s102-exchange-set-class-details.png[]
@@ -55,6 +56,7 @@ The S-102 exchange catalogue uses the S-100 exchange catalogue schemas which are
 The exchange language must be English.
 
 Character strings must be encoded using the character set defined in <<iso-10646-1>>, in Unicode Transformation Format-8 (UTF-8). A BOM (byte order mark) must not be used.
+
 
 [%landscape]
 <<<
@@ -87,7 +89,7 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |Metadata about the individual datasets in the Exchange Catalogue
 |-
 |-
-|*The optional S-100 attributes _updateNubmer_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
+|*The optional S-100 attributes _updateNumber_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
 *References to support file discovery metadata are not permitted because S-102 does not use support files.*
 
 |Attribute
@@ -164,10 +166,11 @@ _False_ indicates the resource is not copyrighted.
 |Attribute
 |classification
 |Indicates the security classification of the dataset
-|0..1
+|1
 |Class +
 MD_SecurityConstraints>MD_ClassificationCode (codelist)
-|[loweralpha]
+|*Mandatory in S-102* +
+[loweralpha]
 . unclassified
 . restricted
 . confidential
@@ -249,9 +252,9 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |Attribute
 |producerCode
 |The official IHO Producer Code from S-62
-|0..1
+|1
 |CharacterString
-|-
+|*Mandatory in S-102*
 
 |Attribute
 |encodingFormat
@@ -503,7 +506,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |*1*
 |CharacterString
 |TR 2/2007 specifies versioning of Product Specifications +
-*Example: 030000 for S-102 Edition 3.0.0*
+*Example: 3.0.0 for S-102 Edition 3.0.0*
 
 |Attribute
 |date
@@ -526,7 +529,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |1
 |Integer
 |For IHO Product Specifications, these numbers should be taken from the IHO Product Specification Register in the IHO GI Registry. +
-*The corresponding Idx-number of the IHO Registry for S-102 is numbered 199.*
+*The corresponding Idx-number of the IHO Registry for S-102 Ed. 3.0.0 is 215.*
 
 |Attribute
 |compliancyCategory
@@ -601,3 +604,4 @@ In accordance with <<iho-s100,part=15>>, only the ECDSA algorithm is allowed fro
 S-102 uses S100_SE_DigitalSignature without modification. As stated in <<iho-s100,part=15,clause=15-8.11.3>>:
 
 "The class S100_SE_DigitalSignature is realized as one of either S100_SE_SignatureOnData (a digital signature of a particular identified resource) or an additional digital signature defined using the class S100_SE_AdditionalSignature, each of which is either a S100_SE_SignatureOnData or S100_SE_SignatureOnSignature element as described in <<iho-s100,part=15,clause=8.8>>. <<iho-s100,part=17>> metadata thus allows for multiple digital signatures, a single mandatory S100_SE_SignatureOnData and any number of additional signatures, either of the data or other signatures."
+
