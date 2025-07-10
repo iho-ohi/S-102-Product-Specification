@@ -717,7 +717,7 @@ unsigned +
 16-bit
 | see remark <<tab-root-group-attributes>> +
 row *vertical datum* +
-and <<mvdvdr>> +
+and <<mvdvdr,Multiple Vertical Datum>> +
 Mandatory for feature instance groups with a different vertical datum from that specified in the Root Group +
 (prohibited otherwise)
 
@@ -731,7 +731,7 @@ unsigned +
 8-bit
 | The only allowed value is 1: s100VerticalDatum +
 (see <<iho-s100,part=10c,table=23>>). +
-see <<mvdvdr>> +
+see <<mvdvdr,Multiple Vertical Datum>> +
 Mandatory if this value were to differ from what is contained in the Root Group +
 |===
 
