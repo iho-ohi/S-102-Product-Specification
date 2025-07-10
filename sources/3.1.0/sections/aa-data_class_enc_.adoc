@@ -1,0 +1,99 @@
+
+[%portrait]
+<<<
+
+[[annex-data-classification-and-encoding-guide]]
+:appendix-caption: Annex
+[appendix]
+== Data Classification and Encoding Guide
+
+=== Features
+
+==== BathymetryCoverage
+
+.BathymetryCoverage feature parameters
+[cols="a,a,a,a"]
+|===
+
+4+|*Term*: Bathymetry Coverage
+
+4+|*IHO Definition*: A set of value items required to define a dataset representing a depth calculation and its associated uncertainty.
+
+4+|*Primitive*: S100_IF_GridCoverage
+
+
+h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
+
+|depth
+|Must be in decimal metres with resolution not to exceed 0.01 metres
+|real (32-bit Float)
+|1
+
+|uncertainty
+|Must be in decimal metres with resolution not to exceed 0.01 metres
+|real (32-bit Float)
+|0..1
+|===
+
+==== QualityOfBathymetryCoverage
+
+.QualityOfBathymetryCoverage feature parameters
+[cols="a,a,a,a"]
+|===
+
+4+|*Term*: Quality Of Bathymetry Coverage. 
+
+4+|*IHO Definition*: A set of references to value records that provide localised information about depth, uncertainties, and bathymetry coverage metadata.
+
+4+|*Primitive*: S100_IF_GridCoverage
+
+h|Attribute h|Constraint h|Type h|Multiplicity
+
+|iD
+|Each record must have a unique identifier.
+|unsigned 32-bit Integer
+|1
+|===
+
+=== Feature Attributes
+
+==== BathymetryCoverage
+
+.BathymetryCoverage feature attribute parameters
+[cols="a"]
+|===
+
+|IHO Definition: *depth*. The vertical distance from a given water level to the bottom [<<iho-s32>>].
+
+|Unit: metres
+
+|Resolution: 0.01
+
+|Remarks:
+
+* Drying heights (drying depths) are indicated by a negative value.
+
+|IHO Definition: *uncertainty*. Estimate characterising the range of values within which the true value of a measurement is expected to lie as defined within a particular confidence level. It is expressed as a positive value.
+
+|Unit: metres
+
+|Resolution: 0.01
+
+|Remarks:
+
+* Represents a +/- value defining the possible range of associated depth.
+* Expressed as a positive number.
+
+|===
+
+==== QualityOfBathymetryCoverage
+
+.QualityOfBathymetryCoverage feature attribute parameters
+[cols="a"]
+|===
+|IHO Definition: *iD*. Meta data record identifier for QualityOfBathymetryCoverage
+|Unit:
+|Resolution:
+|Remarks:
+|===
+
