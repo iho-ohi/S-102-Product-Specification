@@ -1,0 +1,43 @@
+
+[[sec-coordinate-reference-systems-crs]]
+== Coordinate Reference Systems (CRS)
+
+=== Introduction
+
+The Coordinate Reference System information contained in <<tab-s102-coordinate-reference-systems-epsg-codes>> is defined in the manner specified in <<iho-s100,part=6>>. The vertical datum is specified separately using other root group attributes.
+
+
+[[horizontal-crs]]
+=== Horizontal Coordinate Reference System
+
+[[tab-s102-coordinate-reference-systems-epsg-codes]]
+.S-102 Coordinate Reference Systems (EPSG Codes)
+[cols="2"]
+|===
+h|EPSG Code h|Coordinate Reference System
+|4326 |WGS84
+|32601 - 32660 |WGS 84 / UTM Zone 1N to Zone 60N
+|32701 - 32760 |WGS 84 / UTM Zone 1S to Zone 60S
+|5041 |WGS 84 / UPS North (E,N)
+|5042 |WGS 84 / UPS South (E,N)
+2+|The full reference to EPSG can be found at link:https://epsg.org/[https://epsg.org].
+|===
+
+
+*Horizontal Coordinate Reference System*:: EPSG (see <<tab-s102-coordinate-reference-systems-epsg-codes>>)
+*Projection*:: NONE/UTM/UPS
+*Temporal reference system*:: Gregorian Calendar
+*Coordinate Reference System registry*:: link:https://epsg.org/[EPSG Geodetic Parameter Dataset]
+*Date type (according to <<iso-19115-1>>)*:: 002 - publication
+*Responsible party*:: International Association of Oil & Gas Producers (IOGP)
+*URL*:: https://www.iogp.org/
+
+
+=== Vertical Coordinate Reference System
+Although in this product there are no direct vertical coordinates the values of the depth attributes are indirectly such coordinates. Therefore, it is important to specify the vertical CRS to which these values conform. The vertical CRS is an earth gravity-based, one-axis coordinate system. The Orientation of the axis is defined by the vertical coordinate system attribute (_verticalCS_) in the root group (see <<tab-root-group-attributes>>).
+
+The vertical datum must be taken from the code-list specified by the IHO Geospatial Information (GI) Registry for the attribute named _Vertical Datum_. It will be defined in the root group as an HDF5 attribute (see <<tab-root-group-attributes>>).
+
+
+=== Temporal reference system
+The temporal reference system is the Gregorian calendar for date and UTC for time. Time is measured by reference to Calendar dates and Clock time in accordance with <<iso-8601,clause=5.4.4>>. A date-time variable will have the following 16-character format: _yyyymmddThhmmssZ_.

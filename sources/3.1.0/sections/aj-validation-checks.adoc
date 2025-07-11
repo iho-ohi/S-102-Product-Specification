@@ -1,0 +1,153 @@
+
+[[annex-validation-checks]]
+[appendix]
+== Validation
+
+=== Introduction
+The following checks are intended for production systems designed to produce S-102 datasets. The checks can be administered at any time during the production phase. They can also be applied downstream in the distribution and end user systems to test the conformance of a dataset to the format rules specified in S-100 Part 10c and the S-102 Product Specification.
+
+=== Check Classification
+Checks are classified as critical, error, or warning checks as described in the Table below.
+
+[[tab-check-classification]]
+.Classification of checks
+[cols="a,a,a",options="header"]
+|===
+|Category Code | Category Name | Category Description
+
+| C	| Critical Error	| An error which would make a dataset unusable in ECDIS through not loading or causing an ECDIS to crash or presenting data which is unsafe for navigation.
+
+| E	| Error	| An error which may degrade the quality of the dataset through appearance or usability but which will not pose a significant danger when used to support navigation.
+
+| W	| Warning	| An error which may be duplication or an inconsistency which will not noticeably degrade the usability of a dataset in ECDIS.
+
+|===
+
+=== Check Application
+Checks do not apply to dataset terminations or cancellations, except where the check description explicitly states it applies in case of a termination or cancellation.
+
+The checks apply to each HDF5 file which constitutes a dataset (in the S-100 sense of “dataset” as an entire HDF5 file).
+
+There being no update dataset format defined in S-102, checks are not designated as applying to “base” or “update” datasets.
+
+=== Validation Steps
+==== Dataset validation
+
+Dataset validation checks the structure and content of individual HDF5 data files. The checks for each HDF5 dataset file are divided into five phases:
+
+[[tab-phases-in-validation-processing-for-HDF5-datasets]]
+.Phases in validation processing for HDF5 datasets
+[cols="a,a,a",options="header"]
+|===
+| Phase	| Name	| Description
+
+| 1	| Validate Dataset Root and Feature Information	| Validation of root group of HDF5 file and feature type information.
+
+| 2	| Validate Feature Container Groups	| Validation of metadata and structure for each feature type (“Feature Container”). In S-102 there are two feature containers (one for the bathymetry data and another for survey information), so this set of checks is executed only once for each. If future Editions introduce more feature container HDF5 groups, this set must be executed for each feature container HDF5 group.
+
+| 3	| Validate Feature Instance Groups	| Validation of feature instances. This set of checks, along with Phase 4 and 5 checks, must be executed once for each feature instance group contained within a feature container.
+
+| 4	| Validate Values Datasets	| Validation of bathymetry data values. This set of checks is applied to the values group in a feature instance group.
+
+| 5 | Validate Quality Information | Validation of quality information. This set of checks is applied to the QualityOfBathymetryCoverage group and executed if and only if that group is present.
+
+|===
+
+Since S-102 uses regular grids which do not require explicit positioning for individual grid points as described in <<iho-s100,part=10c,clause=9.10>>, there is no Positioning group and the corresponding validation phase is not required in S-102.
+
+Certain check failures in earlier phases prevent progress to later phases (for example, because information for the later phase is not available). If such checks fail, processing of other checks in the current phase may continue, but subsequent phases cannot be executed due to a lack of necessary information.
+
+==== Exchange Set validation (informative)
+
+Exchange Set validation involves the following phases.
+
+. Checking the presence and correctness of the Exchange Catalogue (CATALOG.XML).
+
+. Verification of signatures, including the Exchange Catalogue signature and signatures for individual datasets, catalogues, and support files.
+
+. Checking the structure and contents of the Exchange Set package, including whether there is a discovery block for each file in the Exchange Set.
+
+. Checking that the metadata encoded in a discovery block and the headers and embedded metadata in the corresponding dataset or Catalogue are compatible.
+
+Generalised checks for Exchange Set validation are being developed by the S-100WG and will be introduced into S-102 when ready.
+
+==== System validation (informative)
+
+System validation consists of verifying the suitability of the Exchange Set and dataset for its intended use and its compatibility with other data products with which it will be used. For example, an S-102 dataset intended for use on an ECDIS should:
+
+* Conform to the applicable user experience requirements for coverage data specified in S-98 Annex C (User Experience);
+
+* Use the same datum as the underlying ENC(s), in order to be usable for water level adjustment calculations.
+
+The requirements for system validation are under development at this time and will be described in a separate specification.
+
+// Testing of system-level requirements is currently (August 2023) TBD as is the location of requirements (S-98 Annex C?). Tests are currently (August 2023) under development by the S-100 validation checks subgroup, in the form of "S-100-level validation checks" and should be tested using test datasets in S-164 (also currently under development).
+
+=== Check Description Format
+
+==== Specification of validation checks
+
+Individual checks are defined in the format described in <<tab-check-specification-format>>.
+
+[[tab-check-specification-format]]
+.Check specification format
+[cols="a,2a",options="header"]
+|===
+| Column	| Description
+
+|Data Quality Measure or Theme	| Quality measure or theme from S-97 Part C. +
+If two measures are included in this column, the Comments column explains how the error should be classified.
+
+| Check ID	| Identifier for check.
+
+| Short Name	| Short name for the check.
+
+| Prerequisite check(s)	| Checks which must succeed (check condition evaluates to FALSE) before this check can be executed. +
+Trivial prerequisites are omitted from this column (such as requiring the presence of an attribute before using it in a condition).
+
+| Context test (IF ...) or  initialization (SET ...)	| Combination of test conditions and initialization statements. +
+Test conditions check for the existence of an HDF5 attribute, group, or other element (for example, an HDF5 array), the value of a metadata attribute, or for required conditions applicable to combinations of attributes (for example, checking that cell size, numbers of rows and columns, and the geographical extent of the grid are mutually consistent). +
+Initialization statements set the value of parameters used in the specific test in that row. +
+The scope of the test condition or initialization is limited to the check described in that row.
+| Check condition description	| Specification of check condition, written in structured English. +
+The conditions are written so that if the condition evaluates to TRUE it indicates an error or other issue exists in the dataset.
+
+| Check message	| Message to emit if dataset fails the check condition (condition evaluates to TRUE). +
+Implementers should include the location where the error is encountered (for example, the name and path from the root group).
+
+| Check solution	| Solution to be applied to correct the failure.
+
+| Classification	| Whether check failure is a Critical, Error, or Warning issue. See <<tab-check-classification>>.
+
+| Post-condition	| Action to be executed if the check condition evaluates to TRUE (that is, if the check fails). +
+This action will generally either set a global flag to control check processing (for example, “SET TERMINATE=TRUE”) or set a variable in the processing context which is used in later checks (for example, set a context variable to store the value of the metadata attribute dataCodingFormat).
+
+| S-100 reference	| Reference to place in S-100 where more information about the check can be found, for example lists of allowed values for enumerations. All S-100 references for checks conforming to this Edition of S-102 are to S-100 Edition 5.0.0.
+
+| S-102 reference	| Reference to place in S-102 where more information about the check can be found, for example allowed values for attributes of enumeration types.
+
+| Comments	| Explanatory remarks or additional notes.
+
+|===
+
+==== Phase initialization
+
+Certain parameters need to be initialized before processing of the phase begins. The required initialization statements are indicated in a sub-head row at the beginning of each phase.
+
+==== List of checks
+
+The individual checks are given in a spreadsheet file accompanying this Product Specification. The checks are a part of this Product Specification.
+
+
+Words in angle brackets <> indicate the content is a parameter which must be substituted by the appropriate value. For example, <FX> (Phase 1 in the dataset checks) should be replaced by the appropriate codes for the bathymetry coverage and quality coverage features (BathymetryCoverage and QualityOfBathymetryCoverage for S-102 Ed. 2.2.0).
+
+Bold type indicates a literal name (for example Group_F.featureCode means the HDF5 array named “featureCode” in the HDF5 group named “Group_F”).
+
+Comparisons of names in the HDF5 dataset, exchange catalogue, and exchange set (groups, attributes, HDF5 datasets, fields of compound types, etc.) to the Product Specification and feature catalogue should be case-sensitive.
+
+Additional "S-100 level" checks will be defined in a separate document (under preparation by the S-100 WG).
+
+=== Test cases and methods
+
+(To be defined.)
+
