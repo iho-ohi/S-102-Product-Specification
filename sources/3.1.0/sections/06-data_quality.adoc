@@ -182,3 +182,5 @@ See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 
 Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
+=== Aggregation
+Aggregation isn’t applicable for {series}-{docnumber} because there is no need to aggregated data quality results based on different data quality elements. 
