@@ -216,9 +216,33 @@ The data quality for the depth coverage is also defined as a co-located optional
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 
-=== Temporal accuracy
+=== Temporal quality
 
-Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+==== Temporal consistency
+
+[EDITOR]
+--
+Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+--
+
+Temporal Consistency isn’t applicable for {series}-{docnumber} which is a Product Specification without ordered events or sequences.
+
+==== Temporal validity
+
+==== Temporal accuracy
+
+[EDITOR]
+--
+Chosen Option 2; 2a.1 & 2b.1
+
+Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
+--
+
+Temporal validity is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with temporal validity checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
+
+Temporal accuracy of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
 === Aggregation
 Aggregation isn’t applicable for {series}-{docnumber} because there is no need to aggregated data quality results based on different data quality elements. 
