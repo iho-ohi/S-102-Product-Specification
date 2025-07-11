@@ -19,6 +19,7 @@ For {series}-{docnumber} the following Data Quality Elements have been included:
 ** Specific tests for a specific data model.
 
 === Completeness
+The presence and absence of features is described by the data quality elements Completeness (including commission and omission). Completeness should only be used on the feature type level, describing whether the features in the universe of discourse are found in the data set or not. 
 
 ==== Commission
 Commission is applicable for S-102. Data Producers must verify that no excess items have been included in the dataset. Such excess items include duplicate items, which must be removed.
