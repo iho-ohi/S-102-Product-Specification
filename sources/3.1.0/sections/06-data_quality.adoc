@@ -118,7 +118,7 @@ Vertical position accuracy is applicable for {series}-{docnumber} and follows th
 
 [EDITOR]
 --
-No applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
 --
 
 Horizontal position accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a horizontal coordinative value associated. 
@@ -170,7 +170,17 @@ stem:[GSD = "Ground Sampling Distance"]
 For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
 
 ==== Non-quantitative attribute accuracy
-Thematic accuracy of S-102 bathymetric data is wholly quantitative.
+
+[EDITOR]
+--
+Choosed Option 1
+
+Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+
+The new text is the replacement text of the old template
+--
+
+Non-quantitative attribute accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a non-quantitative attribute value.
 
 
 ==== Quantitative attribute accuracy
