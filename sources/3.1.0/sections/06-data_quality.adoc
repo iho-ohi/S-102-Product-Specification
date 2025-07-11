@@ -27,12 +27,10 @@ The presence and absence of features is described by the data quality elements C
 --
 Choosed Option a1 -> fits to previous text.
 
-data quality scope *&lt;XXX&gt;* -> must be replaced -> What is this?
-
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 --
 
-Commission is applicable for {series}-{docnumber} or the data quality scope [.red]#*&lt;XXX&gt;*# of {series}-{docnumber}.
+Commission is applicable for {series}-{docnumber}.
 
 {series}-{docnumber} products must be tested with commission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex  [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
 
@@ -42,12 +40,10 @@ Commission is applicable for {series}-{docnumber} or the data quality scope [.re
 --
 Choosed Option a1 -> fits to previous text.
 
-data quality scope *&lt;XXX&gt;* -> must be replaced -> What is this?
-
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 --
 
-Omission is applicable for {series}-{docnumber} or the data quality scope [.red]#*&lt;XXX&gt;*# of {series}-{docnumber}. 
+Omission is applicable for {series}-{docnumber}. 
 
 {series}-{docnumber} products must be tested with omission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
 
