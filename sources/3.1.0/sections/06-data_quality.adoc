@@ -128,7 +128,12 @@ Horizontal position accuracy isn’t applicable for {series}-{docnumber} which i
 [EDITOR]
 --
 Chosen Option 2b.1 -> Using old text.
+Added Option 2 & 2a.1 also
 --
+
+Relative or internal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with relative or internal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes a particular test.
 
 The internal positional accuracy is defined as the precision of the location of each grid point within the {series}-{docnumber} grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for {series}-{docnumber} defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
 
