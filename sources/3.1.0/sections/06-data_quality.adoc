@@ -95,13 +95,66 @@ Format Consistency is applicable for {series}-{docnumber} and follows the guidel
 ==== Topological consistency
 Topological consistency isn’t applicable for {series}-{docnumber} which is a grid Product Specification without curves and geometric surfaces.
 
-=== Positional accuracy
+=== Positional uncertainty and accuracy
+
+==== Absolute or external accuracy
+
+===== Vertical position accuracy
+
+[EDITOR]
+--
+Is applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+--
+
+===== Horizontal position accuracy
+
+[EDITOR]
+--
+No applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+--
+
+Horizontal position accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a horizontal coordinative value associated. 
+
+==== Relative or internal accuracy
+
+[EDITOR]
+--
+Choosed Option 2b.1 -> Using old text.
+--
+
+The internal positional accuracy is defined as the precision of the location of each grid point within the {series}-{docnumber} grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for {series}-{docnumber} defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
 
 ==== Gridded data positional accuracy
-Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each grid point using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference point and spatial resolution are important and are another factor in gridded positional accuracy.
 
-==== Relative internal positional accuracy
-The internal positional accuracy is defined as the precision of the location of each grid point within the S-102 grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for S-102 defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
+[EDITOR]
+--
+Choosed Option 2 & 2a.1
+
+Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
+
+What about paragraph 4, 5 -> these are part of the template for option 2 -> Where to populate RMSErrorPlanimetry?
+--
+
+Gridded data positional accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
+
+{series}-{docnumber} products must be tested with gridded data positional accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
+
+Gridded data positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the {series}-{docnumber} grid. Nodes within a grid have an absolute position. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values that are calculated for that position by the processes and procedures used by each Data Producer during the creation of the {series}-{docnumber} grid. Appropriate selection of both the origin reference points and positional resolution are important and are another factor in gridded data positional accuracy.
+
+In terms of gridded data positional accuracy, {series}-{docnumber} products shall at least populate 
+RMSErrorPlanimetry that indicates the radius of a circle around the given point, in which the true value lies 
+with probability P.
+
+Recommendations on thresholds for gridded data positional accuracy are as follows:
+
+[align=center]
+stem:["Maximum RMSE"_"horizontal" = (GSD)/6] +
+stem:["Maximum RMSE"_"vertical" = (GSD)/3]
+
+Where:
+
+[align=center]
+stem:[GSD = "Ground Sampling Distance"]
 
 === Temporal accuracy
 
