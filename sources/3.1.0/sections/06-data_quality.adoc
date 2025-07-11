@@ -1,7 +1,22 @@
 
 [[sec-data-quality]]
 == Data Quality
+=== Introduction to data quality
 Data quality allows users and user systems to assess fitness for use of the provided data. Data quality measures and the associated evaluation are reported as metadata of a data product. This metadata improves interoperability with other data products and provides usage by user groups that the data product was not originally intended for. The secondary users can make assessments of the data product usefulness in their application based on the reported data quality measures.
+
+For {series}-{docnumber} the following Data Quality Elements have been included:
+
+* Conformance to this Product Specification; 
+* Intended purpose of the data product; 
+* Completeness of the data product in terms of coverage; 
+* Logical consistency; 
+* Positional uncertainty and accuracy; 
+* Thematic accuracy; 
+* Temporal quality; 
+* Aggregation measures; 
+* Validation checks or conformance checks including:
+** General tests for dataset integrity;
+** Specific tests for a specific data model.
 
 === Completeness
 
