@@ -229,8 +229,6 @@ Temporal Consistency isn’t applicable for {series}-{docnumber} which is a Prod
 
 ==== Temporal validity
 
-==== Temporal accuracy
-
 [EDITOR]
 --
 Chosen Option 2; 2a.1 & 2b.1
@@ -241,6 +239,21 @@ Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 Temporal validity is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
 {series}-{docnumber} products must be tested with temporal validity checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
+
+Temporal validity of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+
+==== Temporal accuracy
+
+[EDITOR]
+--
+Chosen Option 2; 2a.1 & 2b.1
+
+Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
+--
+
+Temporal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with temporal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
 
 Temporal accuracy of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
