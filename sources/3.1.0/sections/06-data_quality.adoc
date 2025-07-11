@@ -164,10 +164,6 @@ Where:
 [align=center]
 stem:[GSD = "Ground Sampling Distance"]
 
-=== Temporal accuracy
-
-Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
-
 === Thematic accuracy
 
 ==== Thematic classification correctness
@@ -181,4 +177,8 @@ Thematic accuracy of S-102 bathymetric data is wholly quantitative.
 As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
+
+=== Temporal accuracy
+
+Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
