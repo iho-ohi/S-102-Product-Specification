@@ -25,7 +25,7 @@ The presence and absence of features is described by the data quality elements C
 
 [EDITOR]
 --
-Choosed Option a1 -> fits to previous text.
+Chosen Option a1 -> fits to previous text.
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 --
@@ -38,7 +38,7 @@ Commission is applicable for {series}-{docnumber}.
 
 [EDITOR]
 --
-Choosed Option a1 -> fits to previous text.
+Chosen Option a1 -> fits to previous text.
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 --
@@ -53,7 +53,7 @@ Omission is applicable for {series}-{docnumber}.
 
 [EDITOR]
 --
-Choosed Option a1 -> fits to previous text.
+Chosen Option a1 -> fits to previous text.
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 --
@@ -66,7 +66,7 @@ Conceptual Consistency is applicable for {series}-{docnumber} and follows the gu
 
 [EDITOR]
 --
-Choosed Option a1 -> fits to previous text.
+Chosen Option a1 -> fits to previous text.
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 
@@ -81,7 +81,7 @@ Domain consistency is applicable for {series}-{docnumber} and follows the guidel
 
 [EDITOR]
 --
-Choosed Option a1 -> fits to previous text.
+Chosen Option a1 -> fits to previous text.
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 
@@ -105,7 +105,7 @@ Topological consistency isn’t applicable for {series}-{docnumber} which is a g
 --
 Is applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
 
-Choosed Option 2 & 2a.1
+Chosen Option 2 & 2a.1
 
 Needs a review by the S-102PT if Option 2b.1 or 2b.2 is applicable instead Option 2a.1
 --
@@ -127,7 +127,7 @@ Horizontal position accuracy isn’t applicable for {series}-{docnumber} which i
 
 [EDITOR]
 --
-Choosed Option 2b.1 -> Using old text.
+Chosen Option 2b.1 -> Using old text.
 --
 
 The internal positional accuracy is defined as the precision of the location of each grid point within the {series}-{docnumber} grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for {series}-{docnumber} defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
@@ -136,7 +136,7 @@ The internal positional accuracy is defined as the precision of the location of 
 
 [EDITOR]
 --
-Choosed Option 2 & 2a.1
+Chosen Option 2 & 2a.1
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 
@@ -170,7 +170,7 @@ stem:[GSD = "Ground Sampling Distance"]
 
 [EDITOR]
 --
-Choosed Option a1 & b1 (with old text)
+Chosen Option a1 & b1 (with old text)
 
 Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 
@@ -189,7 +189,7 @@ For {series}-{docnumber} bathymetric grids there are two classifications of data
 
 [EDITOR]
 --
-Choosed Option 1
+Chosen Option 1
 
 Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
 
@@ -200,7 +200,19 @@ Non-quantitative attribute accuracy isn’t applicable for {series}-{docnumber} 
 
 
 ==== Quantitative attribute accuracy
-As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
+
+[EDITOR]
+--
+Chosen Option 2; 2a.1 & 2b.1
+
+Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
+--
+
+Quantitative attribute accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with quantitative attribute accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
+
+The data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 
