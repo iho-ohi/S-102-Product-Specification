@@ -77,14 +77,20 @@ Domain consistency is applicable for {series}-{docnumber} and follows the guidel
 
 {series}-{docnumber} products must be tested with domain consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
 
-==== Format consistency
-Format Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=10c>>.
+==== Format Consistency
 
-Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification.
+[EDITOR]
+--
+Choosed Option a1 -> fits to previous text.
 
-If the dataset conforms to <<sec-data-product-format-encoding>>, the dataset PASSES this test.
+Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
 
+What about the sentence: "Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification." -> remove?
+--
 
+Format Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=10c>>.
+
+{series}-{docnumber} products must be tested with format consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
 
 === Positional accuracy
 
