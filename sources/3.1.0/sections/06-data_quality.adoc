@@ -167,7 +167,23 @@ stem:[GSD = "Ground Sampling Distance"]
 === Thematic accuracy
 
 ==== Thematic classification correctness
-For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
+
+[EDITOR]
+--
+Choosed Option a1 & b1 (with old text)
+
+Annex *&lt;X&gt;* -> must be replaced -> Is that S-158:102?
+
+Two classifications (land & water)? Isn't it just water, because all other values are no data values?
+
+Different vertical datums can be expressed by the use of multiple instances of the BathymetryCoverage. Is the old text still valid and meaningful?
+--
+
+Thematic classification correctness is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
+
+{series}-{docnumber} products must be tested with thematic classification correctness checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in Annex [.red]#*&lt;X&gt;*#. Data should only be published if it passes the test.
+
+For {series}-{docnumber} bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the {series}-{docnumber} bathymetric grid are based on the vertical datum chosen by Data Producer. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
 
 ==== Non-quantitative attribute accuracy
 
