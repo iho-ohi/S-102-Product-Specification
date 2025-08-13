@@ -22,6 +22,7 @@ https://iho.int[IHO] website.*
 
 This repository contains the source files of S-102 standards, including:
 
+* S-102 3.1.0
 * S-102 3.0.0
 * S-102 2.2.0
 
