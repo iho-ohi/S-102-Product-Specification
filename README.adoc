@@ -13,17 +13,17 @@ This document is available in its rendered forms here:
 This is the IHO repository for developing the next edition of
 the S-102 Bathymetric Surface Product Specification.
 
-WARNING: The contents of this repository are in draft form and are not necessarily in force yet.
+*WARNING: The contents of this repository are in draft form and are not necessarily in force yet.
 Please refer to the final version published on the official
-https://iho.int[IHO] website.
+https://iho.int[IHO] website.*
 
 
 == General
 
 This repository contains the source files of S-102 standards, including:
 
+* S-102 3.0.0
 * S-102 2.2.0
-* S-102 3.0.0 (in development)
 
 These documents are encoded in the
 https://www.metanorma.org/author/topics/document-format/[Metanorma AsciiDoc format].
