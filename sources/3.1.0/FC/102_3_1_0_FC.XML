@@ -3,8 +3,8 @@
 	<S100FC:name>S-102</S100FC:name>
 	<S100FC:scope>Global</S100FC:scope>
 	<S100FC:fieldOfApplication>Marine Navigation</S100FC:fieldOfApplication>
-	<S100FC:versionNumber>3.0.0</S100FC:versionNumber>
-	<S100FC:versionDate>2024-12-05</S100FC:versionDate>
+	<S100FC:versionNumber>3.1.0</S100FC:versionNumber>
+	<S100FC:versionDate>2025-08-04</S100FC:versionDate>
 	<S100FC:productId>S-102</S100FC:productId>
 	<S100FC:producer>
 		<S100CI:role>pointOfContact</S100CI:role>
@@ -87,8 +87,12 @@
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Data Assessment</S100FC:name>
-			<S100FC:definition>The categorization of the assessment level of bathymetric data for an area.</S100FC:definition>
+			<S100FC:definition>The categorization of the assessment level of bathymetric data for an area.</S100FC:definition>
 			<S100FC:code>dataAssessment</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>203</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
@@ -119,35 +123,35 @@
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
 			</S100FC:listedValues>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>203</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Least Depth of Detected Features Measured</S100FC:name>
-			<S100FC:definition>Expression stating if the least depth of detected features in an area was measured.</S100FC:definition>
+			<S100FC:definition>Expression stating if the least depth of detected features in an area was measured.</S100FC:definition>
 			<S100FC:code>leastDepthOfDetectedFeaturesMeasured</S100FC:code>
-			<S100FC:valueType>boolean</S100FC:valueType>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>206</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:valueType>boolean</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Significant Features Detected</S100FC:name>
-			<S100FC:definition>A statement expressing if significant features have or have not been detected in the course of a survey.</S100FC:definition>
+			<S100FC:definition>A statement expressing if significant features have or have not been detected in the course of a survey.</S100FC:definition>
 			<S100FC:code>significantFeaturesDetected</S100FC:code>
-			<S100FC:valueType>boolean</S100FC:valueType>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>218</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:valueType>boolean</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Size of Features Detected</S100FC:name>
-			<S100FC:definition>The size of detected bathymetric features in an area.</S100FC:definition>
+			<S100FC:definition>The size of detected bathymetric features in an area.</S100FC:definition>
 			<S100FC:code>sizeOfFeaturesDetected</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1227</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG"/>
+			</S100FC:definitionReference>
 			<S100FC:valueType>real</S100FC:valueType>
 			<S100FC:uom>
 				<S100Base:name>metre</S100Base:name>
@@ -158,16 +162,17 @@
 					<S100Base:lowerBound>0</S100Base:lowerBound>
 					<S100Base:closure>gtSemiInterval</S100Base:closure>
 				</S100CD:range>
+				<S100CD:precision>2</S100CD:precision>
 			</S100FC:constraints>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>1227</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Feature Size Variable</S100FC:name>
-			<S100FC:definition>Percentage of depth that a feature of such size could be detected.</S100FC:definition>
+			<S100FC:definition>Percentage of depth that a feature of such size could be detected.</S100FC:definition>
 			<S100FC:code>featureSizeVariable</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1234</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG"/>
+			</S100FC:definitionReference>
 			<S100FC:valueType>real</S100FC:valueType>
 			<S100FC:uom>
 				<S100Base:name>Percent</S100Base:name>
@@ -179,36 +184,37 @@
 					<S100Base:upperBound>100.0</S100Base:upperBound>
 					<S100Base:closure>closedInterval</S100Base:closure>
 				</S100CD:range>
+				<S100CD:precision>1</S100CD:precision>
 			</S100FC:constraints>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>1234</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Full Seafloor Coverage Achieved</S100FC:name>
-			<S100FC:definition>Expression stating if full seafloor coverage has been achieved in the area by hydrographic surveys.</S100FC:definition>
+			<S100FC:definition>Expression stating if full seafloor coverage has been achieved in the area by hydrographic surveys.</S100FC:definition>
 			<S100FC:code>fullSeafloorCoverageAchieved</S100FC:code>
-			<S100FC:valueType>boolean</S100FC:valueType>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>204</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:valueType>boolean</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Bathy Coverage Achieved</S100FC:name>
-			<S100FC:definition>False for grid cells populated by interpolation.</S100FC:definition>
+			<S100FC:definition>False for grid cells populated by interpolation.</S100FC:definition>
 			<S100FC:code>bathyCoverageAchieved</S100FC:code>
-			<S100FC:valueType>boolean</S100FC:valueType>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>1244</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:valueType>boolean</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Uncertainty Fixed</S100FC:name>
-			<S100FC:definition>The best estimate of the fixed horizontal or vertical accuracy component for positions, depths,heights, vertical distances, and vertical clearances.</S100FC:definition>
+			<S100FC:definition>The best estimate of the fixed horizontal or vertical accuracy component for positions, depths,heights, vertical distances, and vertical clearances.</S100FC:definition>
 			<S100FC:code>uncertaintyFixed</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1231</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG"/>
+			</S100FC:definitionReference>
 			<S100FC:valueType>real</S100FC:valueType>
 			<S100FC:uom>
 				<S100Base:name>metre</S100Base:name>
@@ -219,32 +225,26 @@
 					<S100Base:lowerBound>0</S100Base:lowerBound>
 					<S100Base:closure>gtSemiInterval</S100Base:closure>
 				</S100CD:range>
+				<S100CD:precision>2</S100CD:precision>
 			</S100FC:constraints>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>1231</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Uncertainty Variable Factor</S100FC:name>
-			<S100FC:definition>The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances, and vertical clearances.</S100FC:definition>
+			<S100FC:definition>The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances, and vertical clearances.</S100FC:definition>
 			<S100FC:code>uncertaintyVariableFactor</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1232</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG"/>
+			</S100FC:definitionReference>
 			<S100FC:valueType>real</S100FC:valueType>
-			<S100FC:uom>
-				<S100Base:name>Percent</S100Base:name>
-				<S100Base:symbol>%</S100Base:symbol>
-			</S100FC:uom>
 			<S100FC:constraints>
 				<S100CD:range>
 					<S100Base:lowerBound>0.0</S100Base:lowerBound>
 					<S100Base:upperBound>1.0</S100Base:upperBound>
 					<S100Base:closure>openInterval</S100Base:closure>
 				</S100CD:range>
+				<S100CD:precision>2</S100CD:precision>
 			</S100FC:constraints>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>1232</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Date End</S100FC:name>
@@ -274,39 +274,43 @@
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Source Survey ID</S100FC:name>
-			<S100FC:definition>The survey filename or ID.</S100FC:definition>
+			<S100FC:definition>The survey filename or ID.</S100FC:definition>
 			<S100FC:code>sourceSurveyID</S100FC:code>
-			<S100FC:valueType>text</S100FC:valueType>
-			<S100FC:constraints>
-				<S100CD:stringLength>256</S100CD:stringLength>
-			</S100FC:constraints>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>1235</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
-		</S100FC:S100_FC_SimpleAttribute>
-		<S100FC:S100_FC_SimpleAttribute>
-			<S100FC:name>Survey Authority</S100FC:name>
-			<S100FC:definition>The authority which was responsible for the survey.</S100FC:definition>
-			<S100FC:code>surveyAuthority</S100FC:code>
 			<S100FC:valueType>text</S100FC:valueType>
 			<S100FC:constraints>
 				<S100CD:stringLength>256</S100CD:stringLength>
 			</S100FC:constraints>
+		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Survey Authority</S100FC:name>
+			<S100FC:definition>The authority which was responsible for the survey.</S100FC:definition>
+			<S100FC:code>surveyAuthority</S100FC:code>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>1229</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:valueType>text</S100FC:valueType>
+			<S100FC:constraints>
+				<S100CD:stringLength>256</S100CD:stringLength>
+			</S100FC:constraints>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Type of Bathymetric Estimation Uncertainty</S100FC:name>
-			<S100FC:definition>The measure used to estimate the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.</S100FC:definition>
+			<S100FC:definition>The measure used to estimate the magnitude of the difference between true and estimated bathymetric depth, after all appropriate corrections are made.</S100FC:definition>
 			<S100FC:code>typeOfBathymetricEstimationUncertainty</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1236</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
 					<S100FC:label>Raw Standard Deviation</S100FC:label>
-					<S100FC:definition>Raw standard deviations of soundings that contributed to the grid cell.</S100FC:definition>
+					<S100FC:definition>Raw standard deviations of soundings that contributed to the grid cell.</S100FC:definition>
 					<S100FC:code>1</S100FC:code>
 					<S100FC:definitionReference>
 						<S100FC:sourceIdentifier>3472</S100FC:sourceIdentifier>
@@ -315,7 +319,7 @@
 				</S100FC:listedValue>
 				<S100FC:listedValue>
 					<S100FC:label>CUBE Standard Deviation</S100FC:label>
-					<S100FC:definition>Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE€™s standard output of uncertainty).</S100FC:definition>
+					<S100FC:definition>Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBEâ€™s standard output of uncertainty).</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
 					<S100FC:definitionReference>
 						<S100FC:sourceIdentifier>3474</S100FC:sourceIdentifier>
@@ -341,10 +345,6 @@
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
 			</S100FC:listedValues>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>1236</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
 		</S100FC:S100_FC_SimpleAttribute>
 			<S100FC:S100_FC_SimpleAttribute>
 				<S100FC:name>Vertical Datum</S100FC:name>
@@ -711,20 +711,20 @@
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="significantFeaturesDetected" />
 			</S100FC:attributeBinding>
-			<S100FC:subAttributeBinding sequential="false">
+			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="sizeOfFeaturesDetected" />
-			</S100FC:subAttributeBinding>
-			<S100FC:subAttributeBinding sequential="false">
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="featureSizeVariable" />
-			</S100FC:subAttributeBinding>
+			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
@@ -739,20 +739,20 @@
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="bathyCoverageAchieved" />
 			</S100FC:attributeBinding>
-			<S100FC:subAttributeBinding sequential="false">
+			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="dateEnd" />
-			</S100FC:subAttributeBinding>
-			<S100FC:subAttributeBinding sequential="false">
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="dateStart" />
-			</S100FC:subAttributeBinding>
+			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
@@ -767,6 +767,18 @@
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="surveyAuthority" />
 			</S100FC:attributeBinding>
+			<S100FC:featureUseType>meta</S100FC:featureUseType>
+			<S100FC:permittedPrimitives>coverage</S100FC:permittedPrimitives>
+		</S100FC:S100_FC_FeatureType>
+		<S100FC:S100_FC_FeatureType isAbstract="false">
+			<S100FC:name>Vertical Datum of Data</S100FC:name>
+			<S100FC:definition>Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.</S100FC:definition>
+			<S100FC:code>VerticalDatumOfData</S100FC:code>
+			<S100FC:alias>M_VDAT</S100FC:alias>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>598</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
