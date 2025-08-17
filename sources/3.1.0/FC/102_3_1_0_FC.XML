@@ -295,7 +295,7 @@
 			</S100FC:definitionReference>
 			<S100FC:valueType>text</S100FC:valueType>
 			<S100FC:constraints>
-				<S100CD:stringLength>256</S100CD:stringLength>
+				<S100CD:stringLength>100</S100CD:stringLength>
 			</S100FC:constraints>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
