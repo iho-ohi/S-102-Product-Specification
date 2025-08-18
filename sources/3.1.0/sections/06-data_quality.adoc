@@ -30,7 +30,7 @@ Chosen Option a1 -> fits to previous text.
 
 Commission is applicable for {series}-{docnumber}.
 
-{series}-{docnumber} products must be tested with commission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with commission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Omission
 
@@ -41,7 +41,7 @@ Chosen Option a1 -> fits to previous text.
 
 Omission is applicable for {series}-{docnumber}. 
 
-{series}-{docnumber} products must be tested with omission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with omission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 === Logical consistency
 
@@ -54,7 +54,7 @@ Chosen Option a1 -> fits to previous text.
 
 Conceptual Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=1>>.
 
-{series}-{docnumber} products must be tested with conceptual consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with conceptual consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Domain consistency
 
@@ -67,7 +67,7 @@ What about the sentence: "Data Producers must verify that the dataset conforms t
 
 Domain consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=5>>.
 
-{series}-{docnumber} products must be tested with domain consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with domain consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Format Consistency
 
@@ -80,7 +80,7 @@ What about the sentence: "Data Producers must verify that the dataset conforms t
 
 Format Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=10c>>.
 
-{series}-{docnumber} products must be tested with format consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with format consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Topological consistency
 Topological consistency isn’t applicable for {series}-{docnumber} which is a grid Product Specification without curves and geometric surfaces.
@@ -102,7 +102,7 @@ Needs a review by the S-102PT if Option 2b.1 or 2b.2 is applicable instead Optio
 
 Vertical position accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
-{series}-{docnumber} products must be tested with vertical position accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with vertical position accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ===== Horizontal position accuracy
 
@@ -123,7 +123,7 @@ Added Option 2 & 2a.1 also
 
 Relative or internal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
-{series}-{docnumber} products must be tested with relative or internal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes a particular test.
+{series}-{docnumber} products must be tested with relative or internal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes a particular test.
 
 The internal positional accuracy is defined as the precision of the location of each grid point within the {series}-{docnumber} grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for {series}-{docnumber} defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
 
@@ -138,7 +138,7 @@ What about paragraph 4, 5 -> these are part of the template for option 2 -> Wher
 
 Gridded data positional accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
 
-{series}-{docnumber} products must be tested with gridded data positional accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with gridded data positional accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 Gridded data positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the {series}-{docnumber} grid. Nodes within a grid have an absolute position. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values that are calculated for that position by the processes and procedures used by each Data Producer during the creation of the {series}-{docnumber} grid. Appropriate selection of both the origin reference points and positional resolution are important and are another factor in gridded data positional accuracy.
 
@@ -172,7 +172,7 @@ Different vertical datums can be expressed by the use of multiple instances of t
 
 Thematic classification correctness is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
 
-{series}-{docnumber} products must be tested with thematic classification correctness checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with thematic classification correctness checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 For {series}-{docnumber} bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the {series}-{docnumber} bathymetric grid are based on the vertical datum chosen by Data Producer. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
 
@@ -200,7 +200,7 @@ Chosen Option 2; 2a.1 & 2b.1
 
 Quantitative attribute accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
-{series}-{docnumber} products must be tested with quantitative attribute accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with quantitative attribute accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 The data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
@@ -226,7 +226,7 @@ Chosen Option 2; 2a.1 & 2b.1
 
 Temporal validity is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
-{series}-{docnumber} products must be tested with temporal validity checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with temporal validity checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 Temporal validity of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
@@ -239,7 +239,7 @@ Chosen Option 2; 2a.1 & 2b.1
 
 Temporal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
-{series}-{docnumber} products must be tested with temporal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed {series}-158:100 or {series}-158:{docnumber}. Data should only be published if it passes the test.
+{series}-{docnumber} products must be tested with temporal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 Temporal accuracy of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
