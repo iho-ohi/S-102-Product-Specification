@@ -1,68 +1,447 @@
 
 [[sec-data-quality]]
 == Data Quality
+=== Introduction to data quality
 Data quality allows users and user systems to assess fitness for use of the provided data. Data quality measures and the associated evaluation are reported as metadata of a data product. This metadata improves interoperability with other data products and provides usage by user groups that the data product was not originally intended for. The secondary users can make assessments of the data product usefulness in their application based on the reported data quality measures.
 
+For {series}-{docnumber} the following Data Quality Elements have been included:
+
+* Conformance to this Product Specification; 
+* Intended purpose of the data product; 
+* Completeness of the data product in terms of coverage; 
+* Logical consistency; 
+* Positional uncertainty and accuracy; 
+* Thematic accuracy; 
+* Temporal quality; 
+* Aggregation measures; 
+* Validation checks or conformance checks including:
+** General tests for dataset integrity;
+** Specific tests for a specific data model.
+
 === Completeness
+The presence and absence of features is described by the data quality elements Completeness (including commission and omission). Completeness should only be used on the feature type level, describing whether the features in the universe of discourse are found in the data set or not. 
 
 ==== Commission
-Commission is applicable for S-102. Data Producers must verify that no excess items have been included in the dataset. Such excess items include duplicate items, which must be removed.
 
-If no excess items are present, the dataset PASSES this test.
+[EDITOR]
+--
+Chosen Option a1 -> fits to previous text.
+--
+
+Commission is applicable for {series}-{docnumber}.
+
+{series}-{docnumber} products must be tested with commission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Omission
-Omission is applicable for S-102. Data Producers must verify that no items that should have been included in the dataset have been omitted.
 
-If no necessary items have been omitted, the dataset PASSES this test.
+[EDITOR]
+--
+Chosen Option a1 -> fits to previous text.
+--
+
+Omission is applicable for {series}-{docnumber}. 
+
+{series}-{docnumber} products must be tested with omission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 === Logical consistency
 
 ==== Conceptual consistency
-Conceptual Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=1>>.
 
-Data Producers must verify that the dataset conforms to the S-100 General Feature Model.
+[EDITOR]
+--
+Chosen Option a1 -> fits to previous text.
+--
 
-If the dataset conforms to the S-100 General Feature Model, the dataset PASSES this test.
+Conceptual Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=1>>.
+
+{series}-{docnumber} products must be tested with conceptual consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Domain consistency
-Domain consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=5>>.
 
-Data Producers must verify that the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>.
+[EDITOR]
+--
+Chosen Option a1 -> fits to previous text.
 
-If the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>, the dataset PASSES this test.
+What about the sentence: "Data Producers must verify that the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>." -> remove?
+--
 
-==== Format consistency
-Format Consistency is applicable for S-102 and follows the guidelines from <<iho-s100,part=10c>>.
+Domain consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=5>>.
 
-Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification.
+{series}-{docnumber} products must be tested with domain consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
-If the dataset conforms to <<sec-data-product-format-encoding>>, the dataset PASSES this test.
+==== Format Consistency
 
+[EDITOR]
+--
+Chosen Option a1 -> fits to previous text.
 
+What about the sentence: "Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification." -> remove?
+--
 
-=== Positional accuracy
+Format Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=10c>>.
+
+{series}-{docnumber} products must be tested with format consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+==== Topological consistency
+Topological consistency isn’t applicable for {series}-{docnumber} which is a grid Product Specification without curves and geometric surfaces.
+
+=== Positional uncertainty and accuracy
+
+==== Absolute or external accuracy
+
+===== Vertical position accuracy
+
+[EDITOR]
+--
+Is applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+
+Chosen Option 2 & 2a.1
+
+Needs a review by the S-102PT if Option 2b.1 or 2b.2 is applicable instead Option 2a.1
+--
+
+Vertical position accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with vertical position accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+===== Horizontal position accuracy
+
+[EDITOR]
+--
+Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+--
+
+Horizontal position accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a horizontal coordinative value associated. 
+
+==== Relative or internal accuracy
+
+[EDITOR]
+--
+Chosen Option 2b.1 -> Using old text.
+Added Option 2 & 2a.1 also
+--
+
+Relative or internal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with relative or internal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes a particular test.
+
+The internal positional accuracy is defined as the precision of the location of each grid point within the {series}-{docnumber} grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for {series}-{docnumber} defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
 
 ==== Gridded data positional accuracy
-Gridded positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the S-102 grid. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values are calculated for each grid point using the processes and procedures used by each hydrographic office during the creation of the S-102 grid. Appropriate selection of both the origin reference point and spatial resolution are important and are another factor in gridded positional accuracy.
 
-==== Relative internal positional accuracy
-The internal positional accuracy is defined as the precision of the location of each grid point within the S-102 grid. The position of each grid point within the grid is referenced by a row and column combination. The metadata for S-102 defines a gridded resolution along both the X and Y axis of the grid. This absolute position of a grid point within the spatial projection of the grid is calculated using the row/column and the X/Y resolution. In this case, the accuracy is controlled by the precision used in defining these resolutions.
+[EDITOR]
+--
+Chosen Option 2 & 2a.1
 
-=== Temporal accuracy
+What about paragraph 4, 5 -> these are part of the template for option 2 -> Where to populate RMSErrorPlanimetry?
+--
 
-Temporal accuracy, consistency, and validity of bathymetric grids are confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various hydrographic offices. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+Gridded data positional accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
+
+{series}-{docnumber} products must be tested with gridded data positional accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+Gridded data positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the {series}-{docnumber} grid. Nodes within a grid have an absolute position. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values that are calculated for that position by the processes and procedures used by each Data Producer during the creation of the {series}-{docnumber} grid. Appropriate selection of both the origin reference points and positional resolution are important and are another factor in gridded data positional accuracy.
+
+In terms of gridded data positional accuracy, {series}-{docnumber} products shall at least populate 
+RMSErrorPlanimetry that indicates the radius of a circle around the given point, in which the true value lies 
+with probability P.
+
+Recommendations on thresholds for gridded data positional accuracy are as follows:
+
+[align=center]
+stem:["Maximum RMSE"_"horizontal" = (GSD)/6] +
+stem:["Maximum RMSE"_"vertical" = (GSD)/3]
+
+Where:
+
+[align=center]
+stem:[GSD = "Ground Sampling Distance"]
 
 === Thematic accuracy
 
 ==== Thematic classification correctness
-For S-102 bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the S-102 grid are based on the associated hydrographic office's chosen vertical datum. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
+
+[EDITOR]
+--
+Chosen Option a1 & b1 (with old text)
+
+Two classifications (land & water)? Isn't it just water, because all other values are no data values?
+
+Different vertical datums can be expressed by the use of multiple instances of the BathymetryCoverage. Is the old text still valid and meaningful?
+--
+
+Thematic classification correctness is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
+
+{series}-{docnumber} products must be tested with thematic classification correctness checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+For {series}-{docnumber} bathymetric grids there are two classifications of data values, which are land and water. There are two considerations for assessing classification correctness when using the grid. The first is that values given in the depth layer of the {series}-{docnumber} bathymetric grid are based on the vertical datum chosen by Data Producer. Should another value in relation to a different vertical datum be required, a series of correctors would need to be applied. Secondly, when considering the data values, the value stored in the uncertainty for a given grid point must be considered. This uncertainty value represents the magnitude of possible deviation in either direction from the data value and must be applied when assessing the classification correctness. The new value generated when applied may cause a change in the classification.
 
 ==== Non-quantitative attribute accuracy
-Thematic accuracy of S-102 bathymetric data is wholly quantitative.
+
+[EDITOR]
+--
+Chosen Option 1
+
+Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+
+The new text is the replacement text of the old template
+--
+
+Non-quantitative attribute accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a non-quantitative attribute value.
 
 
 ==== Quantitative attribute accuracy
-As defined in <<iho-s100,part=4c>> the data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
+
+[EDITOR]
+--
+Chosen Option 2; 2a.1 & 2b.1
+
+--
+
+Quantitative attribute accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with quantitative attribute accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+The data quality for the depth coverage is also defined as a co-located optional coverage, which is the uncertainty. This value particularly refers to the vertical uncertainty at each grid point. The uncertainty coverage supports multiple definitions of vertical uncertainty.
 
 See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 
+=== Temporal quality
+
+==== Temporal consistency
+
+[EDITOR]
+--
+Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
+--
+
+Temporal Consistency isn’t applicable for {series}-{docnumber} which is a Product Specification without ordered events or sequences.
+
+==== Temporal validity
+
+[EDITOR]
+--
+Chosen Option 2; 2a.1 & 2b.1
+--
+
+Temporal validity is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with temporal validity checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+Temporal validity of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+
+==== Temporal accuracy
+
+[EDITOR]
+--
+Chosen Option 2; 2a.1 & 2b.1
+--
+
+Temporal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
+
+{series}-{docnumber} products must be tested with temporal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
+
+Temporal accuracy of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
+
+=== Aggregation
+Aggregation isn’t applicable for {series}-{docnumber} because there is no need to aggregated data quality results based on different data quality elements.
+
+=== Quality measure element
+
+[EDITOR]
+--
+Scope must be set correctly -> is this S-158:102 or the clauses in S-102?
+--
+
+The data quality measures recommended in <<iho-s97,part=C>> and their applicability in {series}-{docnumber} are indicated in <<tab-quality-elements>> below. NA indicates the measure is not applicable. The Application Schema above has indicated how the data quality elements will be related to the data items; and the encoding description below will indicate how the quality elements will be encoded.
+
+[[tab-quality-elements]]
+.IHO recommended quality elements and their relevance to {series}-{docnumber}
+|===
+|No. |Data quality element and sub element |Definition |DQ measure / description |Evaluation scope |Scope in {series}-{docnumber}
+
+|1
+|Completeness / Commission
+|Excess data present in a dataset, as described by the scope.
+|numberOfExcessItems / This data quality measure indicates the number of items in the dataset, that should not have been present in the dataset.
+|dataset / dataset series
+|{empty}
+
+|2
+|Completeness / Commission
+|Excess data present in a dataset, as described by the scope.
+|numberOfDuplicateFeatureInstances / This data quality measure indicates the total number of exact duplications of feature instances within the data. 
+|dataset / dataset series
+|{empty}
+
+|3
+|Completeness / Omission  
+|Data absent from the dataset, as described by the scope.
+|numberOfMissingItems / This data quality measure is an indicator that shows that a specific item is missing in the data.
+|dataset / dataset series / spatial object type
+|{empty}
+
+|4
+|Logical Consistency / Conceptual Consistency
+|Adherence to the rules of a Conceptual Schema.
+|numberOfInvalidSurfaceOverlaps / This data quality measure is a count of the total number of erroneous overlaps within the data. Which surfaces may overlap and which must not is application dependent. Not all overlapping surfaces are necessarily erroneous.
+|dataset / dataset series
+|{empty}
+
+|5
+|Logical consistency / Conceptual consistency
+|Adherence to the rules of a conceptual schema.
+|numberOfInvalidSurfaceOverlaps / This data quality measure is a count of the total number of erroneous overlaps within the data. Which surfaces may overlap and which must not is application dependent. Not all overlapping surfaces are necessarily erroneous.
+|spatial object / spatial object type
+|{empty}
+
+|6
+|Logical consistency / Domain consistency
+|Adherence of the values to the value domains.
+|numberOfNonconformantItems / This data quality measure is a count of all items in the dataset that are not in conformance with their value domain.
+|spatial object / spatial object type
+|{empty}
+
+|7
+|Logical consistency / Format consistency
+|Degree to which data is stored in accordance with the physical structure of the data set, as described by the scope
+|physicalStructureConflictsNumber / This data quality measure is a count of all items in the dataset that are stored in conflict with the physical structure of the dataset.
+|dataset/dataset series
+|{empty}
+
+|8
+|Logical consistency / Topological consistency
+|Correctness of the explicitly encoded topological characteristics of the dataset, as described by the scope.
+|rateOfFaultyPointCurveConnections / This data quality measure indicates the number of faulty link-node connections in relation to the number of supposed link-node connections. This data quality measure gives the erroneous point-curve connections in relation to the total number of point-curve connections.
+|spatial object / spatial object type
+|{empty}
+
+|9
+|Logical consistency / Topological consistency
+|Correctness of the explicitly encoded topological characteristics of the dataset, as described by the scope.
+|numberOfMissingConnectionsUndershoots / This data quality measure is a count of items in the dataset within the parameter tolerance that are mismatched due to undershoots.
+|spatial object / spatial object type
+|{empty}
+
+|10
+|Logical consistency / Topological consistency
+|Correctness of the explicitly encoded topological characteristics of the dataset, as described by the scope.
+|numberOfMissingConnectionsOvershoots / This data quality measure is a count of items in the dataset within the parameter tolerance that are mismatched due to overshoots.
+|spatial object / spatial object type
+|{empty}
+
+|11
+|Logical consistency / Topological consistency
+|Correctness of the explicitly encoded topological characteristics of the dataset, as described by the scope.
+|numberOfInvalidSlivers / This data quality measure is a count of all items in the dataset that are invalid sliver surfaces. A sliver is an unintended area that occurs when adjacent surfaces are not digitized properly. The borders of the adjacent surfaces may unintentionally gap or overlap to cause a topological error.
+|dataset / dataset series
+|{empty}
+
+|12
+|Logical consistency / Topological consistency
+|Correctness of the explicitly encoded topological characteristics of the dataset, as described by the scope.
+|numberOfInvalidSelfIntersects / This data quality measure is a count of all items in the dataset that illegally intersect with themselves.
+|spatial object / spatial object type
+|{empty}
+
+|13
+|Logical consistency / Topological consistency
+|Correctness of the explicitly encoded topological characteristics of the dataset, as described by the scope.
+|numberOfInvalidSelfOverlap / This data quality measure is a count of all items in the dataset that illegally self-overlap.
+|spatial object / spatial object type
+|{empty}
+
+|14
+|Positional accuracy / Vertical position accuracy
+|Closeness of reported coordinative values to values accepted as or being true.
+|linearMapAccuracy3Sigma / Half length of the interval defined by an upper and lower limit in which the true value lies with probability 95%.
+|spatial object / spatial object type
+|{empty}
+
+|15
+|Positional accuracy / Horizontal position accuracy
+|Closeness of reported coordinative values to values accepted as or being true.
+|circularError95 / Radius describing a circle in which the true point location lies with the probability of 95%.
+|spatial object / spatial object type
+|{empty}
+
+|16
+|Positional accuracy / Relative or internal accuracy
+|Closeness of the relative positions of features in a dataset to their respective relative positions accepted as or being true.
+|relativeVerticalError/ An evaluation of the random errors of one relief feature to another in the same data set or on the same map/chart. It is a function of the random errors in the two elevations with respect to a common vertical datum. [Adapted from <<iso-19157>>]
+|spatial object / spatial object type
+|{empty}
+
+|17
+|Positional accuracy / Relative or internal accuracy
+|Closeness of the relative positions of features in a dataset to their respective relative positions accepted as or being true.
+|relativeHorizontalError/ An evaluation of the random errors in the horizontal position of one feature to another in the same data set or on the same map/chart. [Adapted from <<iso-19157>>]
+|spatial object / spatial object type
+|{empty}
+
+|18
+|Positional accuracy / Gridded data position accuracy
+|Closeness of reported coordinative values to values accepted as or being true.
+|RMSErrorPlanimetry / Radius of a circle around the given point, in which the true value lies with probability P.
+|spatial object / spatial object type
+|{empty}
+
+|19
+|Temporal quality / Temporal consistency
+|Correctness of ordered events or sequences, if reported.
+|chronologicalOrder/ This data quality measure that indicate that an event is incorrectly ordered against the other events.[Adapted from <<iso-19157>>]
+|dataset / dataset series / spatial object type
+|{empty}
+
+|20
+|Temporal quality /Temporal validity
+|Validity of data with respect to time.
+|numberOfNonConformantItems/ This data quality measure is a count of all items in the dataset that are not in conformance with their value domain.[Adapted from <<iso-19157>>]
+|dataset / dataset series / spatial object type
+|{empty}
+
+|21
+|Temporal quality / Temporal accuracy
+|Correctness of the temporal references of an item (reporting of error in time measurement).
+|attributeValueUncertainty3Sigma/ This data quality measure indicates the attribute value of uncertainty where half the length of the interval defined by an upper and lower limit in which the true value for the quantitative attribute lies with a probability of 95%. [Adapted from <<iso-19157>>]
+|dataset / dataset series / spatial object type.
+|{empty}
+
+|22
+|Thematic accuracy / Thematic classification correctness
+|Comparison of the classes assigned to features or their attributes to a universe of discourse.
+|miscalculationRate / This data quality measure indicates the number of incorrectly classified features in relation to the number of features that are supposed to be there. [Adapted from <<iso-19157>>] +
+This is a RATE which is a ratio, and is expressed as a REAL number representing the rational fraction corresponding to the numerator and denominator of the ratio. +
+For example, if there are 1 items that are classified incorrectly and there are 100 of the items in the dataset then the ratio is 1/100 and the reported rate = 0.01.
+|dataset / dataset series / spatial object type
+|{empty}
+
+|23
+|Thematic accuracy /Non-quantitative attribute accuracy
+|Correctness of non-quantitative attribute.
+|numberOfIncorrectAttributeValues / This data quality measure is count of the total number of erroneous attribute values within the relevant part of the dataset. It is a count of all attribute values where the value is incorrect. [Adapted from <<iso-19157>>]
+|dataset / dataset series / spatial object type
+|{empty}
+
+|24
+|Thematic accuracy / Quantitative attribute accuracy
+|Accuracy of a quantitative attribute.
+|attributeValueUncertainty3Sigma / This data quality measure indicates the attribute value of uncertainty where half the length of the interval defined by an upper and lower limit in which the true value for the quantitative attribute lies with a probability of 95%. [Adapted from <<iso-19157>>]
+|dataset / dataset series / spatial object type
+|{empty}
+
+|25
+|Aggregation measures / Aggregation measures
+|In a data Product Specification, several requirements are set up for a product to conform to the Specification.
+|DataProductSpecificationPassed / This data quality measure is a boolean indicating that all requirements in the referred data Product Specification are fulfilled.
+|dataset / dataset series / spatial object type
+|{empty}
+
+|26
+|Aggregation measures / Aggregation measures
+|In a data Product Specification, several requirements are set up for a product to conform to the Specification.
+|DataProductSpecificationFailRate / This data quality measure is a number indicating the number of data Product Specification requirements that are not fulfilled by the current product/dataset in relation to the total number of data Product Specification requirements.
+|dataset / dataset series / spatial object type
+|{empty}
+
+|===
