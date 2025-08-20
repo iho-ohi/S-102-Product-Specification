@@ -918,7 +918,7 @@ unsigned +
 See <<subsec-note8>>.
 
 | 8
-| bathyCoverage
+| bathyCoverageAchieved
 //editorial note:: PT11: new in the IHO registry
 | *False* for grid cells populated by interpolation.
 | 0..1
@@ -1021,7 +1021,7 @@ Full seafloor coverage achieved applies to both the spatial completeness of feat
 [[subsec-note9]]
 [NOTE]
 ====
-The attribute _bathyCoverage_ is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery. In this case, interpolated gaps between bathymetry coverage would show _fullSeafloorCoverageAchieved_ = True and _bathyCoverage_ = False. However, if _fullSeafloorCoverageAchieved_ = False, _bathyCoverage_ must also equal False (e.g., gaps between single beam echosounder data without correlating side-scan sonar coverage).
+The attribute _bathyCoverageAchieved_ is especially useful in side-scan surveys which are characterized by gaps in bathymetric observations with full coverage side-scan imagery. In this case, interpolated gaps between bathymetry coverage would show _fullSeafloorCoverageAchieved_ = True and _bathyCoverageAchieved_ = False. However, if _fullSeafloorCoverageAchieved_ = False, _bathyCoverageAchieved_ must also equal False (e.g., gaps between single beam echosounder data without correlating side-scan sonar coverage).
 ====
 
 [[subsec-note10]]
