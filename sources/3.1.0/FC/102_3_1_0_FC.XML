@@ -644,6 +644,100 @@
 				</S100FC:listedValues>
 			</S100FC:S100_FC_SimpleAttribute>
 		</S100FC:S100_FC_SimpleAttributes>
+	<S100FC:S100_FC_ComplexAttributes>
+		<S100FC:S100_FC_ComplexAttribute>
+			<S100FC:name>Survey Date Range</S100FC:name>
+			<S100FC:definition>The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.</S100FC:definition>
+			<S100FC:code>surveyDateRange</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>795</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="dateEnd" />
+			</S100FC:subAttributeBinding>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="dateStart" />
+			</S100FC:subAttributeBinding>
+		</S100FC:S100_FC_ComplexAttribute>
+		<S100FC:S100_FC_ComplexAttribute>
+			<S100FC:name>Features Detected</S100FC:name>
+			<S100FC:definition>The uniform assessment of detected features.</S100FC:definition>
+			<S100FC:code>featuresDetected</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>228</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="leastDepthOfDetectedFeaturesMeasured" />
+			</S100FC:subAttributeBinding>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="significantFeaturesDetected" />
+			</S100FC:subAttributeBinding>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="sizeOfFeaturesDetected" />
+			</S100FC:subAttributeBinding>
+		</S100FC:S100_FC_ComplexAttribute>
+		<S100FC:S100_FC_ComplexAttribute>
+			<S100FC:name>Horizontal Position Uncertainty</S100FC:name>
+			<S100FC:definition>The best estimate of the accuracy of a position.</S100FC:definition>
+			<S100FC:code>horizontalPositionUncertainty</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>233</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="uncertaintyFixed" />
+			</S100FC:subAttributeBinding>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="uncertaintyVariableFactor" />
+			</S100FC:subAttributeBinding>
+		</S100FC:S100_FC_ComplexAttribute>
+		<S100FC:S100_FC_ComplexAttribute>
+			<S100FC:name>Zone of Confidence</S100FC:name>
+			<S100FC:definition>The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.</S100FC:definition>
+			<S100FC:code>zoneOfConfidence</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>986</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:subAttributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="horizontalPositionUncertainty" />
+			</S100FC:subAttributeBinding>
+		</S100FC:S100_FC_ComplexAttribute>
+	</S100FC:S100_FC_ComplexAttributes>
 	<S100FC:S100_FC_FeatureTypes>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Bathymetry Coverage</S100FC:name>
@@ -702,21 +796,7 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="leastDepthOfDetectedFeaturesMeasured" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="significantFeaturesDetected" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="sizeOfFeaturesDetected" />
+				<S100FC:attribute ref="featuresDetected" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
@@ -742,16 +822,16 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="true" infinite="true" />
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="dateEnd" />
+				<S100FC:attribute ref="zoneOfConfidence" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="dateStart" />
+				<S100FC:attribute ref="surveyDateRange" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
