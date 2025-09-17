@@ -1091,7 +1091,7 @@ The values group for QualityOfBathymetryCoverage contains no metadata attributes
 
 [[subsec-values-dataset-for-QualityOfBathymetryCoverage]]
 ==== Values dataset for QualityOfBathymetryCoverage
-The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>).
+The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>). The values dataset uses the Compound data type described in <<iho-s100,part=10c,table=18>> - Structure of values groups.
 
 Each cell in this values dataset must be populated with a value that is one of the record identifiers in the featureAttributeTable dataset or with the fill value 0 (zero).
 
