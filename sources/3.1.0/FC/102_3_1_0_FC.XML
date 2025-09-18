@@ -107,7 +107,7 @@
 				<S100FC:listedValue>
 					<S100FC:label>Unassessed</S100FC:label>
 					<S100FC:definition>Not having been assessed.</S100FC:definition>
-					<S100FC:code>2</S100FC:code>
+					<S100FC:code>3</S100FC:code>
 					<S100FC:definitionReference>
 						<S100FC:sourceIdentifier>1246</S100FC:sourceIdentifier>
 						<S100FC:definitionSource ref="IHOREG" />
@@ -116,7 +116,7 @@
 				<S100FC:listedValue>
 					<S100FC:label>Assessed (Oceanic)</S100FC:label>
 					<S100FC:definition>The quality of oceanic bathymetric data (depths deeper than 200 metres) has been assessed, however details are not required.</S100FC:definition>
-					<S100FC:code>3</S100FC:code>
+					<S100FC:code>2</S100FC:code>
 					<S100FC:definitionReference>
 						<S100FC:sourceIdentifier>1248</S100FC:sourceIdentifier>
 						<S100FC:definitionSource ref="IHOREG" />
