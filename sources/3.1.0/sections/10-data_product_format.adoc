@@ -737,7 +737,7 @@ Mandatory if this value were to differ from what is contained in the Root Group 
 
 The _gridOriginLongitude_, _gridOriginLatitude_, _gridSpacingLongitudinal_, and _gridSpacingLatitudinal_ attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
 
-_numPointsLongitude_ and _numPointsLatitude_ must contain the number of cells in the x and y dimensions of the values table.
+_numPointsLongitudinal_ and _numPointsLatitudinal_ must contain the number of cells in the x and y dimensions of the values table.
 
 The {series}-{docnumber} uses the "Overriding of Attributes" concept of the <<iho-s100,part=10c,clause=9.7.1>>. This usage allows the feature instance group to overwrite the attributes of a higher group, in this case the _verticalDatum_. The default vertical datum is specified in the root group (see <<tab-root-group-attributes>>). The feature instance group for this default vertical datum must not use the additional attributes _verticalDatum_ and _verticalDatumReference_ (on the feature instance group).
 
