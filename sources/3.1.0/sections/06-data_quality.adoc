@@ -23,21 +23,11 @@ The presence and absence of features is described by the data quality elements C
 
 ==== Commission
 
-[EDITOR]
---
-Chosen Option a1 -> fits to previous text.
---
-
 Commission is applicable for {series}-{docnumber}.
 
 {series}-{docnumber} products must be tested with commission checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Omission
-
-[EDITOR]
---
-Chosen Option a1 -> fits to previous text.
---
 
 Omission is applicable for {series}-{docnumber}. 
 
@@ -47,23 +37,11 @@ Omission is applicable for {series}-{docnumber}.
 
 ==== Conceptual consistency
 
-[EDITOR]
---
-Chosen Option a1 -> fits to previous text.
---
-
 Conceptual Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=1>>.
 
 {series}-{docnumber} products must be tested with conceptual consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Domain consistency
-
-[EDITOR]
---
-Chosen Option a1 -> fits to previous text.
-
-What about the sentence: "Data Producers must verify that the dataset conforms to the S-102 Feature Catalogue and to <<annex-data-classification-and-encoding-guide>>." -> remove?
---
 
 Domain consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=5>>.
 
@@ -71,19 +49,12 @@ Domain consistency is applicable for {series}-{docnumber} and follows the guidel
 
 ==== Format Consistency
 
-[EDITOR]
---
-Chosen Option a1 -> fits to previous text.
-
-What about the sentence: "Data Producers must verify that the dataset conforms to <<sec-data-product-format-encoding>> of this Product Specification." -> remove?
---
-
 Format Consistency is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=10c>>.
 
 {series}-{docnumber} products must be tested with format consistency checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ==== Topological consistency
-Topological consistency isn’t applicable for {series}-{docnumber} which is a grid Product Specification without curves and geometric surfaces.
+Topological consistency is not applicable for {series}-{docnumber} which is a grid Product Specification without curves and geometric surfaces.
 
 === Positional uncertainty and accuracy
 
@@ -91,35 +62,15 @@ Topological consistency isn’t applicable for {series}-{docnumber} which is a g
 
 ===== Vertical position accuracy
 
-[EDITOR]
---
-Is applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
-
-Chosen Option 2 & 2a.1
-
-Needs a review by the S-102PT if Option 2b.1 or 2b.2 is applicable instead Option 2a.1
---
-
 Vertical position accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
 {series}-{docnumber} products must be tested with vertical position accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 ===== Horizontal position accuracy
 
-[EDITOR]
---
-Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
---
-
-Horizontal position accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a horizontal coordinative value associated. 
+Horizontal position accuracy is not applicable for {series}-{docnumber} which is a Product Specification without objects that have a horizontal coordinative value associated. 
 
 ==== Relative or internal accuracy
-
-[EDITOR]
---
-Chosen Option 2b.1 -> Using old text.
-Added Option 2 & 2a.1 also
---
 
 Relative or internal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
@@ -129,46 +80,15 @@ The internal positional accuracy is defined as the precision of the location of 
 
 ==== Gridded data positional accuracy
 
-[EDITOR]
---
-Chosen Option 2 & 2a.1
-
-What about paragraph 4, 5 -> these are part of the template for option 2 -> Where to populate RMSErrorPlanimetry?
---
-
 Gridded data positional accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
 
 {series}-{docnumber} products must be tested with gridded data positional accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
 
 Gridded data positional accuracy is defined by the precision of the positional reference used to specify its location within its spatial projection. These positional references are contained within the spatial metadata of the {series}-{docnumber} grid. Nodes within a grid have an absolute position. It is assumed that any horizontal errors are assimilated into the vertical uncertainty. The vertical values that are calculated for that position by the processes and procedures used by each Data Producer during the creation of the {series}-{docnumber} grid. Appropriate selection of both the origin reference points and positional resolution are important and are another factor in gridded data positional accuracy.
 
-In terms of gridded data positional accuracy, {series}-{docnumber} products shall at least populate 
-RMSErrorPlanimetry that indicates the radius of a circle around the given point, in which the true value lies 
-with probability P.
-
-Recommendations on thresholds for gridded data positional accuracy are as follows:
-
-[align=center]
-stem:["Maximum RMSE"_"horizontal" = (GSD)/6] +
-stem:["Maximum RMSE"_"vertical" = (GSD)/3]
-
-Where:
-
-[align=center]
-stem:[GSD = "Ground Sampling Distance"]
-
 === Thematic accuracy
 
 ==== Thematic classification correctness
-
-[EDITOR]
---
-Chosen Option a1 & b1 (with old text)
-
-Two classifications (land & water)? Isn't it just water, because all other values are no data values?
-
-Different vertical datums can be expressed by the use of multiple instances of the BathymetryCoverage. Is the old text still valid and meaningful?
---
 
 Thematic classification correctness is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>. 
 
@@ -178,25 +98,9 @@ For {series}-{docnumber} bathymetric grids there are two classifications of data
 
 ==== Non-quantitative attribute accuracy
 
-[EDITOR]
---
-Chosen Option 1
-
-Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
-
-The new text is the replacement text of the old template
---
-
-Non-quantitative attribute accuracy isn’t applicable for {series}-{docnumber} which is a Product Specification without objects that have a non-quantitative attribute value.
-
+Non-quantitative attribute accuracy is not applicable for {series}-{docnumber} which is a Product Specification without objects that have a non-quantitative attribute value.
 
 ==== Quantitative attribute accuracy
-
-[EDITOR]
---
-Chosen Option 2; 2a.1 & 2b.1
-
---
 
 Quantitative attribute accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
@@ -210,19 +114,9 @@ See <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>.
 
 ==== Temporal consistency
 
-[EDITOR]
---
-Not applicable according to "Report on the Cross Check of DQ Chapters of Phase 1 and New Product Specification; clause 3.1"
---
-
-Temporal Consistency isn’t applicable for {series}-{docnumber} which is a Product Specification without ordered events or sequences.
+Temporal Consistency is not applicable for {series}-{docnumber} which is a Product Specification without ordered events or sequences.
 
 ==== Temporal validity
-
-[EDITOR]
---
-Chosen Option 2; 2a.1 & 2b.1
---
 
 Temporal validity is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
@@ -232,11 +126,6 @@ Temporal validity of bathymetric grids is confined to elements of the vertical c
 
 ==== Temporal accuracy
 
-[EDITOR]
---
-Chosen Option 2; 2a.1 & 2b.1
---
-
 Temporal accuracy is applicable for {series}-{docnumber} and follows the guidelines from <<iho-s100,part=4c>>.
 
 {series}-{docnumber} products must be tested with temporal accuracy checks prior to release by the Data Producer. The Data Producer must review the check results and address any issues to ensure sufficient quality of the data products. The checks are listed in {series}-158:100 and {series}-158:{docnumber}. Data should only be published if it passes the test.
@@ -244,7 +133,7 @@ Temporal accuracy is applicable for {series}-{docnumber} and follows the guideli
 Temporal accuracy of bathymetric grids is confined to elements of the vertical control processes. These aspects are addressed during the formulation and application of vertical control processes applied by the various Data Producers. Details of these processes will be included in the Lineage portion of the metadata defined in <<sec-metadata>> of this Product Specification.
 
 === Aggregation
-Aggregation isn’t applicable for {series}-{docnumber} because there is no need to aggregated data quality results based on different data quality elements.
+Aggregation is not applicable for {series}-{docnumber} because there is no need to aggregated data quality results based on different data quality elements.
 
 === Quality measure element
 
