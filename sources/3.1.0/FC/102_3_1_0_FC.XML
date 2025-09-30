@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.2" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100FC/5.2 https://schemas.s100dev.net/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd">
+<S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.2"
+                               	xmlns:S100Base="http://www.iho.int/S100Base/5.0"
+                               	xmlns:S100CI="http://www.iho.int/S100CI/5.0"
+                               	xmlns:xlink="http://www.w3.org/1999/xlink"
+                               	xmlns:S100CD="http://www.iho.int/S100CD/5.0"
+                               	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                               	xsi:schemaLocation="http://www.iho.int/S100FC/5.2 https://schemas.s100dev.net/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd">
 	<S100FC:name>S-102</S100FC:name>
 	<S100FC:scope>Global</S100FC:scope>
 	<S100FC:fieldOfApplication>Marine Navigation</S100FC:fieldOfApplication>
@@ -346,304 +352,304 @@
 				</S100FC:listedValue>
 			</S100FC:listedValues>
 		</S100FC:S100_FC_SimpleAttribute>
-			<S100FC:S100_FC_SimpleAttribute>
-				<S100FC:name>Vertical Datum</S100FC:name>
-				<S100FC:definition>The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.</S100FC:definition>
-				<S100FC:code>verticalDatum</S100FC:code>
-				<S100FC:alias>VERDAT</S100FC:alias>
-				<S100FC:alias>Datum Level</S100FC:alias>
-				<S100FC:alias>Reference Plane</S100FC:alias>
-				<S100FC:alias>Levelling Datum</S100FC:alias>
-				<S100FC:alias>Datum for Sounding Reduction</S100FC:alias>
-				<S100FC:alias>Datum for Heights</S100FC:alias>
-				<S100FC:definitionReference>
-					<S100FC:sourceIdentifier>996</S100FC:sourceIdentifier>
-					<S100FC:definitionSource ref="IHOREG" />
-				</S100FC:definitionReference>
-				<S100FC:valueType>enumeration</S100FC:valueType>
-				<S100FC:listedValues>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Low Water Springs</S100FC:label>
-						<S100FC:definition>The average height of the low waters of spring tides. This level is used as a tidal datum in some areas.</S100FC:definition>
-						<S100FC:code>1</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1185</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Lower Low Water Springs</S100FC:label>
-						<S100FC:definition>The average height of lower low water springs at a place.</S100FC:definition>
-						<S100FC:code>2</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1186</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Sea Level</S100FC:label>
-						<S100FC:definition>The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.</S100FC:definition>
-						<S100FC:code>3</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1187</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Lowest Low Water</S100FC:label>
-						<S100FC:definition>An arbitrary level conforming to the lowest tide observed at a place, or somewhat lower.</S100FC:definition>
-						<S100FC:code>4</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1188</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Low Water</S100FC:label>
-						<S100FC:definition>The average height of all low waters at a place over a 19-year period.</S100FC:definition>
-						<S100FC:code>5</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1189</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Lowest Low Water Springs</S100FC:label>
-						<S100FC:definition>An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.</S100FC:definition>
-						<S100FC:code>6</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1190</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Approximate Mean Low Water Springs</S100FC:label>
-						<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).</S100FC:definition>
-						<S100FC:code>7</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1191</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Indian Spring Low Water</S100FC:label>
-						<S100FC:definition>An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.</S100FC:definition>
-						<S100FC:code>8</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1192</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Low Water Springs</S100FC:label>
-						<S100FC:definition>An arbitrary level, approximating that of mean low water springs (MLWS).</S100FC:definition>
-						<S100FC:code>9</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1193</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Approximate Lowest Astronomical Tide</S100FC:label>
-						<S100FC:definition>An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).</S100FC:definition>
-						<S100FC:code>10</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1194</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Nearly Lowest Low Water</S100FC:label>
-						<S100FC:definition>An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).</S100FC:definition>
-						<S100FC:code>11</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1195</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Lower Low Water</S100FC:label>
-						<S100FC:definition>The average height of the lower low waters at a place over a 19-year period.</S100FC:definition>
-						<S100FC:code>12</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1196</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Low Water</S100FC:label>
-						<S100FC:definition>The lowest level reached at a place by the water surface in one oscillation.</S100FC:definition>
-						<S100FC:code>13</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1012</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Approximate Mean Low Water</S100FC:label>
-						<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).</S100FC:definition>
-						<S100FC:code>14</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1197</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Approximate Mean Lower Low Water</S100FC:label>
-						<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).</S100FC:definition>
-						<S100FC:code>15</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1198</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean High Water</S100FC:label>
-						<S100FC:definition>The average height of all high waters at a place over a 19-year period.</S100FC:definition>
-						<S100FC:code>16</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1199</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean High Water Springs</S100FC:label>
-						<S100FC:definition>The average height of the high waters of spring tides.</S100FC:definition>
-						<S100FC:code>17</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1200</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>High Water</S100FC:label>
-						<S100FC:definition>The highest level reached at a place by the water surface in one oscillation.</S100FC:definition>
-						<S100FC:code>18</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1011</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Approximate Mean Sea Level</S100FC:label>
-						<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).</S100FC:definition>
-						<S100FC:code>19</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1201</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>High Water Springs</S100FC:label>
-						<S100FC:definition>An arbitrary level, approximating that of mean high water springs (MHWS).</S100FC:definition>
-						<S100FC:code>20</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1202</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Higher High Water</S100FC:label>
-						<S100FC:definition>The average height of higher high waters at a place over a 19-year period.</S100FC:definition>
-						<S100FC:code>21</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1203</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Equinoctial Spring Low Water</S100FC:label>
-						<S100FC:definition>The level of low water springs near the time of an equinox.</S100FC:definition>
-						<S100FC:code>22</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1204</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Lowest Astronomical Tide</S100FC:label>
-						<S100FC:definition>The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.</S100FC:definition>
-						<S100FC:code>23</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1205</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Local Datum</S100FC:label>
-						<S100FC:definition>An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.</S100FC:definition>
-						<S100FC:code>24</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1206</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>International Great Lakes Datum 1985</S100FC:label>
-						<S100FC:definition>A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Père, Quebec, over the period 1970 to 1988.</S100FC:definition>
-						<S100FC:code>25</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1207</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Mean Water Level</S100FC:label>
-						<S100FC:definition>The average of all hourly water levels over the available period of record.</S100FC:definition>
-						<S100FC:code>26</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1208</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Lower Low Water Large Tide</S100FC:label>
-						<S100FC:definition>The average of the lowest low waters, one from each of 19 years of observations.</S100FC:definition>
-						<S100FC:code>27</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1209</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Higher High Water Large Tide</S100FC:label>
-						<S100FC:definition>The average of the highest high waters, one from each of 19 years of observations.</S100FC:definition>
-						<S100FC:code>28</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1210</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Nearly Highest High Water</S100FC:label>
-						<S100FC:definition>An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.</S100FC:definition>
-						<S100FC:code>29</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1211</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Highest Astronomical Tide</S100FC:label>
-						<S100FC:definition>The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.</S100FC:definition>
-						<S100FC:code>30</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1212</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-					<S100FC:listedValue>
-						<S100FC:label>Baltic Sea Chart Datum 2000</S100FC:label>
-						<S100FC:definition>The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).</S100FC:definition>
-						<S100FC:code>44</S100FC:code>
-						<S100FC:definitionReference>
-							<S100FC:sourceIdentifier>1213</S100FC:sourceIdentifier>
-							<S100FC:definitionSource ref="IHOREG" />
-						</S100FC:definitionReference>
-					</S100FC:listedValue>
-				</S100FC:listedValues>
-			</S100FC:S100_FC_SimpleAttribute>
-		</S100FC:S100_FC_SimpleAttributes>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Vertical Datum</S100FC:name>
+			<S100FC:definition>The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.</S100FC:definition>
+			<S100FC:code>verticalDatum</S100FC:code>
+			<S100FC:alias>VERDAT</S100FC:alias>
+			<S100FC:alias>Datum Level</S100FC:alias>
+			<S100FC:alias>Reference Plane</S100FC:alias>
+			<S100FC:alias>Levelling Datum</S100FC:alias>
+			<S100FC:alias>Datum for Sounding Reduction</S100FC:alias>
+			<S100FC:alias>Datum for Heights</S100FC:alias>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>996</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:valueType>enumeration</S100FC:valueType>
+			<S100FC:listedValues>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Low Water Springs</S100FC:label>
+					<S100FC:definition>The average height of the low waters of spring tides. This level is used as a tidal datum in some areas.</S100FC:definition>
+					<S100FC:code>1</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1185</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Lower Low Water Springs</S100FC:label>
+					<S100FC:definition>The average height of lower low water springs at a place.</S100FC:definition>
+					<S100FC:code>2</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1186</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Sea Level</S100FC:label>
+					<S100FC:definition>The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.</S100FC:definition>
+					<S100FC:code>3</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1187</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Lowest Low Water</S100FC:label>
+					<S100FC:definition>An arbitrary level conforming to the lowest tide observed at a place, or somewhat lower.</S100FC:definition>
+					<S100FC:code>4</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1188</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Low Water</S100FC:label>
+					<S100FC:definition>The average height of all low waters at a place over a 19-year period.</S100FC:definition>
+					<S100FC:code>5</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1189</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Lowest Low Water Springs</S100FC:label>
+					<S100FC:definition>An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.</S100FC:definition>
+					<S100FC:code>6</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1190</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Approximate Mean Low Water Springs</S100FC:label>
+					<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).</S100FC:definition>
+					<S100FC:code>7</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1191</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Indian Spring Low Water</S100FC:label>
+					<S100FC:definition>An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.</S100FC:definition>
+					<S100FC:code>8</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1192</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Low Water Springs</S100FC:label>
+					<S100FC:definition>An arbitrary level, approximating that of mean low water springs (MLWS).</S100FC:definition>
+					<S100FC:code>9</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1193</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Approximate Lowest Astronomical Tide</S100FC:label>
+					<S100FC:definition>An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).</S100FC:definition>
+					<S100FC:code>10</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1194</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Nearly Lowest Low Water</S100FC:label>
+					<S100FC:definition>An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).</S100FC:definition>
+					<S100FC:code>11</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1195</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Lower Low Water</S100FC:label>
+					<S100FC:definition>The average height of the lower low waters at a place over a 19-year period.</S100FC:definition>
+					<S100FC:code>12</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1196</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Low Water</S100FC:label>
+					<S100FC:definition>The lowest level reached at a place by the water surface in one oscillation.</S100FC:definition>
+					<S100FC:code>13</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1012</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Approximate Mean Low Water</S100FC:label>
+					<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).</S100FC:definition>
+					<S100FC:code>14</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1197</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Approximate Mean Lower Low Water</S100FC:label>
+					<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).</S100FC:definition>
+					<S100FC:code>15</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1198</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean High Water</S100FC:label>
+					<S100FC:definition>The average height of all high waters at a place over a 19-year period.</S100FC:definition>
+					<S100FC:code>16</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1199</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean High Water Springs</S100FC:label>
+					<S100FC:definition>The average height of the high waters of spring tides.</S100FC:definition>
+					<S100FC:code>17</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1200</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>High Water</S100FC:label>
+					<S100FC:definition>The highest level reached at a place by the water surface in one oscillation.</S100FC:definition>
+					<S100FC:code>18</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1011</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Approximate Mean Sea Level</S100FC:label>
+					<S100FC:definition>An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).</S100FC:definition>
+					<S100FC:code>19</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1201</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>High Water Springs</S100FC:label>
+					<S100FC:definition>An arbitrary level, approximating that of mean high water springs (MHWS).</S100FC:definition>
+					<S100FC:code>20</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1202</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Higher High Water</S100FC:label>
+					<S100FC:definition>The average height of higher high waters at a place over a 19-year period.</S100FC:definition>
+					<S100FC:code>21</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1203</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Equinoctial Spring Low Water</S100FC:label>
+					<S100FC:definition>The level of low water springs near the time of an equinox.</S100FC:definition>
+					<S100FC:code>22</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1204</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Lowest Astronomical Tide</S100FC:label>
+					<S100FC:definition>The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.</S100FC:definition>
+					<S100FC:code>23</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1205</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Local Datum</S100FC:label>
+					<S100FC:definition>An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.</S100FC:definition>
+					<S100FC:code>24</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1206</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>International Great Lakes Datum 1985</S100FC:label>
+					<S100FC:definition>A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Père, Quebec, over the period 1970 to 1988.</S100FC:definition>
+					<S100FC:code>25</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1207</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Mean Water Level</S100FC:label>
+					<S100FC:definition>The average of all hourly water levels over the available period of record.</S100FC:definition>
+					<S100FC:code>26</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1208</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Lower Low Water Large Tide</S100FC:label>
+					<S100FC:definition>The average of the lowest low waters, one from each of 19 years of observations.</S100FC:definition>
+					<S100FC:code>27</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1209</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Higher High Water Large Tide</S100FC:label>
+					<S100FC:definition>The average of the highest high waters, one from each of 19 years of observations.</S100FC:definition>
+					<S100FC:code>28</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1210</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Nearly Highest High Water</S100FC:label>
+					<S100FC:definition>An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.</S100FC:definition>
+					<S100FC:code>29</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1211</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Highest Astronomical Tide</S100FC:label>
+					<S100FC:definition>The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.</S100FC:definition>
+					<S100FC:code>30</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1212</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Baltic Sea Chart Datum 2000</S100FC:label>
+					<S100FC:definition>The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).</S100FC:definition>
+					<S100FC:code>44</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1213</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+			</S100FC:listedValues>
+		</S100FC:S100_FC_SimpleAttribute>
+	</S100FC:S100_FC_SimpleAttributes>
 	<S100FC:S100_FC_ComplexAttributes>
 		<S100FC:S100_FC_ComplexAttribute>
 			<S100FC:name>Survey Date Range</S100FC:name>
@@ -656,14 +662,16 @@
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="dateEnd" />
 			</S100FC:subAttributeBinding>
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="dateStart" />
 			</S100FC:subAttributeBinding>
@@ -679,21 +687,24 @@
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="leastDepthOfDetectedFeaturesMeasured" />
 			</S100FC:subAttributeBinding>
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="significantFeaturesDetected" />
 			</S100FC:subAttributeBinding>
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="sizeOfFeaturesDetected" />
 			</S100FC:subAttributeBinding>
@@ -709,14 +720,16 @@
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="uncertaintyFixed" />
 			</S100FC:subAttributeBinding>
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="uncertaintyVariableFactor" />
 			</S100FC:subAttributeBinding>
@@ -732,7 +745,8 @@
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="horizontalPositionUncertainty" />
 			</S100FC:subAttributeBinding>
@@ -750,14 +764,16 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="depth" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="uncertainty" />
 			</S100FC:attributeBinding>
@@ -775,14 +791,16 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="iD" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
@@ -794,63 +812,72 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="featuresDetected" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="featureSizeVariable" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="fullSeafloorCoverageAchieved" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="bathyCoverageAchieved" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
+					<S100Base:upper xsi:nil="true"
+              						infinite="true" />
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="zoneOfConfidence" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="surveyDateRange" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="sourceSurveyID" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="surveyAuthority" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attributeVisibility>privateVisibility</S100FC:attributeVisibility>
 				<S100FC:attribute ref="typeOfBathymetricEstimationUncertainty" />
@@ -870,7 +897,8 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="false"
+              						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
