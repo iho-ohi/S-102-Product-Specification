@@ -209,7 +209,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |*1*
 //Superfluous for product without updates and reissues; S-102 will always replace the full product file; change to 0 as possible accourding to S100 (RohdeBSH 07. June 2024)
 |Integer
-|When a data set is initially created, the Edition number 1 is assigned to it. The Edition number is increased by 1 at each new Edition. Edition number remains the same for a re-issue. +
+|When a data set is initially created, the Edition number 1 is assigned to it. The Edition number is increased by 1 at each new Edition. +
 *Mandatory in S-102*
 
 |Attribute
