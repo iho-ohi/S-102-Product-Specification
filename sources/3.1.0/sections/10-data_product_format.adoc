@@ -860,8 +860,8 @@ unsigned +
 unsigned +
 8-bit
 | *1: Assessed +
-*2: Unassessed +
-*3: Oceanic
+*2: Assessed (Oceanic) +
+*3: Unassessed
 
 | 3
 | featuresDetected.leastDepthOfDetectedFeaturesMeasured
