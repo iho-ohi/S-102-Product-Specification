@@ -260,11 +260,13 @@ The root bounding box needs to encompass all data, including fill values. The ou
 | 7
 | Metadata
 | metadata
-^| 0..1
+^| *0*
 <| String
-| Name of metadata file +
-MD_&lt;HDF5 data file base name&gt;.XML (or .xml) ISO metadata +
-(per <<iho-s100,part=10c,clause=12>> & <<iho-s100,part=8>>).
+| The use of ISO metadata +
+(per <<iho-s100,part=10c,clause=12>> & <<iho-s100,part=8>>) +
+is not permitted in S-102. +
+The multiplicity is therefore set to 0. +
+This is done in accordance with <<subsec-application-schema>> and <<sec-exchangeset>>.
 
 | 8
 | Vertical coordinate system
