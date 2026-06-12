@@ -58,7 +58,7 @@ Citation information for the {series}-{docnumber} Portrayal Catalogue is provide
 |3
 |  edition
 |CharacterString
-|3.0.0
+|{edition}
 
 |4
 |  editionDate

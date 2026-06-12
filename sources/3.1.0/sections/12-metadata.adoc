@@ -506,7 +506,7 @@ _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 
 |*1*
 |CharacterString
 |TR 2/2007 specifies versioning of Product Specifications +
-*Example: 3.0.0 for {series}-{docnumber} Edition 3.0.0*
+*Example: {edition} for {series}-{docnumber} Edition {edition}*
 
 |Attribute
 |date
@@ -529,7 +529,7 @@ _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 
 |1
 |Integer
 |For IHO Product Specifications, these numbers should be taken from the IHO Product Specification Register in the IHO GI Registry. +
-*The corresponding Idx-number of the IHO Registry for {series}-{docnumber} Ed. 3.0.0 is 215.*
+*The corresponding Idx-number of the IHO Registry for {series}-{docnumber} Ed. {edition} is 215.*
 
 |Attribute
 |compliancyCategory
