@@ -3,7 +3,7 @@
 == Data Product Delivery
 
 === Introduction
-This clause describes how S-102 data will be delivered from the charting authority to the mariner.
+This clause describes how {series}-{docnumber} data will be delivered from the charting authority to the mariner.
 
 *Units of Delivery*:: Exchange Set
 
@@ -20,7 +20,7 @@ Each exchange set has a single exchange catalogue which contains the discovery m
 
 An exchange set is encapsulated into a form suitable for transmission by a mapping called an encoding. An encoding translates each of the elements of the exchange set into a logical form suitable for writing to media and for transmission online. An encoding may also define other elements in addition to the exchange set contents (This is media identification, data extents etc. ...) and may define commercial constructs such as encryption and compression methods.
 
-If the data is transformed in S-102 it must not be changed.
+If the data is transformed in {series}-{docnumber} it must not be changed.
 
 This Product Specification defines the encoding which must be used as a default for transmission of data between parties.
 
@@ -28,13 +28,13 @@ The encoding encapsulates exchange set elements as follows:
 
 *Mandatory Elements*
 
-* S-102 datasets -- HDF encoding
+* {series}-{docnumber} datasets -- HDF encoding
 * Exchange Catalogue -- the XML encoded representation of exchange set catalogue features [discovery metadata].
 
 *Optional Elements*
 
-* S-102 Feature Catalogue -- If it is necessary to deliver the latest Feature Catalogue to the end user it may be done using the S-102 exchange set mechanism for datasets
-* S-102 Portrayal Catalogue -- If it is necessary to deliver the latest Portrayal Catalogue to the end user it may be done using the S-102 exchange set mechanism for datasets.
+* {series}-{docnumber} Feature Catalogue -- If it is necessary to deliver the latest Feature Catalogue to the end user it may be done using the {series}-{docnumber} exchange set mechanism for datasets
+* {series}-{docnumber} Portrayal Catalogue -- If it is necessary to deliver the latest Portrayal Catalogue to the end user it may be done using the {series}-{docnumber} exchange set mechanism for datasets.
 --
 
 === Dataset
@@ -48,7 +48,7 @@ Three types of dataset files may be produced and contained within an exchange se
 
 [[subsec-production-of-a-cancellation]]
 ===== Production of a cancellation
-S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
+{series}-{docnumber} uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. In order to cancel a dataset, the cancelling authority (generally the producer of the original dataset) must:
 
 1. Prepare an exchange catalogue with an S100_DatasetDiscoveryMetadata block with field values as described in <<subsec-metadata-for-cancellation>>.
 2. Complete other parts of the exchange catalogue as required by <<subsec-s100_exchangecatalogue>> (for example, provide discovery metadata for a replacement dataset if such is included in the same exchange set).
@@ -56,7 +56,7 @@ S-102 uses only the fileless cancellation method described in <<iho-s100,part=17
 
 [[subsec-metadata-for-cancellation]]
 ===== Metadata for cancellation
-S-102 uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
+{series}-{docnumber} uses only the fileless cancellation method described in <<iho-s100,part=17,clause=17-4.4.1>>. For a cancellation, set:
 
 * _fileName_ = _fileName_ of the cancelled dataset
 
@@ -72,17 +72,17 @@ S-102 uses only the fileless cancellation method described in <<iho-s100,part=17
 
 [[subsec-dataset-size]]
 ==== Dataset size
-S-102 delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
+{series}-{docnumber} delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
 
 NOTE: The use of 10 MB in this and other sections should be treated as informative information only. Additionally, any computed values associated with either file size limit should be treated as approximate answers. Final selection of an appropriate file size limit or grid resolution is left to the discretion of the data producer.
 
 *Network Transfer*:: To minimize overall file size, the HO produces a 10 MB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 by 600 grid cells.
 
-<<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of S-102 data for specific charting scales.
+<<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of {series}-{docnumber} data for specific charting scales.
 
 
 
-===== S-102 grid resolution and tiling
+===== {series}-{docnumber} grid resolution and tiling
 
 [[tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale]]
 .Informative Grid Resolution and Resulting Tile Size at Chart Scale
@@ -157,29 +157,29 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 
 [[subsec-dataset-file-naming]]
 ==== Dataset file naming
-Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause=4.3>>). S-102 dataset naming conventions must follow these rules.
+Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause=4.3>>). {series}-{docnumber} dataset naming conventions must follow these rules.
 
 *102YYYYØØØØØØØØØØØØ.H5*::
-102::: the first 3 characters identify the dataset as an S-102 dataset (mandatory).
+102::: the first 3 characters identify the dataset as an {series}-{docnumber} dataset (mandatory).
 YYYY::: the fourth to seventh characters identify the producer code according to the Producer Code Register.
 ØØØØ::: the eighth to the maximum nineteenth characters are optional and may be used in any way by the producer to provide the unique file name. The following characters are allowed in the dataset name: A to Z, 0 to 9 and the special character _ (underscore).
 H5::: denotes an HDF5 file.
 
 [[sec-exchangeset]]
 === Exchange Set
-The structure of an S-102 Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=4.2>>.
+The structure of an {series}-{docnumber} Exchange Set must be according to the structure described below, which is based on <<iho-s100,part=17,clause=4.2>>.
 
-. An S-102 Exchange Set must contain an Exchange Set Catalogue, CATALOG.XML, its digital signature CATALOG.SIGN, and may contain any number of S-102 conformant dataset files, support files, and Catalogue files.
+. An {series}-{docnumber} Exchange Set must contain an Exchange Set Catalogue, CATALOG.XML, its digital signature CATALOG.SIGN, and may contain any number of {series}-{docnumber} conformant dataset files, support files, and Catalogue files.
 
 . All content must be placed inside a top root folder named S100_ROOT. This is the only top level root folder in an Exchange Set containing only S-100 products.
 
-. The S100_ROOT folder must contain a subfolder named S-102. This subfolder holds content specific to the S-102 Product Specification.
+. The S100_ROOT folder must contain a subfolder named {series}-{docnumber}. This subfolder holds content specific to the {series}-{docnumber} Product Specification.
 
-. The S-102 subfolder must contain subfolders for the component dataset files (DATASET_FILES) and Catalogues (CATALOGUES) as required.
+. The {series}-{docnumber} subfolder must contain subfolders for the component dataset files (DATASET_FILES) and Catalogues (CATALOGUES) as required.
 
 . The required Exchange Set Catalogue XML document instance must be named CATALOG.XML and placed in the S100_ROOT folder, together with its digital signature (CATALOG.SIGN) file. All other digital signatures are included within their corresponding resource metadata records in the CATALOG.XML.
 
-. Support files are not allowed in S-102 exchange sets for this edition of S-102.
+. Support files are not allowed in {series}-{docnumber} exchange sets for this edition of {series}-{docnumber}.
 
 === Exchange Catalogue
 The Exchange Catalogue acts as the table of contents for the Exchange Set. The Catalogue file of the Exchange Set must be named CATALOG.XML. No other file in the Exchange Set may be named CATALOG.XML. The contents of the Exchange Catalogue are described in <<sec-metadata>>.
@@ -188,7 +188,7 @@ The Exchange Catalogue acts as the table of contents for the Exchange Set. The C
 <<iho-s100,part=15>> defines the algorithms for compressing, encrypting and digitally signing datasets based on the S-100 Data Model. The individual Product Specifications provide details about which of the elements are being used and on which files in the dataset.
 
 ==== Use of compression
-The data producer decides if compression will be used on the S-102 product files (HDF5). It is expected that a hydrographic office will make a policy decision and that all the S-102 datasets from the producer will be either compressed or uncompressed.
+The data producer decides if compression will be used on the {series}-{docnumber} product files (HDF5). It is expected that a hydrographic office will make a policy decision and that all the {series}-{docnumber} datasets from the producer will be either compressed or uncompressed.
 
 It is recommended to compress all the dataset files, for example HDF5 files. The ZIP compression method defined in <<iho-s100,part=15,clause=5.2>> must be applied to the product files.
 
@@ -196,6 +196,6 @@ It is recommended to compress all the dataset files, for example HDF5 files. The
 It is recommended to encrypt all the dataset files, for example HDF5. The encryption method defined in <<iho-s100,part=15>> must be applied.
 
 ==== Use of digital signatures
-Digital signatures shall be used on all files included in a S-102 compliant Exchange Set to meet the requirements of IMO resolution MSC.428(98) to reduce cyber security risks among users, especially when used in navigations systems at sea. The recommended signature method is defined in <<iho-s100,part=15>>.
+Digital signatures shall be used on all files included in a {series}-{docnumber} compliant Exchange Set to meet the requirements of IMO resolution MSC.428(98) to reduce cyber security risks among users, especially when used in navigations systems at sea. The recommended signature method is defined in <<iho-s100,part=15>>.
 
 The digital signature information is encoded in the corresponding discovery block in the exchange catalogue for each file included in the Exchange Set.

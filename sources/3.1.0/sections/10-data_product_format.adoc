@@ -264,7 +264,7 @@ The root bounding box needs to encompass all data, including fill values. The ou
 <| String
 | The use of ISO metadata +
 (per <<iho-s100,part=10c,clause=12>> & <<iho-s100,part=8>>) +
-is not permitted in S-102. +
+is not permitted in {series}-{docnumber}. +
 The multiplicity is therefore set to 0. +
 This is done in accordance with <<subsec-application-schema>> and <<sec-exchangeset>>.
 
