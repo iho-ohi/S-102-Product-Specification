@@ -122,7 +122,7 @@ Implementers should include the location where the error is encountered (for exa
 | Post-condition	| Action to be executed if the check condition evaluates to TRUE (that is, if the check fails). +
 This action will generally either set a global flag to control check processing (for example, “SET TERMINATE=TRUE”) or set a variable in the processing context which is used in later checks (for example, set a context variable to store the value of the metadata attribute dataCodingFormat).
 
-| S-100 reference	| Reference to place in S-100 where more information about the check can be found, for example lists of allowed values for enumerations. All S-100 references for checks conforming to this Edition of {series}-{docnumber} are to S-100 Edition 5.0.0.
+| S-100 reference	| Reference to place in S-100 where more information about the check can be found, for example lists of allowed values for enumerations. All S-100 references for checks conforming to this Edition of {series}-{docnumber} are to S-100 Edition {s100editionreference}.
 
 | {series}-{docnumber} reference	| Reference to place in {series}-{docnumber} where more information about the check can be found, for example allowed values for attributes of enumeration types.
 
