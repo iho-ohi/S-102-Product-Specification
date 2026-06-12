@@ -14,6 +14,7 @@
 :local-cache-only:
 :imagesdir: images
 :status: draft-development
+:s100editionreference: 5.2.0
 
 include::sections/00-document-history.adoc[]
 

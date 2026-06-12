@@ -593,7 +593,7 @@ _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 
 [[sec-pt-locale]]
 ==== PT_Locale
 {series}-{docnumber} uses PT_Locale without modification.
-The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.2.0 schema distribution.
+The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition {s100editionreference} schema distribution.
 
 [[sec-certs-digsign]]
 === Certificates and Digital Signatures
