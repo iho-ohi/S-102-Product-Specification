@@ -15,6 +15,8 @@ The Metadata elements used in the Bathymetric Surface product are derived from S
 
 * Metadata required by the S-100 HDF5 encoding (<<iho-s100,part=10c>>) and product-specific metadata defined by this product specification are encoded at various levels in the HDF5 group hierarchy, as specified by <<iho-s100,part=10c>> or <<subsec-product-structure>>.
 
+In the following sections <<subsec-s100_exchangecatalogue>> and <<subsec-s100_datasetdiscoverymetadata>>, attribute multiplicities that differ from the <<iho-s100,part=17>> are indicated in bold type.
+
 [[subsec-exchange-set-metadata]]
 === Exchange Set metadata
 For information exchange, there are several categories of metadata required: metadata about the overall Exchange Catalogue, metadata about each of the datasets contained in the Catalogue.
@@ -172,6 +174,7 @@ Each Exchange Set has a single S100_ExchangeCatalogue which contains meta inform
 ==== S100_CataloguePointOfContact
 {series}-{docnumber} uses S100_CataloguePointOfContact without modification.
 
+[[subsec-s100_datasetdiscoverymetadata]]
 === S100_DatasetDiscoveryMetadata
 Dataset discovery metadata in {series}-{docnumber} restricts certain attributes and roles as described in <<tab-s100-datasetDiscoveryMetadata-params>>. Optional S-100 attributes which are mandatory in {series}-{docnumber} are indicated in the Remarks column.
 
