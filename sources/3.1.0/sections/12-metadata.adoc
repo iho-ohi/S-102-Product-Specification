@@ -11,7 +11,7 @@ The Metadata elements used in the Bathymetric Surface product are derived from S
 
 {series}-{docnumber} metadata is encoded in two places:
 
-* Metadata used for the discovery, identification, and use of {series}-{docnumber} datasets in S-100-based navigations systems (specifically, an S-100-capable ECDIS) is encoded in the exchange catalogue. This metadata conforms to S-100 Part 17, with product-specific restrictions added.
+* Metadata used for the discovery, identification, and use of {series}-{docnumber} datasets in S-100-based navigations systems (specifically, an S-100-capable ECDIS) is encoded in the exchange catalogue. This metadata conforms to <<iho-s100,part=17>>, with product-specific restrictions added.
 
 * Metadata required by the S-100 HDF5 encoding (<<iho-s100,part=10c>>) and product-specific metadata defined by this product specification are encoded at various levels in the HDF5 group hierarchy, as specified by <<iho-s100,part=10c>> or <<subsec-product-structure>>.
 
