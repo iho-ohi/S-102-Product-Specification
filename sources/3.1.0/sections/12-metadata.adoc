@@ -98,7 +98,7 @@ Each Exchange Set has a single S100_ExchangeCatalogue which contains meta inform
 |Attribute
 |productSpecification
 |Details about the Product Specifications used for the datasets contained in the Exchange Catalogue
-|*1..**
+|*1*..*
 |S100_ProductSpecification
 |The use of this attribute is *mandatory* in {series}-{docnumber} to facilitate processing in the ECDIS.
 
