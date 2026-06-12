@@ -9,9 +9,9 @@
 === Introduction
 The Metadata elements used in the Bathymetric Surface product are derived from S-100 and from <<iso-19115-1>> and <<iso-19115-2>>. Optionally additional metadata may be derived from <<iso-ts-19130>> and <<iso-ts-19130-2>> especially metadata relating to the sonar equipment which may have been used to acquire the bathymetric data.
 
-S-102 metadata is encoded in two places:
+{series}-{docnumber} metadata is encoded in two places:
 
-* Metadata used for the discovery, identification, and use of S-102 datasets in S-100-based navigations systems (specifically, an S-100-capable ECDIS) is encoded in the exchange catalogue. This metadata conforms to S-100 Part 17, with product-specific restrictions added.
+* Metadata used for the discovery, identification, and use of {series}-{docnumber} datasets in S-100-based navigations systems (specifically, an S-100-capable ECDIS) is encoded in the exchange catalogue. This metadata conforms to <<iho-s100,part=17>>, with product-specific restrictions added.
 
 * Metadata required by the S-100 HDF5 encoding (<<iho-s100,part=10c>>) and product-specific metadata defined by this product specification are encoded at various levels in the HDF5 group hierarchy, as specified by <<iho-s100,part=10c>> or <<subsec-product-structure>>.
 
@@ -19,7 +19,7 @@ S-102 metadata is encoded in two places:
 === Exchange Set metadata
 For information exchange, there are several categories of metadata required: metadata about the overall Exchange Catalogue, metadata about each of the datasets contained in the Catalogue.
 
-<<fig-components-and-associated-metadata-for-the-s102-exchange-set>> depicts the relationships of exchange set elements (datasets and feature/portrayal catalogues) and exchange set metadata. This figure is derived from <<iho-s100,part=17,figure=2>> with relationships not applicable to S-102 omitted.
+<<fig-components-and-associated-metadata-for-the-s102-exchange-set>> depicts the relationships of exchange set elements (datasets and feature/portrayal catalogues) and exchange set metadata. This figure is derived from <<iho-s100,part=17,figure=2>> with relationships not applicable to {series}-{docnumber} omitted.
 
 <<fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset>> depicts the structure of the exchange catalogue and its component discovery metadata blocks. The structure is the same as in <<iho-s100,part=17>>.
 
@@ -28,28 +28,28 @@ More detailed information about the various classes is shown in <<fig-s102-excha
 The discovery metadata classes have numerous attributes which enable important information about the datasets to be examined without the need to process the data (e.g., decryption, decompression, loading). Other Catalogues can be included in the Exchange Set in support of the datasets such as Feature and Portrayal.
 
 [[fig-components-and-associated-metadata-for-the-s102-exchange-set]]
-.Components and associated metadata for the S-102 exchange set (<<iho-s100,part=17,figure=2>> with items not used by S-102 omitted)
+.Components and associated metadata for the {series}-{docnumber} exchange set (<<iho-s100,part=17,figure=2>> with items not used by {series}-{docnumber} omitted)
 image::../images/figure-components-and-associated-metadata-for-the-s102-exchange-set.png[]
 
 [[fig-relationship-between-exchange-catalogue-discovery-metadata-and-dataset]]
-.Relationship between exchange catalogue, discovery metadata, and dataset (<<iho-s100,part=17,figure=6>> with items not used by S-102 omitted)
+.Relationship between exchange catalogue, discovery metadata, and dataset (<<iho-s100,part=17,figure=6>> with items not used by {series}-{docnumber} omitted)
 image::../images/figure-relationship-between-exchange-catalogue-discovery-metadata-and-dataset.png[]
 
 [%landscape]
 <<<
 
 [[fig-s102-exchange-set-class-details]]
-.S-102 Exchange Set Class Details (<<iho-s100,part=17,figure=7>> with items not used by S-102 omitted)
+.{series}-{docnumber} Exchange Set Class Details (<<iho-s100,part=17,figure=7>> with items not used by {series}-{docnumber} omitted)
 image::../images/figure-s102-exchange-set-class-details.png[]
 
 [%portrait]
 <<<
 
-The following clauses define the mandatory and optional metadata needed for S-102. In some cases, the metadata may be repeated in a national language. If this is the case it is noted in the Remarks column.
+The following clauses define the mandatory and optional metadata needed for {series}-{docnumber}. In some cases, the metadata may be repeated in a national language. If this is the case it is noted in the Remarks column.
 
-The XML schemas for S-102 exchange catalogues will be available from the IHO Geospatial Information (GI) Registry and/or the S-100 GitHub site (https://github.com/IHO-S100WG).
+The XML schemas for {series}-{docnumber} exchange catalogues will be available from the IHO Geospatial Information (GI) Registry and/or the S-100 GitHub site (https://github.com/IHO-S100WG).
 
-The S-102 exchange catalogue uses the S-100 exchange catalogue schemas which are available from the S-100 schema server at https://schemas.s100dev.net (downloadable archives are also available on the site for offline use). Implementation of the S-102-specific constraints described in following clauses below is left to developer decision as it can be done in various ways depending on implementation frameworks and the requirements of production or application software.
+The {series}-{docnumber} exchange catalogue uses the S-100 exchange catalogue schemas which are available from the S-100 schema server at https://schemas.s100dev.net (downloadable archives are also available on the site for offline use). Implementation of the {series}-{docnumber}-specific constraints described in following clauses below is left to developer decision as it can be done in various ways depending on implementation frameworks and the requirements of production or application software.
 
 === Language
 
@@ -66,17 +66,17 @@ Character strings must be encoded using the character set defined in <<iso-10646
 
 Each Exchange Set has a single S100_ExchangeCatalogue which contains meta information for the data in the Exchange Set.
 
-S-102 uses S100_ExchangeCatalogue without modification. 
+{series}-{docnumber} uses S100_ExchangeCatalogue without modification. 
 
 
 ==== S100_ExchangeCatalogueIdentifier
-S-102 uses S100_ExchangeCatalogueIdentifier without modification.
+{series}-{docnumber} uses S100_ExchangeCatalogueIdentifier without modification.
 
 ==== S100_CataloguePointOfContact
-S-102 uses S100_CataloguePointOfContact without modification.
+{series}-{docnumber} uses S100_CataloguePointOfContact without modification.
 
 === S100_DatasetDiscoveryMetadata
-Dataset discovery metadata in S-102 restricts certain attributes and roles as described in <<tab-s100-datasetDiscoveryMetadata-params>>. Optional S-100 attributes which are mandatory in S-102 are indicated in the Remarks column.
+Dataset discovery metadata in {series}-{docnumber} restricts certain attributes and roles as described in <<tab-s100-datasetDiscoveryMetadata-params>>. Optional S-100 attributes which are mandatory in {series}-{docnumber} are indicated in the Remarks column.
 
 [[tab-s100-datasetDiscoveryMetadata-params]]
 .S100_DatasetDiscoveryMetadata parameters
@@ -89,8 +89,8 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |Metadata about the individual datasets in the Exchange Catalogue
 |-
 |-
-|*The optional S-100 attributes _updateNumber_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in S-102.* +
-*References to support file discovery metadata are not permitted because S-102 does not use support files.*
+|*The optional S-100 attributes _updateNumber_, _updateApplicationDate_, _referenceID_, and _temporalExtent_ are not used in {series}-{docnumber}.* +
+*References to support file discovery metadata are not permitted because {series}-{docnumber} does not use support files.*
 
 |Attribute
 |fileName
@@ -98,7 +98,7 @@ Dataset discovery metadata in S-102 restricts certain attributes and roles as de
 |1
 |URI
 |See <<iho-s100,part=1,clause=4.6>> +
-*Format: file:/S-102/DATASET_FILES/<dsname>* +
+*Format: file:/{series}-{docnumber}/DATASET_FILES/<dsname>* +
 *Dataset file name <dsname> must be according to format defined in <<subsec-dataset-file-naming>>.*
 
 |Attribute
@@ -169,7 +169,7 @@ _False_ indicates the resource is not copyrighted.
 |1
 |Class +
 MD_SecurityConstraints>MD_ClassificationCode (codelist)
-|*Mandatory in S-102* +
+|*Mandatory in {series}-{docnumber}* +
 [loweralpha]
 . unclassified
 . restricted
@@ -186,7 +186,7 @@ MD_SecurityConstraints>MD_ClassificationCode (codelist)
 |The purpose for which the dataset has been issued
 |*1*
 |S100_Purpose
-|*Mandatory in S-102*
+|*Mandatory in {series}-{docnumber}*
 
 |Attribute
 |notForNavigation
@@ -210,7 +210,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 //Superfluous for product without updates and reissues; S-102 will always replace the full product file; change to 0 as possible accourding to S100 (RohdeBSH 07. June 2024)
 |Integer
 |When a data set is initially created, the Edition number 1 is assigned to it. The Edition number is increased by 1 at each new Edition. +
-*Mandatory in S-102*
+*Mandatory in {series}-{docnumber}*
 
 |Attribute
 |issueDate
@@ -232,7 +232,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |The extent of the dataset limits
 |*1*
 |EX_GeographicBoundingBox
-|*Mandatory in S-102* +
+|*Mandatory in {series}-{docnumber}* +
 *Defined as a rectangle coincident with the outermost cell boundaries of the dataset.*
 
 |Attribute
@@ -254,7 +254,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |The official IHO Producer Code from S-62
 |1
 |CharacterString
-|*Mandatory in S-102*
+|*Mandatory in {series}-{docnumber}*
 
 |Attribute
 |encodingFormat
@@ -269,7 +269,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |Provides information about data coverages within the dataset
 |*1*..*
 |S100_DataCoverage
-|*Mandatory in S-102* +
+|*Mandatory in {series}-{docnumber}* +
 *<<tab-s100-dataCoverage-params>>*
 
 |Attribute
@@ -325,7 +325,7 @@ CI_Responsibility>CI_Organisation
 |CharacterString
 |A dataset may be replaced by 1 or more datasets. +
 *Dataset name must be according to format defined in <<subsec-dataset-file-naming>>.* +
-*For example, _102DE00KD54.H5_* +
+*For example, _{docnumber}DE00KD54.H5_* +
 See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 *Mandatory when replacedData = true*
 
@@ -335,7 +335,7 @@ See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 |*1*..3
 |S100_NavigationPurpose
 |If Product Specification is intended for creation of navigational products, this attribute should be mandatory. +
-*Mandatory in S-102*
+*Mandatory in {series}-{docnumber}*
 
 |Role
 |resourceMaintenance
@@ -344,15 +344,15 @@ See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 |MD_MaintenanceInformation
 |S-100 restricts the multiplicity to 0..1 and adds specific restrictions on the ISO 19115 structure and content. See <<iho-s100,part=17>>. +
 Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100,part=17,clause=4.9>>. +
-*S-102 discovery metadata blocks should populate maintenance information if and only if the date of the next edition is definite, whether it is due on a regular or irregular schedule.*
+*{series}-{docnumber} discovery metadata blocks should populate maintenance information if and only if the date of the next edition is definite, whether it is due on a regular or irregular schedule.*
 
 |===
 
 ==== S100_NavigationPurpose
-S-102 uses S100_NavigationPurpose without modification.
+{series}-{docnumber} uses S100_NavigationPurpose without modification.
 
 ==== S100_DataCoverage
-S-102 uses S100_DataCoverage without modification, but with additional remarks and changes to the multiplicity.
+{series}-{docnumber} uses S100_DataCoverage without modification, but with additional remarks and changes to the multiplicity.
 
 [[tab-s100-dataCoverage-params]]
 .S100_DataCoverage parameters
@@ -379,7 +379,7 @@ S-102 uses S100_DataCoverage without modification, but with additional remarks a
 |Specification of the temporal extent of the coverage
 |*0*
 |S100_TemporalExtent
-|*The _temporalExtent_ is not used in S-102.*
+|*The _temporalExtent_ is not used in {series}-{docnumber}.*
 
 |Attribute
 |optimumDisplayScale
@@ -407,7 +407,7 @@ S-102 uses S100_DataCoverage without modification, but with additional remarks a
 |The resolution of gridded or georeferenced data (in metres)
 |*1..2*
 |Real
-|*Mandatory in S-102* +
+|*Mandatory in {series}-{docnumber}* +
 A single value may be provided when all axes have a common resolution. +
 For multiple value provision, use axis order as specified in dataset. +
 For example, for 5 metre resolution, the value 5 must be encoded. +
@@ -421,7 +421,7 @@ _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 
 ====
 
 ==== S100_Purpose
-S-102 uses S100_Purpose without modification, but with a restriction on the allowed values.
+{series}-{docnumber} uses S100_Purpose without modification, but with a restriction on the allowed values.
 
 [[tab-s100-purpose]]
 .S100_Purpose
@@ -433,7 +433,7 @@ S-102 uses S100_Purpose without modification, but with a restriction on the allo
 |S100_Purpose
 |The purpose of the dataset
 |-
-|*The S-100 values _update_, _reissue_, and _delta_ are not used in S-102.*
+|*The S-100 values _update_, _reissue_, and _delta_ are not used in {series}-{docnumber}.*
 
 |Value
 |newDataset
@@ -455,7 +455,7 @@ S-102 uses S100_Purpose without modification, but with a restriction on the allo
 |===
 
 ==== S100_EncodingFormat
-S-102 uses S100_EncodingFormat with a restriction on the allowed values to permit only the S-100 HDF5 format for S-102 datasets.
+{series}-{docnumber} uses S100_EncodingFormat with a restriction on the allowed values to permit only the S-100 HDF5 format for {series}-{docnumber} datasets.
 
 [[tab-s100-encodingFormat-params]]
 .S100_EncodingFormat parameters
@@ -467,7 +467,7 @@ S-102 uses S100_EncodingFormat with a restriction on the allowed values to permi
 |S100_EncodingFormat
 |The encoding format
 |-
-|*The only value allowed in S-102 is "`HDF5`".*
+|*The only value allowed in {series}-{docnumber} is "`HDF5`".*
 
 |Value
 |HDF5
@@ -477,7 +477,7 @@ S-102 uses S100_EncodingFormat with a restriction on the allowed values to permi
 |===
 
 ==== S100_ProductSpecification
-S-102 uses S100_ProductSpecification without modification, but with additional remarks and changes to the multiplicity.
+{series}-{docnumber} uses S100_ProductSpecification without modification, but with additional remarks and changes to the multiplicity.
 
 [[tab-s100-productSpecification-params]]
 .S100_ProductSpecification parameters
@@ -498,7 +498,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |*1*
 |CharacterString
 |The name in the GI Registry should be used for this field. +
-*For S-102, this name is "Bathymetric Surface" (as of 25 June 2024).*
+*For {series}-{docnumber}, this name is "Bathymetric Surface" (as of 25 June 2024).*
 
 |Attribute
 |version
@@ -506,7 +506,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |*1*
 |CharacterString
 |TR 2/2007 specifies versioning of Product Specifications +
-*Example: 3.0.0 for S-102 Edition 3.0.0*
+*Example: {edition} for {series}-{docnumber} Edition {edition}*
 
 |Attribute
 |date
@@ -521,7 +521,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |1
 |CharacterString +
 (Restricted to Product ID values from the IHO Product Specification Register in the IHO Geospatial Information (GI) Registry)
-|*For S-102, this identifier is "S-102" (without quotes).*
+|*For {series}-{docnumber}, this identifier is "{series}-{docnumber}" (without quotes).*
 
 |Attribute
 |number
@@ -529,7 +529,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 |1
 |Integer
 |For IHO Product Specifications, these numbers should be taken from the IHO Product Specification Register in the IHO GI Registry. +
-*The corresponding Idx-number of the IHO Registry for S-102 Ed. 3.0.0 is 215.*
+*The corresponding Idx-number of the IHO Registry for {series}-{docnumber} Ed. {edition} is {iho-registry-ps-idx}.*
 
 |Attribute
 |compliancyCategory
@@ -541,7 +541,7 @@ S-102 uses S100_ProductSpecification without modification, but with additional r
 
 [[subsec-s100-compliancy-category]]
 ==== S100_CompliancyCategory
-S-102 exchange sets conforming to this edition of S-102 and using a CRS from the EPSG registry may be encoded as category 3 or 4 when the _compliancyCategory_ metadata attribute is populated. Because S-98 interoperability assumes _category4_ datasets, _category4_ may be used for test purposes, though the absence of test datasets and of a published IHO interoperability catalogue mean this edition of S-102 does not yet qualify for _category4_. *Given the uncertainty about interoperability testing requirements and availability of test datasets, the S-100 WG chair and S-102 PT chair should be consulted for up-to-date guidance.*
+{series}-{docnumber} exchange sets conforming to this edition of {series}-{docnumber} and using a CRS from the EPSG registry may be encoded as category 3 or 4 when the _compliancyCategory_ metadata attribute is populated. Because S-98 interoperability assumes _category4_ datasets, _category4_ may be used for test purposes, though the absence of test datasets and of a published IHO interoperability catalogue mean this edition of {series}-{docnumber} does not yet qualify for _category4_. *Given the uncertainty about interoperability testing requirements and availability of test datasets, the S-100 WG chair and {series}-{docnumber} PT chair should be consulted for up-to-date guidance.*
 
 [[tab-s100-compliancyCategory]]
 .S100_CompliancyCategory
@@ -554,7 +554,7 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |S100_CompliancyCategory
 |-
 |-
-|*S-102 should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
+|*{series}-{docnumber} should use _category3_ or _category4_, subject to the guidance provided in <<subsec-s100-compliancy-category>>.*
 
 |Value
 |category3
@@ -571,29 +571,29 @@ S-102 exchange sets conforming to this edition of S-102 and using a CRS from the
 |===
 
 ==== S100_ProtectionScheme
-S-102 uses S100_ProtectionScheme without modification.
+{series}-{docnumber} uses S100_ProtectionScheme without modification.
 
 
 === MD_MaintenanceInformation
-S-102 uses MD_MaintenanceInformation without modification.
+{series}-{docnumber} uses MD_MaintenanceInformation without modification.
 
 
 === MD_MaintenanceFrequencyCode
-S-102 uses MD_MaintenanceFrequencyCode without modification.
+{series}-{docnumber} uses MD_MaintenanceFrequencyCode without modification.
 
 
 === S100_CatalogueDiscoveryMetadata
-S-102 uses S100_CatalogueDiscoveryMetadata without modification.
+{series}-{docnumber} uses S100_CatalogueDiscoveryMetadata without modification.
 
 
 ==== S100_CatalogueScope
-S-102 uses S100_CatalogueScope without modification.
+{series}-{docnumber} uses S100_CatalogueScope without modification.
 
 
 [[sec-pt-locale]]
 ==== PT_Locale
-S-102 uses PT_Locale without modification.
-The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition 5.2.0 schema distribution.
+{series}-{docnumber} uses PT_Locale without modification.
+The class PT_Locale is defined in <<iso-19115-1>>. LanguageCode, CountryCode, and MD_CharacterSetCode are ISO codelists which are defined in a codelists file which is part of the S-100 Edition {s100editionreference} schema distribution.
 
 [[sec-certs-digsign]]
 === Certificates and Digital Signatures
@@ -601,7 +601,7 @@ The classes S100_SE_CertificateContainerType (<<iho-s100,part=15,clause=8.11.1>>
 
 In accordance with <<iho-s100,part=15>>, only the ECDSA algorithm is allowed from the S100_SE_DigitalSignatureReference enumeration.
 
-S-102 uses S100_SE_DigitalSignature without modification. As stated in <<iho-s100,part=15,clause=15-8.11.3>>:
+{series}-{docnumber} uses S100_SE_DigitalSignature without modification. As stated in <<iho-s100,part=15,clause=15-8.11.3>>:
 
 "The class S100_SE_DigitalSignature is realized as one of either S100_SE_SignatureOnData (a digital signature of a particular identified resource) or an additional digital signature defined using the class S100_SE_AdditionalSignature, each of which is either a S100_SE_SignatureOnData or S100_SE_SignatureOnSignature element as described in <<iho-s100,part=15,clause=8.8>>. <<iho-s100,part=17>> metadata thus allows for multiple digital signatures, a single mandatory S100_SE_SignatureOnData and any number of additional signatures, either of the data or other signatures."
 

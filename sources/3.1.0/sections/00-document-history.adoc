@@ -14,28 +14,28 @@ Changes to this Specification are coordinated by the IHO S-100 Working Group. Ne
 |1.0.0
 |April 2012
 |TSMAD
-|Approved edition of S-102
+|Approved edition of {series}-{docnumber}
 
 |2.0.0
 |March 2017
-|S-102PT
+|{series}-{docnumber}PT
 |Updated clause 4.0 and 12.0. +
 Populated clause 9.0 and Annex B.
 
 |2.0.0
 |May 2017
-|S-102PT
+|{series}-{docnumber}PT
 |Modified clause 9.0 based on feedback at S-100WG2 meeting.
 
 |2.0.0
 |February 2018
-|S-102PT
-|Modified Clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.
+|{series}-{docnumber}PT
+|Modified Clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: {series}-{docnumber} Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future {series}-{docnumber} Tiling.
 
 |2.0.0
 |June 2018
-|S-102PT
-|Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4^th^ April S-102 Project Team Meeting.
+|{series}-{docnumber}PT
+|Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4^th^ April {series}-{docnumber} Project Team Meeting.
 
 Modified content throughout the following sections:
 
@@ -44,7 +44,7 @@ Modified content throughout the following sections:
 
 |2.0.0
 |October/November 2018
-|S-102PT
+|{series}-{docnumber}PT
 |Entered Redline comments from HSSC Letter 02/2018
 
 Modified content includes:
@@ -54,8 +54,8 @@ Modified content includes:
 
 |2.0.0
 |January/February 2019
-|S-102PT
-|Adjudicated HSSC and S102PT Comments at 5^th^ S-102 Project Team Meeting.
+|{series}-{docnumber}PT
+|Adjudicated HSSC and S102PT Comments at 5^th^ {series}-{docnumber} Project Team Meeting.
 
 Modified content includes:
 
@@ -64,7 +64,7 @@ Modified content includes:
 
 |2.0.0
 |September/October 2019
-|S-102PT
+|{series}-{docnumber}PT
 |Adjudicated HSSC and S102PT comments since last release
 
 Modified content includes:
@@ -74,29 +74,29 @@ Modified content includes:
 
 |2.1.0
 |November 2020
-|S-102PT
+|{series}-{docnumber}PT
 |Redline first draft of 2.1 including: +
-S-102PT6-07.1_CHS-Paper to limit the mandate of the S-102 standard for navigation only -- remove track changes and tiling options. +
-S-102PT6_2020_05.c_Data Product Format_Prepared by CARIS-v3.pdf -- adjusted with comments from 7Cs and BSH. +
+{series}-{docnumber}PT6-07.1_CHS-Paper to limit the mandate of the {series}-{docnumber} standard for navigation only -- remove track changes and tiling options. +
+{series}-{docnumber}PT6_2020_05.c_Data Product Format_Prepared by CARIS-v3.pdf -- adjusted with comments from 7Cs and BSH. +
 Removed Annex B sample HDF encoding dump as it was inconsistent.
 
 |2.1.0
 |March 2021
-|S-102PT
+|{series}-{docnumber}PT
 |Redline final draft of 2.1 including: +
-S-102PT7 agreed in principle to limit the scope of S-102 v 2.1 to Navigation Only. Several sections adjusted in view of this decision. +
-[[lhh1-start1]]S-102PT7 revised storage locations for minimum/maximum depth and associated uncertainty. +
-S-102PT7 agreed for metadata to be stored in a separate ISO-formatted file.[[lhh1-end1]] +
+{series}-{docnumber}PT7 agreed in principle to limit the scope of {series}-{docnumber} v 2.1 to Navigation Only. Several sections adjusted in view of this decision. +
+[[lhh1-start1]]{series}-{docnumber}PT7 revised storage locations for minimum/maximum depth and associated uncertainty. +
+{series}-{docnumber}PT7 agreed for metadata to be stored in a separate ISO-formatted file.[[lhh1-end1]] +
 Revised several internal references.
 
 |2.1.0
 |May 2022
-|S-102PT
+|{series}-{docnumber}PT
 |Edited filename for exchange catalogue to be CATALOG.XML in 11.3 and in Table 12-7.
 
 |2.2.0
 |April 2023
-|S-102PT
+|{series}-{docnumber}PT
 |Major changes: +
 * Changed coverage spatial type from _regular grid_ (DCF 2) to _feature oriented regular grid_ (DCF 9) and +
 added _QualityOfSurvey_ feature for providing quality and source metadata for individual grid cells. +
@@ -106,7 +106,7 @@ Elements affected: Clause 10 and (new) Clause 7.1. +
 Element affected: Clause 10 +
 * Removed product-specific metadata classes and attributes, and defined replacements in embedded or distributed metadata +
 (i.e., as HDF5 attributes or in the new _QualityOfSurvey_ array) +
-* Removed provisions for including ISO metadata in S-102 exchange sets +
+* Removed provisions for including ISO metadata in {series}-{docnumber} exchange sets +
  +
 Other revisions and clarifications: +
 * Updated UML and other diagrams to align with aforementioned changes +
@@ -118,7 +118,7 @@ Other revisions and clarifications: +
 
 |3.0.0
 |July 2024
-|S-102PT
+|{series}-{docnumber}PT
 |Major changes: +
 * Modified text and figures to reflect a cell area-based approach to representation. (Clause 4) +
 * Added support for multiple vertical datums in a single product (Clause 10) +

@@ -3,4 +3,4 @@
 [appendix,obligation="normative"]
 == Normative Implementation Guidance
 
-NOTE: Normative Implementation Guidance to be addressed in a future version of S-102.
+NOTE: Normative Implementation Guidance to be addressed in a future version of {series}-{docnumber}.

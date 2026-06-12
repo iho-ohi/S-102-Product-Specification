@@ -14,6 +14,8 @@
 :local-cache-only:
 :imagesdir: images
 :status: draft-development
+:s100editionreference: 5.2.0
+:iho-registry-ps-idx: !to_be_changed_after_publication!
 
 include::sections/00-document-history.adoc[]
 
