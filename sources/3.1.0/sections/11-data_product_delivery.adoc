@@ -159,8 +159,8 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 ==== Dataset file naming
 Dataset naming must follow a standard pattern to give implementers greater predictability of incoming datasets (see <<iho-s100,part=17,clause=4.3>>). {series}-{docnumber} dataset naming conventions must follow these rules.
 
-*102YYYYØØØØØØØØØØØØ.H5*::
-102::: the first 3 characters identify the dataset as an {series}-{docnumber} dataset (mandatory).
+*{docnumber}YYYYØØØØØØØØØØØØ.H5*::
+{docnumber}::: the first 3 characters identify the dataset as an {series}-{docnumber} dataset (mandatory).
 YYYY::: the fourth to seventh characters identify the producer code according to the Producer Code Register.
 ØØØØ::: the eighth to the maximum nineteenth characters are optional and may be used in any way by the producer to provide the unique file name. The following characters are allowed in the dataset name: A to Z, 0 to 9 and the special character _ (underscore).
 H5::: denotes an HDF5 file.

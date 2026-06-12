@@ -325,7 +325,7 @@ CI_Responsibility>CI_Organisation
 |CharacterString
 |A dataset may be replaced by 1 or more datasets. +
 *Dataset name must be according to format defined in <<subsec-dataset-file-naming>>.* +
-*For example, _102DE00KD54.H5_* +
+*For example, _{docnumber}DE00KD54.H5_* +
 See note following <<iho-s100,part=17,table=S100_DatasetDiscoveryMetadata>> +
 *Mandatory when replacedData = true*
 
