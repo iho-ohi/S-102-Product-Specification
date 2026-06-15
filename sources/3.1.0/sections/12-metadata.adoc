@@ -164,7 +164,7 @@ Each Exchange Set has a single S100_ExchangeCatalogue which contains meta inform
 |0..*
 |Aggregation S100_SupportFileDiscoveryMetadata
 |*References to support file discovery metadata are not permitted because {series}-{docnumber} does not use support files.* +
-*Multiplicity is not adjusted, so that multiple different product specifications can still be included within a single exchange set. Otherwise, product specifications that support supportFileDiscoveryMetadata cannot be included.*
+*Multiplicity is not adjusted, so that multiple different product specifications can still be included within a single exchange set. Otherwise, product specifications that support supportFileDiscoveryMetadata could not be included.*
 
 |===
 
