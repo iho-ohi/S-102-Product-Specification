@@ -278,7 +278,7 @@ This is done in accordance with <<subsec-application-schema>> and <<sec-exchange
 EPSG code; +
 
 The only allowed value is: +
-*6498 (Depth--metres--orientation down)
+6498 (Depth--metres--orientation down)
 
 | 9
 | Vertical coordinate base
@@ -861,9 +861,9 @@ unsigned +
 | Integer +
 unsigned +
 8-bit
-| *1: Assessed +
-*2: Unassessed +
-*3: Oceanic
+| - 1: Assessed +
+- 2: Unassessed +
+- 3: Oceanic
 
 | 3
 | featuresDetected.leastDepthOfDetectedFeaturesMeasured
@@ -873,8 +873,8 @@ unsigned +
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note4>>.
 
 | 4
@@ -885,8 +885,8 @@ See <<subsec-note4>>.
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note5>>.
 
 | 5
@@ -915,8 +915,8 @@ See <<subsec-note6>> and <<subsec-note7>>.
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note8>>.
 
 | 8
@@ -928,8 +928,8 @@ See <<subsec-note8>>.
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note9>>.
 
 | 9
