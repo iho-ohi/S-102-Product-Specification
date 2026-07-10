@@ -112,10 +112,6 @@ NOTE: In other words, a coverage is a feature that has multiple values for each 
 [example]
 Examples include a digital image, polygon overlay, or digital elevation matrix
 
-===== Coverage Geometry
-
-Configuration of the *domain* of a *coverage* described in terms of *coordinates*.
-
 ===== Direct Position
 
 Position described by a single set of *coordinates* within a *coordinate reference system*.
