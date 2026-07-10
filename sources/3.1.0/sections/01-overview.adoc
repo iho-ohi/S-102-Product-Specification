@@ -166,12 +166,6 @@ NOTE: The curves partition a space into grid cells.
 
 Point located at the intersection of two or more curves in a *grid*.
 
-===== Lidar
-
-An optical remote sensing technique that uses a laser pulse to determine distance.
-
-NOTE: Lidar may be used to determine depth in shallow water areas.
-
 ===== Navigation Surface
 
 A *coverage* representing the bathymetry and associated uncertainty with the methods by which those objects can be manipulated, combined, and used for a number of tasks, certified for safety of navigation.
