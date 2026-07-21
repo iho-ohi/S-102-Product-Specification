@@ -356,7 +356,7 @@ This group specifies the S-100 features to which the data applies, and consists 
 BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>.
 
 [[tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays]]
-.Sample contents of the BathymetryCoverage and QualityOfBathymetryCoverage arrays
+.Contents of the BathymetryCoverage and QualityOfBathymetryCoverage arrays
 //It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1 (RM comment 4Jan2023)
 
 [cols="a,a,a,a,a",options="header"]
