@@ -574,7 +574,7 @@ Category
 | domainExtent.polygon
 | 0..1
 | Compound +
-(Float, Float)
+(Float 64-bit, Float 64-bit)
 | Spatial extent of the domain of the coverage +
 Array (1-d): i=0, P +
 Components: &lt;longitude, latitude&gt; or &lt;X, Y&gt; (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
@@ -593,7 +593,7 @@ Either this or the bounding box attribute must be populated.
 | domainExtent.polygon
 | 0..1
 | Compound +
-(Float, Float)
+(Float 64-bit, Float 64-bit)
 | Spatial extent of the domain of the coverage +
 Array (1-d): i=0, P +
 Components: &lt;longitude, latitude&gt; or &lt;X, Y&gt; (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
