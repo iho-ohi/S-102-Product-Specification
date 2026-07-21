@@ -1086,7 +1086,7 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 |===
 
 ==== Instance group QualityOfBathymetryCoverage.01
-The QualityOfBathymetryCoverage.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
+The QualityOfBathymetryCoverage.01 instance group uses the same metadata attribute definitions as BathymetryCoverage instance groups (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). These attributes have the same meaning and permitted value domains as those defined for the BathymetryCoverage instance groups.
 
 ==== Values group for QualityOfBathymetryCoverage
 The values group for QualityOfBathymetryCoverage contains no metadata attributes and a single dataset named values, which is described in <<subsec-values-dataset-for-QualityOfBathymetryCoverage>>.
