@@ -15,6 +15,8 @@ The Metadata elements used in the Bathymetric Surface product are derived from S
 
 * Metadata required by the S-100 HDF5 encoding (<<iho-s100,part=10c>>) and product-specific metadata defined by this product specification are encoded at various levels in the HDF5 group hierarchy, as specified by <<iho-s100,part=10c>> or <<subsec-product-structure>>.
 
+In the following sections <<subsec-s100_exchangecatalogue>> and <<subsec-s100_datasetdiscoverymetadata>>, attribute multiplicities that differ from the <<iho-s100,part=17>> are indicated in bold type.
+
 [[subsec-exchange-set-metadata]]
 === Exchange Set metadata
 For information exchange, there are several categories of metadata required: metadata about the overall Exchange Catalogue, metadata about each of the datasets contained in the Catalogue.
@@ -66,8 +68,105 @@ Character strings must be encoded using the character set defined in <<iso-10646
 
 Each Exchange Set has a single S100_ExchangeCatalogue which contains meta information for the data in the Exchange Set.
 
-{series}-{docnumber} uses S100_ExchangeCatalogue without modification. 
+[[tab-s100-exchangeCatalogue-params]]
+.S100_ExchangeCatalogue parameters
+[cols="a,a,a,^a,a,a",options="header"]
+|===
+|Role name |Name |Description |Mult |Type |Remarks
 
+|Class
+|S100_ExchangeCatalogue
+|An Exchange Catalogue contains the discovery metadata about the exchange datasets and support files
+|-
+|-
+|-
+
+|Attribute
+|identifier
+|Uniquely identifies this Exchange Catalogue
+|0..1
+|S100_ExchangeCatalogueIdentifier
+|
+
+|Attribute
+|contact
+|Details about the issuer of this Exchange Catalogue
+|0..1
+|S100_CataloguePointOfContact
+|
+
+|Attribute
+|productSpecification
+|Details about the Product Specifications used for the datasets contained in the Exchange Catalogue
+|*1*..*
+|S100_ProductSpecification
+|The use of this attribute is *mandatory* in {series}-{docnumber} to facilitate processing in the ECDIS.
+
+|Attribute
+|defaultLocale
+|Default language and character set used for all metadata records in this Exchange Catalogue
+|0..1
+|PT_Locale
+|Default is English and UTF-8
+
+|Attribute
+|otherLocale
+|Other languages and character sets used for the localized metadata records in this Exchange Catalogue
+|0..*
+|PT_Locale
+|Required if any localized entries are present in the Exchange Catalogue
+
+|Attribute
+|exchangeCatalogueDescription
+|Description of what the Exchange Catalogue contains
+|0..1
+|CharacterString
+|
+
+|Attribute
+|exchangeCatalogueComment
+|Any additional Information
+|0..1
+|CharacterString
+|
+
+|Attribute
+|certificates
+|Signed public key certificates referred to by digital signatures in the Exchange Set
+|0..*
+|S100_SE_CertificateContainerType
+|Content defined in <<iho-s100,part=15>>. All certificates used, except the SA root certificate (installed separately by the implementing system) shall be included
+
+|Attribute
+|dataServerIdentifier
+|Identifies the data server for the permit
+|0..1
+|CharacterString
+|
+
+|Attribute
+|datasetDiscoveryMetadata
+|Exchange Catalogues may include or reference discovery metadata for the datasets in the Exchange Set
+|0..*
+|Aggregation S100_DatasetDiscoveryMetadata
+|
+
+|Attribute
+|catalogueDiscoveryMetadata
+|Metadata for Catalogue
+|0..*
+|Aggregation S100_CatalogueDiscoveryMetadata
+|Metadata for the Feature, Portrayal and Interoperability Catalogues, if any
+
+|Attribute
+|supportFileDiscoveryMetadata
+|Exchange Catalogues may include or reference discovery metadata for the support files in the Exchange Set
+|0..*
+|Aggregation S100_SupportFileDiscoveryMetadata
+|*References to support file discovery metadata are not permitted because {series}-{docnumber} does not use support files.* +
+*Multiplicity is not adjusted, so that multiple different product specifications can still be included within a single exchange set. Otherwise, product specifications that support supportFileDiscoveryMetadata could not be included.*
+
+|===
 
 ==== S100_ExchangeCatalogueIdentifier
 {series}-{docnumber} uses S100_ExchangeCatalogueIdentifier without modification.
@@ -75,6 +174,7 @@ Each Exchange Set has a single S100_ExchangeCatalogue which contains meta inform
 ==== S100_CataloguePointOfContact
 {series}-{docnumber} uses S100_CataloguePointOfContact without modification.
 
+[[subsec-s100_datasetdiscoverymetadata]]
 === S100_DatasetDiscoveryMetadata
 Dataset discovery metadata in {series}-{docnumber} restricts certain attributes and roles as described in <<tab-s100-datasetDiscoveryMetadata-params>>. Optional S-100 attributes which are mandatory in {series}-{docnumber} are indicated in the Remarks column.
 
