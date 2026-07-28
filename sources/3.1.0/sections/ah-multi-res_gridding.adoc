@@ -3,4 +3,4 @@
 [appendix]
 == Multi-Resolution Gridding
 
-NOTE: Multi-Resolution gridding to be addressed in a future version of S-102.
+NOTE: Multi-Resolution gridding to be addressed in a future version of {series}-{docnumber}.

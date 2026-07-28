@@ -260,11 +260,13 @@ The root bounding box needs to encompass all data, including fill values. The ou
 | 7
 | Metadata
 | metadata
-^| 0..1
+^| *0*
 <| String
-| Name of metadata file +
-MD_&lt;HDF5 data file base name&gt;.XML (or .xml) ISO metadata +
-(per <<iho-s100,part=10c,clause=12>> & <<iho-s100,part=8>>).
+| The use of ISO metadata +
+(per <<iho-s100,part=10c,clause=12>> & <<iho-s100,part=8>>) +
+is not permitted in {series}-{docnumber}. +
+The multiplicity is therefore set to 0. +
+This is done in accordance with <<subsec-application-schema>> and <<sec-exchangeset>>.
 
 | 8
 | Vertical coordinate system
@@ -276,7 +278,7 @@ MD_&lt;HDF5 data file base name&gt;.XML (or .xml) ISO metadata +
 EPSG code; +
 
 The only allowed value is: +
-*6498 (Depth--metres--orientation down)
+6498 (Depth--metres--orientation down)
 
 | 9
 | Vertical coordinate base
@@ -305,7 +307,7 @@ unsigned +
 16-bit
 | Numeric code from IHO GI Registry +
 _Vertical Datum_ attribute +
-stem:[1-30] & stem:[44]
+stem:[1-30] & stem:[44] & stem:[50]
 
 see <<note12>>
 |===
@@ -354,7 +356,7 @@ This group specifies the S-100 features to which the data applies, and consists 
 BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type elements, whose components are the 8 components specified in <<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>.
 
 [[tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays]]
-.Sample contents of the BathymetryCoverage and QualityOfBathymetryCoverage arrays
+.Contents of the BathymetryCoverage and QualityOfBathymetryCoverage arrays
 //It is actually a 1-D array each of whose members is a compound value; Bathy Coverage has 2 elements and Q Of S Coverage 1 (RM comment 4Jan2023)
 
 [cols="a,a,a,a,a",options="header"]
@@ -572,7 +574,7 @@ Category
 | domainExtent.polygon
 | 0..1
 | Compound +
-(Float, Float)
+(Float 64-bit, Float 64-bit)
 | Spatial extent of the domain of the coverage +
 Array (1-d): i=0, P +
 Components: &lt;longitude, latitude&gt; or &lt;X, Y&gt; (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
@@ -591,7 +593,7 @@ Either this or the bounding box attribute must be populated.
 | domainExtent.polygon
 | 0..1
 | Compound +
-(Float, Float)
+(Float 64-bit, Float 64-bit)
 | Spatial extent of the domain of the coverage +
 Array (1-d): i=0, P +
 Components: &lt;longitude, latitude&gt; or &lt;X, Y&gt; (coordinates of bounding polygon vertices as a closed ring; that is, the first and last elements will contain the same values) +
@@ -737,7 +739,7 @@ Mandatory if this value were to differ from what is contained in the Root Group 
 
 The _gridOriginLongitude_, _gridOriginLatitude_, _gridSpacingLongitudinal_, and _gridSpacingLatitudinal_ attributes should be in the same geographic units as the bounding box. Note that this practice deviates from S-100 where it indicates that this value should be in Arc Degrees.
 
-_numPointsLongitude_ and _numPointsLatitude_ must contain the number of cells in the x and y dimensions of the values table.
+_numPointsLongitudinal_ and _numPointsLatitudinal_ must contain the number of cells in the x and y dimensions of the values table.
 
 The {series}-{docnumber} uses the "Overriding of Attributes" concept of the <<iho-s100,part=10c,clause=9.7.1>>. This usage allows the feature instance group to overwrite the attributes of a higher group, in this case the _verticalDatum_. The default vertical datum is specified in the root group (see <<tab-root-group-attributes>>). The feature instance group for this default vertical datum must not use the additional attributes _verticalDatum_ and _verticalDatumReference_ (on the feature instance group).
 
@@ -824,7 +826,7 @@ The grid cell values are stored in two-dimensional arrays with a prescribed numb
 [[root-QualityOfBathymetryCoverage]]
 ==== Root QualityOfBathymetryCoverage
 
-The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. An exception is the attribute _dataCodingFormat_, which must be '9'. The use of multiple BathymetryCoverage Feature Instance groups (different Vertical Datums) does not affect the multiplicity of the QualityOfBathymetryCoverage, which remains 0 to 1. This means that the different BathymetryCoverage Feature Instance groups share a common QualityOfBathymetryCoverage.
+The QualityOfBathymetryCoverage container group has the same metadata attributes as BathymetryCoverage container group (see <<tab-attributes-of-bathymetrycoverage-feature-container-group>>). The values of the attributes must also be the same as the BathymetryCoverage container group. Exceptions are the attribute dataCodingFormat, which must have the value ‘9’, and numInstances, which always has the value ‘1’. The use of multiple BathymetryCoverage Feature Instance groups (different Vertical Datums) does not affect the multiplicity of the QualityOfBathymetryCoverage, which remains 0 to 1. This means that the different BathymetryCoverage Feature Instance groups share a common QualityOfBathymetryCoverage.
 
 The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
@@ -859,9 +861,9 @@ unsigned +
 | Integer +
 unsigned +
 8-bit
-| *1: Assessed +
-*2: Assessed (Oceanic) +
-*3: Unassessed
+| - 1: Assessed +
+- 2: Assessed (Oceanic) +
+- 3: Unassessed
 
 | 3
 | featuresDetected.leastDepthOfDetectedFeaturesMeasured
@@ -871,8 +873,8 @@ unsigned +
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note4>>.
 
 | 4
@@ -883,8 +885,8 @@ See <<subsec-note4>>.
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note5>>.
 
 | 5
@@ -913,8 +915,8 @@ See <<subsec-note6>> and <<subsec-note7>>.
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note8>>.
 
 | 8
@@ -926,8 +928,8 @@ See <<subsec-note8>>.
 unsigned +
 8-bit
 | Boolean, Values: +
-*1 (TRUE) +
-*0 (FALSE). +
+- 1 (TRUE) +
+- 0 (FALSE). +
 See <<subsec-note9>>.
 
 | 9
@@ -1084,14 +1086,14 @@ Names and listed values which are not currently defined in the IHO GI Registry a
 |===
 
 ==== Instance group QualityOfBathymetryCoverage.01
-The QualityOfBathymetryCoverage.01 instance group has the same metadata attributes as BathymetryCoverage.01 instance group (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). The values of the attributes must also be the same as the BathymetryCoverage instance group.
+The QualityOfBathymetryCoverage.01 instance group uses the same metadata attribute definitions as BathymetryCoverage instance groups (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). These attributes have the same meaning and permitted value domains as those defined for the BathymetryCoverage instance groups.
 
 ==== Values group for QualityOfBathymetryCoverage
 The values group for QualityOfBathymetryCoverage contains no metadata attributes and a single dataset named values, which is described in <<subsec-values-dataset-for-QualityOfBathymetryCoverage>>.
 
 [[subsec-values-dataset-for-QualityOfBathymetryCoverage]]
 ==== Values dataset for QualityOfBathymetryCoverage
-The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>).
+The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>). The values dataset uses the Compound data type described in <<iho-s100,part=10c,table=18>> - Structure of values groups.
 
 Each cell in this values dataset must be populated with a value that is one of the record identifiers in the featureAttributeTable dataset or with the fill value 0 (zero).
 

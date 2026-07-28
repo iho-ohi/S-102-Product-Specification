@@ -88,9 +88,9 @@ Results: A 0.5-metre grid for the example survey area: 2.1 Billion depth nodes, 
 ==== Generation of a production grid
 Referencing the beginning of this Annex, the intended product is a 1:22,000 ENC. Reduction of the "`high-density`" grid to a 6-metre grid reduces the number of grid nodes from 2.1 Billion to 14.6 million. The resulting 6-metre grid serves as an example of soundings extracted to support chart production. *In total, less than 1% of collected depth estimates make it on a charting product*.
 
-NOTE: If the 6-metre surface serves as the source for a complimentary S-102 dataset there will be ~169 nodal depths underneath a single charted sounding. See <<fig-charted-sounding-vs-6-metre-s102-grid>>.
+NOTE: If the 6-metre surface serves as the source for a complimentary {series}-{docnumber} dataset there will be ~169 nodal depths underneath a single charted sounding. See <<fig-charted-sounding-vs-6-metre-s102-grid>>.
 
 
 [[fig-charted-sounding-vs-6-metre-s102-grid]]
-.Charted Soundings vs 6-metre S-102 Grid
+.Charted Soundings vs 6-metre {series}-{docnumber} Grid
 image::figure-charted-sounding-vs-6-metre-s102-grid.png[]

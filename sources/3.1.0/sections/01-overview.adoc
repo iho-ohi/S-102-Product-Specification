@@ -8,13 +8,15 @@ This document describes an S-100 compliant product specification for a bathymetr
 
 [bibliography]
 === References
-* [[[iho-s100,IHO S-100 5.2.0]]]
+* [[[iho-s100,IHO S-100 {s100editionreference}]]]
 
 * [[[iho-s44,IHO S-44]]]
 
 * [[[iho-s4,IHO S-4]]]
 
 * [[[iho-s32,IHO S-32]]]
+
+* [[[iho-s97,IHO S-97]]]
 
 * [[[iso-8601,ISO 8601:2004]]]
 
@@ -45,6 +47,8 @@ This document describes an S-100 compliant product specification for a bathymetr
 * [[[iso-ts-19130-2,ISO/TS 19130-2:2014]]]
 
 * [[[iso-19139-1,ISO/TS 19139-1:2019]]]
+
+* [[[iso-19157,ISO 19157 (all parts)]]]
 
 * [[[iso-10646-1,ISO/IEC 10646-1:2000]]]
 
@@ -108,10 +112,6 @@ NOTE: In other words, a coverage is a feature that has multiple values for each 
 [example]
 Examples include a digital image, polygon overlay, or digital elevation matrix
 
-===== Coverage Geometry
-
-Configuration of the *domain* of a *coverage* described in terms of *coordinates*.
-
 ===== Direct Position
 
 Position described by a single set of *coordinates* within a *coordinate reference system*.
@@ -161,12 +161,6 @@ NOTE: The curves partition a space into grid cells.
 ===== Grid Point
 
 Point located at the intersection of two or more curves in a *grid*.
-
-===== Lidar
-
-An optical remote sensing technique that uses a laser pulse to determine distance.
-
-NOTE: Lidar may be used to determine depth in shallow water areas.
 
 ===== Navigation Surface
 
@@ -271,7 +265,7 @@ XML:: eXtensible Markup Language
 This information uniquely identifies this Product Specification and provides information about its creation and maintenance. For further information on dataset metadata, see <<sec-metadata>>.
 
 *Title*:: Bathymetric Surface Product Specification
-*S-100 Version*:: 5.2.0
+*S-100 Version*:: {s100editionreference}
 *{series}-{docnumber} Version*:: {edition}
 *Date*:: July 2025
 
