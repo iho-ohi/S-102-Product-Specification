@@ -886,19 +886,18 @@
 			<S100FC:permittedPrimitives>coverage</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
-			<S100FC:name>Vertical Datum of Data</S100FC:name>
-			<S100FC:definition>Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.</S100FC:definition>
-			<S100FC:code>VerticalDatumOfData</S100FC:code>
-			<S100FC:alias>M_VDAT</S100FC:alias>
+			<S100FC:name>Sounding Datum</S100FC:name>
+			<S100FC:definition>The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.</S100FC:definition>
+			<S100FC:code>SoundingDatum</S100FC:code>
+			<S100FC:alias>M_SDAT</S100FC:alias>
 			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>598</S100FC:sourceIdentifier>
+				<S100FC:sourceIdentifier>817</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false"
-              						infinite="false">1</S100Base:upper>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
@@ -931,7 +930,7 @@
 				<S100FC:attribute ref="verticalDatum" />
 			</S100FC:attributeBinding>
 			<S100FC:featureUseType>meta</S100FC:featureUseType>
-			<S100FC:permittedPrimitives>coverage</S100FC:permittedPrimitives>
+			<S100FC:permittedPrimitives>surface</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 	</S100FC:S100_FC_FeatureTypes>
 </S100FC:S100_FC_FeatureCatalogue>
