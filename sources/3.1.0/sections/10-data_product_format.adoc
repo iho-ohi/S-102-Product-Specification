@@ -1032,6 +1032,36 @@ The attribute _bathyCoverageAchieved_ is especially useful in side-scan surveys 
 Names and listed values which are not currently defined in the IHO GI Registry are subject to change upon acceptance in the Registry.
 ====
 
+[[subsec-note11]]
+[NOTE]
+====
+_surveyDateRange.dateStart_ and _surveyDateRange.dateEnd_ will use the following HDF5 encoding (fixed length string per <<iho-s100,part=10c,table=1>>):
+[source,c]
+----
+H5T_STRING {
+    STRSIZE 8;
+    STRPAD H5T_STR_NULLTERM;
+    CSET H5T_CSET_UTF8;
+    CTYPE H5T_C_S1;
+}
+----
+====
+
+[[subsec-note12]]
+[NOTE]
+====
+_sourceSurveyID_ and _surveyAuthority_ will use the following HDF5 encoding (variable length string per <<iho-s100,part=10c,table=1>>):
+[source,c]
+----
+H5T_STRING {
+    STRSIZE H5T_VARIABLE;
+    STRPAD H5T_STR_NULLTERM;
+    CSET H5T_CSET_UTF8;
+    CTYPE H5T_C_S1;
+}
+----
+====
+
 [[tab-codes-defining-how-bathy-depth-uncertainty-determined]]
 .Codes defining how uncertainty of bathymetric depth was determined
 [cols="<,<,<,<,<",options="header"]
