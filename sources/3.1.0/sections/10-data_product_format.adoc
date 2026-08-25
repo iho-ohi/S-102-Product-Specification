@@ -801,7 +801,7 @@ The other four attributes for this group are an extension of this Product Specif
 | 5
 | Time stamp
 | timePoint
-| 1
+| 0..1
 | String
 | Because {series}-{docnumber} specifies survey dates elsewhere in its structure, this value should always be the fill value: +
 _00010101T000000Z_
