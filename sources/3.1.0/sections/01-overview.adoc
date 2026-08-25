@@ -74,6 +74,8 @@ span:surname[Patron], span:givenname[Mark],
 span:publisher[International Hydrographic Review].
 span:uri[https://scholars.unh.edu/ccom/1011]
 
+* [[[iec-80000-13,IEC 80000-13:2025]]]
+
 === Terms, definitions and abbreviations
 
 ==== Use of language

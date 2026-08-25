@@ -74,9 +74,9 @@ Three types of dataset files may be produced and contained within an exchange se
 ==== Dataset size
 {series}-{docnumber} delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
 
-NOTE: The use of 10 MB in this and other sections should be treated as informative information only. Additionally, any computed values associated with either file size limit should be treated as approximate answers. Final selection of an appropriate file size limit or grid resolution is left to the discretion of the data producer.
+NOTE: The use of 10 MiB in this and other sections should be treated as informative information only. Additionally, any computed values associated with either file size limit should be treated as approximate answers. Final selection of an appropriate file size limit or grid resolution is left to the discretion of the data producer.
 
-*Network Transfer*:: To minimize overall file size, the HO produces a 10 MB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 by 600 grid cells.
+*Network Transfer*:: To minimize overall file size, the HO produces a 10 MiB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 by 600 grid cells.
 
 <<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of {series}-{docnumber} data for specific charting scales.
 
@@ -88,7 +88,7 @@ NOTE: The use of 10 MB in this and other sections should be treated as informati
 .Informative Grid Resolution and Resulting Tile Size at Chart Scale
 [cols="<a,<a,<a",options="header"]
 |===
-|Scale |Informative Grid Resolution |Resulting Tile Size @ 10 MB
+|Scale |Informative Grid Resolution |Resulting Tile Size @ 10 MiB
 
 |NULL (only allowed on minimum display scale where the maximum display scale = 10,000,000)
 |
