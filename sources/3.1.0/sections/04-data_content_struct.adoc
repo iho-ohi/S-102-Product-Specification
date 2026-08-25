@@ -184,12 +184,12 @@ The attribute _startSequence_ has the value class *CV_GridCoordinate* that shall
 [level=7]
 ===== S102_QualityValues semantics
 
-The class *S102_QualityValues* is related to *QualityOfBathymetryCoverage* by a composition relationship in which an ordered sequence of _id_ values provide for each cell references to metadata. The class *S102_QualityValues* inherits from S100_IF_Grid.
+The class *S102_QualityValues* is related to *QualityOfBathymetryCoverage* by a composition relationship in which an ordered sequence of _featureAttributeTableKey_ values provide for each cell references to metadata. The class *S102_QualityValues* inherits from S100_IF_Grid.
 
 [level=7]
 ===== values
 
-The attribute _values_ has the value type *_S102_QualityValueRecord_* which is a sequence of value items that shall assign values to the grid points. There is one attribute in the quality value record, _id_, in the *S102_QualityValues* class.
+The attribute _values_ has the value type *_S102_QualityValueRecord_* which is a sequence of value items that shall assign values to the grid points. There is one attribute in the quality value record, _featureAttributeTableKey_, in the *S102_QualityValues* class.
 
 
 [level=6]
@@ -284,7 +284,7 @@ Meta feature types are allowed in the dataset and are fully defined by their ass
 
 ===== Simple attributes
 
-In {series}-{docnumber}, _depth_ and _uncertainty_ have been registered as simple attributes, type `<real>`; and _iD_ has been registered as a simple attribute, type `<integer>`. Simple attributes are defined in <<iho-s100,part=5,clause=5-4.2.3.3>>. 
+In {series}-{docnumber}, _depth_ and _uncertainty_ have been registered as simple attributes, type `<real>`; and _featureAttributeTableKey_ has been registered as a simple attribute, type `<integer>`. Simple attributes are defined in <<iho-s100,part=5,clause=5-4.2.3.3>>. 
 
 ===== Complex attributes
 In {series}-{docnumber} there are currently no complex attributes defined.
@@ -303,7 +303,7 @@ image::../images/figure-s102-cell-area-and-Bbox.png["{series}-{docnumber} grid c
 ==== Regular grid
 
 ===== {series}-{docnumber} coverages
-The *BathymetryCoverage* contains _depth_ and, optionally, _uncertainty_. The general structure of each is defined in <<iho-s100,part=8>> as a georectified grid. Similarly, the *QualityOfBathymetryCoverage* contains _id_.
+The *BathymetryCoverage* contains _depth_ and, optionally, _uncertainty_. The general structure of each is defined in <<iho-s100,part=8>> as a georectified grid. Similarly, the *QualityOfBathymetryCoverage* contains _featureAttributeTableKey_.
 
 The grid properties of origin and spacing are defined by attributes in the *BathymetryCoverage.nn* and *QualityOfBathymetryCoverage.01* Feature Instance Groups. Each grid is a two-dimensional matrix organized in row major order and starting from the southwesternmost grid point. Thus, for each grid, the first sample is the point at the southwest corner of the grid with location specified by the georeferencing parameters, the second is one grid resolution unit to the east of that position and at the same northing or latitude, and the third is two grid resolution units to the east and at the same northing or latitude. For stem:[C] columns in the grid, the stem:[(C+1)]^th^ sample in the grid is located one grid resolution unit to the north but on the same easting or longitude as the first sample in the grid.
 
@@ -311,7 +311,7 @@ The grid properties of origin and spacing are defined by attributes in the *Bath
 .{series}-{docnumber} Grid point location
 image::../images/figure-s102-grid-node.location.png[A matrix with 5 rows and 6 columns of cells. The overall matrix is labeled _X rows x C columns_. The leftmost element of the second lowest row is highlighted and labeled _C + 1_. The origin is shown at the bottom left and extends rightward.]
 
-For *BathymetryCoverage.nn*, _depth_ and optional _uncertainty_, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value. For *QualityOfBathymetryCoverage.01*, only _id_ is stored in the grid.
+For *BathymetryCoverage.nn*, _depth_ and optional _uncertainty_, are stored in the same grid as members of a data compound. The units of the depth values are in metres. The vertical distance is from a given water level to the bottom. Drying heights (drying soundings) are indicated by a negative depth value. For *QualityOfBathymetryCoverage.01*, only _featureAttributeTableKey_ is stored in the grid.
 
 The unknown state for depth is defined to be 1,000,000.0 (1.0e6).
 
@@ -319,9 +319,9 @@ The uncertainty values are expressed as positive quantities at each grid cell. A
 
 The undetermined state for uncertainty is defined to be 1,000,000.0 (1.0e6).
 
-The _id_ values in *QualityOfBathymetryCoverage.01* are expressed as unsigned 32-bit integer at each grid cell. Each value corresponds to the identifier for a metadata record in a *featureAttributeTable* <<root-QualityOfBathymetryCoverage>>. 
+The _featureAttributeTableKey_ values in *QualityOfBathymetryCoverage.01* are expressed as unsigned 32-bit integer at each grid cell. Each value corresponds to the identifier for a metadata record in a *featureAttributeTable* <<root-QualityOfBathymetryCoverage>>. 
 
-The fill value for _id_ is defined to be 0.
+The fill value for _featureAttributeTableKey_ is defined to be 0.
 
 ===== Extensions
 In {series}-{docnumber} there are currently no extensions defined.
