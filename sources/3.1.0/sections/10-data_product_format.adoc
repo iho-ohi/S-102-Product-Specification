@@ -377,13 +377,13 @@ BathymetryCoverage and QualityOfBathymetryCoverage are arrays of compound type e
 |Camel Case code of attribute as in Feature Catalogue
 |depth
 |uncertainty
-|iD
+|featureAttributeTableKey
 
 |name
 |Long name as in Feature Catalogue
 |depth
 |uncertainty
-|ID
+|Feature Attribute Table Key
 
 |uom.name
 |Units (uom.name from S-100 Feature Catalogue)
@@ -831,7 +831,7 @@ The QualityOfBathymetryCoverage container group has the same metadata attributes
 The QualityOfBathymetryCoverage container group contains an additional 1-dimensional array named featureAttributeTable (<<iho-s100,part=10c,table=9>>; <<iho-s100,part=10c,clause=9.6.2>>). This dataset is mandatory within the QualityOfBathymetryCoverage group. Each element of this array is a metadata record of HDF5 compound type. The fields are described in <<tab-elements-of-featureAttributeTable-compound-datatype>> below.
 
 //(1) Are these fields mandatory? (2) Can producers add other fields like surveyType and line spacing? (RM comment 4Jan2023)
-//All optional except id. Producers should not add other fields. (RM comment 23Jan2023)
+//All optional except featureAttributeTableKey. Producers should not add other fields. (RM comment 23Jan2023) (DROH updated 25Aug2026)
 
 [[tab-elements-of-featureAttributeTable-compound-datatype]]
 .Elements of featureAttributeTable compound datatype
@@ -846,7 +846,7 @@ The QualityOfBathymetryCoverage container group contains an additional 1-dimensi
 | Remarks
 
 | 1
-| id
+| featureAttributeTableKey
 | Metadata record identifier
 | 1
 | Integer +
@@ -1123,7 +1123,7 @@ The values group for QualityOfBathymetryCoverage contains no metadata attributes
 
 [[subsec-values-dataset-for-QualityOfBathymetryCoverage]]
 ==== Values dataset for QualityOfBathymetryCoverage
-The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “id” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>). The values dataset uses the Compound data type described in <<iho-s100,part=10c,table=18>> - Structure of values groups.
+The values dataset for QualityOfBathymetryCoverage is a single two-dimensional array of unsigned integers (the same datatype and size as the “featureAttributeTableKey” field in featureAttributeTable — <<tab-attributes-of-values-group>>). The array must have the same dimensions as the values dataset in the BathymetryCoverage feature instance (<<subsec-BathymetryCoverage-feature-instance-group-values-dataset>>). The values dataset uses the Compound data type described in <<iho-s100,part=10c,table=18>> - Structure of values groups.
 
 Each cell in this values dataset must be populated with a value that is one of the record identifiers in the featureAttributeTable dataset or with the fill value 0 (zero).
 
