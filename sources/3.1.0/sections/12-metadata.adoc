@@ -352,7 +352,7 @@ _False_ indicates the dataset *is* intended to be used for navigation.
 |Attribute
 |producerCode
 |The official IHO Producer Code from S-62
-|1
+|*1*
 |CharacterString
 |*Mandatory in {series}-{docnumber}*
 
