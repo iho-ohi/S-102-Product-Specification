@@ -266,7 +266,7 @@ _False_ indicates the resource is not copyrighted.
 |Attribute
 |classification
 |Indicates the security classification of the dataset
-|1
+|*1*
 |Class +
 MD_SecurityConstraints>MD_ClassificationCode (codelist)
 |*Mandatory in {series}-{docnumber}* +
