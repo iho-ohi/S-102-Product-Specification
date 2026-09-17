@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.iho.int/s100/xc/5.2"
+	targetNamespace="http://www.iho.int/s100/xc/5.2"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
+	xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+	xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+	xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
+	xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+	xmlns:gmw="http://standards.iso.org/iso/19115/-3/gmw/1.0"
+	xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+	xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+	xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0"
+	xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+	xmlns:S100SE="http://www.iho.int/s100/se/5.2"
+	version="5.2.0-20240415">
+<!-- other (unused) ISO namespaces -->
+<!-- 
+	xmlns:mac="http://standards.iso.org/iso/19115/-3/mac/2.0"
+	xmlns:mas="http://standards.iso.org/iso/19115/-3/mas/1.0"
+	xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+	xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
+	xmlns:mex="http://standards.iso.org/iso/19115/-3/mex/1.0"
+	xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc/1.0"
+	xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/2.0"
+	xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
+	xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/2.0"
+	xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
+	xmlns:msr="http://standards.iso.org/iso/19115/-3/msr/2.0"
+	xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
+	xmlns:mds="http://standards.iso.org/iso/19115/-3/mds/1.0"
+	xmlns:md1="http://standards.iso.org/iso/19115/-3/md1/1.0"
+	xmlns:mda="http://standards.iso.org/iso/19115/-3/mda/2.0"
+	xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/2.0"
+	xmlns:md2="http://standards.iso.org/iso/19115/-3/md2/1.0"
+-->
+	<!-- ============================================================================================= -->
+	<!-- XML Schema for S-102 Edition 3.1.0 exchange set catalogues. 								   -->
+	<!-- ============================================================================================= -->
+
+	<!--
+© Copyright 2015-2018
+© Copyright 2022-2024 (IHO)
+Prepared under contract for NOAA (Original); IHO (updated)
+
+License
+Certain parts of this document refer to or are based on the standards, documents, schemas, or other material
+of the International Organization for Standardization (ISO), Open Geospatial Consortium (OGC), International
+Hydrographic Organization / Organisation Hydrographique Internationale (IHO/OHI).
+The ISO material can be obtained from any ISO member and from the Web site of the ISO Central Secretariat
+at www.iso.org.
+The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+The IHO material can be obtained from the IHO Web site at www.iho.int or from the International Hydrographic
+Organization Secretariat.
+
+Permission to copy and distribute this document is hereby granted provided that this notice is retained
+on all copies, and that IHO, NOAA & Jeppesen are credited when the material is redistributed or used in
+part or whole in derivative works.
+Redistributions in binary form must reproduce this notice in the documentation and/or other materials
+provided with the distribution.
+
+Disclaimer
+This work is provided by the copyright holders and contributors "as is" and any express or implied warranties,
+including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose
+are disclaimed. In no event shall the copyright owner or contributors be liable for any direct, indirect,
+incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute
+goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of
+liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of this software, even if advised of the possibility of such damage.
+
+Document history
+Version 1.0	2015-08-18	Raphael Malyankar (Jeppesen) for NOAA / IIC Technologies / IHO
+Version 1.1	2016-05-16	Raphael Malyankar (Jeppesen) Draft extensions for imagery and gridded data
+Version 3.0.0 Build 20170209 Raphael Malyankar
+	Updates to conform to 3.0.0 draft of Nov. 2016: mult. of S100_CatalogueMetadata changed from 2..* to 0..* (Fig 4a-D-2)
+	and multiple changes corresponding to revisions to Fig. 4a-D-4; global elements not expected to be  root elements are
+	now commented out (S100_CatalogueMetadata left in because S-100 3.0.0 is ambiguous about feature and portrayal catalogue metadata)
+	Schema version numbering now uses S-100 version number + schema build date
+	Build 20170315	Raphael Malyankar Added support file specification, inadvertently omitted from Build 20170209;
+					removed superfluous type for S100_Catalogue
+	Build 20170430	Raphael Malyankar Corrected multiplicities of S100_DataCoverage.{max, min, optimum} display scales to 0..1
+Version 4.0.0 Build 20180502 Raphael Malyankar
+	Updates for Edition 4.0.0 accepted as of S100WG3 (April 2018);
+	also added epoch to discovery metadata to harmonize with Edition 4.0.0 Part 10c as discussed by email
+	Build 20180619 RMM Provisional update to digital signature value type; change to literals of S100_ProtectionScheme_Type
+		and S100_DigitalSignature_Type enumerations; added S100_CompressionAlgorithm_Type enumeration; changed algorithmmethod
+		to type S100_CompressionAlgorithm_Type
+	Build 20181015 (RMM) Added abstract element types to act as headers for substitution groups; added properties to allow nilReason
+		encoding for mandatory metadata elements and made mandatory attributes nillable,
+	Build 20181015 (RMM) Updated for changes made at TSM6
+	Build 20181130 (RMM) Adds missing ID attribute in S100_DataCoverage
+	Build 20190331 (RMM) build number updated for conformity; removed unneeded namespaces (see Notes)
+	Build 20190422 (RMM) build updated to match generic Schematron rules file; made minimum display scale nillable (see S-101 1.0.0 12.1.2.3)
+Version 5.0.0 Build 20220331 (RMM) Updated for S-100 Edition 5.0.0
+		Nillability removed since Part 17 does not mention it
+	Build 20220610 (RMM) Updated after S100WG May 2022 review
+		Namespace not changed because this is a development version and will replace its predecessor
+	Build 20229705 (RMM) Removed unused types; changed schemaLocation of mmi and Part 15 imports to relative instead of absolute path, at OEM request;
+		removed import of xlink since it is no longer needed; removed superfluous import of mdt.
+		Namespace not changed because this is a development version and will replace its predecessor
+	Build 20230105 Updated import of Part 15 xsd, added dataReplacement and referenceId
+
+Version 5.1.0 Build 20230327 (RMM) Updated for S-100 Edition 5.1.0
+		Reverted mmi.xsd import to ISO distribution so class generation software fetches fewer versions of the same ISO schemas;
+		Applied updates to S100_SupportFileFormat, S100_ResourcePurpose approved at TSM9; updated definitions of replacedData, dataReplacement as
+		approved at TSM9; multiplicity upper bound of S100_DataCoverage.boundingPolygon changed to 1 to align with Part 17
+Version 5.2.0 Build 20240415 (RMM) Updated to import revised security/encryption XSD (cf. US comments on HSSC draft of S-100 Ed. 5.2.0).
+		Namespace updated because the imported XSD is not backwards compatible and itself uses a new namespace.
+	-->
+
+	<!-- Notes: (1) Imports - update as necessary when the exchange catalogue is updated; add any additional namespaces needed for
+			product-specific metadata in the extension XSD for that product
+		(2) These namespaces are for the March 2018 working versions of the ISO schemas; the official ISO site may not have been updated yet so the
+			software will be unable to locate schemas for the revised namespaces on the official ISO distribution site.
+		(3) UPDATE (20181104): The official ISO schema respository at atandards.iso.org was updated with the working versions on 18 September 2018.
+			Note that as of 2018-11-04 there appears to be an issue with the URL for the Codelists in the ISO example documents.
+			The official ISO schema distribution site is https://standards.iso.org and the schemaLocation URLs can be  constructed by replacing
+			the relative location portion "../../../../standards.iso.org" with the Internet location prefix "https://standards.iso.org/iso/".
+			For example:  http://standards.iso.org/iso/19115/-3/cit/2.0/cit.xsd for version 2.0 of the Citation and responsible party information
+			(cit namespace) schema.
+		(4) UPDATE (20220620): The official repository for ISO TC211 schemas is now https://schemas.isotc211.org and the schema locations have
+			been updated accordingly. Note that the namespaces for the versions used as of 20 June 2022 atill use "standards.iso.org". Updated
+			6/27 to correct import of mmi.xsd to 20220610 distribution (further updated 7/5 to make mmi import location relative, i.e., the same
+			directory as this XSD since that where the cut-down version of ISO maintenance information is located).
+	-->
+	<!-- Imports from local file -->
+	<!-- Edition 5.0.0: Import a profile of the ISO metadata maintenance information model -->
+	<!--<xs:import namespace="http://standards.iso.org/iso/19115/-3/mmi/1.0" schemaLocation="mmi.xsd"/>-->
+
+	<!-- Edition 5.1 reverted to importing from ISO schema package to simplify(?) class generation by reducing the versions of schemas imported -->
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mmi/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/mmi/1.0/mmi.xsd"/>
+
+	<!-- Edition 5.0.0 update (July 2022): ISO TC211 schemas imported from relative locations -->
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/cit/2.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/cit/2.0/cit.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gco/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/gco/1.0/gco.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gcx/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/gcx/1.0/gcx.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gex/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/gex/1.0/gex.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/lan/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/lan/1.0/lan.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mco/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/mco/1.0/mco.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mri/1.0" schemaLocation="../../../../schemas.isotc211.org/19115/-3/mri/1.0/mri.xsd"/>
+
+	<!-- Edition 5.0.0 update: ISO TC211 schemas imported from new ISO TC211 schema server - same namespaces and versions as used in S-100 4.0 -->
+	<!-- Imports from ISO's new site -->
+<!--
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/cit/2.0" schemaLocation="https://schemas.isotc211.org/19115/-3/cit/2.0/cit.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gco/1.0" schemaLocation="https://schemas.isotc211.org/19115/-3/gco/1.0/gco.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gcx/1.0" schemaLocation="https://schemas.isotc211.org/19115/-3/gcx/1.0/gcx.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gex/1.0" schemaLocation="https://schemas.isotc211.org/19115/-3/gex/1.0/gex.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/lan/1.0" schemaLocation="https://schemas.isotc211.org/19115/-3/lan/1.0/lan.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mco/1.0" schemaLocation="https://schemas.isotc211.org/19115/-3/mco/1.0/mco.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mri/1.0" schemaLocation="https://schemas.isotc211.org/19115/-3/mri/1.0/mri.xsd"/>
+-->
+	<!--<xs:import namespace="http://standards.iso.org/iso/19115/-3/mrl/2.0" schemaLocation="https://schemas.isotc211.org/19115/-3/mrl/2.0/mrl.xsd"/>-->
+	<!--<xs:import namespace="http://standards.iso.org/iso/19115/-3/mdt/2.0" schemaLocation="https://schemas.isotc211.org/19115/-3/mdt/2.0/mdt.xsd"/>-->
+
+	<!-- Imports from the old ISO TC211 distribution used in S-100 Edition 4.0.0 schemas -->
+	<!--
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/cit/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/cit/2.0/cit.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gco/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/gco/1.0/gco.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gcx/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/gcx/1.0/gcx.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gex/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/gex/1.0/gex.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/lan/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/lan/1.0/lan.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mco/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mco/1.0/mco.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mri/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mri/1.0/mri.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mrl/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/mrl/2.0/mrl.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mdt/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/mdt/2.0/mdt.xsd"/>
+	-->
+
+	<!-- The following imports are not needed for the generic S-100 catalogue, retained here for information and because extensions in product
+		specifications may need them (if so they should be imported in the extension)
+	-->
+	<!--
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/cat/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/cat/1.0/cat.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/gmw/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/gmw/1.0/gmw.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mac/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/mac/2.0/mac.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mas/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mas/1.0/mas.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mcc/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mcc/1.0/mcc.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mdb/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/mdb/2.0/mdb.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mpc/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mpc/1.0/mpc.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mrc/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/mrc/2.0/mrc.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mrd/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mrd/1.0/mrd.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mrs/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mrs/1.0/mrs.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/msr/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/msr/2.0/msr.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mda/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/mda/2.0/mda.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/mex/1.0" schemaLocation="../../../../standards.iso.org/19115/-3/mex/1.0/mex.xsd"/>
+	<xs:import namespace="http://standards.iso.org/iso/19115/-3/srv/2.0" schemaLocation="../../../../standards.iso.org/19115/-3/srv/2.0/srv.xsd"/>
+	-->
+
+	<!-- W3C xlink import -->
+	<!--<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>-->
+
+	<!-- S-100 5.0.0 and after: import Part 15 signatures/encryption schema -->
+	<xs:import namespace="http://www.iho.int/s100/se/5.2" schemaLocation="../../../5.2.0/S100SE/20240415/Part15.xsd"/>
+
+	<!-- Restrictions of standard types, used to implement generic constraints in Part 17 -->
+	<xs:simpleType name="URNType">
+		<xs:annotation><xs:documentation>Generic type for URN</xs:documentation></xs:annotation>
+		<xs:restriction  base="xs:anyURI">
+			<xs:pattern value="urn:.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MRNType">
+		<xs:annotation><xs:documentation>Generic type for MRN</xs:documentation></xs:annotation>
+		<xs:restriction  base="xs:anyURI">
+			<xs:pattern value="urn:mrn:.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="RestrictedBoolean">
+		<xs:annotation><xs:documentation>S-100 5.0 metadata requires booleans to be true/false, not 1/0</xs:documentation></xs:annotation>
+		<xs:restriction base="xs:boolean">
+			<xs:pattern value="(true)|(false)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_Purpose">
+		<xs:annotation>
+			<xs:documentation>The purpose of the dataset</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<!-- S-102 3.1.0 clause 12.5.3 -->
+			<xs:enumeration value="newDataset">
+				<xs:annotation>
+					<xs:documentation>Brand new dataset</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="newEdition">
+				<xs:annotation>
+					<xs:documentation>New edition of the dataset or Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="cancellation">
+				<xs:annotation>
+					<xs:documentation>Dataset or Catalogue that has been cancelled</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_NavigationPurpose">
+		<xs:annotation>
+			<xs:documentation>The navigational purpose of the dataset</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="port">
+				<xs:annotation>
+					<xs:documentation>For port and near shore operations</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="transit">
+				<xs:annotation>
+					<xs:documentation>For coast and planning purposes</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="overview">
+				<xs:annotation>
+					<xs:documentation>For ocean crossing and planning purposes</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_CompliancyCategory">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<!-- S-102 3.1.0 clause 12.5.6 -->
+			<xs:enumeration value="category3">
+				<xs:annotation>
+					<xs:documentation>IHO S-100 compliant with standard encoding</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="category4">
+				<xs:annotation>
+					<xs:documentation>IHO S-100 and IMO harmonized display compliant</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_SupportFileRevisionStatus">
+		<xs:annotation>
+			<xs:documentation>The reason for inclusion of the support file in this Exchange Set</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="new">
+				<xs:annotation>
+					<xs:documentation>A file which is new</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="replacement">
+				<xs:annotation>
+					<xs:documentation>A file which replaces an existing file</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="deletion">
+				<xs:annotation>
+					<xs:documentation>Deletes an existing file</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_ResourcePurpose">
+		<xs:annotation>
+			<xs:documentation>Defines the purpose of the supporting resource</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="supportFile">
+				<xs:annotation>
+					<xs:documentation>A support file</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISOMetadata">
+				<xs:annotation>
+					<xs:documentation>Dataset metadata in ISO format</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="languagePack">
+				<xs:annotation>
+					<xs:documentation>A Language pack</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GMLSchema">
+				<xs:annotation>
+					<xs:documentation>GML Application Schema</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="other">
+				<xs:annotation>
+					<xs:documentation>A type of resource not otherwise described</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="S100_ProductSpecification" type="S100_ProductSpecification"/>
+	<xs:complexType name="S100_ProductSpecification">
+		<xs:annotation>
+			<xs:documentation>The Product Specification contains the information needed to build the specified product</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<!-- S-102 3.1.0 clause 12.5.5 -->
+			<xs:element name="name" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name of the product specification used to create the datasets.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Bathymetric Surface"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5.5 -->
+			<xs:element name="version" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The version number of the product specification.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="3.1.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5.5 -->
+			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The version date of the product specification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5.5 -->
+			<xs:element name="productIdentifier" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Machine readable unique identifier of a product type. For example, “S-101”</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="S-102"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5.5 -->
+			<xs:element name="number" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The number used to lookup the product in the Product Specification Register of the IHO GI registry</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<!-- Must be corrected after publication in IHO registry -->
+						<xs:enumeration value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="compliancyCategory" type="S100_CompliancyCategory" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The level of compliance of the Product Specification to S-100</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="S100_SupportFileSpecification" type="S100_SupportFileSpecification"/>
+	<xs:complexType name="S100_SupportFileSpecification">
+		<xs:annotation>
+			<xs:documentation>The Support File Specification contains the information needed to build the specified product</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name of the specification used to create the support file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The version number of the specification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="date" type="xs:date" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The version date of the specification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="S100_SupportFilePurpose">
+		<xs:annotation>
+			<xs:documentation>The reason for inclusion of the support file in this exchange set</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="new">
+				<xs:annotation>
+					<xs:documentation>A file which is new. Signifies a new file.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="replacement">
+				<xs:annotation>
+					<xs:documentation>A file which replaces an existing file. Signifies a replacement for a file of the same name.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="deletion">
+				<xs:annotation>
+					<xs:documentation>Deletes an existing file. Signifies deletion of a file of that name.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="S100_SupportFileDiscoveryMetadata" type="S100_SupportFileDiscoveryMetadata">
+		<xs:key name="SFD_SIGNATURES_UNIQUE_ID">
+			<xs:selector xpath=".//S100SE:S100_SE_DigitalSignature|.//S100SE:S100_SE_SignatureOnSignature|.//S100SE:S100_SE_SignatureOnData"></xs:selector>
+			<xs:field xpath="@id"></xs:field>
+		</xs:key>
+		<xs:key name="SFD_UNIQUE_PRIMARY_SIGNATURE">
+			<xs:selector xpath=".//S100SE:S100_SE_DigitalSignature"></xs:selector>
+			<xs:field xpath="."></xs:field>
+		</xs:key>
+	</xs:element>
+	<xs:complexType name="S100_SupportFileDiscoveryMetadata">
+		<xs:annotation>
+			<xs:documentation>Metadata about the individual support files in the exchange catalogue.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fileName" type="xs:anyURI" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Name for the support file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="revisionStatus" type="S100_SupportFileRevisionStatus" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The purpose for which the support file has been issued</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="editionNumber" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The edition number of the support file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueDate" type="xs:date" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Date on which the data was made available by the data producer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="supportFileSpecification" type="S100_SupportFileSpecification" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The specification used to create this file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataType" type="S100_SupportFileFormat" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The format of the support file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherDataTypeDescription" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Encoding format other than those listed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="comment" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Optional comment</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="compressionFlag" type="RestrictedBoolean" maxOccurs="1" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates if the resource is compressed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="digitalSignatureReference" type="S100SE:S100_SE_DigitalSignatureReference_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Specifies the algorithm used to compute digitalSignatureValue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		    <xs:element name="digitalSignatureValue" minOccurs="1" maxOccurs="unbounded">
+		    	<xs:annotation>
+		    		<xs:documentation>Value derived from the digital signature. The value resulting from application of digitalSignatureReference. Implemented as the digital signature format specified in Part 15.</xs:documentation>
+		    	</xs:annotation>
+		        <xs:complexType>
+		            <xs:sequence>
+		                <xs:element ref="S100SE:S100_SE_DigitalSignature"/>
+		            </xs:sequence>
+		        </xs:complexType>
+		    </xs:element>
+			<xs:element name="defaultLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Default language and character set used in the support file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="supportedResource" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Identifier of the resource supported by this support file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="resourcePurpose" type="S100_ResourcePurpose" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The purpose of the supporting resource</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="S100_ExchangeCatalogueIdentifier" type="S100_ExchangeCatalogueIdentifier"/>
+	<xs:complexType name="S100_ExchangeCatalogueIdentifier">
+		<xs:annotation>
+			<xs:documentation>An exchange catalogue contains the discovery metadata about the exchange datasets and support files</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>An identifier for an Exchange Catalogue.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Creation date and time of the exchange catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="S100_CataloguePointofContact">
+		<xs:annotation>
+			<xs:documentation>Contact details of the issuer of this exchange catalogue</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="organization" type="gco:CharacterString_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The organization distributing this exchange catalogue. This could be an individual producer, value added reseller, etc.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="phone" type="S100_Phone_Type" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="address" type="S100_Address_Type" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="S100_DatasetDiscoveryMetadata" type="S100_DatasetDiscoveryMetadata">
+		<xs:key name="DSD_SIGNATURES_UNIQUE_ID">
+			<xs:selector xpath=".//S100SE:S100_SE_DigitalSignature|.//S100SE:S100_SE_SignatureOnSignature|.//S100SE:S100_SE_SignatureOnData"></xs:selector>
+			<xs:field xpath="@id"></xs:field>
+		</xs:key>
+		<xs:key name="DSD_UNIQUE_PRIMARY_SIGNATURE">
+			<xs:selector xpath=".//S100SE:S100_SE_DigitalSignature"></xs:selector>
+			<xs:field xpath="."></xs:field>
+		</xs:key>
+	</xs:element>
+	<xs:complexType name="S100_DatasetDiscoveryMetadata">
+		<xs:annotation>
+			<xs:documentation>Metadata about the individual datasets in the exchange catalogue.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fileName" type="xs:anyURI" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dataset file name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Short description giving the area or location covered by the dataset. e.g. a harbour or port name, between two named locations etc.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datasetID" type="MRNType" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Dataset ID expressed as a Marine Resource Name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="compressionFlag" type="RestrictedBoolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates if the resource is compressed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataProtection" type="RestrictedBoolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates if the data is encrypted</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="protectionScheme" type="S100_ProtectionScheme" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Specification of method used for data protection</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="digitalSignatureReference" type="S100SE:S100_SE_DigitalSignatureReference_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Digital Signature of the file. Specifies the algorithm used to compute digitalSignatureValue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="digitalSignatureValue" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Value derived from the digital signature. The value resulting from application of digitalSignatureReference. Implemented as the digital signature format specified in Part 15.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="S100SE:S100_SE_DigitalSignature"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="copyright" type="RestrictedBoolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates if the dataset is copyrighted</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute classification is mandatory -->
+			<xs:element name="classification" type="S100_ClassificationCode_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates the security classification of the dataset</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute purpose is mandatory -->
+			<xs:element name="purpose" type="S100_Purpose" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The purpose for which the dataset has been issued.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="notForNavigation" type="RestrictedBoolean" maxOccurs="1" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates the dataset is not intended to be used for navigation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="specificUsage" type="S100_Usage_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The use for which the dataset is intended. e.g. in the case of ENCs this would be a navigation purpose classification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute editionNumber is mandatory -->
+			<xs:element name="editionNumber" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The edition number of the dataset. When a data set is initially created, the edition number 1 is assigned to it. The edition number is increased by 1 at each new edition. Edition number remains the same for a re-issue.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Date on which the data was made available by the data producer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueTime" type="xs:time" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Time of day at which the data was made available by the data producer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute boundingBox is mandatory -->
+			<xs:element name="boundingBox" type="S100_GeographicBoundingBox_Type" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The extent of the dataset limits.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="productSpecification" type="S100_ProductSpecification" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The product specification used to create this dataset.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="producingAgency" type="cit:CI_Responsibility_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ProducingAgency</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute producerCode is mandatory -->
+			<xs:element name="producerCode" type="xs:string" maxOccurs="1" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The official IHO Producer Code from S-62</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="encodingFormat" type="S100_EncodingFormat_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The encoding format of the dataset.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute dataCoverage is mandatory -->
+			<xs:element name="dataCoverage" type="S100_DataCoverage" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Provides information about data coverages within the dataset.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="comment" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Any additional information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="defaultLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Default language and character set used in the dataset</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Other languages and character sets used in the dataset</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="metadataPointOfContact" type="cit:CI_Responsibility_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Point of contact for metadata</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="metadataDateStamp" type="xs:date" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Date stamp for metadata</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="replacedData" type="RestrictedBoolean" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates if a cancelled data file is cancelled is replaced by another data file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataReplacement" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Dataset name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5 the attribute navigationPurpose is mandatory -->
+			<xs:element name="navigationPurpose" maxOccurs="3" minOccurs="1" type="S100_NavigationPurpose">
+				<xs:annotation>
+					<xs:documentation>Classification of intended navigation purpose (for Catalogue indexing purposes)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="resourceMaintenance" type="mmi:MD_MaintenanceInformation_PropertyType" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S-100 restricts the ISO 19115-class to: (i) prohibit maintenanceScope, maintenanceNote, and contact attributes; (ii) define restrictions on maintenanceAndUpdateFrequency, maintenanceDate, and userDefinedMaintenanceFrequency attributes</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="S100_EncodingFormat">
+		<xs:annotation>
+			<xs:documentation>The encoding format.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<!-- S-102 3.1.0 clause 12.5 The only allowed value is HDF5-->
+			<xs:enumeration value="HDF5">
+				<xs:annotation>
+					<xs:documentation>The HDF5 data format as defined in Part 10c</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_SupportFileFormat">
+		<xs:annotation>
+			<xs:documentation>The format used for the support file.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TXT_UTF-8"><xs:annotation><xs:documentation>UTF-8 text excluding control codes</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="JPEG2000"><xs:annotation><xs:documentation>JPEG2000 format</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="HTML"><xs:annotation><xs:documentation>Hypertext Markup Language</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="XML"><xs:annotation><xs:documentation>Extensible Markup Language</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="XSLT"><xs:annotation><xs:documentation>Extensible Stylesheet Language Transformations</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="VIDEO"><xs:annotation><xs:documentation>Representation of moving images in unspecified format</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="TIFF"><xs:annotation><xs:documentation>Tagged Image File Format</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="PDF/AorUA"><xs:annotation><xs:documentation>Portable Document Format</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="LUA"><xs:annotation><xs:documentation>Lua programming language</xs:documentation></xs:annotation></xs:enumeration>
+			<xs:enumeration value="other"><xs:annotation><xs:documentation>Other format</xs:documentation></xs:annotation></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_CatalogueScope">
+		<xs:annotation>
+			<xs:documentation>The scope of the catalogue</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="featureCatalogue">
+				<xs:annotation>
+					<xs:documentation>S-100 feature catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="portrayalCatalogue">
+				<xs:annotation>
+					<xs:documentation>S-100 portrayal catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="interoperabilityCatalogue">
+				<xs:annotation>
+					<xs:documentation>S-100 interoperability information</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="S100_ProtectionScheme">
+		<xs:annotation>
+			<xs:documentation>Data protection schemes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="S100p15">
+				<xs:annotation>
+					<xs:documentation>IHO S-100 Part 15</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="S100_ExchangeCatalogue" type="S100_ExchangeCatalogue"/>
+	
+	<xs:complexType name="S100_ExchangeCatalogue">
+		<xs:annotation>
+			<xs:documentation>Each exchange set has a single S-100_ExchangeCatalogue which contains meta information for the data and support files in the exchange set. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identifier" type="S100_ExchangeCatalogueIdentifier" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Uniquely identifies this exchange catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="contact" type="S100_CataloguePointofContact" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Details about the issuer of this exchange catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.4 -->
+			<xs:element name="productSpecification" type="S100_ProductSpecification" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Details about the product specifications used for the datasets contained in the exchange catalogue. Conditional on all the datasets using the same product specification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="defaultLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Default language and character set used for all metadata records in this Exchange Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Other languages and character sets used for the localized metadata records in this Exchange Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exchangeCatalogueDescription" type="gco:CharacterString_PropertyType"  minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Description of what the exchange catalogue contains</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exchangeCatalogueComment" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Any additional Information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="certificates" type="S100SE:S100_SE_CertificateContainerType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Signed public key certificates referred to by digital signatures in the Exchange Set</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataServerIdentifier" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identifies the data server for the permit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datasetDiscoveryMetadata">
+				<xs:annotation>
+					<xs:documentation>Container for S100_DatasetDiscoveryMetadata elements</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="S100_DatasetDiscoveryMetadata" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Discovery metadata for single dataset. Constraints should be in a separate file for reusability and potential customization.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="supportFileDiscoveryMetadata">
+				<xs:annotation>
+					<xs:documentation>Exchange Catalogues may include or reference discovery metadata for the support files in the Exchange Set</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="S100_SupportFileDiscoveryMetadata" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="catalogueDiscoveryMetadata">
+				<xs:annotation>
+					<xs:documentation>Metadata for Catalogue</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="S100_CatalogueDiscoveryMetadata" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="S100_CatalogueDiscoveryMetadata" type="S100_CatalogueDiscoveryMetadata">
+		<xs:annotation>
+			<xs:documentation>Substitution group head element</xs:documentation>
+		</xs:annotation>
+		<xs:key name="CTD_SIGNATURES_UNIQUE_ID">
+			<xs:selector xpath=".//S100SE:S100_SE_DigitalSignature|.//S100SE:S100_SE_SignatureOnSignature|.//S100SE:S100_SE_SignatureOnData"></xs:selector>
+			<xs:field xpath="@id"></xs:field>
+		</xs:key>
+		<xs:key name="CTD_UNIQUE_PRIMARY_SIGNATURE">
+			<xs:selector xpath=".//S100SE:S100_SE_DigitalSignature"></xs:selector>
+			<xs:field xpath="."></xs:field>
+		</xs:key>
+	</xs:element>
+	<xs:complexType name="S100_CatalogueDiscoveryMetadata">
+		<xs:annotation>
+			<xs:documentation>Class for S-100 catalogue metadata.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fileName" type="xs:anyURI" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name for the catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="purpose" type="S100_Purpose" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The purpose for which the Catalogue has been issued</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="editionNumber" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The Edition number of the Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scope" type="S100_CatalogueScope" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Subject domain of the catalogue.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="versionNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The version identifier of the Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The issue date of the Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="productSpecification" type="S100_ProductSpecification" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The product specification used to create this file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="digitalSignatureReference" type="S100SE:S100_SE_DigitalSignatureReference_PropertyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Specifies the algorithm used to compute digitalSignatureValue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="digitalSignatureValue" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Value derived from the digital signature. The value resulting from application of digitalSignatureReference. Implemented as the digital signature format specified in Part 15.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="S100SE:S100_SE_DigitalSignature"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="compressionFlag" type="RestrictedBoolean" maxOccurs="1" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates if the resource is compressed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="defaultLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Default language and character set used in the Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherLocale" type="lan:PT_Locale_PropertyType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Other languages and character sets used in the Catalogue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="S100_TemporalExtent">
+		<xs:annotation>
+			<xs:documentation>Temporal extent</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="timeInstantBegin" type="xs:dateTime" maxOccurs="1" minOccurs="0"><xs:annotation><xs:documentation>The instant at which the temporal extent begins</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="timeInstantEnd" type="xs:dateTime" maxOccurs="1" minOccurs="0"><xs:annotation><xs:documentation>The instant at which the temporal extent ends</xs:documentation></xs:annotation></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+
+	<!-- ============================================================
+	Types for elements derived from ISO types
+	============================================================ -->
+	<xs:complexType name="S100_Phone_Type">
+		<xs:annotation>
+			<xs:documentation>phone type, derived from CI_Telephone</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cit:CI_Telephone_Type">
+				<xs:attribute ref="gco:isoType" default="cit:CI_Telephone"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="S100_Address_Type">
+		<xs:annotation>
+			<xs:documentation>address type, derived from CI_Address</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cit:CI_Address_Type">
+				<xs:attribute ref="gco:isoType" default="cit:CI_Address"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="S100_GeographicBoundingBox_Type">
+		<xs:annotation>
+			<xs:documentation>geographic bounding box type, derived from EX_GeographicBoundingBox</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gex:EX_GeographicBoundingBox_Type">
+				<xs:attribute ref="gco:isoType" default="gex:EX_GeographicBoundingBox"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="S100_BoundingPolygon_Type">
+		<xs:annotation>
+			<xs:documentation>bounding polygon type, derived from EX_BoundingPolygon</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gex:EX_BoundingPolygon_Type">
+				<xs:attribute ref="gco:isoType" default="gex:EX_BoundingPolygon"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="S100_ClassificationCode_PropertyType">
+		<xs:annotation>
+			<xs:documentation>Classification code derivation from ISO 19115</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mco:MD_ClassificationCode_PropertyType">
+				<xs:attribute ref="gco:isoType" default="mco:MD_ClassificationCode_Property"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="S100_Usage_PropertyType">
+		<xs:annotation>
+			<xs:documentation>Restriction code derivation from ISO 19115</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mri:MD_Usage_PropertyType">
+				<xs:attribute ref="gco:isoType" default="mri:MD_Usage_Property"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="S100_EncodingFormat_PropertyType">
+		<xs:annotation>
+			<xs:documentation>Property type for S100_DataFormat</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="S100_EncodingFormat">
+				<xs:attribute ref="gco:nilReason"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:element name="S100_DataCoverage" type="S100_DataCoverage"/>
+	<xs:complexType name="S100_DataCoverage">
+		<xs:annotation>
+			<xs:documentation>Definition required</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="boundingPolygon" type="S100_BoundingPolygon_Type" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A polygon which defines the actual data limit.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="optimumDisplayScale" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The scale with which the data is optimally displayed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="maximumDisplayScale" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The maximum scale with which the data is displayed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minimumDisplayScale" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The minimum scale with which the data is displayed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- S-102 3.1.0 clause 12.5.2 -->
+			<xs:element name="approximateGridResolution" minOccurs="1"  maxOccurs="2" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>The resolution of gridded or georeferenced data (in metres)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

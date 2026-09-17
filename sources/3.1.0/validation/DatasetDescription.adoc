@@ -1,0 +1,42 @@
+= Description of the test data sets for validation
+:tip-caption: :bulb:
+
+Two data sets with identical geographical boundaries were added to the repository for the implementation of testing software.
+One data set is a correct data set based on the S-102 of the respective edition.
+The other data set contains errors according to the S-158:102 Validation Checks specification.
+
+Both data sets therefore do not serve as an example for an implementation of the S-102, but as training and verification data sets for testing software.
+
+Both data sets can be displayed with software that can generally read HDF5.
+
+== Completeness
+
+The test data set with the errors according to S-158:102 is not complete and requires continuous further development if there is a demand for it.
+
+== Data set 102DE00NO13R.H5
+
+This is a data set that should not contain any errors according to S-158:100 or S-158:102.
+However, if there are errors in this data set, please report them by opening an issue.
+
+== Data set 102DE00NO13R_S158P1.H5
+
+This data set contains some errors from phase 1 of S-158:102. The errors contained are listed both in the HDF5 file and here.
+The attribute “S158ChecksIncluded” has been added to the HDF5 file. This attribute contains a list of the S-158:102 errors included.
+The data set can be used accordingly by developers of validation software to check the respective implementation.
+
+TIP: This data set cannot be loaded in S-100 compliant display software!
+
+=== Errors contained
+
+* S102_1005
+* S102_1007
+* S102_1008
+* S102_1009
+* S102_1011
+* S102_1023
+* S102_1025
+* S102_1026
+* S102_1027
+* S102_1028
+* S102_1029
+* S102_1031
