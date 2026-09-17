@@ -539,7 +539,7 @@ _boundingPolygon_ is restricted to a single GML Polygon with one exterior and 0 
 |newDataset
 |Brand new dataset
 |1
-|No data has previously been produced for this area.
+|No data has previously been produced for this area or there is a significant change from the existing, for example, coverage or extent.
 
 |Value
 |newEdition
