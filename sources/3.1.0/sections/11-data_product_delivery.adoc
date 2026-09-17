@@ -72,88 +72,12 @@ Three types of dataset files may be produced and contained within an exchange se
 
 [[subsec-dataset-size]]
 ==== Dataset size
-{series}-{docnumber} delivery will take place in one form: network transfer to platform (that is, internet download). An example scenario has been provided below: 
+{series}-{docnumber} delivery will take place in one form: network transfer to platform (that is, internet download). Due to the cost of transmitting data via the internet, it is desirable to limit file size and updating frequency whenever possible. In addition, smaller grid sizes are more efficient for loading since applications can automatically load the small cells that are needed quickly, and then load other nearby cells when needed based on ship movement or changes to the view (panning or zooming). Considerations here are the size of each transfer, the total volume of data transferred over time (the latter particularly applies to datasets which are issued daily or more frequently), and application loading efficiency. Maximum size limits for {series}-{docnumber} datasets intended for ECDIS have therefore been empirically established. The size limits are:
 
-NOTE: The use of 10 MiB in this and other sections should be treated as informative information only. Additionally, any computed values associated with either file size limit should be treated as approximate answers. Final selection of an appropriate file size limit or grid resolution is left to the discretion of the data producer.
-
-*Network Transfer*:: To minimize overall file size, the HO produces a 10 MiB file for wireless transmission to marine vessels. In uncompressed form, this file would contain roughly 600 by 600 grid cells.
-
-<<tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale>> provides general information to aid in the compilation of {series}-{docnumber} data for specific charting scales.
-
-
-
-===== {series}-{docnumber} grid resolution and tiling
-
-[[tab-informative-grid-resolution-and-resulting-tile-size-at-chart-scale]]
-.Informative Grid Resolution and Resulting Tile Size at Chart Scale
-[cols="<a,<a,<a",options="header"]
-|===
-|Scale |Informative Grid Resolution |Resulting Tile Size @ 10 MiB
-
-|NULL (only allowed on minimum display scale where the maximum display scale = 10,000,000)
-|
-|Approximate Linear Distance in Nautical Miles (M) for a 600 X 600 cell grid
-
-|1:10,000,000
-|900 metres
-|291 X 291
-
-|1:3,500,000
-|900 metres
-|291 X 291
-
-|1:1,500,000
-|450 metres
-|145 X 145
-
-|1:700,000
-|210 metres
-|68 X 68
-
-|1:350,000
-|105 metres
-|34 X 34
-
-|1:180,000
-|54 metres
-|17.5 X 17.5
-
-|1:90,000
-|27 metres
-|8.7 X 8.7
-
-|1:45,000
-|13 metres
-|4.2 X 4.2
-
-|1:22,000
-|6 metres
-|1.9 X 1.9
-
-|1:12,000
-|3 metres
-|1.0 X 1.0
-
-|1:8,000
-|2 metres
-|0.6 X 0.6
-
-|1:4,000
-|1 metres
-|0.3 X 0.3
-
-|1:3,000
-|1 metres
-|0.3 X 0.3
-
-|1:2,000
-|1 metres
-|0.3 X 0.3
-
-|1:1,000
-|1 metres
-|0.3 X 0.3
-|===
+. Each {series}-{docnumber} data file, as created by the Producer, must be limited to a maximum of stem:[15000000] value records. This limit is calculated as stem:["numPointsLatitudinal" xx "numPointsLongitudinal" < 15000000]. Value records partially or fully populated with fill values are included in the count. +
+EXAMPLE: An {series}-{docnumber} data file with numPointsLatitudinal=2500, numPointsLongitudinal=2500 is counted as containing stem:[2500 xx 2500 = 6250000] value records and satisfies the size limitation.
+. In the case of <<mvdvdr,multiple vertical datums>>, the size limit applies to each datum feature separately. That is, a dataset with two vertical datums will have two (coincident) grid features, each of which is limited to a maximum of stem:[15000000] value records calculated as previously described.
+. The “cell scheming” (geographic extents covered) for datasets, especially datasets which are issued frequently (for example, daily) should be determined so as to reduce the transfer of unnecessary data. It is recommended that cell scheming and grid density take into account the navigation purposes defined in S100_NavigationPurpose (see <<iho-s100,part=17,clause=4.5>>).
 
 [[subsec-dataset-file-naming]]
 ==== Dataset file naming
