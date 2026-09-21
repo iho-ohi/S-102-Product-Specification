@@ -484,7 +484,7 @@ Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100
 |Attribute
 |optimumDisplayScale
 |The scale at which the data is optimally displayed
-|0..1
+|*1*
 |Integer
 |Example: A scale of 1:25000 is encoded as 25000
 
