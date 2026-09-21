@@ -1,0 +1,11 @@
+
+== Data Maintenance
+
+=== Maintenance and update frequency
+Datasets are maintained by replacement on a dataset basis. That is, the entire data product and the associated metadata are replaced as a unit. This is unlike vector data that may be updated incrementally. Also, each replacement data set must have its own digital signature.
+
+=== Data source
+Data producers must use applicable sources to maintain and update data and provide a brief description of the sources that were used to produce the dataset.
+
+=== Production process
+Data Producers should follow their established production processes for maintaining and updating datasets.
