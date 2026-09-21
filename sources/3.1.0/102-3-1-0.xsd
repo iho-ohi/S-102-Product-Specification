@@ -1111,12 +1111,12 @@ Version 5.2.0 Build 20240415 (RMM) Updated to import revised security/encryption
 					<xs:documentation>The scale with which the data is optimally displayed</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="maximumDisplayScale" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+			<xs:element name="maximumDisplayScale" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>The maximum scale with which the data is displayed</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="minimumDisplayScale" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+			<xs:element name="minimumDisplayScale" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>The minimum scale with which the data is displayed</xs:documentation>
 				</xs:annotation>
