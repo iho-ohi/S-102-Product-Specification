@@ -491,14 +491,14 @@ Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100
 |Attribute
 |maximumDisplayScale
 |The maximum scale at which the data is displayed
-|0..1
+|*1*
 |Integer
 |
 
 |Attribute
 |minimumDisplayScale
 |The minimum scale at which the data is displayed
-|0..1
+|*1*
 |Integer
 |
 
