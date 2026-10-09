@@ -315,15 +315,6 @@
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
-					<S100FC:label>Raw Standard Deviation</S100FC:label>
-					<S100FC:definition>Raw standard deviations of soundings that contributed to the grid cell.</S100FC:definition>
-					<S100FC:code>1</S100FC:code>
-					<S100FC:definitionReference>
-						<S100FC:sourceIdentifier>3472</S100FC:sourceIdentifier>
-						<S100FC:definitionSource ref="IHOREG" />
-					</S100FC:definitionReference>
-				</S100FC:listedValue>
-				<S100FC:listedValue>
 					<S100FC:label>CUBE Standard Deviation</S100FC:label>
 					<S100FC:definition>Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE’s standard output of uncertainty).</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
@@ -342,14 +333,6 @@
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>Historical Standard Deviation </S100FC:label>
-					<S100FC:definition>An estimated standard deviation based on historical/archive data.</S100FC:definition>
-					<S100FC:code>4</S100FC:code>
-					<S100FC:definitionReference>
-						<S100FC:sourceIdentifier>3476</S100FC:sourceIdentifier>
-						<S100FC:definitionSource ref="IHOREG" />
-					</S100FC:definitionReference>
-				</S100FC:listedValue>
 			</S100FC:listedValues>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
