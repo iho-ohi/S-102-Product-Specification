@@ -1080,32 +1080,16 @@ H5T_STRING {
 | 
 
 | Value
-| rawStandardDeviation
-| Raw standard deviations of soundings that contributed to the grid cell.
-| 1
-| -
-
-
-| Value
 | cUBEStandardDeviation
 | Standard deviation of soundings captured by a CUBE hypothesis (that is, CUBE's standard output of uncertainty).
 | 2
 | -
 
-
 | Value
 | productUncertainty
-| The greater of (1) standard deviation of the soundings contributing to the depth solution or, (2) the _a priori_ computed uncertainty estimate (that is, modelled Total Vertical Uncertainty).
+| The greater of standard deviation of all soundings contributing to the depth solution for each cell, or (2) the _a priori_ computed uncertainty estimate, that is, modelled Total Vertical Uncertainty, both at 95% confidence level.
 | 3
 | -
-
-
-| Value
-| historicalStandardDeviation
-| Estimated standard deviation based on historical/archive data.
-| 4
-| -
-
 
 | Value
 | (fill value representing "unknown")
