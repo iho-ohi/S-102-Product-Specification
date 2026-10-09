@@ -81,12 +81,12 @@
 			</S100FC:uom>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
-			<S100FC:name>ID</S100FC:name>
-			<S100FC:definition>Meta data record identifier for QualityOfBathymetric Coverage</S100FC:definition>
-			<S100FC:code>iD</S100FC:code>
-			<S100FC:alias>ID</S100FC:alias>
+			<S100FC:name>Feature Attribute Table Key</S100FC:name>
+			<S100FC:definition>Meta data record identifier for a Feature oriented Regular Grid</S100FC:definition>
+			<S100FC:code>featureAttributeTableKey</S100FC:code>
+			<S100FC:alias>Feature Attribute Table Key</S100FC:alias>
 			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>1251</S100FC:sourceIdentifier>
+				<S100FC:sourceIdentifier>1418</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:valueType>integer</S100FC:valueType>
