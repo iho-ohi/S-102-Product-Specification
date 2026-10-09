@@ -512,7 +512,7 @@ see <<iho-s100,part=8,table=12>>.
 ^| 1
 | String
 | Value: &lt;axisNames entry&gt; (comma-separated). + 
-For example, "latitude,longitude". Reverse scan direction along an axis is indicated by prefixing a '-' sign to the axis name. See <<scanDirection>>
+For example, "latitude,longitude". Reverse scan direction along an axis is indicated by prefixing a '-' sign to the axis name. See <<scanDirection>>, <<axisNames_BathymetryCoverage>>,  <<axisNames_QualityOfBathymetryCoverage>>
 
 | 8
 | Interpolation type

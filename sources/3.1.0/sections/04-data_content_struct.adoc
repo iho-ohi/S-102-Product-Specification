@@ -96,9 +96,10 @@ The attribute _offsetVectors_ has the value class _Sequence<Vector>_ that shall 
 The attribute _dimension_ has the value class Integer that shall identify the dimensionality of the grid. The value of the grid dimension in this product specification is 2. This value is [underline]#fixed# in this Product Specification.
 
 [level=7]
+[[axisNames_BathymetryCoverage]]
 ===== axisNames
 
-The attribute _axisNames_ has the value class _Sequence<CharacterString>_ that shall be used to assign names to the grid axis. The grid axis names shall conform to those of the CRS. For the allowable CRS according to this specification, the axis names shall be "Latitude" and "Longitude" for unprojected data sets or "`Northing`" and "`Easting`" in a projected space.
+The attribute _axisNames_ has the value class _Sequence<CharacterString>_ that shall be used to assign names to the grid axis. The grid axis names shall conform to those of the CRS. For the allowable CRS according to this specification, the axis names shall be "latitude" and "longitude" for unprojected data sets or "northing" and "easting" in a projected space.
 
 [level=7]
 ===== extent
@@ -159,9 +160,10 @@ The attribute _offsetVectors_ has the value class _Sequence<Vector>_ that shall 
 The attribute _dimension_ has the value class Integer that shall identify the dimensionality of the grid. The value of the grid dimension in this product specification is 2. This value is [underline]#fixed# in this Product Specification and does not need to be encoded.
 
 [level=7]
+[[axisNames_QualityOfBathymetryCoverage]]
 ===== axisNames
 
-The attribute _axisNames_ has the value class _Sequence<CharacterString>_ that shall be used to assign names to the grid axis. The grid axis names shall conform to those of the CRS. For the allowable CRS according to this specification, the axis names shall be "Latitude" and "Longitude" for unprojected data sets or "`Northing`" and "`Easting`" in a projected space.
+The attribute _axisNames_ has the value class _Sequence<CharacterString>_ that shall be used to assign names to the grid axis. The grid axis names shall conform to those of the CRS. For the allowable CRS according to this specification, the axis names shall be "latitude" and "longitude" for unprojected data sets or "northing" and "easting" in a projected space.
 
 [level=7]
 ===== extent
