@@ -2,7 +2,7 @@
 metanorma:
   source:
     files:
-      - "sources/3.1.0/WD-102-v3.1.0.adoc"
+      - "sources/3.1.0/ED-102-v3.1.0.adoc"
       - "sources/3.0.0/S-102 Edition 3.0.0.adoc"
       - "sources/2.2.0/S-102 Edition 2.2.0.adoc"
 
