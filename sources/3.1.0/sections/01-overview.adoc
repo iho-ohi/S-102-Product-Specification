@@ -210,7 +210,7 @@ The interval (about a given value) that will contain the true value of the measu
 
 NOTE: Errors exist and are the differences between the measured value and the true value. Since the true value is never known it follows that the error itself cannot be known. Uncertainty is a statistical assessment of the likely magnitude of this error. The numbers must be qualified by units.
 
-[[itd]]In this document an {series}-{docnumber} uncertainty is always considered to be 1-dimensional and at the 2-sigma or 95% confidence level.[[conlev]]
+[[itd]]In this document an {series}-{docnumber} uncertainty is considered to be 1- or 2-dimensional at 95% confidence level. To reach 95% confidence level for 1-dimensional (depths) means 1.96-sigma, and for 2-dimensional (positions) 2.45 x RMS Standard Deviation (the highest of X or Y Standard Deviation).[[conlev]]
 
 ===== Vector
 
