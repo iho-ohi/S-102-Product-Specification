@@ -2,10 +2,10 @@
 :series: S
 :docnumber: 102
 :doctype: standard
-:edition: 3.1.0
+:edition: 3.1.0 WD
 :language: en
-:published-date: 2025-07
-:copyright-year: 2025
+:published-date: 2026-09
+:copyright-year: 2026
 :committee: hssc
 :workgroup: tsmad
 :toclevels: 3
@@ -14,7 +14,7 @@
 :local-cache-only:
 :imagesdir: images
 :status: draft-development
-:s100editionreference: 5.2.0
+:s100editionreference: 5.2.1
 :iho-registry-ps-idx: !to_be_changed_after_publication!
 
 include::sections/00-document-history.adoc[]
