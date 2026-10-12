@@ -130,4 +130,32 @@ Other revisions and clarifications: +
 * Revised throughout document to ensure alignment with S-100 Ed. 5.2.0. +
 * Revised text variously for accuracy and clarity. +
 * Update UML and other diagrams to align with aforementioned changes.
+
+|3.1.0
+|October 2026
+|{series}-{docnumber} PT28
+|Major changes:
+
+* Fixed several typos and formatting issues
+* Removed unused terms and definitions
+* Revised throughout document to ensure  the correct use  of units according to <<iec-80000-13>>
+* Revision of <<sec-data-quality>> to comply with DQWG requirements
+* Corrected uncertainty to 95% confidence level (1.96-sigma)
+* Change all axis names to lower case (<<axisNames_BathymetryCoverage>>,<<axisNames_QualityOfBathymetryCoverage>>)
+* Feature attribute table (<<tab-elements-of-featureAttributeTable-compound-datatype>>)
+** Attribute "dataAssessment": values corrected
+** Attribute "bathyCoverage": renamed to "bathyCoverageAchieved"
+** Added encoding of Strings as a note
+* <<tab-codes-defining-how-bathy-depth-uncertainty-determined>>
+** Removed "rawStandardDeviation"
+** Removed "historicalStandardDeviation"
+* Corrected exceptions for the QualityOfBathymetryCoverage root group (<<root-QualityOfBathymetryCoverage>>)
+* Clarified <<subsec-instance-group-QualityOfBathymetryCoverage.01>> and <<subsec-values-dataset-for-QualityOfBathymetryCoverage>>
+* Removed "metadata" attribute from the root-group <<tab-root-group-attributes>>
+* Revised throughout document to ensure alignment with S-100 Ed. 5.2.1
+** Change the name of the index of the feature attribute table from "id" to featureAttributeTableKey (<<tab-sample-contents-of-the-BathymetryCoverage-and-QualityOfBathymetryCoverage-arrays>>)
+* Changed dataset constraints from 10 MiB to stem:[15000000] grid cells (<<subsec-dataset-size>>)
+* <<subsec-s100_exchangecatalogue>> defines "S100_ProductSpecification" as mandatory
+* <<subsec-s100_datasetdiscoverymetadata>> defines "editionNumber" as positiveInteger
+* <<subsec-s100_datacoverage>> defines "optimumDisplayScale", "maximumDisplayScale" & "minimumDisplayScale" as mandatory
 |===
