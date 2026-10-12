@@ -451,6 +451,7 @@ Format: PnYnMnDTnHnMnS (XML built-in type for ISO 8601 duration). See <<iho-s100
 ==== S100_NavigationPurpose
 {series}-{docnumber} uses S100_NavigationPurpose without modification.
 
+[[subsec-s100_datacoverage]]
 ==== S100_DataCoverage
 {series}-{docnumber} uses S100_DataCoverage without modification, but with additional remarks and changes to the multiplicity.
 
