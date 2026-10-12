@@ -1099,6 +1099,7 @@ H5T_STRING {
 
 |===
 
+[[subsec-instance-group-QualityOfBathymetryCoverage.01]]
 ==== Instance group QualityOfBathymetryCoverage.01
 The QualityOfBathymetryCoverage.01 instance group uses the same metadata attribute definitions as BathymetryCoverage instance groups (see <<tab-attributes-of-bathymetrycoverage-feature-instance-group>>). These attributes have the same meaning and permitted value domains as those defined for the BathymetryCoverage instance groups.
 
