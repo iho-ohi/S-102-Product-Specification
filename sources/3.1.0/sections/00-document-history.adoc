@@ -97,38 +97,46 @@ Revised several internal references.
 |2.2.0
 |April 2023
 |{series}-{docnumber}PT
-|Major changes: +
-* Changed coverage spatial type from _regular grid_ (DCF 2) to _feature oriented regular grid_ (DCF 9) and +
-added _QualityOfSurvey_ feature for providing quality and source metadata for individual grid cells. +
-Elements affected: Clause 10 and (new) Clause 7.1. +
-* Updated exchange set structure, exchange catalogue, and discovery metadata to align with <<iho-s100,part=17>> +
-* Updated dataset structure specification and embedded metadata attributes to align with updated <<iho-s100,part=10c>> +
-Element affected: Clause 10 +
+|Major changes:
+
+* Changed coverage spatial type from _regular grid_ (DCF 2) to _feature oriented regular grid_ (DCF 9) and
+added _QualityOfSurvey_ feature for providing quality and source metadata for individual grid cells.
+
+Elements affected: Clause 10 and (new) Clause 7.1.
+
+* Updated exchange set structure, exchange catalogue, and discovery metadata to align with <<iho-s100,part=17>>
+* Updated dataset structure specification and embedded metadata attributes to align with updated <<iho-s100,part=10c>>
+
+Element affected: Clause 10
+
 * Removed product-specific metadata classes and attributes, and defined replacements in embedded or distributed metadata +
-(i.e., as HDF5 attributes or in the new _QualityOfSurvey_ array) +
-* Removed provisions for including ISO metadata in {series}-{docnumber} exchange sets +
- +
-Other revisions and clarifications: +
-* Updated UML and other diagrams to align with aforementioned changes +
-* Revised text variously for accuracy and clarity +
-* Removed Annex for Feature Catalogue and changed all its references to the IHO Geospatial Information registry +
-* Moved gridding method information from Annex into Clause 10 +
+(i.e., as HDF5 attributes or in the new _QualityOfSurvey_ array)
+* Removed provisions for including ISO metadata in {series}-{docnumber} exchange sets
+
+Other revisions and clarifications:
+
+* Updated UML and other diagrams to align with aforementioned changes
+* Revised text variously for accuracy and clarity
+* Removed Annex for Feature Catalogue and changed all its references to the IHO Geospatial Information registry
+* Moved gridding method information from Annex into Clause 10
 * Updated references to more recent versions
 
 
 |3.0.0
 |July 2024
 |{series}-{docnumber}PT
-|Major changes: +
-* Modified text and figures to reflect a cell area-based approach to representation. (Clause 4) +
-* Added support for multiple vertical datums in a single product (Clause 10) +
-* Modified to refer to new _QualityOfBathymetryCoverage_ vice _QualityOfSurvey_. (Clause 10) +
- +
-Other revisions and clarifications: +
-* Removed annexes on Normative Implementation Guidance, Portrayal Catalogue, Dataset Size, Multi-Resolution Gridding, and Gridding Source Bathymetry. (Annexes) +
-* Removed gridding method from product specification entirely. (Clause 10) +
-* Revised throughout document to ensure alignment with S-100 Ed. 5.2.0. +
-* Revised text variously for accuracy and clarity. +
+|Major changes:
+
+* Modified text and figures to reflect a cell area-based approach to representation. (Clause 4)
+* Added support for multiple vertical datums in a single product (Clause 10)
+* Modified to refer to new _QualityOfBathymetryCoverage_ vice _QualityOfSurvey_. (Clause 10)
+
+Other revisions and clarifications:
+
+* Removed annexes on Normative Implementation Guidance, Portrayal Catalogue, Dataset Size, Multi-Resolution Gridding, and Gridding Source Bathymetry. (Annexes)
+* Removed gridding method from product specification entirely. (Clause 10)
+* Revised throughout document to ensure alignment with S-100 Ed. 5.2.0.
+* Revised text variously for accuracy and clarity.
 * Update UML and other diagrams to align with aforementioned changes.
 
 |3.1.0
