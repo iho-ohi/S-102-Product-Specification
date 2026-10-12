@@ -7,7 +7,7 @@
 :published-date: 2026-10
 :copyright-year: 2026
 :committee: hssc
-:workgroup: tsmad
+:workgroup: S-100WG
 :toclevels: 3
 :mn-document-class: iho
 :mn-output-extensions: xml,html,doc,pdf,rxl
