@@ -6,7 +6,7 @@
 :language: en
 :published-date: 2023-04
 :copyright-year: 2023
-:status: in-force
+:status: retired
 :committee: hssc
 :workgroup: tsmad
 :toclevels: 3

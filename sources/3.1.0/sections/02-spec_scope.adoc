@@ -1,0 +1,5 @@
+[[sec-specification-scope]]
+== Specification Scope
+This product specification defines only one general scope which applies to all its sections.
+
+*Scope Identification*:: GeneralScope
