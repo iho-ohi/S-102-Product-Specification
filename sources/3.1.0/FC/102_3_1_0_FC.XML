@@ -785,7 +785,7 @@
 					<S100Base:upper xsi:nil="false"
               						infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="iD" />
+				<S100FC:attribute ref="featureAttributeTableKey" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
