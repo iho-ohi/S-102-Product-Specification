@@ -621,11 +621,137 @@
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
+					<S100FC:label>Local Low Water Reference Level</S100FC:label>
+					<S100FC:definition>Low water reference level of the local area.</S100FC:definition>
+					<S100FC:code>31</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1716</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Local High Water Reference Level</S100FC:label>
+					<S100FC:definition>High water reference level of the local area.</S100FC:definition>
+					<S100FC:code>32</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1717</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Local Mean Water Reference Level</S100FC:label>
+					<S100FC:definition>Mean water reference level of the local area.</S100FC:definition>
+					<S100FC:code>33</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1718</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Equivalent Height of Water (German GlW)</S100FC:label>
+					<S100FC:definition>A low water level which is the result of a defined low water discharge - called "equivalent discharge".</S100FC:definition>
+					<S100FC:code>34</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1719</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Highest Shipping Height of Water (German HSW)</S100FC:label>
+					<S100FC:definition>Upper limit of water levels where navigation is allowed.</S100FC:definition>
+					<S100FC:code>35</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1720</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Reference Low Water Level According to Danube Commission</S100FC:label>
+					<S100FC:definition>The water level at a discharge, which is exceeded 94 % of the year within a period of 30 years.</S100FC:definition>
+					<S100FC:code>36</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1721</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Highest Shipping Height of Water According to Danube Commission</S100FC:label>
+					<S100FC:definition>The water level at a discharge, which is exceeded 1% of the year within a period of 30 years.</S100FC:definition>
+					<S100FC:code>37</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1722</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Dutch River Low Water Reference Level (OLR)</S100FC:label>
+					<S100FC:definition>The water level at a discharge, which is exceeded 95% of the year within a period of 20 years.</S100FC:definition>
+					<S100FC:code>38</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1723</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Russian Project Water Level</S100FC:label>
+					<S100FC:definition>Conditional low water level with established probability.</S100FC:definition>
+					<S100FC:code>39</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1724</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Russian Normal Backwater Level</S100FC:label>
+					<S100FC:definition>Highest water level derived from the upper backwater stream in watercourse or reservoir under the normal operational conditions.</S100FC:definition>
+					<S100FC:code>40</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1725</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Ohio River Datum</S100FC:label>
+					<S100FC:definition>The Ohio River datum.</S100FC:definition>
+					<S100FC:code>41</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1726</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Dutch High Water Reference Level</S100FC:label>
+					<S100FC:definition>Dutch High Water Reference Level.</S100FC:definition>
+					<S100FC:code>43</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1727</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
 					<S100FC:label>Baltic Sea Chart Datum 2000</S100FC:label>
 					<S100FC:definition>The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).</S100FC:definition>
 					<S100FC:code>44</S100FC:code>
 					<S100FC:definitionReference>
 						<S100FC:sourceIdentifier>1213</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Dutch Estuary Low Water Reference Level (OLW)</S100FC:label>
+					<S100FC:definition>Dutch Estuary Low Water Reference Level (OLW)</S100FC:definition>
+					<S100FC:code>45</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>1728</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>International Great Lakes Datum 2020</S100FC:label>
+					<S100FC:definition>	The 2020 update to the International Great Lakes Datum, the official reference system used to measure water level heights in the Great Lakes, connecting channels, and the St. Lawrence River system.</S100FC:definition>
+					<S100FC:code>46</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>2917</S100FC:sourceIdentifier>
 						<S100FC:definitionSource ref="IHOREG" />
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
