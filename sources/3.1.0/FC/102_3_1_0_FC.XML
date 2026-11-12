@@ -6,7 +6,7 @@
                                	xmlns:S100CD="http://www.iho.int/S100CD/5.0"
                                	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                                	xsi:schemaLocation="http://www.iho.int/S100FC/5.2 https://schemas.s100dev.net/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd">
-	<S100FC:name>S-102</S100FC:name>
+	<S100FC:name>Bathymetric Surface</S100FC:name>
 	<S100FC:scope>Global</S100FC:scope>
 	<S100FC:fieldOfApplication>Marine Navigation</S100FC:fieldOfApplication>
 	<S100FC:versionNumber>3.1.0</S100FC:versionNumber>
