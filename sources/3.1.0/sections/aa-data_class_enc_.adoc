@@ -97,3 +97,10 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 |Remarks:
 |===
 
+=== Root Group
+==== Attribute - Vertical datum (verticalDatum)
+{series}-{docnumber} authorises the use of various vertical datums from the IHO Registry. However, the selection of a specific vertical datum depends on the application domain of the {series}-{docnumber} data product being generated. A distinction is made between general IHO applications and Inland ENC applications. The following vertical datums shall be used exclusively within the Inland ENC application domain.
+
+* stem:[31-43]
+* stem:[45-46]
+
