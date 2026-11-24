@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © Copyright 2011, 2014-2016,2018,2022 International Hydrographic Organization
+License
+Certain parts of this document refer to or are based on the standards, documents, schemas,
+or other material of the International Organization for Standardization (ISO), Open Geospatial
+Consortium (OGC), International Hydrographic Organization / Organisation Hydrographique
+Internationale (IHO/OHI).
+The ISO material can be obtained from any ISO member and from the Web site of the ISO Central
+Secretariat at www.iso.org.
+The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+The IHO material can be obtained from the IHO Web site at www.iho.int or from the International
+Hydrographic Organization Secretariat.
+
+Permission to copy and distribute this document is hereby granted provided that this notice is
+retained on all copies, and that the IHO is credited when the material is redistributed
+or used in part or whole in derivative works.
+Redistributions in binary form must reproduce this notice in the documentation and/or other
+materials provided with the distribution.
+
+Disclaimer
+This work is provided by the copyright holders and contributors "as is" and any express or implied
+warranties, including, but not limited to, the implied warranties of merchantability and fitness
+for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be
+liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including,
+but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or
+business interruption) however caused and on any theory of liability, whether in contract, strict
+liability, or tort (including negligence or otherwise) arising in any way out of the use of this
+software, even if advised of the possibility of such damage.
+-->
+<!-- Original: S-100 Feature Catalogue Schema Version 0.9.4 from 17. June 2011  -->
+<!-- Date: 04 September 2014; Modification: Updated for S-100 Ed. 2.0.0 -->
+<!-- Date: 16 September 2014;
+  Modification: Removed S100_FC_Cataloginfo and moved its sub-elements to S100_FC_Catalogue;
+    Removed dataset attributes; updated header comments; added schema version;
+    Corrected definition source constraints and removed numeric code and unused constraints for numeric codes;
+    multiplicity of S100_FC_Item/remarks and S100_FC_Listedvalue/remarks updated to 0..1 conforming to Hamburg meeting decisions;
+    maxOccurs of permittedPrimitives changed from 5 to 7;
+    multiplicity of S100_FC_FeatureCatalogue/S100_FC_FeatureTypes changed from 1 to 0 (theoretically a catalogue can define only information types and attributes).
+-->
+<!-- Date: 2015-09-21 Raphael Malyankar
+  Modifications: Changed S100_FC_ComplexAttribute to be an extension of S100_FC_Attribute instead of S100_FC_Item;
+    S100_ prefixes added to types defined in S-100; multiplicity of permittedPrimitives changed from 1..7 to 1..*;
+    test for non-repetition of permittedPrimitives values in a feature type; added classification to S100_FC_FeatureCatalogue
+-->
+<!-- Date: 2016-07-12 Raphael Malyankar
+  Modifications: Added role in information binding; corrected constraint for roles in bindings; updated copyright statement with license+disclaimer
+  Date: 2017-06-29  Raphael Malyankar
+  Modifications: bug fix for rule checking roles; common version numbering scheme for S-100 schemas introduced
+  Date: 2018-05-02  Raphael Malyankar
+  Modifications: removed arc and circle by center point from spatial primitive types; removed obsolete comments; version number updated for edition 4.0;
+    Added checks for supertypes/subtypes
+  Date: 2018-06-12: the type S100CI:ResponsibleParty is obsoleted by 19115-1:2014, replaced with S100CI:Responsiblity
+-->
+
+<!-- Date: 2022-03-25 Raphael Malyankar for IHO
+    Modifications: Updated for S-100 5.0.0.
+      All namespaces now have 5.0 suffix.
+      schemaLocation in import statements updated to use schema server. 
+    Build 20220610: S100_FC_SimpleAttribute.listedValues element multiplicity changed from 0..UNB to 0..1
+      build number in version updatedl imports of S100Base, S100Ci, S100CD made relative
+-->
+
+  <!-- Prepared for the International Hydrographic Organisation (IHO).
+    Contributors: Holger Bothien (SevenCs/Chartworld); Tom Richardson (UKHO); Sewoong Oh (KRISO);
+    Yong Baek (KHOA); Raphael Malyankar (Jeppesen & C-Map); Raphael Malyankar (Portolan Sciences LLC)
+  -->
+<xs:schema targetNamespace="http://www.iho.int/S100FC/5.0"
+  elementFormDefault="qualified"
+  xmlns:S100FC="http://www.iho.int/S100FC/5.0"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:S100Base="http://www.iho.int/S100Base/5.0"
+  xmlns:S100CI="http://www.iho.int/S100CI/5.0"
+  xmlns:S100CD="http://www.iho.int/S100CD/5.0"
+  version="5.0.0-20220610">
+  <xs:import namespace="http://www.iho.int/S100Base/5.0" schemaLocation="S100Base.xsd"/>
+  <xs:import namespace="http://www.iho.int/S100CI/5.0" schemaLocation="S100CI.xsd"/>
+  <xs:import namespace="http://www.iho.int/S100CD/5.0" schemaLocation="S100CD.xsd"/>
+
+  <!-- enumeration for role types -->
+  <xs:simpleType name="S100_FC_RoleType">
+    <xs:annotation><xs:documentation>Defines the type of an association end (that is, a “role”)</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="association"><xs:annotation><xs:documentation>The association end is an ordinary linkage. (In UML terms, the role type is “aggregationKind=ordinary” and the link in a diagram does not have a diamond)</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="aggregation"><xs:annotation><xs:documentation>The association end is a UML aggregation. (In UML terms, the role type is “aggregationKind=aggregation” and the link in a diagram has an unfilled diamond at this association end)</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="composition"><xs:annotation><xs:documentation>The association end is a UML aggregation. (In UML terms, the role type is “aggregationKind=composition” and the link in a diagram has a filled diamond at this association end)</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- enumeration of primitive types -->
+  <xs:simpleType name="S100_FC_SpatialPrimitiveType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noGeometry"/>
+      <xs:enumeration value="point"/>
+      <xs:enumeration value="pointSet"/>
+      <xs:enumeration value="curve"/>
+      <xs:enumeration value="surface"/>
+      <xs:enumeration value="coverage"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- camel case code starting with an upper/lower case letter -->
+  <xs:simpleType name="StringCode">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z][A-Za-z0-9_]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- a 2 byte positive integer -->
+  <xs:simpleType name="IntegerCode">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxExclusive value="65536"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- A generic reference type -->
+  <xs:complexType name="Reference">
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- the source of a definition -->
+  <xs:complexType name="FC_DefinitionSource">
+    <xs:sequence>
+      <xs:element name="source" type="S100CI:CI_Citation_Type"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- a reference to a definition source -->
+  <xs:complexType name="FC_DefinitionReference">
+    <xs:sequence>
+      <xs:element name="sourceIdentifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="definitionSource" type="S100FC:Reference" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- a list of positive integer values -->
+  <xs:complexType name="ValueList">
+    <xs:sequence>
+      <xs:element name="value" type="S100FC:IntegerCode" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- permittedValues-->
+  <xs:complexType name="S100_FC_ListedValues">
+    <xs:sequence>
+      <xs:element name="listedValue" type="S100FC:S100_FC_ListedValue" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- type for bindings to simple or complex attributes -->
+  <xs:complexType name="S100_FC_AttributeBinding">
+    <xs:sequence>
+      <xs:element name="multiplicity" type="S100Base:S100_Multiplicity" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="permittedValues" type="S100FC:ValueList" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="attribute" type="S100FC:Reference" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="sequential" type="xs:boolean" default="false"><xs:annotation><xs:documentation>Describes if the sequence of the attributes is meaningful or not. Applies only to attributes which may occur more than once.</xs:documentation></xs:annotation></xs:attribute>
+  </xs:complexType>
+
+  <!-- type for bindings to information types -->
+  <xs:complexType name="S100_FC_InformationBinding">
+    <xs:sequence>
+      <xs:element name="multiplicity" type="S100Base:S100_Multiplicity" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="association" type="S100FC:Reference" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="role" type="S100FC:Reference" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="informationType" type="S100FC:Reference" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="roleType" type="S100FC:S100_FC_RoleType" use="required"/>
+  </xs:complexType>
+
+  <!-- type for bindings to feature types -->
+  <xs:complexType name="S100_FC_FeatureBinding">
+    <xs:sequence>
+      <xs:element name="multiplicity" type="S100Base:S100_Multiplicity" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="association" type="S100FC:Reference" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="role" type="S100FC:Reference" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="featureType" type="S100FC:Reference" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="roleType" type="S100FC:S100_FC_RoleType" use="required"/>
+  </xs:complexType>
+
+  <!-- base type for catalogue items with camelCase starting with either lower or upper case -->
+  <xs:complexType name="S100_FC_Item" abstract="true">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="definition" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="code" type="S100FC:StringCode" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="remarks" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="alias" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="definitionReference" type="S100FC:FC_DefinitionReference" maxOccurs="1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- type for listed values of enumerated attributes -->
+  <xs:complexType name="S100_FC_ListedValue">
+    <xs:sequence>
+      <xs:element name="label" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="definition" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="code" type="S100FC:IntegerCode" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="remarks" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="alias" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="definitionReference" type="S100FC:FC_DefinitionReference" maxOccurs="1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- type for a attribute -->
+  <xs:complexType name="S100_FC_Attribute">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_Item"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for a simple attribute -->
+  <xs:complexType name="S100_FC_SimpleAttribute">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_Attribute">
+        <xs:sequence>
+          <xs:element name="valueType" type="S100CD:S100_CD_AttributeValueType" maxOccurs="1" minOccurs="1"/>
+          <xs:element name="uom" type="S100Base:S100_UnitOfMeasure" maxOccurs="1" minOccurs="0"/>
+          <xs:element name="quantitySpecification" type="S100CD:S100_CD_QuantitySpecification" minOccurs="0"/>
+          <xs:element name="constraints" type="S100CD:S100_CD_AttributeConstraints" maxOccurs="1" minOccurs="0"/>
+          <xs:element name="listedValues" type="S100FC:S100_FC_ListedValues" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for a complex atttribute -->
+  <xs:complexType name="S100_FC_ComplexAttribute">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_Attribute">
+        <xs:sequence>
+          <xs:element name="subAttributeBinding" type="S100FC:S100_FC_AttributeBinding" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for roles (same as Item but not abstract) -->
+  <xs:complexType name="S100_FC_Role">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_Item"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- base type for named types -->
+  <xs:complexType name="S100_FC_NamedType" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_Item">
+        <xs:sequence>
+          <xs:element name="attributeBinding" type="S100FC:S100_FC_AttributeBinding" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:boolean" name="isAbstract" default="false"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for information associations -->
+  <xs:complexType name="S100_FC_InformationAssociation">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_NamedType">
+        <xs:sequence>
+          <xs:element name="superType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="subType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="role" type="S100FC:Reference" minOccurs="0" maxOccurs="2"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for feature associations -->
+  <xs:complexType name="S100_FC_FeatureAssociation">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_NamedType">
+        <xs:sequence>
+          <xs:element name="superType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="subType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="role" type="S100FC:Reference" minOccurs="0" maxOccurs="2"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- base type for information types and feature types -->
+  <xs:complexType name="S100_FC_ObjectType" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_NamedType">
+        <xs:sequence>
+          <xs:element name="informationBinding" type="S100FC:S100_FC_InformationBinding" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for information types (some as Object type but not abstract) -->
+  <xs:complexType name="S100_FC_InformationType">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_ObjectType">
+        <xs:sequence>
+          <xs:element name="superType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="subType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- type for feature types -->
+  <xs:complexType name="S100_FC_FeatureType">
+    <xs:complexContent>
+      <xs:extension base="S100FC:S100_FC_ObjectType">
+        <xs:sequence>
+          <xs:element name="superType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="subType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="featureUseType" type="S100CD:S100_CD_FeatureUseType"/>
+          <xs:element name="featureBinding" type="S100FC:S100_FC_FeatureBinding" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="permittedPrimitives" type="S100FC:S100_FC_SpatialPrimitiveType" minOccurs="1" maxOccurs="unbounded" nillable="false"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- list of definition sources -->
+  <xs:complexType name="S100_FC_DefinitionSources">
+    <xs:sequence>
+      <xs:element name="FC_DefinitionSource" type="S100FC:FC_DefinitionSource" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of simple attributes (for each attribute the codes and name of the listed values must be unique-->
+  <xs:complexType name="S100_FC_SimpleAttributes">
+    <xs:sequence>
+      <xs:element name="S100_FC_SimpleAttribute" type="S100FC:S100_FC_SimpleAttribute" minOccurs="1" maxOccurs="unbounded">
+
+        <xs:unique name="ValueCodeUniqueness">
+          <xs:selector xpath="./S100FC:listedValue"/>
+          <xs:field xpath="S100FC:code"/>
+        </xs:unique>
+
+        <xs:unique name="ValueNameUniqueness">
+          <xs:selector xpath="./S100FC:listedValue"/>
+          <xs:field xpath="S100FC:label"/>
+        </xs:unique>
+
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of complex attributes -->
+  <xs:complexType name="S100_FC_ComplexAttributes">
+    <xs:sequence>
+      <xs:element name="S100_FC_ComplexAttribute" type="S100FC:S100_FC_ComplexAttribute" minOccurs="1" maxOccurs="unbounded">
+        <xs:unique name="SubAttributeCodeUniqueness">
+          <xs:selector xpath="./S100FC:subAttributeBinding/S100FC:attribute"/>
+          <xs:field xpath="@ref"/>
+        </xs:unique>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of roles -->
+  <xs:complexType name="S100_FC_Roles">
+    <xs:sequence>
+      <xs:element name="S100_FC_Role" type="S100FC:S100_FC_Role" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of information associations -->
+  <xs:complexType name="S100_FC_InformationAssociations">
+    <xs:sequence>
+      <xs:element name="S100_FC_InformationAssociation" type="S100FC:S100_FC_InformationAssociation" minOccurs="1" maxOccurs="unbounded">
+        <xs:unique name="IA_AttributeCodeUniqueness">
+          <xs:selector xpath="./S100FC:attributeBinding/S100FC:attribute"/>
+          <xs:field xpath="@ref"/>
+        </xs:unique>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of feature associations -->
+  <xs:complexType name="S100_FC_FeatureAssociations">
+    <xs:sequence>
+      <xs:element name="S100_FC_FeatureAssociation" type="S100FC:S100_FC_FeatureAssociation" minOccurs="1" maxOccurs="unbounded">
+        <xs:unique name="FA_AttributeCodeUniqueness">
+          <xs:selector xpath="./S100FC:attributeBinding/S100FC:attribute"/>
+          <xs:field xpath="@ref"/>
+        </xs:unique>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of information types -->
+  <xs:complexType name="S100_FC_InformationTypes">
+    <xs:sequence>
+      <xs:element name="S100_FC_InformationType" type="S100FC:S100_FC_InformationType" minOccurs="1" maxOccurs="unbounded">
+        <xs:unique name="IT_AttributeCodeUniqueness">
+          <xs:selector xpath="./S100FC:attributeBinding/S100FC:attribute"/>
+          <xs:field xpath="@ref"/>
+        </xs:unique>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- list of feature types -->
+  <xs:complexType name="S100_FC_FeatureTypes">
+    <xs:sequence>
+      <xs:element name="S100_FC_FeatureType" type="S100FC:S100_FC_FeatureType" minOccurs="1" maxOccurs="unbounded">
+        <xs:unique name="FT_AttributeCodeUniqueness">
+          <xs:selector xpath="./S100FC:attributeBinding/S100FC:attribute"/>
+          <xs:field xpath="@ref"/>
+        </xs:unique>
+        <xs:unique name="permittedPrimitivesNotRepeated">
+          <xs:selector xpath="./S100FC:permittedPrimitives"/>
+          <xs:field xpath="."/>
+        </xs:unique>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- The catalogue -->
+  <xs:element name="S100_FC_FeatureCatalogue">
+    <xs:annotation><xs:documentation></xs:documentation></xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="scope" type="xs:string" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="fieldOfApplication" type="xs:string" maxOccurs="1" minOccurs="0"/>
+        <xs:element name="versionNumber" type="xs:string" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="versionDate" type="xs:date" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="productId" type="xs:string" minOccurs="1" maxOccurs="1"><xs:annotation><xs:documentation>The ID of the product for which the Catalogue is intended</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="producer" type="S100CI:CI_Responsibility_Type" minOccurs="1" maxOccurs="1"><xs:annotation><xs:documentation>Name, address, country, and telecommunications address of person or organization having primary responsibility for the intellectual content of this Feature Catalogue</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="classification" type="S100CI:MD_ClassificationCode" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_DefinitionSources" type="S100FC:S100_FC_DefinitionSources" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_SimpleAttributes" type="S100FC:S100_FC_SimpleAttributes" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_ComplexAttributes" type="S100FC:S100_FC_ComplexAttributes" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_Roles" type="S100FC:S100_FC_Roles" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_InformationAssociations" type="S100FC:S100_FC_InformationAssociations" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_FeatureAssociations" type="S100FC:S100_FC_FeatureAssociations" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_InformationTypes" type="S100FC:S100_FC_InformationTypes" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S100_FC_FeatureTypes" type="S100FC:S100_FC_FeatureTypes" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+
+    <!-- defining xs:keys and xs:keyrefs, to avoid limitations of xs:ID and xs:IDREF -->
+
+    <!-- key for definition source ids -->
+    <xs:key name="DefinitionSourceKey">
+      <xs:selector xpath="./S100FC:S100_FC_DefinitionSources/S100FC:FC_DefinitionSource"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+
+    <!-- reference for definition sources -->
+    <xs:keyref refer="S100FC:DefinitionSourceKey" name="DefinitionSourceReference">
+      <xs:selector xpath=".//S100FC:definitionReference/S100FC:definitionSource"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+
+    <!-- key for simple and complex attributes, values must be unique  -->
+    <xs:key name="AttributeKey">
+      <xs:selector xpath="./S100FC:S100_FC_SimpleAttributes/S100FC:S100_FC_SimpleAttribute | ./S100FC:S100_FC_ComplexAttributes/S100FC:S100_FC_ComplexAttribute"/>
+      <xs:field xpath="S100FC:code"/>
+    </xs:key>
+
+    <!-- reference for attribute codes (each value must be a valid attribute key) -->
+    <xs:keyref refer="S100FC:AttributeKey" name="AttributeRef">
+      <xs:selector xpath=".//S100FC:attributeBinding/S100FC:attribute | .//S100FC:subAttributeBinding/S100FC:attribute"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+
+    <!-- key for roles-->
+    <xs:key name="RoleKey">
+      <xs:selector xpath="./S100FC:S100_FC_Roles/S100FC:S100_FC_Role"/>
+      <xs:field xpath="S100FC:code"/>
+    </xs:key>
+
+    <!-- reference for roles: from information associations, feature associations, and feature bindings -->
+    <xs:keyref refer="S100FC:RoleKey" name="RoleReference">
+      <xs:selector xpath=".//S100FC:S100_FC_InformationAssociation/S100FC:role | .//S100FC:S100_FC_FeatureAssociation/S100FC:role | .//S100FC:featureBinding/S100FC:role | .//S100FC:informationBinding/S100FC:role"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+
+    <!-- key for information associations -->
+    <xs:key name="InformationAssociationKey">
+      <xs:selector xpath="./S100FC:S100_FC_InformationAssociations/S100FC:S100_FC_InformationAssociation"/>
+      <xs:field xpath="S100FC:code"/>
+    </xs:key>
+
+    <!-- reference for information associations -->
+    <xs:keyref refer="S100FC:InformationAssociationKey" name="InformationAssociationReference">
+      <xs:selector xpath=".//S100FC:informationBinding/S100FC:association"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+
+
+    <!-- key for feature associations -->
+    <xs:key name="FeatureAssociationKey">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureAssociations/S100FC:S100_FC_FeatureAssociation"/>
+      <xs:field xpath="S100FC:code"/>
+    </xs:key>
+
+    <!-- reference for feature associations -->
+    <xs:keyref refer="S100FC:FeatureAssociationKey" name="FeatureAssociationReference">
+      <xs:selector xpath=".//S100FC:featureBinding/S100FC:association"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+
+
+    <!-- key for information types -->
+    <xs:key name="InformationTypeKey">
+      <xs:selector xpath="./S100FC:S100_FC_InformationTypes/S100FC:S100_FC_InformationType"/>
+      <xs:field xpath="S100FC:code"/>
+    </xs:key>
+
+    <!-- reference for information types -->
+    <xs:keyref refer="S100FC:InformationTypeKey" name="InformationTypeReference">
+      <xs:selector xpath=".//S100FC:informationBinding/S100FC:informationType"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+
+
+    <!-- key for feature types -->
+    <xs:key name="FeatureTypeKey">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureTypes/S100FC:S100_FC_FeatureType"/>
+      <xs:field xpath="S100FC:code"/>
+    </xs:key>
+
+    <!-- reference for feature type codes (each value must be a valid feature key -->
+    <xs:keyref refer="S100FC:FeatureTypeKey" name="FeatureRef">
+      <xs:selector xpath=".//S100FC:featureBinding/S100FC:featureType"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+    
+    <!-- reference for supertype and subtype codes (each value must be an appropriate valid type code) -->
+    <xs:keyref refer="S100FC:FeatureTypeKey" name="FeatureSuperTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureTypes/S100FC:S100_FC_FeatureType"/>
+      <xs:field xpath="S100FC:superType"/>
+    </xs:keyref>
+    <xs:keyref refer="S100FC:InformationTypeKey" name="InfoSuperTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_InformationTypes/S100FC:S100_FC_InformationType"/>
+      <xs:field xpath="S100FC:superType"/>
+    </xs:keyref>
+    <xs:keyref refer="S100FC:FeatureTypeKey" name="FeatureSubTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureTypes/S100FC:S100_FC_FeatureType"/>
+      <xs:field xpath="S100FC:subType"/>
+    </xs:keyref>
+    <xs:keyref refer="S100FC:InformationTypeKey" name="InfoSubTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_InformationTypes/S100FC:S100_FC_InformationType"/>
+      <xs:field xpath="S100FC:subType"/>
+    </xs:keyref>
+
+    <xs:keyref refer="S100FC:FeatureAssociationKey" name="FBindSuperTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureAssociations/S100FC:S100_FC_FeatureAssociation"/>
+      <xs:field xpath="S100FC:superType"/>
+    </xs:keyref>
+    <xs:keyref refer="S100FC:InformationAssociationKey" name="IBindSuperTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_InformationAssociations/S100FC:S100_FC_InformationAssociation"/>
+      <xs:field xpath="S100FC:superType"/>
+    </xs:keyref>
+    <xs:keyref refer="S100FC:FeatureAssociationKey" name="FBindSubTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureAssociations/S100FC:S100_FC_FeatureAssociation"/>
+      <xs:field xpath="S100FC:subType"/>
+    </xs:keyref>
+    <xs:keyref refer="S100FC:InformationAssociationKey" name="IBindSubTypeRef">
+      <xs:selector xpath="./S100FC:S100_FC_InformationAssociations/S100FC:S100_FC_InformationAssociation"/>
+      <xs:field xpath="S100FC:subType"/>
+    </xs:keyref>
+
+    <!-- uniqueness constraints for names (case sensitive) -->
+
+    <!-- uniqueness constraints for names of attributes -->
+    <xs:unique name="AttributeNameUniqueness">
+      <xs:selector xpath="./S100FC:S100_FC_SimpleAttributes/S100FC:S100_FC_SimpleAttribute | ./S100FC:S100_FC_ComplexAttributes/S100FC:S100_FC_ComplexAttribute"/>
+      <xs:field xpath="S100FC:name"/>
+    </xs:unique>
+
+    <!-- uniqueness constraint for roles -->
+    <xs:unique name="RoleNameUniqueness">
+      <xs:selector xpath="./S100FC:S100_FC_Roles/S100FC:S100_FC_Role"/>
+      <xs:field xpath="S100FC:name"/>
+    </xs:unique>
+
+    <!-- uniqueness constraint for information associations -->
+    <xs:unique name="InformationAssociationUniqueness">
+      <xs:selector xpath="./S100FC:S100_FC_InformationAssociations/S100FC:S100_FC_InformationAssociation"/>
+      <xs:field xpath="S100FC:name"/>
+    </xs:unique>
+
+    <!-- uniqueness constraint for feature associations -->
+    <xs:unique name="FeatureAssociationUniqueness">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureAssociations/S100FC:S100_FC_FeatureAssociation"/>
+      <xs:field xpath="S100FC:name"/>
+    </xs:unique>
+
+    <!-- uniqueness constraint for information types -->
+    <xs:unique name="InformationTypeUniqueness">
+      <xs:selector xpath="./S100FC:S100_FC_InformationTypes/S100FC:S100_FC_InformationType"/>
+      <xs:field xpath="S100FC:name"/>
+    </xs:unique>
+
+    <!-- uniqueness constraint for feature types -->
+    <xs:unique name="FeatureTypeUniqueness">
+      <xs:selector xpath="./S100FC:S100_FC_FeatureTypes/S100FC:S100_FC_FeatureType"/>
+      <xs:field xpath="S100FC:name"/>
+    </xs:unique>
+
+  </xs:element>
+  <!-- Catalog -->
+
+</xs:schema>

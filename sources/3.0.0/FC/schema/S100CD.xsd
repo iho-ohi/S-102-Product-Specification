@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © Copyright 2011, 2014-2016,2018, 2022 International Hydrographic Organization 
+License (Draft)
+Certain parts of this document refer to or are based on the standards, documents, schemas,
+or other material of the International Organization for Standardization (ISO), Open Geospatial
+Consortium (OGC), International Hydrographic Organization / Organisation Hydrographique
+Internationale (IHO/OHI).
+The ISO material can be obtained from any ISO member and from the Web site of the ISO Central
+Secretariat at www.iso.org.
+The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+The IHO material can be obtained from the IHO Web site at www.iho.int or from the International
+Hydrographic Organization Secretariat.
+
+Permission to copy and distribute this document is hereby granted provided that this notice is
+retained on all copies, and that the IHO is credited when the material is redistributed
+or used in part or whole in derivative works.
+Redistributions in binary form must reproduce this notice in the documentation and/or other
+materials provided with the distribution.
+
+Disclaimer
+This work is provided by the copyright holders and contributors "as is" and any express or implied
+warranties, including, but not limited to, the implied warranties of merchantability and fitness
+for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be
+liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including,
+but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or
+business interruption) however caused and on any theory of liability, whether in contract, strict
+liability, or tort (including negligence or otherwise) arising in any way out of the use of this
+software, even if advised of the possibility of such damage.
+-->
+<!-- Date: 04 September 2014; Modification: Updated for S-100 Ed. 2.0.0 -->
+<!-- Date: 16 September 2014; Modification: added schema version; spelling corrections -->
+<!-- Date: 2015-09-21 Raphael Malyankar
+  Modifications: S100_ prefixes added to types defined in S-100 (Multiplicity);
+    removed "aggregation" from S100_CD_FeatureUseType;
+    2016-07-15: Updated copyright/license statement
+    Note: This should be updated to use the ISO schemas or a profile of them wherever S-100 is using
+    the ISO type
+    2016-07-21: Added value types beginning with upper case to S100_CD_AttributeValueType (temporary
+      fix(?) to bypass case discrepancy between types in the register model and application schema
+  2017-07-24 (Raphael Malyankar): Removed uppercase value types Text, Real, Boolean, Integer, Enumeration, Date, Time,
+    DateTime from attribute value type enumeration; changed schema version numbering to conform to
+    <S-100 version>-<build date> convention
+  2018-05-02 (Raphael Malyankar): version number update for 4.0
+-->
+<!-- Version 5.0.0 Build 20220331 (Raphael Malyankar) New file for S-10 5.0.0
+  The file S100CD contains only the types from S-100 5.0.0 Edition Parts 2/2a which are used in the S-100 feature catalogue.
+  These types were extracted from the Edition 4.0.0 S100FD.xsd file and updated as specified in Parts 2/2a of S-100 Edition 5.0.0.
+  The import of S100CI is not needed after these changes and has also been removed. 
+  20220610 build: build number updated; import location of S100Base now relative
+-->
+
+  <!-- Prepared for the International Hydrographic Organisation (IHO).
+    Contributors: Holger Bothien (SevenCs/Chartworld); Tom Richardson (UKHO); Sewoong Oh (KRISO);
+    Yong Baek (KHOA); Raphael Malyankar (Jeppesen); Raphael Malyankar (Portolan Sciences LLC)
+  -->
+<xs:schema targetNamespace="http://www.iho.int/S100CD/5.0" elementFormDefault="qualified" 
+           xmlns="http://www.iho.int/S100CD/5.0" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:s100Base="http://www.iho.int/S100Base/5.0" 
+           version="5.0.0-20220610">
+  <xs:import namespace="http://www.iho.int/S100Base/5.0" schemaLocation="S100Base.xsd" />
+
+  <xs:simpleType name="S100_CD_AttributeValueType">
+    <xs:annotation><xs:documentation>Value types of simple attributes</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="boolean" ><xs:annotation><xs:documentation>True or False</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="enumeration" ><xs:annotation><xs:documentation>List of predetermined values that can be expanded and contracted</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="integer" ><xs:annotation><xs:documentation>Numeric value with defined range, units and format</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="real" ><xs:annotation><xs:documentation>Floating point number</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="text" ><xs:annotation><xs:documentation>A sequence of characters</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="date" ><xs:annotation><xs:documentation>Character encoding shall follow the format for date as specified by ISO 8601</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="time" ><xs:annotation><xs:documentation>Character encoding shall follow the format for time as specified by ISO 8601</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="dateTime" ><xs:annotation><xs:documentation>Character encoding shall follow the format for date and time as specified by ISO 8601</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="URI" ><xs:annotation><xs:documentation>Character encoding shall follow the format for URI as specified by RFC 3986</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="URL" ><xs:annotation><xs:documentation>Character encoding shall follow the format for URL as specified by RFC 3986</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="URN" ><xs:annotation><xs:documentation>Character encoding shall follow the format for URL as specified by RFC 3986</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="S100_CodeList" ><xs:annotation><xs:documentation>Open enumeration or identifier of entry in a vocabulary</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="S100_TruncatedDate" ><xs:annotation><xs:documentation>Truncated format for date</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="S100_CD_FeatureUseType">
+    <xs:annotation><xs:documentation>Categories of feature types</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="geographic" ><xs:annotation><xs:documentation>carries the descriptive characteristics of a real world entity</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="meta" ><xs:annotation><xs:documentation>Delineates geographic location where meta information is applicable” distinct from an Information Type which carries information related to features which are related</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="cartographic" ><xs:annotation><xs:documentation>carries information about the cartographic representation (including text) of a real world entity</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="theme" ><xs:annotation><xs:documentation>Grouping features thematically</xs:documentation></xs:annotation></xs:enumeration>    
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="S100_CD_QuantitySpecification">
+    <xs:annotation><xs:documentation>Types of quantity measures</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="angularVelocity" ><xs:annotation><xs:documentation>The instantaneous rate of change of angular displacement with time</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="area" ><xs:annotation><xs:documentation>The measure of the physical extent of any two-dimensional geometric object</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="density" ><xs:annotation><xs:documentation>Mass per unit volume; number per unit area. Also: specific gravity (S-32). Density of soundings is the intervals between lines of sounding and soundings in the same line (S-32)</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="duration" ><xs:annotation><xs:documentation>Interval of time</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="frequency" ><xs:annotation><xs:documentation>Number of vibrations or cycles per unit time</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="length" ><xs:annotation><xs:documentation>The longest dimension of an object; distance measured along a line or curve</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="mass" ><xs:annotation><xs:documentation>A numerical measure of the inertia of an object; the quantity of matter which a body contains, irrespective of its bulk or volume</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="planeAngle" ><xs:annotation><xs:documentation>The amount of rotation needed to bring one line or plane into coincidence with another, generally measured in radians or degrees</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="power" ><xs:annotation><xs:documentation>Rate of doing work or transferring energy; magnification</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="pressure" ><xs:annotation><xs:documentation>Force per unit area</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="salinity" ><xs:annotation><xs:documentation>A measure of the quantity of dissolved salts</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="speed" ><xs:annotation><xs:documentation>Rate of change of position with time</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="temperature" ><xs:annotation><xs:documentation>The intensity or degree of heat</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="volume" ><xs:annotation><xs:documentation>The measure of the physical space of any 3-D geometric object</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="weight" ><xs:annotation><xs:documentation>The force experienced by an object due to gravity</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="otherQuantity" ><xs:annotation><xs:documentation>A quantity different from the other literals of this enumeration</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="S100_CD_AttributeConstraints">
+    <xs:annotation><xs:documentation>Constraints of a simple attribute</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="stringLength" type="xs:positiveInteger" maxOccurs="1" minOccurs="0" ><xs:annotation><xs:documentation>Shall be represented as a positive integer (that is, greater than zero) that specifies the maximum number of characters that may be assigned to the text attribute type. If not specified, then the text length shall be unconstrained</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="textPattern" type="xs:string" maxOccurs="1" minOccurs="0" ><xs:annotation><xs:documentation>A character string that specifies a scheme of one or more constraints on the structure of the text values that may be assigned to the attribute. This shall be achieved by using a regular expression. W3C XML Schema Part 2: Datasets Second Edition, Appendix F (Regular Expressions) shall be used to define text patterns in this standard</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="range" type="s100Base:S100_NumericRange" maxOccurs="1" minOccurs="0" ><xs:annotation><xs:documentation>Specifies the range of allowed numeric values</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="precision" type="xs:nonNegativeInteger" maxOccurs="1" minOccurs="0"><xs:annotation><xs:documentation>Specifies the precision of a real number</xs:documentation></xs:annotation></xs:element> 
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

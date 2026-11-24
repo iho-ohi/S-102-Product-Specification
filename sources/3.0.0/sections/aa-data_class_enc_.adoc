@@ -1,4 +1,3 @@
-
 [%portrait]
 <<<
 
@@ -6,6 +5,22 @@
 :appendix-caption: Annex
 [appendix]
 == Data Classification and Encoding Guide
+
+This annex renders the data classification and encoding guide directly
+from the S-100 Feature Catalogue instance document
+(`FC/102_3_0_0_FC.XML`) against the published S-100 Feature Catalogue
+schema (`FC/schema/S100FC.xsd`). The catalogue file is the source of
+record; the guidance content the catalogue does not carry (primitive,
+constraint, unit, resolution, remarks) is maintained inline below.
+
+[lutaml_data,FC/schema/S100FC.xsd,FC/102_3_0_0_FC.XML,catalogue]
+----
+{% assign cat = catalogue.CTS100FCFeatureCatalogue %}
+{% assign depth = cat.s100_fc_simple_attributes.s100_fc_simple_attribute[0] %}
+{% assign unc = cat.s100_fc_simple_attributes.s100_fc_simple_attribute[1] %}
+{% assign idattr = cat.s100_fc_simple_attributes.s100_fc_simple_attribute[2] %}
+{% assign bc = cat.s100_fc_feature_types.s100_fc_feature_type[0] %}
+{% assign qbc = cat.s100_fc_feature_types.s100_fc_feature_type[1] %}
 
 === Features
 
@@ -17,21 +32,20 @@
 
 4+|*Term*: Bathymetry Coverage
 
-4+|*IHO Definition*: A set of value items required to define a dataset representing a depth calculation and its associated uncertainty.
+4+|*IHO Definition*: {{ bc.definition }}
 
 4+|*Primitive*: S100_IF_GridCoverage
-
 
 h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 
 |depth
 |Must be in decimal metres with resolution not to exceed 0.01 metres
-|real (32-bit Float)
+|{{ depth.value_type }}
 |1
 
 |uncertainty
 |Must be in decimal metres with resolution not to exceed 0.01 metres
-|real (32-bit Float)
+|{{ unc.value_type }}
 |0..1
 |===
 
@@ -41,9 +55,9 @@ h|Attribute h|Allowable Encoding Value h|Type h|Multiplicity
 [cols="a,a,a,a"]
 |===
 
-4+|*Term*: Quality Of Bathymetry Coverage. 
+4+|*Term*: Quality Of Bathymetry Coverage.
 
-4+|*IHO Definition*: A set of references to value records that provide localised information about depth, uncertainties, and bathymetry coverage metadata.
+4+|*IHO Definition*: {{ qbc.definition }}
 
 4+|*Primitive*: S100_IF_GridCoverage
 
@@ -51,7 +65,7 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 
 |iD
 |Each record must have a unique identifier.
-|unsigned 32-bit Integer
+|{{ idattr.value_type }}
 |1
 |===
 
@@ -63,7 +77,7 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 [cols="a"]
 |===
 
-|IHO Definition: *depth*. The vertical distance from a given water level to the bottom [<<iho-s32>>].
+|IHO Definition: *depth*. {{ depth.definition }}
 
 |Unit: metres
 
@@ -73,7 +87,7 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 
 * Drying heights (drying depths) are indicated by a negative value.
 
-|IHO Definition: *uncertainty*. Estimate characterising the range of values within which the true value of a measurement is expected to lie as defined within a particular confidence level. It is expressed as a positive value.
+|IHO Definition: *uncertainty*. {{ unc.definition }}
 
 |Unit: metres
 
@@ -91,9 +105,9 @@ h|Attribute h|Constraint h|Type h|Multiplicity
 .QualityOfBathymetryCoverage feature attribute parameters
 [cols="a"]
 |===
-|IHO Definition: *iD*. Meta data record identifier for QualityOfBathymetryCoverage
+|IHO Definition: *iD*. {{ idattr.definition }}
 |Unit:
 |Resolution:
 |Remarks:
 |===
-
+----

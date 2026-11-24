@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © Copyright 2011, 2014-2016, 2022 International Hydrographic Organisation 
+License (Draft)
+Certain parts of this document refer to or are based on the standards, documents, schemas,
+or other material of the International Organization for Standardization (ISO), Open Geospatial
+Consortium (OGC), International Hydrographic Organization / Organisation Hydrographique
+Internationale (IHO/OHI).
+The ISO material can be obtained from any ISO member and from the Web site of the ISO Central
+Secretariat at www.iso.org.
+The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+The IHO material can be obtained from the IHO Web site at www.iho.int or from the International
+Hydrographic Organization Secretariat.
+
+Permission to copy and distribute this document is hereby granted provided that this notice is
+retained on all copies, and that the IHO is credited when the material is redistributed
+or used in part or whole in derivative works.
+Redistributions in binary form must reproduce this notice in the documentation and/or other
+materials provided with the distribution.
+
+Disclaimer
+This work is provided by the copyright holders and contributors "as is" and any express or implied
+warranties, including, but not limited to, the implied warranties of merchantability and fitness
+for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be
+liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including,
+but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or
+business interruption) however caused and on any theory of liability, whether in contract, strict
+liability, or tort (including negligence or otherwise) arising in any way out of the use of this
+software, even if advised of the possibility of such damage.
+-->
+<!-- Date: 04 September 2014; Modification: Updated for S-100 Ed. 2.0.0 -->
+<!-- Date: 16 September 2014; Modification: added schema version; -->
+<!-- 2015-09-21 Raphael Malyankar Added S100_ prefix and replaced intervaltype with
+     closure in S100_NumericRange to conform names to S-100 edition 2.0.0;
+     2016-07-15: Updated copyright/license statement
+     Note: This should be updated to use the ISO schemas or a profile of them wherever S-100 is using the ISO type
+  2018-05-02 (Raphael Malyankar): Edition 4.0: CharacterSetCode19115_3 enumeration added with IANA codes in
+    accordance with 19115-3. The old CharacterSet is still used pending coordination of future updates to
+    the feature catalogue model and FCB for compatibility with ISO 19115-3.
+  S-100 Edition 5 Build 20220331: Language and country code removed, they are not being used in the FC after removing
+    the classes defined for Part 2/2a/2b but not used in the FC.
+    To do: Resolve discrepancy in S100_NumericRange as defined here and in Part 1 (S-100 proposal reguired?) then replace with
+    S100CSL.xsd from Part 1
+    Build 20220610: build number in version updated due to update in S100 FC XSD
+-->
+  <!-- Prepared for the International Hydrographic Organisation (IHO).
+    Contributors: Holger Bothien (SevenCs/Chartworld); Tom Richardson (UKHO); Sewoong Oh (KRISO);
+    Yong Baek (KHOA); Raphael Malyankar (Jeppesen); Raphael Malyankar (Portolan Sciences LLC
+  -->
+<xs:schema targetNamespace="http://www.iho.int/S100Base/5.0" elementFormDefault="qualified" 
+           xmlns="http://www.iho.int/S100Base/5.0" 
+           xmlns:mstns="http://www.iho.int/S100Base/5.0" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" version="5.0.0-20220610">
+  <xs:complexType name="UnlimitedInteger">
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger">
+        <xs:attribute name="infinite" type="xs:boolean" default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="S100_Multiplicity">
+    <xs:sequence>
+      <xs:element name="lower" type="xs:nonNegativeInteger" />
+      <xs:element name="upper" type="UnlimitedInteger" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="S100_IntervalType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="openInterval" />
+      <xs:enumeration value="geLtInterval" />
+      <xs:enumeration value="gtLeInterval" />
+      <xs:enumeration value="closedInterval" />
+      <xs:enumeration value="gtSemiInterval" />
+      <xs:enumeration value="geSemiInterval" />
+      <xs:enumeration value="ltSemiInterval" />
+      <xs:enumeration value="leSemiInterval" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Note the discrepancy between this and S100_NumericRange in S100CSL. To be resolved by an S-100 proposal? -->
+  <xs:complexType name="S100_NumericRange">
+    <xs:sequence>
+      <xs:element name="lowerBound" type="xs:double" maxOccurs="1" minOccurs="0" />
+      <xs:element name="upperBound" type="xs:double" maxOccurs="1" minOccurs="0" />
+      <xs:element name="closure" type="S100_IntervalType" maxOccurs="1" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--<xs:simpleType name="CharacterSet19115_3">
+    <xs:annotation>
+      <xs:documentation>(ISO 19115-1 B.3.14 MD_CharacterSetCode) Use IANA Character Set register: http://www.iana.org/assignments/character‐sets. This enumeration is a subset of the full IALA register, selected on the basis of equivalency to the list in previous versions of this file and likelihood of use.</xs:documentation>
+      <xs:documentation>Updated for 5.0.0 to allow only UTF-8. This list is deprecated - the codelist in the S-100 resources folder should be preferred.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+<!-\-      <xs:enumeration value="ISO-10646-UCS-2" />
+      <xs:enumeration value="ISO-10646-UCS-4" />
+      <xs:enumeration value="ISO-10646-UCS-Basic"/>
+      <xs:enumeration value="ISO-10646-Unicode-Latin1"/>
+      <xs:enumeration value="ISO-10646-Unicode-J-1"/>
+      <xs:enumeration value="UTF-7" />-\->
+      <xs:enumeration value="UTF-8" />
+<!-\-      <xs:enumeration value="UTF-16" />
+      <xs:enumeration value="UTF-16BE"/>
+      <xs:enumeration value="UTF-16LE"/>
+      <xs:enumeration value="ISO-8859-1" />
+      <xs:enumeration value="ISO-8859-2" />
+      <xs:enumeration value="ISO-8859-3" />
+      <xs:enumeration value="ISO-8859-4" />
+      <xs:enumeration value="ISO-8859-5" />
+      <xs:enumeration value="ISO-8859-6" />
+      <xs:enumeration value="ISO-8859-7" />
+      <xs:enumeration value="ISO-8859-8" />
+      <xs:enumeration value="ISO-8859-9" />
+      <xs:enumeration value="ISO-8859-10" />
+      <xs:enumeration value="ISO-8859-11" />
+      <xs:enumeration value="ISO-8859-13"/>
+      <xs:enumeration value="ISO-8859-14" />
+      <xs:enumeration value="ISO-8859-15" />
+      <xs:enumeration value="ISO-8859-16" />
+      <xs:enumeration value="JIS_Encoding" />
+      <xs:enumeration value="Shift_JIS" />
+      <xs:enumeration value="EUC-JP" />
+      <xs:enumeration value="US-ASCII" />
+      <xs:enumeration value="EUC-KR" />
+      <xs:enumeration value="ISO-2022-KR"/>
+      <xs:enumeration value="Big5" />
+      <xs:enumeration value="Big5-HKSCS"/>
+      <xs:enumeration value="ISO-10646-Unicode-Latin1"/>
+      <xs:enumeration value="ISO-10646-J-1"/>
+      <xs:enumeration value="PTCP154"/>
+      <xs:enumeration value="KOI8-U"/>
+      <xs:enumeration value="GB18030"/>-\->
+    </xs:restriction>
+  </xs:simpleType>-->
+  
+  <xs:complexType name="S100_UnitOfMeasure">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="definition" minOccurs="0" type="xs:string"/>        
+      <xs:element name="symbol" minOccurs="0" type="xs:string"/>            
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
