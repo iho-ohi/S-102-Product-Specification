@@ -1,6 +1,7 @@
 = Bathymetric Surface Validation Checks
 :series: S
-:docnumber: 158:102
+:docnumber: 158
+:checks-for: 102
 :doctype: specification
 :edition: 1.0.0
 :language: en
