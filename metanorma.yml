@@ -5,6 +5,7 @@ metanorma:
       - sources/3.0.0/document.adoc
       - sources/2.2.0/document.adoc
       - sources_S158/0.2.0/document.adoc
+      - sources_S158/1.0.0/document.adoc
 
   collection:
     organization: "IHO: International Hydrographic Organization"

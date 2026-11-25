@@ -1,0 +1,27 @@
+// data_s158_metadata.lml
+require "iho_data_models.lml"
+instance S158Metadata {
+  instance IhoDataModels::IhoMetadata {
+    document_number = "S-158:102"
+    title = "Bathymetric Surface Validation Checks"
+    document_type = "Specification"
+    document_stage = "In force"
+    edition = "1.0.0"
+    issued_date = "2025-12-31T00:00:00"
+    copyright_year = "2025-12-31T00:00:00"
+    committee = "HSSC"
+    wg_pt = "S100WG/S-102PT"
+
+    compliant_standards = [
+      instance CompliantStandard {
+        title = "S-102 PS"
+        based = "3.0.0"
+      },
+
+      instance CompliantStandard {
+        title = "S-102 FC"
+        based = "3.0.0"
+      }
+    ]
+  }
+}

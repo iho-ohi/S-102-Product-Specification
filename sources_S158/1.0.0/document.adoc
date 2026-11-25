@@ -1,0 +1,40 @@
+= Bathymetric Surface Validation Checks
+:series: S
+:docnumber: 158:102
+:doctype: specification
+:edition: 1.0.0
+:language: en
+:published-date: 2025-12-31
+:copyright-year: 2024
+:status: in-force
+:committee: hssc
+:workgroup: tsmad
+:mn-document-class: iho
+:mn-output-extensions: xml,html,doc,pdf,rxl
+:local-cache-only:
+:data-uri-image:
+:imagesdir: images
+
+include::sections/00-preface.adoc[]
+
+include::sections/01-introduction.adoc[]
+
+include::sections/02-check-structure.adoc[]
+
+include::sections/03-check-syntax.adoc[]
+
+include::sections/04-organization.adoc[]
+
+include::sections/05-other-checks.adoc[]
+
+include::sections/06-check-sequence.adoc[]
+
+include::sections/07-check-classification.adoc[]
+
+include::sections/08-geometry.adoc[]
+
+include::sections/09-other-components.adoc[]
+
+include::sections/10-validation-checks.adoc[]
+
+include::sections/b0-bibliography.adoc[]

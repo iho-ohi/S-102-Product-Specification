@@ -1,0 +1,118 @@
+// iho_s102_check.lml
+models IhoS102Check {
+  enum CheckClassification {
+    critical_error {                // enumeration value
+      description "Critical Error"  // description of value
+    }
+    error {
+      description "Error"
+    }
+    warning {
+      description "Warning"
+    }
+  }
+
+  class ValidationChecks {
+    attribute checks {
+      type ValidationCheck
+      cardinality 0..n
+    }
+  }
+  
+  class ValidationCheck {
+  
+    attribute dev_id {
+      type String
+      description "Dev ID: Development identifier for the check"
+      cardinality 1
+    }
+  
+    attribute check_id {
+      type String
+      description "Check ID: Public identifier for the check"
+      cardinality 0..1
+    }
+  
+    attribute classification {
+      type String
+      cardinality 1
+    }
+  
+    attribute check_message {
+      type String
+      description "Brief description of the error condition"
+      cardinality 0..1
+    }
+  
+    attribute check_description {
+      type String
+      description "Detailed description of when the check applies"
+      cardinality 0..1
+    }
+  
+    attribute check_solution {
+      type String
+      description "How to resolve the issue"
+      cardinality 0..1
+    }
+  
+    attribute standards_document_reference {
+      type String
+      cardinality 0..1
+    }
+    
+    attribute clause_reference {
+      type String
+      cardinality 0..1
+    }
+
+    attribute data_quality_measure {
+      type String
+      cardinality 0..n
+    }
+  
+    attribute introduced {
+      type String
+      description "Version where check was introduced"
+      cardinality 0..1
+    }
+  
+    attribute modified {
+      type String
+// defaults to cardinality 0..1
+    }
+    
+    attribute deleted {
+      type String
+// defaults to cardinality 0..1
+    }
+  
+    attribute prerequisites {
+      type reference:(ValidationCheck.dev_id)
+      cardinality 0..n
+    }
+    
+    attribute terminate_if_failure {
+      type Boolean
+// defaults to cardinality 0..1
+    }
+  
+    attribute uploaded_date {
+      type date_time
+      description "Uploaded date (Internal tracking information)"
+      cardinality 1
+    }
+  
+    attribute old_dev_id {
+      type String
+      description "Old Dev_ID (internal tracking)"
+      cardinality 0..1
+    }
+  
+    attribute notes {
+      type String
+      description "Notes (internal)"
+      cardinality 0..1
+    }
+  }
+}

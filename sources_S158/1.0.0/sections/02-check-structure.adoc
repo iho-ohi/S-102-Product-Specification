@@ -1,0 +1,35 @@
+
+
+[[sec_2]]
+== Check Structure
+
+Check structure in S-158:102 includes the fields specified in S-158 plus the additional
+fields specified in <<table-2-1>>.
+
+[[table-2-1]]
+.Extensions to check structure
+[cols="2",options="header"]
+|===
+| Column Name | Description
+
+| Prerequisites
+| Checks which must succeed (check condition evaluates to FALSE) before this check
+can be executed. Trivial prerequisites are omitted from this column (such as requiring
+the presence of an attribute before using it in a condition).
+
+| Terminate if failure
+| Whether failure of the check (the check condition evaluates to TRUE) will force
+termination of check processing before all validation checks can be executed. Valid
+values are TRUE and FALSE. The default is FALSE. The HDF5 format is hierarchical and
+the validity or even the existence of certain parts of the dataset depends on structure
+or content required to be provided in the dataset. Validation checks for such fundamental
+structure or content have this field set to TRUE so that subsequent checks which
+depend on that structure or content are not unnecessarily attempted if the fundamental
+structure or content fails its own validation check. For example, checks on groups
+which are members of another group are not attempted if the container group is missing.
+
+|===
+
+Termination of check processing need not be immediate but is recommended at the
+end of the validation phase during which the failure occurs. Validation phases are
+explained in <<sec_4>>.

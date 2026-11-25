@@ -1,0 +1,43 @@
+
+[[sec_5]]
+== Other Applicable Checks
+
+[[sec_5.1]]
+=== Generic S-100 checks
+
+S-102 datasets and exchange sets must also be validated using the following subset
+of the generic S-100 validation checks defined in S-158:100:
+
+[cols="4",options="header"]
+|===
+| Document reference in S-158:100 list | Checks | Apply to | Remarks
+
+| Part 1      | All | Product Specification | No direct implementation on datasets or exchange sets
+| Part 2 / 2a | All | Product Specification | No direct implementation on datasets or exchange sets
+| Part 4a     | All | Exchange catalogue    |
+| Part 4b     | All | Product Specification | No direct implementation on datasets or exchange sets
+
+.2+| Part 5 / 5a | 100_5010 | Product Specification | No direct implementation on datasets or exchange sets
+| 100_0001 100_0002 100_0003 100_0004 100_0005 100_0006 | Datasets |
+
+| Part 6 | | Datasets |
+| Part 7 | Only checks for polygons | Domain extent polygons
+| S-102 uses vector geometry only for domain extent polygons. Note also that domain
+extent polygons as used in S-102 do not have interior boundaries.
+| Part 8 | Only checks applicable to regular grid coverages | Dataset |
+| Part 9 / 9a / 13 | | Product Specitication | Validation checks for Portrayal Catalogue
+| Part 10a | None | N/A | S-102 does not use the ISO 8211 format
+| Part 10b | None | N/A | S-102 does not use the S-100 GML format
+| Part 10c | Only checks applicable to "Regular Grid" and "Feature oriented Regular Grid" coverages | Dataset | S-102 uses only the "Regular Grid" and "Feature oriented Regular Grid" coverage type
+| Part 11 | 100_0255 | Dataset | There is only one Part 11 generic check, for dataset size
+.2+| Part 15 | 100_0256 | Exchange catalogue |
+| 100_0257 100_0258 100_0259 100_0260 100_0261 100_0262 100_0263 100_0264 100_0265 100_0266 100_0267 | Exchange set |
+| Part 17 | All | Exchange catalogue +
+Exchange set |
+|===
+
+[[sec_5.2]]
+=== Interoperability checks
+
+S-102 datasets and exchange sets intended for use on ECDIS must also pass the applicable
+interoperability checks from those listed in S-158:98.

@@ -1,0 +1,9 @@
+
+[[sec_9]]
+== Other Components of this Specification
+
+The other components of this Specification listed below are provided as separate
+documents or artefacts accompanying this document and form an integral part of this
+Specification.
+
+. Spreadsheet of S-102 validation checks named S-158_102_1_0_0.
