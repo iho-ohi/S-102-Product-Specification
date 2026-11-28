@@ -1,0 +1,65 @@
+[[sec_10]]
+== Product-specific Validation Checks
+
+The product-specific validation checks defined in this document are listed
+in this clause. The same checks are also provided as a spreadsheet, as
+described in <<sec_9>>.
+
+[lutaml_data,data/iho_s102_check.lml,data/data_s102_check.lml,s158]
+----
+{% for check in s158.S158Checks.checks -%}
+=== {{ check.dev_id }}
+
+Classification:: {{ check.classification }}
+{%- if check.check_message %}
+
+Check message:: {{ check.check_message }}
+{% endif -%}
+{%- if check.check_description %}
+
+Check description:: {{ check.check_description }}
+{% endif -%}
+{%- if check.check_solution %}
+
+Solution:: {{ check.check_solution }}
+{% endif -%}
+{%- if check.standards_document_reference or check.clause_reference %}
+
+Reference:: {{ check.standards_document_reference }}{%- if check.standards_document_reference and check.clause_reference %}, {% endif %}{{ check.clause_reference }}
+{% endif -%}
+{%- if check.data_quality_measure %}
+
+Data quality measures:: {{ check.data_quality_measure | join: "; " }}
+{% endif -%}
+{%- if check.introduced %}
+
+Introduced:: {{ check.introduced }}
+{% endif -%}
+{%- if check.modified %}
+
+Modified:: {{ check.modified }}
+{% endif -%}
+{%- if check.deleted %}
+
+Deleted:: {{ check.deleted }}
+{% endif -%}
+{%- if check.prerequisites %}
+
+Prerequisites:: {{ check.prerequisites | join: "; " }}
+{% endif -%}
+{%- if check.terminate_if_failure %}
+Terminate if failure:: {{ check.terminate_if_failure }}
+{% else %}
+Terminate if failure:: false
+{% endif -%}
+{%- if check.old_dev_id %}
+
+Old Dev ID:: {{ check.old_dev_id }}
+{% endif -%}
+{%- if check.notes %}
+
+Notes:: {{ check.notes }}
+{% endif %}
+
+{% endfor %}
+----

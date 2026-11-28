@@ -1,0 +1,10 @@
+
+[[sec_9]]
+== Other Components of this Specification
+
+The other components of this Specification listed below are provided as separate
+documents or artefacts accompanying this document and form an integral part of this
+Specification.
+
+. Spreadsheet of S-102 validation checks named S158_102_0_2_0_YYYYMMDD of the latest
+build date. (The build date is the YYYYMMDD suffix in the file name.)

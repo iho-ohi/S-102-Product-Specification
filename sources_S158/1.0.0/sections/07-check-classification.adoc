@@ -1,0 +1,5 @@
+
+[[sec_7]]
+== Check Classification
+
+The check classification conforms to the scheme described in <<S_158>>.

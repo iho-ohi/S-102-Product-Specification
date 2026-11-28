@@ -1,0 +1,27 @@
+
+[[sec_6]]
+== Check Application Sequence
+
+The check application sequence expands and modifies the application sequence described
+in <<S_158>>.
+
+[[table-6-1]]
+.Suggested application order of validation checks
+[cols="4",options="header"]
+|===
+| Order | Check Collection | Defined in | Apply to
+
+| 1 | S-100 generic checks for datasets | S-158:100 | Dataset, in isolation
+| 2 | Product-specific checks for datasets | S-158:102 | Dataset, in isolation
+| 2.1 | Root group checks | S-158:102 checks numbered 102_Dev1xxx | Dataset, in isolation
+| 2.2 | Feature Container group checks | S-158:102 checks numbered 102_Dev2xxx | Dataset, in isolation
+| 2.3 | Feature Instance group checks | S-158:102 checks numbered 102_Dev3xxx | Dataset, in isolation
+| 2.4 | Values group checks | S-158:102 checks numbered 102_Dev5xxx | Dataset, in isolation
+| 3 | Interoperability checks for single S-102 dataset | S-158:98 | Dataset, in isolation
+| 4 | Inter-dataset, intra-product checks | S-158:102 checks numbered Nxxx | Adjacent or intersecting datasets
+| ? | Inter-version checks(?) | S-158:102 checked numbered Nxxx | Related datasets for different versions of S-102
+| 5 | Interoperability checks for combinations of datasets from different products | S-158:98 | S-102 dataset in combination with relevant datasets from other products (e.g., S-102)
+| 6 | S-100 generic checks for exchange sets | S-158:100 | Exchange set
+| 7 | Product-specific checks for exchange sets | S-158:102 checks numbered 102_Dev9xxx | Exchange set
+| 8 | Product catalogue checks | S-158:128 | S-128 datasets describing S-102 datasets
+|===

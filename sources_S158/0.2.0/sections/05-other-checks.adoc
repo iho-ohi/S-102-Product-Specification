@@ -1,0 +1,43 @@
+
+[[sec_5]]
+== Other Applicable Checks
+
+[[sec_5.1]]
+=== Generic S-100 checks
+
+S-102 datasets and exchange sets must also be validated using the following subset
+of the generic S-100 validation checks defined in S-158:100:
+
+[cols="4",options="header"]
+|===
+| Document reference in S-158:100 list | Checks | Apply to | Remarks
+
+| Part 1      | All | Product Specification | No direct implementation on datasets or exchange sets
+| Part 2 / 2a | All | Product Specification | No direct implementation on datasets or exchange sets
+| Part 4a     | All | Exchange catalogue    |
+| Part 4b     | All | Product Specification | No direct implementation on datasets or exchange sets
+
+.2+| Part 5 / 5a | 100_Dev0069 | Product Specification | No direct implementation on datasets or exchange sets
+| 100_Dev0077 100_Dev0468 100_Dev0161 100_Dev0162 100_Dev0163 100_Dev0164 100_Dev0165 100_Dev0166 100_Dev0167 | Datasets | Inapplicable: 100_Dev0168 100_Dev0169 100_Dev0170 100_Dev0171
+
+| Part 6 | 100_Dev0172 100_Dev0173 100_Dev0174 | Datasets |
+| Part 7 | Only checks for polygons | Domain extent polygons
+| S-102 uses vector geometry only for domain extent polygons. Note also that domain
+extent polygons as used in S-102 do not have interior boundaries.
+| Part 8 | Only checks applicable to regular grid coverages | Dataset |
+| Part 9 / 9a / 13 | ? | Product Specitication | Validation checks for Portrayal Catalogue
+| Part 10a | None | N/A | S-102 does not use the ISO 8211 format
+| Part 10b | None | N/A | S-102 does not use the S-100 GML format
+| Part 10c | Only checks applicable to regular grid coverages | Dataset | S-102 uses only the regular grid coverage type
+| Part 11 | 100_Dev0466 | Dataset | There is only one Part 11 generic check, for dataset size
+| Part 15 | 100_Dev0476 through 100_Dev0490 | Exchange catalogue +
+Exchange set |
+| Part 17 | All checks except those applying to metadata elements not used in S-102 | Exchange catalogue +
+Exchange set |
+|===
+
+[[sec_5.2]]
+=== Interoperability checks
+
+S-102 datasets and exchange sets intended for use on ECDIS must also pass the applicable
+interoperability checks from those listed in S-158:98.

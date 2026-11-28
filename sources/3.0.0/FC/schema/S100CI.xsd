@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © Copyright 2011, 2014-2016,2018, 2022 International Hydrographic Organisation
+License (Draft)
+Certain parts of this document refer to or are based on the standards, documents, schemas,
+or other material of the International Organization for Standardization (ISO), Open Geospatial
+Consortium (OGC), International Hydrographic Organization / Organisation Hydrographique
+Internationale (IHO/OHI).
+The ISO material can be obtained from any ISO member and from the Web site of the ISO Central
+Secretariat at www.iso.org.
+The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+The IHO material can be obtained from the IHO Web site at www.iho.int or from the International
+Hydrographic Organization Secretariat.
+
+Permission to copy and distribute this document is hereby granted provided that this notice is
+retained on all copies, and that the IHO is credited when the material is redistributed
+or used in part or whole in derivative works.
+Redistributions in binary form must reproduce this notice in the documentation and/or other
+materials provided with the distribution.
+
+Disclaimer
+This work is provided by the copyright holders and contributors "as is" and any express or implied
+warranties, including, but not limited to, the implied warranties of merchantability and fitness
+for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be
+liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including,
+but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or
+business interruption) however caused and on any theory of liability, whether in contract, strict
+liability, or tort (including negligence or otherwise) arising in any way out of the use of this
+software, even if advised of the possibility of such damage.
+-->
+<!-- Date: 04 September 2014; Modification: Updated for S-100 Ed. 2.0.0
+
+-->
+<!-- Date: 16 September 2014; Modification: added schema version; -->
+<!-- 2015-09-21 Raphael Malyankar Added MD_ClassificationCode enumeration; correct spelling of literal "distributor" in RoleCode
+     2016-07-15: Updated copyright/license statement
+     Note: This should be updated to use the ISO schemas or a profile of them wherever S-100 is using the ISO type
+  2018-05-02 (Raphael Malyankar): Note about correcting Citation/aternateTitle to alternateTitle (not corrected pending
+      coordination with FCB); version number update for 4.0.
+  2018-06-12: updated for harmonization with 19115-3:
+    added nilreason attribute (this is ultimately needed because 19115-3 made role mandatory in CI_Responsibility);
+    replaced CI_ResponsibleParty with CI_Responsibility and subordinate classes CI_Individual and CI_Organisation;
+    added new 19115-1 literals to RoleCode, DateTypeCode, PresentationFormCode, MD_ClassificationCode;
+    removed the optional collectiveTitle attribute from Citation (it is not an attribute in 19115-1);
+    revised structure of telephone element to conform to 19115-1
+    Note: The structure conforms to 19115-1 and 19115-3 with the following differences, so as to minimize changes to the FCB:
+    (1) the ...PropertyType types in 19115-3 citations are generally not used, instead the basic types are used as element
+        types; the result is that the outermost ISO 19115-3 XML tags do not appear in the file. E.g., identifiers are not
+        wrapped in "MD_Identifier" tags. This was done for consistency with previous editions of the FC schemas, but
+        can be revised if convenient for implementations.
+    (2) the multiplicities of some elements have been restricted compared to 19115-1/19115-3 (including removal of
+        some optional elements;
+    (3) the nilreason attribute is allowed only for a limited set of elements, rather than generally allowed as in 19115-3;
+    (4) the allowed space of nilreason attributes is limited to the 19115-3 explicitly listed codes (the xs:anyURI or the
+        free pattern for other: ... specified in 19115-3 schemas are not allowed)
+ -->
+<!-- 2022-03031: Updated for S-100 5.0.0.
+    Modifications: Namespace updated
+    20220610: build in version number updated due to update in S100FC.xsd
+ -->
+  <!-- Prepared for the International Hydrographic Organisation (IHO).
+    Contributors: Holger Bothien (SevenCs/Chartworld); Tom Richardson (UKHO); Sewoong Oh (KRISO);
+    Yong Baek (KHOA); Raphael Malyankar (Jeppesen); Raphael Malyankar (Portolan Sciences LLC)
+  -->
+<xs:schema targetNamespace="http://www.iho.int/S100CI/5.0"
+  elementFormDefault="qualified"
+  xmlns="http://www.iho.int/S100CI/5.0"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  version="5.0.0-2022610">
+
+  <!-- The nil reason attribute defiitions are taken from the ISO 19115-3 gco namespace and restricted to disallow "anyURI" and the "other: " pattern as allowed values"  -->
+  <!--================== NULL ====================-->
+  <xs:attribute name="nilReason" type="NilReasonType"/>
+  
+  <xs:simpleType name="NilReasonType">
+    <xs:annotation>
+      <xs:documentation>copied from gml32:NilReasonType. This Type defines a content model that allows recording of an 
+        explanation for a void value or other exception.
+        gml:NilReasonType is a union of the following enumerated values:
+        -	inapplicable- there is no value
+        -	missing- the correct value is not readily available to the sender of this data. Furthermore, a correct value may not exist
+        -	template- the value will be available later
+        -	unknown- the correct value is not known to, and not computable by, the sender of this data. However, a correct value probably exists
+        -	withheld- the value is not divulged
+        -	other:text - other brief explanation, where text is a string of two or more characters with no included spaces
+        and
+        -	xs:anyURI which should refer to a resource which describes the reason for the exception
+        A particular community may choose to assign more detailed semantics to the standard values provided. Alternatively, the URI method enables a specific or more complete explanation for the absence of a value to be provided elsewhere and indicated by-reference in an instance document.
+        gml:NilReasonType is used as a member of a union in a number of simple content types where it is necessary to permit a value from the NilReasonType union as an alternative to the primary type.</xs:documentation>
+      <xs:documentation>S-100 note: other:text and xs:anyURI are not allowed</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="NilReasonEnumeration"/>
+  </xs:simpleType>
+  <xs:simpleType name="NilReasonEnumeration">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inapplicable"/>
+          <xs:enumeration value="missing"/>
+          <xs:enumeration value="template"/>
+          <xs:enumeration value="unknown"/>
+          <xs:enumeration value="withheld"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <!--<xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="other:\w{2,}"/>
+        </xs:restriction>
+      </xs:simpleType>-->
+    </xs:union>
+  </xs:simpleType>
+  
+  <xs:simpleType name="DateTypeCode">
+  <xs:annotation>
+    <xs:documentation>identification of when a given event occurred</xs:documentation>
+    <xs:documentation>V 4.0.0: added codes expiry, lastUpdate, lastRevision, nextUpdate, unavailable, inforce, adopted, deprecated, superseded, validityBegins, validityExpires, released, distribution (all in 19115-1); added definitions</xs:documentation>
+  </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="creation">
+        <xs:annotation>
+          <xs:documentation>date identifies when the resource was brought into existence</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="publication">
+        <xs:annotation>
+          <xs:documentation>date identifies when the resource was issued</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="revision">
+        <xs:annotation>
+          <xs:documentation>date identifies when the resource was examined or re-examined and improved or amended</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="expiry">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource expires</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lastUpdate">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource was last updated</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lastRevision">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource was last reviewed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nextUpdate">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource will be next updated</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unavailable">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource became not available or obtainable</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="inForce">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource became in force</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="adopted">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource was adopted</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="deprecated">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource was deprecated</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="superseded">
+        <xs:annotation>
+          <xs:documentation>date identifies when resource was  superseded or replaced by another resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="validityBegins">
+        <xs:annotation>
+          <xs:documentation>time at which the data are considered to become valid.  NOTE: There could be quite a delay between creation and validity begins</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="validityExpires">
+        <xs:annotation>
+          <xs:documentation>time at which the data are no longer considered to be valid</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="released">
+        <xs:annotation>
+          <xs:documentation>the date that the resource shall be released for public access</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="distribution">
+        <xs:annotation>
+          <xs:documentation>date identifies when an instance of the resource was distributed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="dateExt">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="date" type="xs:date"/>
+        <xs:element name="yearMonth" type="xs:gYearMonth"/>
+        <xs:element name="year" type="xs:gYear"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Date">
+  <xs:annotation><xs:documentation>S100 differs from ISO 19115-1/3 in allowing reduced forms for date</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="date" type="dateExt" nillable="true"/>
+      <xs:element name="dateType" type="DateTypeCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ============================================= -->
+  <!-- 19115-1 codelists encoded as XML enumerations -->
+  <!-- ============================================= -->
+  <xs:simpleType name="PresentationFormCode">
+    <xs:annotation>
+      <xs:documentation>mode in which the data are represented</xs:documentation>
+      <xs:documentation>V. 4.0.0: added imageHardcopy, multimediaDigital, multimediaHardcopy, diagramDigital, diagramHardcopy (all in 19115-1, the latter 4 being new in 19115-1); added definitions. The 19115-1 entries audioDigital, audioHardCopy, physicalSample were deliberately omitted as being inapplicable to S-100. The source is the codelists.xml resources file distributed by ISO with the 19115-3 schemas.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="documentDigital">
+        <xs:annotation>
+          <xs:documentation>digital representation of a primarily textual item (can contain illustrations also)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="documentHardcopy">
+        <xs:annotation>
+          <xs:documentation>representation of a primarily textual item (can contain illustrations also) on paper, photographic material, or other media</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="imageDigital">
+        <xs:annotation>
+          <xs:documentation>likeness of natural or man-made features, objects, and activities acquired through the sensing of visual or any other segment of the electromagnetic spectrum by sensors, such as thermal infrared, and high resolution radar and stored in digital format</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="imageHardcopy">
+        <xs:annotation>
+          <xs:documentation>likeness of natural or man-made features, objects, and activities acquired through the sensing of visual or any other segment of the electromagnetic spectrum by sensors, such as thermal infrared, and high resolution radar and reproduced on paper, photographic material, or other media for use directly by the human user</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mapDigital">
+        <xs:annotation>
+          <xs:documentation>map represented in raster or vector form</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mapHardcopy">
+        <xs:annotation>
+          <xs:documentation>map printed on paper, photographic material, or other media for use directly by the human user</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="modelDigital">
+        <xs:annotation>
+          <xs:documentation>multi-dimensional digital representation of a feature, process, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="modelHardcopy">
+        <xs:annotation>
+          <xs:documentation>3-dimensional, physical model</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="profileDigital">
+        <xs:annotation>
+          <xs:documentation>vertical cross-section in digital form</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="profileHardcopy">
+        <xs:annotation>
+          <xs:documentation>vertical cross-section printed on paper, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tableDigital">
+        <xs:annotation>
+          <xs:documentation>digital representation of facts or figures systematically displayed, especially in columns</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tableHardcopy">
+        <xs:annotation>
+          <xs:documentation>representation of facts or figures systematically displayed, especially in columns, printed on paper, photographic material, or other media</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="videoDigital">
+        <xs:annotation>
+          <xs:documentation>digital video recording</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="videoHardcopy">
+        <xs:annotation>
+          <xs:documentation>video recording on film</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="multimediaDigital">
+        <xs:annotation>
+          <xs:documentation>information representation using simultaneously various digital modes for text, sound, image</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="multimediaHardcopy">
+        <xs:annotation>
+          <xs:documentation>information representation using simultaneously various analog modes for text, sound, image</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="diagramDigital">
+        <xs:annotation>
+          <xs:documentation>information represented graphically by charts such as pie chart, bar chart, and other type of diagrams and recorded in digital format</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="diagramHardcopy">
+        <xs:annotation>
+          <xs:documentation>information represented graphically by charts such as pie chart, bar chart, and other type of diagrams and printed on paper, photographic material, or other media</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="S100_RoleCode_PropertyType">
+  <xs:annotation><xs:documentation>The rolecode property is for use when roles must be allowed to be nilled.</xs:documentation></xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="RoleCode">
+        <xs:attribute ref="nilReason" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+
+  <xs:simpleType name="RoleCode">
+    <xs:annotation>
+      <xs:documentation>function performed by the responsible party</xs:documentation>
+      <xs:documentation>V. 4.0.0: added author, sponsor, coAuthor, collaborator, editor, mediator, rightsHolder, contributor, funder, stakeholder (19115-1); added definitions</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="resourceProvider">
+        <xs:annotation>
+          <xs:documentation>party that supplies the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="custodian">
+        <xs:annotation>
+          <xs:documentation>party that accepts accountability and responsibility for the resource and ensures appropriate care and maintenance of the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="owner">
+        <xs:annotation>
+          <xs:documentation>party that owns the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="user">
+        <xs:annotation>
+          <xs:documentation>party who uses the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="distributor">
+        <xs:annotation>
+          <xs:documentation>party who distributes the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="originator">
+        <xs:annotation>
+          <xs:documentation>party who created the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pointOfContact">
+        <xs:annotation>
+          <xs:documentation>party who can be contacted for acquiring knowledge about or acquisition of the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="principalInvestigator">
+        <xs:annotation>
+          <xs:documentation>key party responsible for gathering information and conducting research</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="processor">
+        <xs:annotation>
+          <xs:documentation>party who has processed the data in a manner such that the resource has been modified</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="publisher">
+        <xs:annotation>
+          <xs:documentation>party who published the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="author">
+        <xs:annotation>
+          <xs:documentation>party who authored the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sponsor">
+        <xs:annotation>
+          <xs:documentation>party who speaks for the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="coAuthor">
+        <xs:annotation>
+          <xs:documentation>party who jointly authors the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="collaborator">
+        <xs:annotation>
+          <xs:documentation>party who assists with the generation of the resource other than the principal investigator</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="editor">
+        <xs:annotation>
+          <xs:documentation>party who reviewed or modified the resource to improve the content</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mediator">
+        <xs:annotation>
+          <xs:documentation>a class of entity that mediates access to the resource and for whom the resource is intended or useful</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rightsHolder">
+        <xs:annotation>
+          <xs:documentation>party owning or managing rights over the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="contributor">
+        <xs:annotation>
+          <xs:documentation>party contributing to the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="funder">
+        <xs:annotation>
+          <xs:documentation>party providing monetary support for the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="stakeholder">
+        <xs:annotation>
+          <xs:documentation>party who has an interest in the resource or the use of the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OnlineFunctionCode">
+    <xs:annotation><xs:documentation>function performed by the resource</xs:documentation>
+      <xs:documentation>V 4.0.0: Added 19115-1 literals completeMetadata, browseGraphic, upload, emailService, browsing, fileAccess; added definitions</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="download">
+        <xs:annotation>
+          <xs:documentation>online instructions for transferring data from one storage device or system to another</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="information">
+        <xs:annotation>
+          <xs:documentation>online information about the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="offlineAccess">
+        <xs:annotation>
+          <xs:documentation>online instructions for requesting the resource from the provider</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="order">
+        <xs:annotation>
+          <xs:documentation>online order process for obtaining the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="search">
+        <xs:annotation>
+          <xs:documentation>online search interface for seeking out information about the resource</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="completeMetadata">
+        <xs:annotation>
+          <xs:documentation>complete metadata provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="browseGraphic">
+        <xs:annotation>
+          <xs:documentation>browse graphic provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="upload">
+        <xs:annotation>
+          <xs:documentation>online resource upload capability provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="emailService">
+        <xs:annotation>
+          <xs:documentation>online email service provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="browsing">
+        <xs:annotation>
+          <xs:documentation>online browsing provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fileAccess">
+        <xs:annotation>
+          <xs:documentation>online file access provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MD_ClassificationCode">
+    <xs:annotation>
+      <xs:documentation>name of the handling restrictions on the resource</xs:documentation>
+      <xs:documentation>V 4.0.0: Added 19115-1 literals sensitiveButUnclassified (ISO codelists have "SBU", but the ISO UML model has "sensitiveButUnclassified"), forOfficialUseOnly, protected, limitedDistribution</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="unclassified">
+        <xs:annotation>
+          <xs:documentation>available for general disclosure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restricted">
+        <xs:annotation>
+          <xs:documentation>not for general disclosure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="confidential">
+        <xs:annotation>
+          <xs:documentation>available for someone who can be entrusted with information</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="secret">
+        <xs:annotation>
+          <xs:documentation>kept or meant to be kept private, unknown, or hidden from all but a select group of people</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="topSecret">
+        <xs:annotation>
+          <xs:documentation>of the highest secrecy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sensitiveButUnclassified">
+        <xs:annotation>
+          <xs:documentation>although unclassified, requires strict controls over its distribution</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="forOfficialUseOnly">
+        <xs:annotation>
+          <xs:documentation>unclassified information that is to be used only for official purposes determined by the designating body</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="protected">
+        <xs:annotation>
+          <xs:documentation>compromise of the information could cause damage</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="limitedDistribution">
+        <xs:annotation>
+          <xs:documentation>dissemination limited by designating body</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TelephoneTypeCode">
+    <xs:annotation>
+      <xs:documentation>type of telephone</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="voice">
+        <xs:annotation>
+          <xs:documentation>telephone provides voice service</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fax">
+        <xs:annotation>
+          <xs:documentation>telephone provides facsimile service</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sms">
+        <xs:annotation>
+          <xs:documentation>telephone provides sms service</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================= -->
+  <!-- complex types                         -->
+  <!-- ============================================= -->
+  <xs:complexType name="CI_Series_Type">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="issueIdentification" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="page" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CI_OnlineResource_Type">
+    <xs:annotation><xs:documentation>V 4.0.0: attribute url from S-100 3.0.0 replaced by linkage to conform to 19115-1. The optional protocolRequest attribute is not used because it was not in previous versions of this file and is not expected to be required in feature catalogues.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="linkage" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="protocol" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="applicationProfile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="function" type="OnlineFunctionCode" minOccurs="0" maxOccurs="1"/>
+<!--
+      <element minOccurs="0" name="protocolRequest" type="gco:CharacterString_PropertyType">
+        <annotation>
+          <documentation>protocol used by the accessed resource</documentation>
+        </annotation>
+      </element>
+-->
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CI_Address_Type">
+    <xs:annotation>
+      <xs:documentation>From 19115-3 schemas with inheritance from gco:AbstractObjectType removed and gco:characterstring properties replaced by xs:string</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="deliveryPoint" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>address line for the location (as described in ISO 11180, Annex A)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="city" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>city of the location</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="administrativeArea" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>state, province of the location</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="postalCode" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>ZIP or other postal code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="country" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>country of the physical address</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="electronicMailAddress" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>address of the electronic mailbox of the responsible organisation or individual</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CI_Citation_Type">
+    <xs:annotation>
+      <xs:documentation>standardized resource reference</xs:documentation>
+      <xs:documentation>V. 4.0.0: removed collectiveTitle (not in 19115-1 / 19115-3); intentionally omitted the optional 19115-3 element "graphic" to reduce changes to feature catalogues and the FCB</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="title" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>name by which the cited resource is known</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="alternateTitle" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>short name or other language name by which the cited information is known. Example: DCW as an alternative title for Digital Chart of the World</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="date" type="Date">
+        <xs:annotation>
+          <xs:documentation>reference date for the cited resource</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="edition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>version of the cited resource</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="editionDate" type="dateExt">
+        <xs:annotation>
+          <xs:documentation>date of the edition. type differs from ISO 19115-3 in being a complex type and allowing one of date, yearMonth, or year as in S-100 3.0.0 </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="identifier" type="MD_Identifier_Type">
+        <xs:annotation>
+          <xs:documentation>value uniquely identifying an object within a namespace</xs:documentation>
+          <xs:documentation>S-100 type and maxOccurs differ from ISO 19115-3 in using only string types and not using the "authority" citation within identifier elements</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="citedResponsibleParty" type="CI_Responsibility_PropertyType">
+        <xs:annotation>
+          <xs:documentation>name and position information for an individual or organisation that is responsible for the resource</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="presentationForm" type="PresentationFormCode">
+        <xs:annotation>
+          <xs:documentation>mode in which the resource is represented</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="series" type="CI_Series_Type">
+        <xs:annotation>
+          <xs:documentation>information about the series, or aggregate resource, of which the resource is a part</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="otherCitationDetails" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>other information required to complete the citation that is not recorded elsewhere</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ISBN" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>international Standard Book Number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ISSN" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>international Standard Serial Number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="onlineResource" type="CI_OnlineResource_Type">
+        <xs:annotation>
+          <xs:documentation>online reference to the cited resource</xs:documentation>
+            </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CI_Responsibility_PropertyType">
+    <xs:annotation><xs:documentation>S-100 V. 4.0.0: use of references and nilling not allowed when used in S-100 feature catalogues</xs:documentation></xs:annotation>
+    <xs:sequence minOccurs="0">
+      <xs:element ref="CI_Responsibility"/>
+    </xs:sequence>
+    <!--    <attributeGroup ref="gco:ObjectReference"/>
+    <attribute ref="gco:nilReason"/>-->
+  </xs:complexType>
+
+  <xs:element name="CI_Responsibility" type="CI_Responsibility_Type">
+    <xs:annotation>
+      <xs:documentation>information about the party and their role</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="CI_Responsibility_Type">
+    <xs:annotation><xs:documentation>information about the party and their role</xs:documentation>
+      <xs:documentation>Beginning V. 4.0.0, this is as defined in 19115-3 with the optional "extent" attribute omitted.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="role" type="S100_RoleCode_PropertyType">
+        <xs:annotation>
+          <xs:documentation>function performed by the responsible party</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--<xs:element maxOccurs="unbounded" minOccurs="0" name="extent" type="mcc:Abstract_Extent_PropertyType">
+        <xs:annotation>
+          <xs:documentation>spatial or temporal extent of the role</xs:documentation>
+        </xs:annotation>
+      </xs:element>-->
+      <xs:element maxOccurs="unbounded" name="party" type="AbstractCI_Party_PropertyType"/>
+    </xs:sequence>
+
+
+  </xs:complexType>
+
+  <xs:element abstract="true" name="AbstractCI_Party" type="AbstractCI_Party_Type">
+    <xs:annotation>
+      <xs:documentation>information about the individual and/or organisation of the party</xs:documentation>
+      <xs:documentation>V 4.0.0: object reference and nilling not used in S-100 feature catalogues</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AbstractCI_Party_PropertyType">
+    <xs:sequence minOccurs="0">
+      <xs:element ref="AbstractCI_Party"/>
+    </xs:sequence>
+    <!--    <xs:attributeGroup ref="gco:ObjectReference"/>
+    <xs:attribute ref="gco:nilReason"/>-->
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="AbstractCI_Party_Type">
+    <xs:annotation><xs:documentation>partyIdentifier type made xs:string consistent with other identifiers in the feature catalogue</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>name of the party</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="contactInfo" type="CI_Contact_Type">
+        <xs:annotation>
+          <xs:documentation>contact information for the party</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partyIdentifier" type="MD_Identifier_Type">
+        <xs:annotation>
+          <xs:documentation>value uniquely identifying a party (individual or organization)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- from 1915-3 mcc namespace -->
+  <xs:complexType name="MD_Identifier_Type">
+    <xs:annotation><xs:documentation>S-100 feature catalogues use a simplified form in using only string identifiers. The optional "authority" citation is not used.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <!--<xs:element minOccurs="0" name="authority" type="mcc:Abstract_Citation_PropertyType">
+        <xs:annotation>
+          <xs:documentation>Citation for the code namespace and optionally the person or party responsible for maintenance of that namespace</xs:documentation>
+            </xs:annotation>
+          </xs:element>-->
+      <xs:element name="code" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>alphanumeric value identifying an instance in the namespace e.g. EPSG::4326</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element minOccurs="0" name="codeSpace" type="xs:string">
+        <xs:annotation>
+              <xs:documentation>Identifier or namespace in which the code is valid</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element minOccurs="0" name="version" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>version identifier for the namespace</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element minOccurs="0" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>natural language description of the meaning of the code value E.G for codeSpace = EPSG, code = 4326: description = WGS-84" to "for codeSpace = EPSG, code = EPSG::4326: description = WGS-84</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:element name="CI_Individual" substitutionGroup="AbstractCI_Party" type="CI_Individual_Type">
+    <xs:annotation>
+      <xs:documentation>information about the party if the party is an individual</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CI_Individual_PropertyType">
+    <xs:sequence minOccurs="0">
+      <xs:element ref="CI_Individual"/>
+    </xs:sequence>
+    <!--    <attributeGroup ref="gco:ObjectReference"/>
+    <attribute ref="gco:nilReason"/>-->
+  </xs:complexType>
+  <xs:complexType name="CI_Individual_Type">
+    <xs:complexContent>
+      <xs:extension base="AbstractCI_Party_Type">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="positionName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>position of the individual in an organisation</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CI_Organisation" substitutionGroup="AbstractCI_Party" type="CI_Organisation_Type">
+    <xs:annotation>
+      <xs:documentation>information about the party if the party is an organisation</xs:documentation>
+      <xs:documentation>V 4.0.0: "graphic" attribute is not used in S-100 feature catalogues</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CI_Organisation_Type">
+    <xs:complexContent>
+      <xs:extension base="AbstractCI_Party_Type">
+        <xs:sequence>
+          <!--<xs:element maxOccurs="unbounded" minOccurs="0" name="logo" type="mcc:MD_BrowseGraphic_PropertyType">
+            <xs:annotation>
+              <xs:documentation>Graphic identifying organization</xs:documentation>
+            </xs:annotation>
+          </xs:element>-->
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="individual" type="CI_Individual_PropertyType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:complexType name="CI_Contact_Type">
+    <xs:annotation><xs:documentation>information required to enable contact with the responsible person and/or organisation</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="phone" type="CI_Telephone_Type">
+        <xs:annotation>
+          <xs:documentation>telephone numbers at which the organisation or individual may be contacted</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="address" type="CI_Address_Type">
+        <xs:annotation>
+          <xs:documentation>physical and email address at which the organisation or individual may be contacted</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="onlineResource" type="CI_OnlineResource_Type">
+        <xs:annotation>
+          <xs:documentation>on-line information that can be used to contact the individual or organisation</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hoursOfService" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>time period (including time zone) when individuals can contact the organisation or individual</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element minOccurs="0" name="contactInstructions" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>supplemental instructions on how or when to contact the individual or organisation</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element minOccurs="0" name="contactType" type="xs:string"><xs:annotation><xs:documentation>type of the contact</xs:documentation></xs:annotation></xs:element>
+        </xs:sequence>
+      
+    
+  </xs:complexType>
+
+  <xs:complexType name="CI_Telephone_Type">
+ 
+   
+    <xs:sequence>
+      <xs:element name="number" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>telephone number by which individuals can contact responsible organisation or individual</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+      <xs:element minOccurs="0" name="numberType" type="TelephoneTypeCode">
+        <xs:annotation>
+          <xs:documentation>type of telephone responsible organisation or individual</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      
+    
+  </xs:complexType>
+
+
+  <!-- from baseTypes2014 -->
+  <!-- =========================== Date & DateTime ================================= -->
+  <!--=============================================-->
+  <!--<xs:element name="DateTime" type="xs:dateTime"/>-->
+  <!-- ........................................................................ -->
+  <!--<xs:complexType name="DateTime_PropertyType">
+    <xs:sequence minOccurs="0">
+      <xs:element ref="DateTime"/>
+    </xs:sequence>
+    <!-\-<xs:attribute ref="gco:nilReason"/>-\->
+  </xs:complexType>-->
+  <!-- =========================================================================== -->
+  <!--<xs:simpleType name="Date_Type">
+    <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear"/>
+  </xs:simpleType>-->
+  <!-- ........................................................................ -->
+  <!--<xs:element name="Date" type="Date_Type" nillable="true"/>-->
+  <!-- ........................................................................ -->
+  <!--<xs:complexType name="Date_PropertyType">
+    <xs:choice minOccurs="0">
+      <xs:element ref="Date"/>
+      <xs:element ref="DateTime"/>
+    </xs:choice>
+    <!-\-<xs:attribute ref="gco:nilReason"/>-\->
+  </xs:complexType>-->
+
+</xs:schema>

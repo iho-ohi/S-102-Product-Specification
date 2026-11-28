@@ -1,0 +1,6 @@
+
+[[sec_3]]
+== Check Syntax
+
+The check syntax conforms to the syntax and operators for product-specific checks
+described in <<S_158,clause=4.2>>.

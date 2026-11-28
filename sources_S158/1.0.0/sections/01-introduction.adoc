@@ -1,0 +1,284 @@
+
+[[sec_1]]
+== Introduction
+
+This document specifies a set of checks that producers of S-102 Bathymetric Surface
+validation tools must implement in their validation software. Validation software
+is used to ensure that S-102 data are compliant with the S-102 Product Specification.
+The initial list of checks for S-102 was compiled by the IHO S-102 Project Team of
+the IHO S-100 Working Group.
+
+The checks listed in this document are product-specific. They supplement but do not
+replace the generic S-100 validation checks applicable to all S-100 products which
+are defined in a separate IHO publication (S-158:100 -- Universal Hydrographic Model
+Validation Checks).
+
+[[sec_1.1]]
+=== Scope
+
+This document, designated as "S-158:102" by the IHO, specifies validation checks
+for data products conforming to Edition(s) 3.0.x of the S-102 (Bathymetric Surface)
+Product Specification.
+
+This document specifies product-specific validation checks for both S-102 datasets
+and exchange sets containing S-102 datasets.
+
+The checks specified in this document supplement the checks described in Edition
+1.0.0 of S-158:100 (Universal Hydrographic Data Model Validation Checks). Both sets
+of validation checks, those described in S-158:100 as well as those defined in S-158:102,
+must be applied to test the validity of S-102 datasets and exchange sets. For datasets
+and exchange sets intended for use on ECDIS, additional cross-product checks, defined
+in S-158:98, must also be applied.
+
+The checks described are intended for production systems designed to produce S-102
+datasets. The checks can be administered at any time during the production phase.
+
+[[sec_1.2]]
+=== Conformance
+
+This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation
+Checks -- Introduction and Structure).
+
+The validation checks described herein conform to Edition(s) 3.0.x of IHO Product
+Specification S-102 (Bathymetric Surface).
+
+[[sec_1.3]]
+=== References
+
+[[sec_1.3.1]]
+[bibliography]
+==== Normative references
+
+* [[[S_98,nofetch(IHO S-98)]]] _Data Product Interoperability in S-100 Navigation
+Systems_, IHO Publication S-98, Edition 2.0.0, ??? 2024. In Preparation.
+
+* [[[S_100,nofetch(IHO S-100)]]] _IHO Universal Hydrographic Data Model_, Edition
+5.2.0, June 2024.
+
+* [[[S_102,nofetch(IHO S-102)]]] _Bathymetric Surface Product Specification_, Edition
+3.0.0, January 2025.
+
+* [[[S_158,nofetch(IHO S-158)]]] _Validation Checks — Introduction and Structure_,
+Edition 1.0.0, February 2025.
+
+* [[[S_158_100,nofetch(IHO S-158:100)]]] _Universal Hydrographic Data Model Validation
+Checks_, Edition 1.0.0, February 2025.
+
+[[sec_1.3.2]]
+[bibliography]
+==== Informative references
+
+* [[[ISO_19157_2013,nofetch(ISO 19157:2013)]]] _Geographic information — Data Quality_.
+As amended by Amendment 1, 2018.
+
+[[sec_1.4]]
+=== Terms, definitions and abbreviations
+
+[[sec_1.4.1]]
+[heading="terms and definitions"]
+==== Terms and definitions
+
+The terms and definitions listed in S-158 apply to this document. In addition, the
+following terms and definitions are used:
+
+===== enumeration
+
+a fixed list of valid identifiers of named literal values. Attributes of an enumerated
+type may only take values from this list.
+
+===== exterior
+
+difference between the universe and the closure
+
+NOTE: The concept of exterior is applicable to both topological and geometric complexes
+
+[.source]
+<<ISO_19107>>
+
+===== feature attribute
+
+characteristic of a feature
+
+NOTE: A feature attribute may occur as a type or an instance. Feature attribute type
+or feature attribute instance is used when only one is meant.
+
+NOTE: A feature attribute type has a name, a data type and a domain associated to
+it. A feature attribute instance has an attribute value taken from the value domain
+of the feature attribute type.
+
+NOTE: In a Feature Catalogue, a feature attribute may include a value domain but
+does not specify attribute values for feature instances.
+
+[example]
+A feature attribute named communication channel may have an attribute value VHF0007
+which belongs to the data type text
+
+[example]
+A feature attribute named length may have an attribute value 82.4 which belongs to
+the data type real
+
+[.source]
+<<ISO_19101>>
+
+===== multiplicity
+
+specification of the number of possible occurrences of a property, or the number
+of allowable elements that may participate in a given relationship
+
+[example]
+1..++*++ (one to many); 1 (exactly one); 0..1 (zero or one)
+
+[.source]
+<<ISO_19103>>
+
+[[sec_1.4.2]]
+==== Abbreviations
+
+This Specification uses the abbreviated terms defined in S-158.
+In addition, this Specification uses the following abbreviated terms:
+
+FDG:: Feature Data Group. The values group specified in S-100 Part 10c and represented
+by Level 3 and Level 4 in S-102 Figure 10 (Hierarchy of S-102 product).
+
+FIDS:: Feature Information Dataset in "Group_F" - see S-100 Part 10c. See <<S_102,figure=10>>
+(Hierarchy of S-102 product) and <<S_102,clause=10.2.3>>.
+
+FINST:: Feature Instance. Instance of BathymetryCoverage in S-102 3.0.0.
+Represents the BathymetryCoverage.nn groups within the BathymetryCoverage feature
+type group.
+
+FTYPE:: Feature Type. Represents the container group BathymetryCoverage in S-102.
+See Level 1 of Figure 10 (Hierarchy of S-102 product).
+
+FTYPE.N:: Feature instance groups. "N" denotes the N-th Feature instance group in
+the dataset. See Level 2 of Figure 10 (Hierarchy of S-102 product).
+
+QINST:: Quality feature instance. Instance of QualityOfBathymetryCoverage in
+S-102 3.0.0. Represents the BathymetryCoverage.nn groups within the BathymetryCoverage
+feature type group.
+
+QTYPE:: Quality Feature Type. Represents the container group for QualityOfBathymetryCoverage
+in S-102 (ed. 3.0.0). See Level 1 of Figure 10 (Hierarchy of S-102 product).
+
+QTYPE.N:: Instance groups for the quality features. "N" denotes the N-th Quality
+feature instance group in the dataset. See Level 2 of Figure 10 (Hierarchy of S-102
+product).
+
+[[sec_1.4.3]]
+==== Symbols
+
+The symbols used in logical and spatial expressions are defined in <<S_158,clause=1.3.3>>
+(Symbols).
+
+[[sec_1.5]]
+=== Use of language
+
+Within this document:
+
+* "Must" indicates a mandatory requirement.
+
+* "Should" indicates an optional requirement, that is the recommended process to
+be followed, but is not mandatory.
+
+* "May" means "allowed to" or "could possibly", and is not mandatory.
+
+[[sec_1.6]]
+=== General description
+
+S-158:102 is a specification describing product-specific validation checks for S-102
+products. There are no data products based directly on this edition of S-158:102
+and therefore no general information applicable to data products conforming to it.
+
+The validation checks are intended for production systems designed to produce S-102
+Bathymetric Surface datasets. The checks can be administered at any time during the
+production phase.
+
+[[sec_1.7]]
+=== Specification metadata and maintenance
+
+[[sec_1.7.1]]
+==== Specification metadata
+
+This information uniquely identifies this Specification and provides information
+about its creation and maintenance.
+
+*Title:*:: Bathymetric Surface Validation Checks
+
+*Version:*:: 1.0.0
+
+*Date:*:: 2025-12-31
+
+*Language:*:: English
+
+*Classification:*:: Unclassified
+
+*Contact:*:: International Hydrographic Organization.
++
+--
+4 quai Antoine 1er, +
+B.P.445 MC 98011 MONACO CEDEX +
+Telephone: +377 93 10 81 00 +
+B.P. 445 Fax: + 377 93 10 81 40 +
+Email: mailto:info@iho.int[info@iho.int]
+--
+
+*Role:*:: Owner
+
+*URL:*:: https://registry.iho.int/[https://registry.iho.int]
+
+*Identifier:*:: S-158:102
+
+*Maintenance:*:: Changes to this Specification are coordinated by the IHO S-102 Project
+Team of the IHO S-100 Working Group and made available via the IHO Publications website.
+Maintenance of the Product Specification must conform to IHO Technical Resolution
+2/2007 (revised 2010). For reporting issues which need correction, use the contact
+information.
+
+[[sec_1.7.2]]
+==== Specification maintenance
+
+[[sec_1.7.2.1]]
+===== Introduction
+
+Changes to S-158:102 will be released by the IHO as a New Edition, revision, or clarification.
+
+The list of checks, which accompanies this document is considered part of this Specification
+and changes to it are considered changes to this Specification.
+
+S-158:102 is not accompanied by separate artefacts such as an XML Schema, Feature
+or Portrayal Catalogue and therefore this clause does not address the question of
+changes to such derived artefacts.
+
+[[sec_1.7.2.2]]
+===== New Edition
+
+_New Editions_ of S-158:102 introduce significant changes.
+
+The term "New Edition" conforms to the definition in S-158 clause 1.6.2.2.
+
+[[sec_1.7.2.3]]
+===== Revision
+
+_Revisions_ are defined as substantive semantic changes to S-158:102.
+
+The term "Revision" conforms to the definition in S-158 clause 1.6.2.3.
+
+[[sec_1.7.2.4]]
+===== Clarification
+
+_Clarifications_ are changes to S-158:102 arising from non-substantive reasons or
+from introduction of a new edition or revision of S-102.
+
+The term "Clarification" conforms to the definition in S-158 clause 1.6.2.4.
+
+[[sec_1.7.2.5]]
+===== Version numbers
+
+The associated version control numbering to identify changes (n) to S-158:102 must
+be as follows:
+
+New Editions denoted as *n*.0.0
+
+Revisions denoted as n.*n*.0
+
+Clarifications denoted as n.n.*n*

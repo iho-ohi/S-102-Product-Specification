@@ -1,0 +1,33 @@
+
+[.preface]
+== Document History
+
+Changes to this Specification are coordinated by the IHO S-100 Working Group S-102
+Project Team. New editions will be made available via the IHO web site. Maintenance
+of the Specification shall conform to IHO Resolution 2/2007 (as amended).
+
+[cols="4",options="header,unnumbered"]
+|===
+| Version Number | Date | Author/Editor | Purpose
+| 0.1.0 | 2024-10-15 | RM | Initial draft for S100 Validation Checks GitHub repository. This is based on the August 2023 checks from the S-102 PT, which are aligned to the unpublished S-102 Edition 2.3.0.
+| 0.2.0 | 2024-11-18 | RM | Editorial updates agreed at S-100 WG9. Continues to based on the August 2023 checks.
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
+|===
+
+[.preface]
+== Summary of Substantive Changes in Edition x.x
+
+Bold references in the Clauses Affected column indicate the principal sections/clauses
+that are affected by the described change.
+
+[cols="2",options="header,unnumbered"]
+|===
+| Change Summary | Clauses Affected
+| (To be populated for editions following Edition 1.0.0) |
+| |
+| |
+|===

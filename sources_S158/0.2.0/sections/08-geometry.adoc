@@ -1,0 +1,10 @@
+
+[[sec_8]]
+== Geometry and Spatial Operators
+
+S-102 Edition 3.0.0 datasets use vector geometry only for domain extent polygons.
+Any spatial operators mentioned in checks on domain extent polygons conform to the
+operators for vector products described in S-158.
+
+For all spatial operators a default tolerance of [??? - PT to decide] should be applied
+in validation software.

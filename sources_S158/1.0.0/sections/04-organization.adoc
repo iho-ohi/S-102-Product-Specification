@@ -1,0 +1,45 @@
+
+[[sec_4]]
+== Organisation
+
+The list of validation checks for this edition of S-158:102 is available separately
+(see <<sec_9>>). The list of checks accompanies this specification and forms an integral
+part of it.
+
+The numeric component of the check ID is a 4-digit number whose first digit indicates
+the phase to which the check belongs (see <<table-4-1>> below).
+
+[[table-4-1]]
+.Division of product-specific checks into processing phases
+[cols="4",options="header"]
+|===
+| Phase | Check Numbers | Name | Description
+
+| 1 | 102_1xxx | Validate Dataset Root and Feature Information
+| Validation of root group of HDF5 file and feature type information.
+
+| 2 | 102_2xxx | Validate Feature Container Groups
+| Validation of metadata and structure for each feature type ("Feature Container").
+In S-102 there are two feature containers (one for the bathymetry data and another
+for survey information), so this set of checks is executed only once for each.
+
+| 3 | 102_3xxx | Validate Feature Instance Groups
+| Validation of feature instances. This set of checks, along with Phase 4 checks,
+must be executed once for each feature instance group contained within a feature
+container.
+
+| 4 | N/A | Validate Positioning Groups
+| There are no Phase 4 checks for S-102, which does not use positioning groups.
+This phase is mentioned in this table only for compatibility with S-158:1xx for coverages
+which do use positioning groups.
+
+| 5 | 102_5xxx | Validate Values Datasets
+| Validation of bathymetry data values. This set of checks is applied to the values
+group in a feature instance group.
+
+| 6 | 102_9xxx | Validate Exchange Catalogue
+| This set of checks relates to product-specific requirements for exchange catalogues
+|===
+
+Dataset validation checks the structure and content of individual HDF5 data files.
+The checks for each HDF5 dataset file are divided into four phases

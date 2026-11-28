@@ -1,0 +1,60 @@
+// iho_data_models.lml
+models IhoDataModels {
+  class IhoMetadata {
+    attribute document_number {
+      type String
+      cardinality 1
+    }
+    attribute title {
+      type String
+      cardinality 1
+    }
+    attribute document_type {
+      type String
+      cardinality 1
+    }
+    attribute document_stage {
+      type String
+      cardinality 1
+    }
+    attribute edition {
+      type String
+      cardinality 1
+    }
+    attribute issued_date {
+      type date_time
+      cardinality 1
+    }
+    attribute copyright_year {
+      type String
+      cardinality 1
+    }
+    attribute committee {
+      type String
+      cardinality 1
+    }
+    attribute wg_pt {
+      type String
+      cardinality 1
+    }
+    attribute compliant_standards {
+      type CompliantStandard
+      cardinality 0..n
+    }
+  }
+
+  class CompliantStandard {
+    attribute title {
+      type String
+      cardinality 1
+    }
+    attribute based {
+      type String
+      cardinality 1
+    }
+    attribute applied_without_revision {
+      type Boolean
+      cardinality 0..1
+    }
+  }
+}

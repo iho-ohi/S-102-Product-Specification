@@ -1,0 +1,1399 @@
+require "iho_s102_check.lml"
+instance S158Checks {
+  type ValidationChecks
+
+  checks = [
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1001"
+      classification = critical_error
+      check_message = "No feature information group"
+      check_description = "IF the root group does not have exactly one group member named Group_F"
+      check_solution = "Add feature information group"
+      standards_document_reference = "PS"
+      clause_reference = "10.2"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1004"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1002"
+      classification = critical_error
+      check_message = "Mandatory General Metadata attribute missing"
+      check_description = "FOR EACH attribute in the PS Table 8 with multiplicity lower bound = 1, WHERE an HDF5 attribute with the identical camel case name does not exist in the root group"
+      check_solution = "Add missing general metadata attribute"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8 (Root group attributes)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1005"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1003"
+      classification = critical_error
+      check_message = "Conditionally mandatory General Metadata attribute missing"
+      check_description = "FOR EACH conditionally mandatory attribute in the PS Table 8 WHERE the prerequisite condition specified in the PS is satisfied but the attribute is missing"
+      check_solution = "Add missing attribute"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1006"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1004"
+      classification = critical_error
+      check_message = "Wrong type for General Metadata attribute"
+      check_description = "FOR EACH attribute of the root group, WHERE the type does not match the type in the PS"
+      check_solution = "Correct attribute type"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1007"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1005"
+      classification = error
+      check_message = "Wrong format for data or time"
+      check_description = "FOR attributes [issueDate, issueTime], WHERE the format of the value does not match the specified pattern."
+      check_solution = "Correct value string"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8, 5.4"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1008"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1006"
+      classification = critical_error
+      check_message = "Wrong value for General Metadata attribute"
+      check_description = "FOR EACH mandatory or conditionally mandatory attribute of the root group, WHERE the value does not match the specified range or required value (if any) in the PS"
+      check_solution = "Correct attribute value"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1009"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1007"
+      classification = warning
+      check_message = "Inconsistent value for epoch"
+      check_description = "IF attribute epoch is present and its value does not correspond to an epoch for the horizontal datum"
+      check_solution = "Correct attribute value"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1010"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1008"
+      classification = warning
+      check_message = "ISO metadata files are not used in navigation products"
+      check_description = "IF attribute metadata is present and its value IS NOT the empty string"
+      check_solution = "Remove ISO metadata file and change the metadata attribute value to the empty string"
+      standards_document_reference = "PS"
+      clause_reference = "4.2, 11.1, 11.2, 11.3, 12.2"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1011"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1009"
+      classification = critical_error
+      check_message = "S-102 must use one of the CRS in Table 1"
+      check_description = "IF attribute horizontalCRS ≠ one of the CRS EPSG codes in Table 1 of the PS"
+      check_solution = "Correct horizontalCRS value"
+      standards_document_reference = "PS"
+      clause_reference = "Table 1 (S-102 Coordinate Reference Systems), Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1012"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1010"
+      classification = warning
+      check_message = "Attribute nameOfHorizontalCRS must be populated with the name of the projected CRS"
+      check_description = "IF attribute nameOfHorizontalCRS is not populated"
+      check_solution = "Populate nameOfHorizontalCRS"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1009"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1013"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1011"
+      classification = warning
+      check_message = "Attribute nameOfHorizontalCRS does not match EPSG registry information"
+      check_description = "IF nameOfHorizontalCRS value does not match the corresponding EPSG registry code"
+      check_solution = "Use name from EPSG registry"
+      standards_document_reference = "PS"
+      clause_reference = "Table 1, Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1010"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1014"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1012"
+      classification = error
+      check_message = "Attribute typeOfHorizontalCRS required for projected CRSs"
+      check_description = "IF attribute typeOfHorizontalCRS is not populated"
+      check_solution = "Populate typeOfHorizontalCRS"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1009"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1015"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1013"
+      classification = error
+      check_message = "Attribute typeOfHorizontalCRS is inconsistent with horizontalCRS"
+      check_description = "IF typeOfHorizontalCRS ≠ 2 (projectedCRS)"
+      check_solution = "Correct value of typeOfHorizontalCRS"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1012"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1016"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1014"
+      classification = error
+      check_message = "Attribute required for projected CRS is not populated"
+      check_description = "IF any of {horizontalCS, horizontalDatum, projectionMethod} is not populated"
+      check_solution = "Populate attribute (name)"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1013"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1017"
+      notes = "Obsolete for ed. 3"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1015"
+      classification = error
+      check_message = "Attribute horizontalDatum should be a standard EPSG datum not a user-defined datum"
+      check_description = "IF horizontalDatum = -1"
+      check_solution = "Use an EPSG horizontal datum"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1014"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1018"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1016"
+      classification = error
+      check_message = "Prime meridian must be Greenwich"
+      check_description = 'IF attribute primeMeridian is present and its value is not the EPSG code for the "Greenwich" prime meridian'
+      check_solution = "Use the Greenwich Prime Meridian code"
+      standards_document_reference = "PS"
+      clause_reference = "Table 1, Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1019"
+      notes = "Obsolete for Ed. 3"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1017"
+      classification = warning
+      check_message = "Spheroid must be WGS 84"
+      check_description = "IF attribute spheroid is present and its value is not the EPSG code for the WGS 84 ellipsoid"
+      check_solution = "Convert to WGS 84 ellipsoid"
+      standards_document_reference = "PS"
+      clause_reference = "Table 1, Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1020"
+      notes = "Obsolete for Ed. 3"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1018"
+      classification = warning
+      check_message = "Projection parameters must be populated for projected CRS specified in horizontalCRS"
+      check_description = "IF any of the projection parameters (attributes projectionParameter1 through projectionParameter5, falseNorthing, falseEasting) corresponding to the projectionMethod is missing"
+      check_solution = "Populate required projection parameter attributes with values corresponding to the  CRS specified by horizontalCRS"
+      standards_document_reference = "PS"
+      clause_reference = "Table 1, Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1014"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1021"
+      notes = "Obsolete for Ed. 3"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1019"
+      classification = warning
+      check_message = "Projection parameter has wrong value for CRS specified in horizontalCRS"
+      check_description = "IF any of the required projection parameters (from attributes projectionParameter1 through projectionParameter5, falseNorthing, falseEasting) is populated with an incorrect value"
+      check_solution = "Populate required projection parameter attributes with values corresponding to the  CRS specified by horizontalCRS"
+      standards_document_reference = "PS"
+      clause_reference = "Table 1, Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1014",
+        "102_Dev1018"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1022"
+      notes = "Obsolete for Ed. 3"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1020"
+      classification = critical_error
+      check_message = "Attribute verticalCS must be the EPSG code 6498"
+      check_description = "IF attribute verticalCS ≠ 6498"
+      check_solution = "Correct vertical coordinate system"
+      standards_document_reference = "PS"
+      clause_reference = "Table 8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1023"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1021"
+      classification = critical_error
+      check_message = "No featureCode array in feature information group"
+      check_description = 'IF Group_F does not contain a 1-dimensional array named "featureCode"'
+      check_solution = "Add featureCode array to feature information group"
+      standards_document_reference = "PS"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1001"
+      ]
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1024"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1022"
+      classification = critical_error
+      check_message = "Bathymetry data feature missing from featureCode array"
+      check_description = "IF Group_F.featureCode DOES NOT contain an entry for BathymetryCoverage"
+      check_solution = "Add entry to featureCode"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.2"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1021"
+      ]
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1025"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1023"
+      classification = warning
+      check_message = "Quality feature not used"
+      check_description = "IF Group_F.featureCode DOES NOT contain an entry for QualityOfBathymetryCoverage"
+      check_solution = "No action, notification only"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.2"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1021"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1026"
+      notes = "QF made optional in Ed 3.0.0?"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1024"
+      classification = critical_error
+      check_message = "Group_F feature information must correspond to feature catalogue"
+      check_description = "IF Group_F.featureCode contains a feature code not found in the feature catalogue"
+      check_solution = "Correct entries in Group_F.featureCode"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.2"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1021"
+      ]
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1027"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1025"
+      classification = critical_error
+      check_message = "Feature information dataset for feature type missing"
+      check_description = "FOR EACH feature type, IF Group_F does not contain a feature information dataset of the same name"
+      check_solution = "Add feature information dataset in Group_F"
+      standards_document_reference = "PS"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1022"
+      ]
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1028"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1026"
+      classification = critical_error
+      check_message = "No feature instances for feature type"
+      check_description = "FOR EACH feature type, IF the root group does not contain a group member of the same name"
+      check_solution = "Confirm omission of instances of the specified feature type from the dataset"
+      standards_document_reference = "PS"
+      clause_reference = "10.2, Table 7, Figure 9"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1022"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1029"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1027"
+      classification = critical_error
+      check_message = "Feature information dataset component type error"
+      check_description = "FOR EACH <FIDS>, IF the compound type or values are different from the PS"
+      check_solution = "Correct structure and/or values of feature information dataset"
+      standards_document_reference = "PS"
+      clause_reference = "Table 10 (Sample contents of the BathymetryCoverage and QualityOfBathymetryCoverage arrays)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev1025"
+      ]
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1030"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1028"
+      classification = warning
+      check_message = "Extra element in root group"
+      check_description = "IF there are attributes, datasets, or groups other than those allowed in the product specification"
+      check_solution = "Remove or rename extra attribute, dataset, or group"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Completeness",
+        "Commission"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1031"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev1029"
+      classification = critical_error
+      check_message = "Root group structural error, must be corrected before further checks can be processed"
+      check_description = "IF any of the Phase 1 checks designated as terminator checks were failed"
+      check_solution = "Correct root group structure before proceeding to next phase"
+      standards_document_reference = "N/A"
+      clause_reference = "N/A"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_1032"
+      notes = "Gateway to next phase"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2001"
+      classification = critical_error
+      check_message = "Missing or invalid HDF attribute in container group"
+      check_description = "IF the HDF attributes of the respective group do not conform to the multiplicities, names, types, and values in the PS"
+      check_solution = "Correct attribute"
+      standards_document_reference = "PS"
+      clause_reference = "Table 11 (Attributes of BathymetryCoverage feature container group), 10.2.8 (para. 1)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency OR Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2035"
+      notes = "Agree with splitting different kinds of checks into separate checks."
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2002"
+      classification = error
+      check_message = "HDF attributes of quality coverage must have the same values as bathymetry coverage"
+      check_description = "IF the HDF attributes of QualityOfBathymetryCoverage have values different from the corresponding attributes of BathymetryCoverage"
+      check_solution = "Correct attributes"
+      standards_document_reference = "PS"
+      clause_reference = "Table 11, 10.2.8 (para. 1)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2036"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2003"
+      classification = error
+      check_message = "Feature container group does not have the axisNames dataset, or the axisNames dataset does not have the correct dimensions"
+      check_description = "IF dataset axisNames is not found or does not have the correct rank and datatype, or has length ≠ 2"
+      check_solution = "Add or correct the axisNames dataset"
+      standards_document_reference = "PS"
+      clause_reference = "Table 7, Figure 9"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2037"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2004"
+      classification = error
+      check_message = "Axis names must conform to CRS"
+      check_description = "If the contents of dataset axisNames do not conform to the CRS specified by horizontalCRS"
+      check_solution = "Correct the axisNames dataset"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2038"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2005"
+      classification = error
+      check_message = "No feature attribute table in quality feature"
+      check_description = "IF the  featureAttributeTable dataset does not exist"
+      check_solution = "Add feature attribute table"
+      standards_document_reference = "PS"
+      clause_reference = "Table 7, Figure 9, 10.2.8"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2039"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2006"
+      classification = error
+      check_message = "Feature attribute table does not conform to PS"
+      check_description = "IF the  featureAttributeTable dataset does not have  the structure, components, and types described in the PS"
+      check_solution = "Correct structure, components, and types"
+      standards_document_reference = "PS"
+      clause_reference = "Table 14 (Elements of featureAttributeTable compound datatype)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev2005"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2040"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2007"
+      classification = critical_error
+      check_message = "No instance groups in bathymetry coverage"
+      check_description = "IF there are no groups named <FTYPE>.N"
+      check_solution = "Add instance groups to feature coverage"
+      standards_document_reference = "PS"
+      clause_reference = "Table 7, Figure 9"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2041"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2008"
+      classification = critical_error
+      check_message = "The number of feature instance groups in <FTYPE> does not match the value of attribute numInstances"
+      check_description = "IF the number of groups named <FTYPE>.N is not equal to the value of attribute numInstances"
+      check_solution = "Correct attribute numInstances or the the number of feature instance groups in <FTYPE>"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev2007"
+      ]
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2042"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2009"
+      classification = warning
+      check_message = "No instance groups in quality coverage"
+      check_description = "IF there are no groups named <QTYPE>.N"
+      check_solution = "Add instance groups to quality coverage"
+      standards_document_reference = "PS"
+      clause_reference = "Table 7, Figure 9"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2043"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2010"
+      classification = warning
+      check_message = "The number of quality instance groups in <QTYPE> does not match the value of attribute numInstances"
+      check_description = "IF the number of groups named <QTYPE>.N is not equal to the value of attribute numInstances"
+      check_solution = "Correct attribute numInstances or the the number of quality instance groups in <QTYPE>"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev2009"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2044"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2011"
+      classification = warning
+      check_message = "Sequencing rule scanDirection contents do not match axis names"
+      check_description = "IF attribute sequencingRule.scanDirection does not name all the axes in axisNames OR contains a name which is not an entry in axisNames"
+      check_solution = "Correct the value of sequencingRule.scanDirection"
+      standards_document_reference = "PS"
+      clause_reference = "Table 11"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev2001"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2045"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2012"
+      classification = warning
+      check_message = "Extra element in container"
+      check_description = "IF there are attributes, datasets, or groups other than those allowed in the product specification"
+      check_solution = "Remove or rename extra attribute, dataset, or group"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Thematic Accuracy",
+        "ThematicClassificationCorrectness OR
+LogicalConsistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2046"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev2013"
+      classification = critical_error
+      check_message = "Feature container group error, must be corrected before feature instance checks can be processed"
+      check_description = "IF any of the Phase 2 checks designated as terminator checks were failed"
+      check_solution = "Correct error before  proceeding to next phase"
+      standards_document_reference = "N/A"
+      clause_reference = "N/A"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_2047"
+      notes = "Gateway to next phase"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3001"
+      classification = critical_error
+      check_message = "Mandatory attribute missing or of wrong type in  instance group"
+      check_description = "IF any of the mandatory HDF5 attributes in the PS are missing or of the wrong type"
+      check_solution = "Add missing attribute or correct type"
+      standards_document_reference = "PS"
+      clause_reference = "Table 12 (Attributes of BathymetryCoverage feature instance group)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3050"
+      notes = 'Agree with splitting "missing" from "wrong type".'
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3002"
+      classification = error
+      check_message = "Error in bounding box coordinates in instance group"
+      check_description = "IF the bounding box attributes westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude are not within the appropriate ranges for the CRS specified by the root group attribute horizontalCRS"
+      check_solution = "Correct error in bounding box attributes"
+      standards_document_reference = "PS"
+      clause_reference = "Clause 1.4 (Spatial extent)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3051"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3003"
+      classification = error
+      check_message = "Inconsistent bounding box coordinates in   instance group"
+      check_description = "IF the bounding box attributes are inconsistent: (eastBoundLongitude <= westBoundLongitude) OR (northBoundLatitude <= southBoundLatitude)"
+      check_solution = "Correct error in bounding box attributes"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3052"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3004"
+      classification = error
+      check_message = "Bounding box coordinates in instance group not consistent with bounding box at root level"
+      check_description = "IF the bounding box for the instance is not spatially within the bounding box specified in the root group"
+      check_solution = "Correct error in bounding box attributes"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3053"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3005"
+      classification = error
+      check_message = "Error in grid origin coordinates in instance group"
+      check_description = "IF the grid origin attributes gridOriginLongitude, gridOriginLatitude are either: not within range for the CRS specified by the root group attribute horizontalCRS OR not within the instance's bounding box"
+      check_solution = "Correct error in grid origin attributes"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3054"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3006"
+      classification = critical_error
+      check_message = "Grid spacing attribute in instance group has value out of range"
+      check_description = "IF attributes gridSpacingLongitudinal <= 0 OR gridSpacingLatitudinal <= 0"
+      check_solution = "Correct value"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3055"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3007"
+      classification = warning
+      check_message = "Value of gridSpacingLongitudinal or gridSpacingLatitudinal in instance group too high"
+      check_description = "IF attribute gridSpacingLongitudinal >  (eastBoundLongitude - westBoundLongitude) OR attribute gridSpacingLatitudinal > (northBoundLatitude - southBoundLatitude)"
+      check_solution = "Correct value of attribute"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev3006"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3056"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3008"
+      classification = critical_error
+      check_message = "Grid must be at least 1X1"
+      check_description = "IF attribute numPointsLongitudinal < 2 or numPointsLatitudinal < 2"
+      check_solution = "Add attribute or correct value"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3057"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3009"
+      classification = warning
+      check_message = "Grid dimensions are incompatible with instance bounding box"
+      check_description = "IF attribute gridSpacingLongitudinal > (eastBoundLongitude - westBoundLongitude) / (numPointsLongitudinal - 1) OR gridSpacingLatitudinal > (northBoundLatitude - southBoundLatitude) / (numPointsLatitudinal - 1)"
+      check_solution = "Confirm or correct values of spacing, bounds, and numbers of grid points along grid axes"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev3006",
+        "102_Dev3008"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3058"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3010"
+      classification = critical_error
+      check_message = "Grid must be at least 1X1"
+      check_description = "IF attribute numPointsLongitudinal < 1 or numPointsLatitudinal < 1"
+      check_solution = "Add attribute or correct value"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3059"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3011"
+      classification = warning
+      check_message = "Grid dimensions are incompatible with instance bounding box"
+      check_description = "IF attribute gridSpacingLongitudinal > (eastBoundLongitude - westBoundLongitude) / (numPointsLongitudinal) OR gridSpacingLatitudinal > (northBoundLatitude - southBoundLatitude) / (numPointsLatitudinal)"
+      check_solution = "Confirm or correct values of spacing, bounds, and numbers of grid points along grid axes"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev3006",
+        "102_Dev3010"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3060"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3012"
+      classification = warning
+      check_message = "Grid origin does not coincide with instance bounding box"
+      check_description = "IF (westBoundLongitude ≠ gridOriginLongitude) OR (southBoundLatitude ≠ gridOriginLatitude)"
+      check_solution = "Confirm or correct values of bounding box and grid origin"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev3006",
+        "102_Dev3008"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3061"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3013"
+      classification = warning
+      check_message = "Missing attribute startSequence, or invalid content for startSequence in instance"
+      check_description = "IF attribute startSequence does not consist of the same number of comma-separated integer values as the axisNames dataset in the corresponding <FTYPE>"
+      check_solution = "Add attribute or correct value"
+      standards_document_reference = "PS"
+      clause_reference = "Table 12"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3062"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3014"
+      classification = warning
+      check_message = "Values in startSequence in instance group are incompatible with the scan direction in sequencingRule"
+      check_description = "IF the values of startSequence components are not compatible with the signs in sequencingRule.scanDirection in the corresponding <FTYPE> or <QTYPE> group"
+      check_solution = "Correct the values in startSequence"
+      standards_document_reference = "PS"
+      clause_reference = "Table 11, Table 12"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev3013"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3063"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3015"
+      classification = warning
+      check_message = "Extra element in  instance group"
+      check_description = "IF there are attributes, datasets, or groups other than those allowed in the product specification"
+      check_solution = "Remove or rename extra attribute, dataset, or group, or confirm its permissibility"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Thematic Accuracy",
+        "ThematicClassificationCorrectness OR Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3064"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3016"
+      classification = critical_error
+      check_message = "Count of values groups does not match attribute numGRP in instance group"
+      check_description = "IF the number of values groups Group_NNN in instance group does not match the value of attribute numGRP"
+      check_solution = "Correct numGRP or values groups"
+      standards_document_reference = "PS"
+      clause_reference = "Table 7, Figure 9, Table 12"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      terminate_if_failure = true
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3065"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3017"
+      classification = error
+      check_message = "Attributes of quality instance group do not match attributes of coverage instance group"
+      check_description = "If the HDF5 attributes of <QINST> are different from those of <FINST>"
+      check_solution = "Correct attributes of quality instance group"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.9"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3066"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3018"
+      classification = warning
+      check_message = "Grid resolution out of range"
+      check_description = "gridSpacingLongitudinal NOT IN range [?, ?] OR gridSpacingLatitudinal NOT IN range [?, ? ]"
+      check_solution = "Ensure that grid has correct resolution"
+      standards_document_reference = "PS"
+      clause_reference = "N/A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Conceptual Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3067"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev3019"
+      classification = critical_error
+      check_message = "Instance group structural error, must be corrected before further checks can be processed"
+      check_description = "IF any of the Phase 3 checks designated as terminator checks were failed"
+      check_solution = "Correct <FINST> group structure before proceeding to next phase"
+      standards_document_reference = "N/A"
+      clause_reference = "N/A"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_3069"
+      notes = "Gateway to next phase"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5001"
+      classification = critical_error
+      check_message = "Mandatory attribute missing or of wrong type in  instance values group"
+      check_description = "IF any of the mandatory HDF5 attributes in the PS are missing or of the wrong type"
+      check_solution = "Add missing attribute or correct type"
+      standards_document_reference = "PS"
+      clause_reference = "Table 13 (Attributes of values group)"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5075"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5002"
+      classification = warning
+      check_message = "Attribute value out of range in instance values group"
+      check_description = "IF any of the HDF5 attributes in the values group have values outside the specified range (including fill value, if any) in the PS"
+      check_solution = "Correct value of attribute"
+      standards_document_reference = "PS"
+      clause_reference = "Table 13 (Attributes of values group)"
+      data_quality_measure = [
+        "Temporal Quality",
+        "Temporal Validity"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5076"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5003"
+      classification = critical_error
+      check_message = "Values dataset missing"
+      check_description = "IF the values dataset is missing"
+      check_solution = "Add values dataset"
+      standards_document_reference = "PS"
+      clause_reference = "Table 7, Figure 9, 10.2.6, 10.2.7"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5077"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5004"
+      classification = critical_error
+      check_message = "Values dataset must be s 2-dimensional array"
+      check_description = "IF the values dataset IS NOT a 2-dimensional array of dimensions numPointsLatitudinal X numPointsLongitudinal"
+      check_solution = "Correct values dataset"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.7"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev5003"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5078"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5005"
+      classification = critical_error
+      check_message = "Values dataset members must conform to coverage data record"
+      check_description = "IF the values dataset members ARE NOT compound values with one component for each attribute specified in <FIDS>"
+      check_solution = "Correct values dataset"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.7"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev5004"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5079"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5006"
+      classification = critical_error
+      check_message = "<FINST>/<FDG> data value out of range"
+      check_description = "IF the value of any component of a values record is outside the range for the corresponding attribute in the <FTYPE> array and not a fill value for the attribute"
+      check_solution = "Correct value in values dataset"
+      standards_document_reference = "PS"
+      clause_reference = "Feature catalogue, Group_F"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Domain Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev5005"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5080"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5007"
+      classification = error
+      check_message = "Values dataset must conform to quality data record"
+      check_description = "IF the values dataset IS NOT a  two-dimensional array of unsigned integers of the same datatype and size as the “id” field in featureAttributeTable"
+      check_solution = "Correct quality values dataset"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.11, Table 13"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev5004"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5081"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5008"
+      classification = error
+      check_message = "Values dataset member must reference entry in feature attribute table or be the fill value"
+      check_description = 'If the value of any member of the values dataset does not have a corresponding "id" value in the featureAttributeTable or the appropriate fill value'
+      check_solution = "Correct quality values dataset or feature attribute table"
+      standards_document_reference = "PS"
+      clause_reference = "10.2.11"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev5005"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5082"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5009"
+      classification = warning
+      check_message = "Data value resolution exceeds product specification"
+      check_description = "IF the precision of any depth or uncertainty value exceeds 0.01 metres"
+      check_solution = "Verify and/or correct"
+      standards_document_reference = "PS"
+      clause_reference = "Annex A"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Domain Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      prerequisites = [
+        "102_Dev5008"
+      ]
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5083"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev5010"
+      classification = warning
+      check_message = "Extra element in values group"
+      check_description = "IF there are attributes, datasets, or groups other than those allowed in the product specification"
+      check_solution = "Remove or rename extra attribute, dataset, or group, or confirm its permissibility"
+      standards_document_reference = "PS"
+      data_quality_measure = [
+        "Logical Consistency",
+        "Format Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_5084"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev9001"
+      classification = critical_error
+      check_message = "Non-conformant discovery metadata block"
+      check_description = "IF the exchange catalogue blocks for S100_EchangeCatalogue and S100_DatasetDiscoveryMetadata do not conform to the product-specific restrictions in the PS."
+      check_solution = "Correct discovery metadata block"
+      standards_document_reference = "PS"
+      clause_reference = "12"
+      data_quality_measure = [
+        "Metadata Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_X002"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev9002"
+      classification = error
+      check_message = "Inconsistent bounding box for discovery metadata and bounding box."
+      check_description = "If S100_DatasetDiscoveryMetadata attribute boundingBox values are not identical to the bounding box attributes for the root group of the HDF5 dataset."
+      check_solution = "Correct bounding box values."
+      standards_document_reference = "PS"
+      clause_reference = "8"
+      data_quality_measure = [
+        "Metadata Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_X003"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev9003"
+      classification = warning
+      check_message = "Approximate grid resolution in metadata does not match grid spacing"
+      check_description = "If S100_DatasetDiscoveryMetadata/dataCoverage attribute  approximateGridResolution value is not approximately the same as the gridSpacingLatitudinal and gridSpacingLongitidinal values for the coverage feature in the HDF5 dataset"
+      check_solution = "Correct approximate grid resolution in metadata."
+      standards_document_reference = "PS"
+      clause_reference = "Table 22, 11.2.2.1"
+      data_quality_measure = [
+        "Metadata Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_X004"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev9004"
+      classification = error
+      check_message = "This edition of S-102 does not use support files."
+      check_description = "If support file blocks for S-102 support files are included in the exchange catalogue."
+      check_solution = "Remove support file blocks and associated support files if any."
+      standards_document_reference = "PS"
+      clause_reference = "11.3, 12.4, 12.5"
+      data_quality_measure = [
+        "Metadata Consistency"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_X005"
+    },
+
+    instance IhoS102Check::ValidationCheck {
+      dev_id = "102_Dev9005"
+      classification = warning
+      check_message = "Dataset file size exceeds 10MB."
+      check_description = "If the dataset file size is greater than 10MB."
+      check_solution = "(Notification only)"
+      standards_document_reference = "PS"
+      clause_reference = "11.2.2"
+      data_quality_measure = [
+        "?"
+      ]
+      introduced = "2.3.0 draft"
+      uploaded_date = "2023-08-24T00:00:00"
+      old_dev_id = "S102_X006"
+    }
+
+  ]
+}
